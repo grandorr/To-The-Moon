@@ -7,8 +7,6 @@ class CryptoController < ApplicationController
     else
       @request += CoinMarketCap.request(options: {limit: [0], start: 100})
       @request += CoinMarketCap.request(options: {limit: [0], start: 200})
-      @request += CoinMarketCap.request(options: {limit: [0], start: 300})
-      @request += CoinMarketCap.request(options: {limit: [0], start: 400})
     end
 
     @coinlists = Cryptocompare::CoinList.all["Data"].sort.to_h

@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio</title>
+    <title>To The Moon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm ">
-      <a href="/"<h5 class="my-0 mr-md-auto font-weight-normal text-dark">To the Moon<%= image_tag("home/moon.png", width: '5%')%></h5></a>
-      <nav class="my-2 my-md-0 mr-md-3 ">
-        <a class="p-2 text-dark " href="/wallet">Portefeuille</a>
-        <a class="p-2 text-dark" href="#">Se connecter</a>
-        <a class="p-2 text-dark" href="#">Crée un compte</a>
-      </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+      <a class="navbar-brand logo-text" <%= link_to "To The Moon", root_path %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+  </ul>
+    <a class="btn btn-primary btn "  role="button" <%= link_to "cryptocurrency", crypto_index_path%></a>
+    <a class="btn btn-primary btn "  role="button" <%= link_to "Portfolio", root_path%> </a>
+      <% if user_signed_in? %>
+
+
+        <a type="button" class="btn btn-primary"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
+        <a type="button" class="btn btn-primary"<%= link_to "Mon profil", root_path%></a>
+        <% if current_user.is_admin? %>
+          <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
+        <% end %>
+      <% else %>
+        <a type="button" class="btn btn-primary " <%= link_to "Inscription", '/users/sign_up' %></a>
+        <a type="button" class="btn btn-primary" <%= link_to "Connection",'/users/sign_in' %></a>
+      <% end %>
+
     </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

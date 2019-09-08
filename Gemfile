@@ -4,10 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Additional gem #
-
+# Personnal gem #
 gem 'coinmarketcap_api'
 gem 'table_print'
-
+gem 'devise'
+gem 'faker'
+# GEM TEST #
+gem 'cryptocompare'
+gem 'coinmarketcap'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

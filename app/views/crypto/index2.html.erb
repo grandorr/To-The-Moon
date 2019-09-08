@@ -38,10 +38,10 @@
     </div>
     <% end %>
 <% else %>
-<% @request1.values.each_with_index do |coin| %>
+<% @coinlists.values.each_with_index do |coin| %>
   <div class="card text-dark p-3 ">
   <%= coin["FullName"] %>
-<%= Cryptocompare::Price.find('coin["Symbol"]', 'USD') %>
+  <%= coin["Symbol"] %>
   <%= coin["SortOrder"] %>
 
   <img  class ="logo" src="https://www.cryptocompare.com/<%= coin["ImageUrl"] %>" alt="x" >

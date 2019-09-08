@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<img  class ="logo" src="https://coinlib.io/static/img/coins/small/<%=@request.symbol.downcase%>.png?22832" alt="logo" >
+<h1><%= @request.name %></h1>
+<% @fullprice.values.each do |price| %>
+  <%= price["PRICE"] %>
+  <% end %>
+  </body>
+</html>

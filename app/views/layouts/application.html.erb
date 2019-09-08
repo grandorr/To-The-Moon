@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm ">
+      <a href="/"<h5 class="my-0 mr-md-auto font-weight-normal text-dark">To the Moon<%= image_tag("home/moon.png", width: '5%')%></h5></a>
+      <nav class="my-2 my-md-0 mr-md-3 ">
+        <a class="p-2 text-dark " href="/wallet">Portefeuille</a>
+        <a class="p-2 text-dark" href="#">Se connecter</a>
+        <a class="p-2 text-dark" href="#">Crée un compte</a>
+      </nav>
+    </div>
+    <%= yield %>
+  </body>
+</html>

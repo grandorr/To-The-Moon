@@ -6,7 +6,7 @@
    <%= request.rank %>
 
       <%= request.symbol %>
-    <%= link_to request.name, crypto_path(request.symbol) %></h1>
+    <%= link_to request.name, crypto_path(request.id) %></h1>
 
 
   <% if request.percent_change_hourly.to_f > 0 %>

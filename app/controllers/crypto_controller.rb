@@ -11,7 +11,7 @@ class CryptoController < ApplicationController
   end
 
   def show
-    @request = CoinMarketCap.request(options: {currency: params[:id].id})
-    @fullprice = Cryptocompare::Price.full(params[:id].symbol, 'USD')["RAW"]["BTC"]
+    @request = CoinMarketCap.request(options: {currency: params[:id]})
+
   end
 end

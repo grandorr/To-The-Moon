@@ -4,9 +4,6 @@ class CryptoController < ApplicationController
 
     if @request == nil
       @request1 =  Cryptocompare::CoinList.all["Data"]
-    else
-      @request += CoinMarketCap.request(options: {limit: [0], start: 100})
-      @request += CoinMarketCap.request(options: {limit: [0], start: 200})
     end
 
     @coinlists = Cryptocompare::CoinList.all["Data"].sort.to_h

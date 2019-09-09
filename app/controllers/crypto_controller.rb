@@ -6,7 +6,7 @@ class CryptoController < ApplicationController
       @request1 =  Cryptocompare::CoinList.all["Data"]
     end
 
-    @coinlists = Cryptocompare::CoinList.all["Data"].sort.to_h
+
 
 
   end

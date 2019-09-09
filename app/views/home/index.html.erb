@@ -18,22 +18,6 @@
   <br>
   <br>
   <br>
-<center>
-
-
-
-    </center>
 </div>
-
-<% coin_list = api_request('https://api.coinlore.com/api/tickers/')%>
-<% coin_list["data"].each do |coin| %>
-<div class="card text-dark p-3 ">
-<h1> <%= coin['rank'] %> </h1>
- <h1><img  class ="logo" src="https://chasing-coins.com/coin/logo/<%= coin['symbol'] %>" alt="logo" >
-<h1> <%= coin['symbol'] %> </h1>
-<h1> <%= coin['name'] %> </h1>
-<h1> $ <%= coin['price_usd'] %>  </h1>
-<%= link_to coin["name"], crypto_path(coin["name"]) %>
-
-</div>
-<% end %>
+<script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
+<coingecko-coin-heatmap-widget  height="800" locale="en" width=""></coingecko-coin-heatmap-widget>

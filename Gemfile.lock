@@ -73,7 +73,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    coingecko (0.2.0)
     coinmarketcap_api (1.0.0)
       faraday
       hashie
@@ -217,12 +216,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.1.2)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  coingecko
   coinmarketcap_api
   devise
   faker

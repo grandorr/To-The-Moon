@@ -9,21 +9,7 @@
     <%= link_to request.name, crypto_path(request.symbol) %></h1>
 
 
-  <% if request.percent_change_hourly.to_f > 0 %>
-    <p class="green" > 1 Heure :  <%= request.percent_change_hourly %> %   </p>
-  <% else %>
-    <p class="red" > 1 Heure :  <%= request.percent_change_hourly %> %   </p>
-    <%end%>
-  <% if request.percent_change_daily.to_f > 0 %>
-    <p class="green" > 24 H :  <%= request.percent_change_daily %> %  </p>
-  <% else %>
-      <p class="red" > 24 H :  <%= request.percent_change_daily %> %    </p>
-  <%end%>
-  <% if request.percent_change_weekly.to_f > 0 %>
-    <p class="green" > 7 jours :  <%= request.percent_change_weekly %> %    </p>
-  <% else %>
-    <p class="red" > 7 jours  :  <%= request.percent_change_weekly %> %   </p>
-  <%end%>
+
 
   <% price = request.price_usd.to_f %>
   <% if price > 1 %>

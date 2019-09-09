@@ -1,56 +1,51 @@
-<% if @request != nil %>
-  <% @request.each do |request| %>
-    <div class="card text-dark p-3 ">
+<header>
+  <script src="https://kit.fontawesome.com/068a9d7e61.js"></script>
+</header>
+<table class="table">
 
-   <h1><img  class ="logo" src="https://coinlib.io/static/img/coins/small/<%=request.symbol.downcase%>.png?22832" alt="logo" >
-   <%= request.rank %>
-
-      <%= request.symbol %>
-    <%= link_to request.name, crypto_path(request.id) %></h1>
-
-
-  <% if request.percent_change_hourly.to_f > 0 %>
-    <p class="green" > 1 Heure :  <%= request.percent_change_hourly %> %   </p>
-  <% else %>
-    <p class="red" > 1 Heure :  <%= request.percent_change_hourly %> %   </p>
-    <%end%>
-  <% if request.percent_change_daily.to_f > 0 %>
-    <p class="green" > 24 H :  <%= request.percent_change_daily %> %  </p>
-  <% else %>
-      <p class="red" > 24 H :  <%= request.percent_change_daily %> %    </p>
-  <%end%>
-  <% if request.percent_change_weekly.to_f > 0 %>
-    <p class="green" > 7 jours :  <%= request.percent_change_weekly %> %    </p>
-  <% else %>
-    <p class="red" > 7 jours  :  <%= request.percent_change_weekly %> %   </p>
-  <%end%>
-
-  <% price = request.price_usd.to_f %>
-  <% if price > 1 %>
-  <% price = price.round(2) %>
-  <% else %>
-  <% price = price.round(3) %>
-  <% end %>
-
-        <h3> Prix : <%= price  %> $ </h3>
-
-    <h5> Capitalisation totale:  <%= number_to_currency(request.market_cap_usd, precision: 0, delimiter: " ") %>
-
-    </div>
-
-
-    <% end %>
-<% else %>
-<% @request1.values.each_with_index do |coin| %>
-  <div class="card text-dark p-3 ">
-  <%= coin["FullName"] %>
-<%= Cryptocompare::Price.find('coin["Symbol"]', 'USD') %>
-  <%= coin["SortOrder"] %>
-
-  <img  class ="logo" src="https://www.cryptocompare.com/<%= coin["ImageUrl"] %>" alt="x" >
-
-
-
-  </div>
+  <thead>
+    <tr class="text-dark">
+      <h1><th scope="col">rank</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Marketcap</th>
+    <th scope="col"> 1h Change </th>
+      <th scope="col"> 24h Change </th>
+    <th scope="col"> 7 day Change </th></h1>
+    <th scope ="col"> 7 day chart  </th>
+    </tr>
+  </thead>
+  <% coin_list = api_request('https://api.coinlore.com/api/tickers/')%>
+  <% n = 0 %>
+  <% coin_list["data"].each do |coin| %>
+  <% symbol = coin_symbol_helper_check(coin['symbol']) %>
+  <% n += 1 %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= n %></th>
+      <td><img  class ="logo" src="https://chasing-coins.com/coin/logo/<%= symbol %>" alt="x" ></td>
+      <h1><td> <%= link_to coin["name"], crypto_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %></td></h1>
+      <td> $ <%= coin['price_usd'] %></td>
+      <td><%= number_to_currency(coin['market_cap_usd'], precision: 0, delimiter: " ") %></td>
+      <% if coin["percent_change_1h"].to_f > 0 %>
+         <td class="green" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-up"></i></td>
+      <% else %>
+       <td class="red" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-down" ></i></td>
+        <%end%>
+      <% if coin["percent_change_24h"].to_f > 0 %>
+       <td class="green" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-up"></i></td>
+      <% else %>
+       <td class="red" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-down"></i></td>
+      <%end%>
+      <% if coin["percent_change_7d"].to_f > 0 %>
+       <td class="green" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-up"></i></td>
+      <% else %>
+       <td class="red" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-down"></i></td>
+      <%end%>
+<% coin_name = coin["symbol"].downcase +  "-" + coin["name"].downcase.gsub(/\s+/, "-") %>
+<%    coin_name = coin_name_chart_helper_check(coin_name) %>
+      <td class=> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %></td>
+  </tbody>
 <% end %>
-<% end %>
+</table>

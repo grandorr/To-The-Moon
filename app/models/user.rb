@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :received_messages, foreign_key: "recipient_id", class_name: "Message"
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  has_many :friend_requests, dependent: :destroy
+  has_many :pending_friends, through: :friend_requests
 end	

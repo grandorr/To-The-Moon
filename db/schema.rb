@@ -43,8 +43,12 @@ ActiveRecord::Schema.define(version: 2019_09_09_134333) do
   end
 
   create_table "friends", force: :cascade do |t|
+    t.bigint "friendship_sender_id"
+    t.bigint "friendship_recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["friendship_recipient_id"], name: "index_friends_on_friendship_recipient_id"
+    t.index ["friendship_sender_id"], name: "index_friends_on_friendship_sender_id"
   end
 
   create_table "messages", force: :cascade do |t|

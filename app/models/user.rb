@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :comments
   has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"
   has_many :received_messages, foreign_key: "recipient_id", class_name: "Message"
-end
+  has_many :accepted_friends, foreign_key: "friendship_sender_id", class_name: "Friend"
+  has_many :pending_friends, foreign_key: "friendship_recipient_id", class_name: "Friend"
+end	

@@ -14,8 +14,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-      <a class="navbar-brand logo-text" <%= link_to "To The Moon", root_path %></a>
+      <a class="navbar-brand logo-text" <%= link_to "To The Moon ©", root_path %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,23 +22,70 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
   </ul>
-    <a class="btn btn-primary btn "  role="button" <%= link_to "cryptocurrency", crypto_index_path%></a>
-    <a class="btn btn-primary btn "  role="button" <%= link_to "Portfolio", root_path%> </a>
+    <a class="nav-link-header hover"  role="button" <%= link_to "cryptocurrency", crypto_index_path%></a>
+    <a class="nav-link-header hover"  role="button" <%= link_to "Portfolio", root_path%> </a>
       <% if user_signed_in? %>
 
 
-        <a type="button" class="btn btn-primary"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
-        <a type="button" class="btn btn-primary"<%= link_to "Mon profil", root_path%></a>
+        <a type="button" class="btn btn-header"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
+        <a type="button" class="btn btn-header"<%= link_to "Mon profil", root_path%></a>
         <% if current_user.is_admin? %>
           <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
         <% end %>
       <% else %>
-        <a type="button" class="btn btn-primary " <%= link_to "Inscription", '/users/sign_up' %></a>
-        <a type="button" class="btn btn-primary" <%= link_to "Connection",'/users/sign_in' %></a>
+        <a type="button" class="nav-link-header btn-header" <%= link_to "Inscription", '/users/sign_up' %></a>
+        <a type="button" class="nav-link-header btn-header" <%= link_to "Connection",'/users/sign_in' %></a>
       <% end %>
 
     </div>
   </nav>
     <%= yield %>
+
+    <footer id="footer" class="page-footer font-small fixed-bottom bg-dark">
+    <div class="card bg-dark border-secondary cart_card vw-footer">
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left" style="color:#FFF;">
+        <!-- Grid row -->
+        <div class="row footer-content-container">
+          <div class="col-md-3 mt-md-0 mt-3 footer-column-container text-center">
+              <%= image_tag("home/logo_to_the_moon.png") %>
+          </div>
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3 footer-column-container-2">
+            <!-- Content -->
+            <h4 class="text-uppercase bold"  style="color:#FFF;"" >Purpose</h4>
+            </br>
+            <p> Our platform is designed for new comers who want to become more knowledgeable on crypto-currencies.</p>
+            <p> To the moon aim to inform its users on distributed ledger technology (technology behind crypto-currencies).</p>
+          </div>
+          <!-- Grid column -->
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3 footer-column-container-3">
+            <!-- Links -->
+            <h4 class="text-uppercase bold" style=color:#FFF;"">Sections</h4>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!" style="color:#FFFFFF;">Mes Cryptos</a>
+              </li>
+              <li>
+                <a href="#!" style="color:#FFFFFF;">Mes news</a>
+              </li>
+              <li>
+                <a href="#!" style="color:#FFFFFF;">Mes amis</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <!-- Footer Links -->
+    </div>
+    <!-- Card Links -->
+  </footer>
+  <!-- Footer -->
+
   </body>
 </html>

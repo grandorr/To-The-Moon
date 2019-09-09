@@ -28,8 +28,12 @@ ActiveRecord::Schema.define(version: 2019_09_09_134333) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
+    t.bigint "user_id"
+    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "crypto_currencies", force: :cascade do |t|

@@ -1,16 +1,5 @@
 module CryptoHelper
 
-  def price_calculator(percent,price)
-    @percent = percent
-    @price = price
-    if @percent > 0
-      @price - ((@price / 100 ) * @percent)
-      return @price
-    else
-      @price + ((@price / 100 ) * @percent)
-      return @price
-    end
-  end
 
 #######################################################
 

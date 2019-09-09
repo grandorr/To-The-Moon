@@ -10,9 +10,9 @@ gem 'table_print'
 gem 'devise'
 gem 'faker'
 # GEM TEST #
-gem 'cryptocompare'
-gem 'coinmarketcap'
-gem 'chartkick'
+
+gem 'coingecko'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

@@ -34,8 +34,11 @@
 
         <h3> Prix : <%= price  %> $ </h3>
 
-      <h5> Capitalisation totale:  <%= number_to_currency(request.market_cap_usd, precision: 0, delimiter: " ") %>
+    <h5> Capitalisation totale:  <%= number_to_currency(request.market_cap_usd, precision: 0, delimiter: " ") %>
+
     </div>
+
+
     <% end %>
 <% else %>
 <% @request1.values.each_with_index do |coin| %>

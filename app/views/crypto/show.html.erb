@@ -5,8 +5,8 @@
     <title></title>
   </head>
   <body>
-<img  class ="logo" src="https://coinlib.io/static/img/coins/small/<%=@request.symbol.downcase%>.png?22832" alt="logo" >
-<h1><%= @request.name %></h1>
 
-  </body>
-</html>
+
+    <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
+    <coingecko-coin-compare-chart-widget  coin-ids=<%= params[:id].downcase %> currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
+</body>

@@ -4,7 +4,7 @@ class CryptoController < ApplicationController
 
     if @request == nil
       @request1 =  Cryptocompare::CoinList.all["Data"]
-    end
+  end
 
 
 
@@ -12,7 +12,7 @@ class CryptoController < ApplicationController
   end
 
   def show
-    @request = CoinMarketCap.request(options: {currency: params[:id]})
+
 
   end
 end

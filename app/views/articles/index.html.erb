@@ -1,3 +1,11 @@
+<%= form_tag articles_path,:method => :get do %>
+  <%= text_field_tag 'content'%><br>
+  <%= submit_tag "Search article" %>
+<% end %>
+<br/><br/>
+<%= link_to "New article", new_article_path %>
+<br/><br/>
+
 <% unless @articles == nil %>
 	<% @articles.each do |article| %>
 		<%= article.title %><br>

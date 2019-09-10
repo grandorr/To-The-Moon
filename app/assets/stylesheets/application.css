@@ -4356,7 +4356,7 @@
    -webkit-box-pack: justify;
        -ms-flex-pack: justify;
            justify-content: space-between;
-   padding: 1.5rem 1rem;
+   padding: 0rem 1rem;
  }
 
  .navbar > .container,
@@ -10465,8 +10465,14 @@
  /*	###   matthieu Edit   ###################################################################################   */
 
 
+.items-center {
+  margin: 0px 150px 0px 250px;
+}
+
+
  .head-color {
    background-color: #f9f9f9 !important;
+   padding: 0px, 0px, 0px;
  }
  .btn-header {
    color: #343a40;
@@ -10553,9 +10559,17 @@
 .myButtonsimple {
   font-family:"Saira Condensed";
   color: #000;
+  font-size:20px;
+  margin: 0px 20px;
+  text-align: left;
+}
+
+.text-home {
+  font-family:"Saira Condensed";
+  color: #000;
   font-size:15px;
   margin: 0px 20px;
-  align-items: center;
+  text-align: left;
 }
 
 .myButtonheader {
@@ -10564,8 +10578,8 @@
   border:1px solid #4e6096;
   font-family:"Saira Condensed";
   color: #000;
-  font-size:15px;
-  padding:12px 25px;
+  font-size:20px;
+  padding:6px 15px;
   text-decoration:none;
   margin: 0px 20px;
 }

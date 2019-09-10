@@ -15,33 +15,37 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark head-color">
-      <a class="navbar-brand logo-text" <%= link_to "To The Moon ©", root_path %></a>
+    <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarColor02">
+          <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
-  </ul>
-    <a  role="button" class="myButtonsimple"<%= link_to "cryptocurrency", crypto_index_path%></a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", root_path%> </a>
+
+          <div class="items-center" id="navbarColor02">
+    <a  role="button" class="myButtonsimple"<%= link_to "Cryptos", crypto_index_path%></a>
+      <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", root_path%> </a>
+    <a  role="button" class="myButtonsimple"<%= link_to "News", root_path%> </a>
+    <a  role="button" class="myButtonsimple"<%= link_to "Articles", root_path%> </a>
+    <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
+        </ul>
+          </div>
       <% if user_signed_in? %>
-
-
         <a type="button" class="myButtonheader"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
         <a type="button" class="myButtonheader"<%= link_to "Profil", root_path%></a>
+
         <% if current_user.is_admin? %>
           <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
         <% end %>
+
       <% else %>
         <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
         <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
       <% end %>
-
-
-
-
     </div>
+
   </nav>
     <%= yield %>
 

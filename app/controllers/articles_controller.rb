@@ -6,4 +6,9 @@ class ArticlesController < ApplicationController
 			@articles = Article.all
 		end
 	end
+
+	def show
+		@article = Article.find(params[:id])
+		@tag = @article.tag
+	end
 end

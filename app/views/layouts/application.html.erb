@@ -36,7 +36,7 @@
       <% if user_signed_in? %>
         <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
         <a type="button" class="myButtonheader"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
-        <a type="button" class="myButtonheader"<%= link_to "Profil", root_path%></a>
+        <a type="button" class="myButtonheader"<%= link_to "Profil", profile_path(current_user.id)%></a>
 
         <% if current_user.is_admin? %>
           <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>

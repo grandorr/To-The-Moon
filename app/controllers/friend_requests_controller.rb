@@ -4,9 +4,6 @@ class FriendRequestsController < ApplicationController
 	end
 
 	def create
-		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		puts(params)
-		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		@user = User.find(params[:user].to_i)
 		FriendRequest.create(
 			user: @user,

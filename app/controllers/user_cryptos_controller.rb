@@ -2,9 +2,7 @@ class UserCryptosController < ApplicationController
 	
 	def index
 		@cryptos = current_user.crypto_currencies
-	end
-
-	def edit
+		@user_cryptos = current_user.user_cryptos
 	end
 
 	def update

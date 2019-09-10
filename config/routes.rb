@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :home
   resources :user_cryptos
   resources :crypto
+
+
   resources :articles
   resources :profiles
+
 end

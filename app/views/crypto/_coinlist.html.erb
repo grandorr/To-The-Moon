@@ -24,7 +24,7 @@
   <tbody>
     <tr>
       <th scope="row"><%= @n %></th>
-      <td><img  class ="logo" src="https://chasing-coins.com/coin/logo/<%= symbol %>" alt="x" ></td>
+      <td><img  class ="logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol} ")  %> </td>
       <h1><td> <%= link_to coin["name"], crypto_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %></td></h1>
       <td class="text-dark"><strong> $ <%= coin['price_usd'] %></strong></td>
       <td><%= number_to_currency(coin['market_cap_usd'], precision: 0, delimiter: " ") %></td>

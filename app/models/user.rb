@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :port_folio
+  has_many :user_cryptos
+  has_many :crypto_currencies, through: :user_cryptos 
   has_many :articles
   has_many :comments
   has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"

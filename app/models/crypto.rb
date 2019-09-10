@@ -1,5 +1,0 @@
-class Crypto < ApplicationRecord
-
-
-
-end

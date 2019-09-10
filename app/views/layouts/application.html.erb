@@ -30,7 +30,7 @@
 
     
       <% if user_signed_in? %>
-
+        <a class="btn btn-primary btn "  role="button" <%= link_to "Users", profiles_path%></a>
         <a class="btn btn-primary btn "  role="button" <%= link_to "Portfolio", user_cryptos_path%> </a>
         <a type="button" class="btn btn-primary"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
         <a type="button" class="btn btn-primary"<%= link_to "Mon profil", root_path%></a>

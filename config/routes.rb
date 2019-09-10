@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :friend_requests
   resources :home
-
   resources :user_cryptos
   resources :crypto
   resources :articles
-
+  resources :profiles
 end

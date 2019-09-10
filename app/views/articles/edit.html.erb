@@ -1,0 +1,18 @@
+<%= form_tag url_for(action: "update"), method: "put" do %>
+  <h1 class="h3 mb-3 font-weight-normal text-center">Edit article</h1>
+  <div class="form-group">
+    <%= label_tag 'Title' %><br />
+    <%= text_field_tag 'title', @article.title %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'Content' %>  <br>
+    <%= text_field_tag 'content', @article.content %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'Tag' %>  <br>
+    <%= text_field_tag 'tag', @tag %>
+  </div>
+  <div class="actions mt-5">
+    <%= submit_tag "Update article", class: "btn btn-lg btn-secondary btn-block" %>
+  </div>
+<% end %>

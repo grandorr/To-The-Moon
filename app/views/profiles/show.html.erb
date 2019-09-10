@@ -1,0 +1,15 @@
+<%= @user.email %><br>
+<% if current_user.friends.include?(@user) == false %>
+	<%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %><br>
+<% elsif @user.pending_friends.include? current_user %>
+	<%= "Friend request already sent" %>
+<% else %>
+	<%= "Send Message" %><br>
+<% end %>
+
+<%= "User's articles : "%><br>
+<% unless @articles == nil %>
+	<% @articles.each do |article| %>
+		<%= link_to article.title, article_path(article.id) %><br>
+	<% end %>
+<% end %>

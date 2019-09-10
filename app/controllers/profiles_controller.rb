@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
 		@articles = @user.articles
 		@pending_friends = current_user.pending_friends
 		@friends = current_user.friends
+		@friendship = current_user.friendships.find_by(friend: @user)
 	end
 
 end

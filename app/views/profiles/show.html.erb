@@ -37,6 +37,7 @@
 		<% end %>
 	<% else %>
 		<%= "Send Message" %><br>
+		<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
 	<% end %>
 	<%= "User's articles : "%><br>
 	<% unless @articles == nil %>

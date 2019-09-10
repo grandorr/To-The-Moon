@@ -13,4 +13,11 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests
-end	
+
+after_create :welcome_user_email
+
+def welcome_user_email
+    WelcomeuserMailer.welcome_user_emails(self).deliver_now
+end
+
+end

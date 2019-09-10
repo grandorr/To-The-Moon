@@ -1,18 +1,14 @@
 class CryptoController < ApplicationController
   def index
-    @request = CoinMarketCap.request(options: {limit: [0], start: 0})
-
-    if @request == nil
-      @request1 =  Cryptocompare::CoinList.all["Data"]
-    end
-
-
-
 
   end
 
   def show
-    @request = CoinMarketCap.request(options: {currency: params[:id]})
+    @coin_symbol = params[:symbol]
+    @coin_id = params[:id]
+    @coin_name = params[:name]
+
+    puts params
 
   end
 end

@@ -1,53 +1,9 @@
-<% if @request != nil %>
-  <% @request.each do |request| %>
-    <div class="card text-dark p-3 ">
-
-   <h1><img  class ="logo" src="https://coinlib.io/static/img/coins/small/<%=request.symbol.downcase%>.png?22832" alt="logo" >
-   <%= request.rank %>
-
-      <%= request.symbol %>
-    <%= link_to request.name, crypto_path(request.id) %></h1>
-
-
-  <% if request.percent_change_hourly.to_f > 0 %>
-    <p class="green" > 1 Heure :  <%= request.percent_change_hourly %> %   </p>
-  <% else %>
-    <p class="red" > 1 Heure :  <%= request.percent_change_hourly %> %   </p>
-    <%end%>
-  <% if request.percent_change_daily.to_f > 0 %>
-    <p class="green" > 24 H :  <%= request.percent_change_daily %> %  </p>
-  <% else %>
-      <p class="red" > 24 H :  <%= request.percent_change_daily %> %    </p>
-  <%end%>
-  <% if request.percent_change_weekly.to_f > 0 %>
-    <p class="green" > 7 jours :  <%= request.percent_change_weekly %> %    </p>
-  <% else %>
-    <p class="red" > 7 jours  :  <%= request.percent_change_weekly %> %   </p>
-  <%end%>
-
-  <% price = request.price_usd.to_f %>
-  <% if price > 1 %>
-  <% price = price.round(2) %>
-  <% else %>
-  <% price = price.round(3) %>
-  <% end %>
-
-        <h3> Prix : <%= price  %> $ </h3>
-
-      <h5> Capitalisation totale:  <%= number_to_currency(request.market_cap_usd, precision: 0, delimiter: " ") %>
-    </div>
-    <% end %>
-<% else %>
-<% @request1.values.each_with_index do |coin| %>
-  <div class="card text-dark p-3 ">
-  <%= coin["FullName"] %>
-<%= Cryptocompare::Price.find('coin["Symbol"]', 'USD') %>
-  <%= coin["SortOrder"] %>
-
-  <img  class ="logo" src="https://www.cryptocompare.com/<%= coin["ImageUrl"] %>" alt="x" >
-
-
-
-  </div>
-<% end %>
-<% end %>
+<% @coin_list = api_request('https://api.coinlore.com/api/tickers/')%>
+<% @n = 0 %>
+<%= render "coinlist" %>
+<% @coin_list = api_request('https://api.coinlore.com/api/tickers/?start=100&limit=100')%>
+<% @n = 100 %>
+<%= render "coinlist" %>
+<% @n = 200 %>
+<% @coin_list = api_request('https://api.coinlore.com/api/tickers/?start=200&limit=100')%>
+<%= render "coinlist" %>

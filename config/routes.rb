@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root to: 'home#index'
 
-
+  devise_for :users
+  resources :friend_requests
   resources :home
 
-  resources :wallet
+  resources :user_cryptos
   resources :crypto
 end

@@ -1,5 +1,5 @@
 class UserCryptosController < ApplicationController
-	
+	before_action :authenticate_user!
 	def index
 		@cryptos = current_user.crypto_currencies
 		@user_cryptos = current_user.user_cryptos

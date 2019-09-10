@@ -3,6 +3,7 @@ class CreateUserCryptos < ActiveRecord::Migration[5.2]
     create_table :user_cryptos do |t|
     	t.belongs_to :user, index: true
     	t.belongs_to :crypto_currency, index: true
+    	t.integer :quantity
 
       t.timestamps
     end

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :friend_requests
   resources :home
 
-  resources :wallet
+  resources :user_cryptos
   resources :crypto
 end

@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
   create_table "user_cryptos", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "crypto_currency_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["crypto_currency_id"], name: "index_user_cryptos_on_crypto_currency_id"

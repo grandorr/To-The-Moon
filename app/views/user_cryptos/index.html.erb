@@ -1,0 +1,16 @@
+<% @cryptos.each do |crypto| %>
+
+	<%= crypto.name %><br>
+	<%= "Quantity : " + current_user.user_cryptos.find_by(crypto_currency: crypto).quantity.to_s %><br>
+	<%= form_tag user_crypto_path(current_user.user_cryptos.find_by(crypto_currency: crypto).id),:method => :put do %>
+    <div class="form-group">
+      <%= label_tag 'Update crypto quantity' %><br>
+      <%= text_field_tag 'quantity'%>
+    </div>
+    <div class="actions mt-5">
+      <%= submit_tag "Update" %>
+    </div>
+  <% end %>
+	<%= link_to "Destroy", user_crypto_path(current_user.user_cryptos.find_by(crypto_currency: crypto).id), :method => :delete %>
+
+<% end %>

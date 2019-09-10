@@ -1,0 +1,8 @@
+<%= @article.title %><br>
+<%= @article.content %><br>
+<%= @article.user.email %><br>
+<%= @tag.name %><br>
+<% if current_user == @user %>
+	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
+	<%= link_to "Delete article", article_path, :method => :delete %> 
+<% end %>

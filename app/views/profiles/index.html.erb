@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+	<% unless user == current_user %>
+		<%= link_to user.email, profile_path(user.id) %> <br>
+	<% end %>
+<% end %>

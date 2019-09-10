@@ -4,9 +4,15 @@
 	<% if @user.pending_friends.length > 0 %>
 		<%= "Pending friend requests :" %><br>
 		<% @pending_friends.each do |pending_friend| %>
-			<%= pending_friend.email %><br>
-			<%= "Accept request" %>
+			<%= link_to pending_friend.email, profile_path(pending_friend.id) %><br>
+			<%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id), method: :post %>
 			<br/>
+		<% end %>
+	<% end %>
+	<% if @user.friends.length > 0 %>
+		<%= "My friends :" %><br>
+		<% @friends.each do |friend| %>
+			<%= link_to friend.email, profile_path(friend.id) %><br>
 		<% end %>
 	<% end %>
 	<%= "My articles : "%><br>
@@ -22,7 +28,7 @@
 	<% unless current_user.friends.include?(@user) %>
 		<% unless @user.pending_friends.include? current_user %>
 			<% if current_user.pending_friends.include?(@user) %>
-				<%= "Accept friend request" %><br>
+				<%= link_to "Accept friend request", friendships_path(:friend_id => @user.id), method: :post %><br>
 			<% else %>
 				<%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %><br>
 			<% end %>

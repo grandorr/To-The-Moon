@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
 		@user = User.find(params[:id])
 		@articles = @user.articles
 		@pending_friends = current_user.pending_friends
+		@friends = current_user.friends
 	end
 
 end

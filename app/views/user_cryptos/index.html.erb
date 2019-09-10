@@ -1,0 +1,19 @@
+<% unless @cryptos == nil %>
+  <% n = 0 %>
+  <% @cryptos.each do |crypto| %>
+
+  	<%= crypto.name %><br>
+  	<%= "Quantity : " + @user_cryptos[n].quantity.to_s %><br>
+  	<%= form_tag user_crypto_path(@user_cryptos[n]),:method => :put do %>
+      <div class="form-group">
+        <%= label_tag 'Update crypto quantity' %><br>
+        <%= text_field_tag 'quantity'%>
+      </div>
+      <div class="actions mt-5">
+        <%= submit_tag "Update" %>
+      </div>
+    <% end %>
+  	<%= link_to "Destroy", user_crypto_path(@user_cryptos[n].id), :method => :delete %>
+    <% n += 1 %>
+  <% end %>
+<% end %>

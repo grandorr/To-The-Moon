@@ -42,11 +42,6 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cryptos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "friend_requests", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "pending_friend_id"
@@ -75,13 +70,6 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
-  create_table "port_folios", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_port_folios_on_user_id"
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -89,12 +77,13 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
   end
 
   create_table "user_cryptos", force: :cascade do |t|
-    t.bigint "port_folio_id"
+    t.bigint "user_id"
     t.bigint "crypto_currency_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["crypto_currency_id"], name: "index_user_cryptos_on_crypto_currency_id"
-    t.index ["port_folio_id"], name: "index_user_cryptos_on_port_folio_id"
+    t.index ["user_id"], name: "index_user_cryptos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,9 +92,9 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "is_admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_admin?"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

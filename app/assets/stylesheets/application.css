@@ -10465,7 +10465,9 @@
  /*	###   matthieu Edit   ###################################################################################   */
 
 
-
+ .head-color {
+   background-color: #f9f9f9 !important;
+ }
  .btn-header {
    color: #343a40;
    background-color: #1a1a1a;
@@ -10548,9 +10550,28 @@
   }
 }
 
-.nav-link-header {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  font-size: 15px;
+.myButtonsimple {
+  font-family:"Saira Condensed";
+  color: #000;
+  font-size:15px;
+  margin: 0px 20px;
+  align-items: center;
 }
+
+.myButtonheader {
+  background-color:transparent;
+  border-radius:10px;
+  border:1px solid #4e6096;
+  font-family:"Saira Condensed";
+  color: #000;
+  font-size:15px;
+  padding:12px 25px;
+  text-decoration:none;
+  margin: 0px 20px;
+}
+.myButtonheader:hover {
+  background-color:transparent;
+}
+.myButtonheader:active {
+  position:relative;
+  top:1px;

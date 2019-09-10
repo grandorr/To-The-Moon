@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/css?family=Saira+Condensed&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -13,7 +14,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark head-color">
       <a class="navbar-brand logo-text" <%= link_to "To The Moon ©", root_path %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,20 +23,23 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
   </ul>
-    <a class="nav-link-header hover"  role="button" <%= link_to "cryptocurrency", crypto_index_path%></a>
-    <a class="nav-link-header hover"  role="button" <%= link_to "Portfolio", root_path%> </a>
+    <a  role="button" class="myButtonsimple"<%= link_to "cryptocurrency", crypto_index_path%></a>
+    <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", root_path%> </a>
       <% if user_signed_in? %>
 
 
-        <a type="button" class="btn btn-header"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
-        <a type="button" class="btn btn-header"<%= link_to "Mon profil", root_path%></a>
+        <a type="button" class="myButtonheader"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
+        <a type="button" class="myButtonheader"<%= link_to "Profil", root_path%></a>
         <% if current_user.is_admin? %>
           <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
         <% end %>
       <% else %>
-        <a type="button" class="nav-link-header btn-header" <%= link_to "Inscription", '/users/sign_up' %></a>
-        <a type="button" class="nav-link-header btn-header" <%= link_to "Connection",'/users/sign_in' %></a>
+        <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
+        <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
       <% end %>
+
+
+
 
     </div>
   </nav>

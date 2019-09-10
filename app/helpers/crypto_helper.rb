@@ -2,16 +2,12 @@ module CryptoHelper
   def coin_name_helper_check(coin_name)
     if coin_name == "binance-coin"
        coin_name = "binancecoin"
-
     elsif coin_name == "bitcoin-sv"
       coin_name = "bitcoin-cash-sv"
-
     elsif coin_name == "unus-sed-leo"
       coin_name = "leo-token"
-
     elsif coin_name == "crypto.com-chain"
       coin_name = "crypto-com-chain"
-
     elsif coin_name == "paxos-standard-token"
       coin_name = "paxos-standard"
     elsif coin_name == "bittorrent"

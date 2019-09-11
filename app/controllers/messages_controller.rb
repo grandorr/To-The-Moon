@@ -8,9 +8,9 @@ class MessagesController < ApplicationController
 		@message = Message.create(
 			content: params[:content],
 			recipient: User.find(params[:recipient].to_i),
-			sender: current_user
+			sender: current_user,
+			conversation: current_user.conversations.find_by(interlocutor: User.find(params[:recipient].to_i))
 			)
-
 	end
 
 end

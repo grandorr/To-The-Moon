@@ -1,0 +1,16 @@
+<% @global_data = api_request('https://api.coinlore.com/api/global/') %>
+<% @global_data.each do |global| %>
+<table class="table">
+  <thead>
+    <tr class="text-dark">
+      <h1><th scope="col">Global marketcap : <%= number_to_currency(global['total_mcap'], precision: 0, delimiter: " ") %> </th>
+      <th scope="col">Btc dominance : <%= global['btc_d'] %>%</th>
+      <% if global['mcap_change'].to_f > 0 %>
+         <th class="green" ><%= global['mcap_change']%>% <i class="fas fa-caret-up"></i></th>
+      <% else %>
+      <td> Global marketcap change :  <h class="red" ><%= global['mcap_change']%>% <i class="fas fa-caret-down" ></i></td>
+        <%end%>
+
+    </tr>
+  </thead>
+<% end %>

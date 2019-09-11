@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   resources :home
   resources :user_cryptos
   resources :crypto
+  resources :cryptolist 
+
 
 
   resources :articles
   resources :profiles
-
+  resources :news
 end

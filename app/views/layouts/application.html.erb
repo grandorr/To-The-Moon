@@ -25,17 +25,19 @@
         <ul class="navbar-nav mr-auto">
 
           <div class="items-center" id="navbarColor02">
-    <a class="btn btn-primary btn "  role="button" <%= link_to "Users", profiles_path%></a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Cryptos", crypto_index_path%></a>
+
+    <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
     <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", root_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "News", root_path%> </a>
+    <a  role="button" class="myButtonsimple"<%= link_to "News", news_index_path%> </a>
     <a  role="button" class="myButtonsimple"<%= link_to "Articles", root_path%> </a>
+
     <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
         </ul>
           </div>
       <% if user_signed_in? %>
-        <a type="button" class="myButtonheader"<%= link_to "Déconnexion ", '/users/sign_out', method: :delete %></a>
-        <a type="button" class="myButtonheader"<%= link_to "Profil", root_path%></a>
+          <a  role="button" class="myButtonsimple" <%= link_to "Users", profiles_path%></a>
+        <a type="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+        <a type="button" class="myButtonheader"<%= link_to "Me", root_path%></a>
 
         <% if current_user.is_admin? %>
           <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
@@ -49,9 +51,9 @@
 
   </nav>
     <%= yield %>
-
+<br/><br/>
     <footer id="footer" class="page-footer font-small fixed-bottom bg-dark">
-    <div class="card bg-dark border-secondary cart_card vw-footer">
+    <div class="card bg-dark  cart_card footer">
       <!-- Footer Links -->
       <div class="container-fluid text-center text-md-left" style="color:#FFF;">
         <!-- Grid row -->

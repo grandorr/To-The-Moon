@@ -2,6 +2,9 @@ class CryptoController < ApplicationController
   def index
 
   end
+  def index2
+  end
+
 
   def show
     @coin_symbol = params[:symbol]

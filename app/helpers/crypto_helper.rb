@@ -83,6 +83,8 @@ def coin_name_chart_helper_check(coin_name)
     coin_name = "cix100-cryptoindexcom-100"
   elsif coin_name == "wtc-walton"
     coin_name = "wtc-waltonchain"
+  elsif coin_name == "nas-nebulas-token"
+    coin_name = "nas-nebulas"
   end
   return coin_name
 end

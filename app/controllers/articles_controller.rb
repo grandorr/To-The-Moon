@@ -21,18 +21,22 @@ class ArticlesController < ApplicationController
 		if Tag.find_by(name: params[:tag]) == nil
 			Tag.create(name: params[:tag])
 		end
-		Article.create(
+		@article = Article.create(
 			title: params[:title],
 			content: params[:content],
 			user: current_user,
 			tag: Tag.find_by(name: params[:tag])
-			)
+		)
+		@article.picture.attach(params[:picture])
+
+
 		redirect_to articles_path
 	end
 
 	def edit
 		@article = Article.find(params[:id])
 		@tag = @article.tag.name
+
 	end
 
 	def update
@@ -44,11 +48,18 @@ class ArticlesController < ApplicationController
 		@article.update_attribute(:content, params[:content])
 		@article.update_attribute(:user, current_user)
 		@article.update_attribute(:tag, Tag.find_by(name: params[:tag]))
+		@article.picture.attach(params[:picture])
+
 		redirect_to articles_path
 	end
 
 	def destroy
 		Article.find(params[:id]).destroy
 	end
-	
+
+
+	def article_params
+	  params.require(:@article).permit(:picture)
+	end
+
 end

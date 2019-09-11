@@ -1,3 +1,6 @@
+<p>
+  <%= image_tag(@article.picture, width: 200) if @article.picture.attached? %>
+</p>
 <%= @article.title %><br>
 <%= @article.content %><br>
 <%= link_to @article.user.email, profile_path(@article.user) %><br>
@@ -27,3 +30,4 @@
 	  <%= submit_tag "Comment" %>
 	<% end %>
 <% end %>
+

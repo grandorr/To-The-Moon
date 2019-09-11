@@ -6,3 +6,24 @@
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
 	<%= link_to "Delete article", article_path, :method => :delete %> 
 <% end %>
+<br/><br/>
+
+<% unless @comments == nil %>
+	<% @comments.each do |comment| %>
+		<%= comment.content %><br>
+		<%= comment.user.email %><br>
+		<%= comment.created_at %><br>
+		<% if current_user == comment.user %>
+			<%= link_to "Edit comment", edit_comment_path(comment.id) %><br>
+			<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %> 
+		<% end %>
+		<br><br>
+	<% end %>
+<% end %>
+<% unless current_user == nil %>
+	<%= form_tag comments_path, method: "post" do %>
+	  <%= text_field_tag 'content' %><br>
+	  <%= hidden_field_tag "article", @article.id %>
+	  <%= submit_tag "Comment" %>
+	<% end %>
+<% end %>

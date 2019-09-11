@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   resources :news
   resources :articles
+  resources :comments
 
 end

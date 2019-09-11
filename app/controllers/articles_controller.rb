@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		@tag = @article.tag
 		@user = @article.user
+		@comments = @article.comments
 	end
 
 	def create

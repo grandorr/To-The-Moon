@@ -2,8 +2,10 @@ class ArticlesController < ApplicationController
 	def index
 		if params[:content] == nil || params[:content] == ""
 			@articles = Article.all
+			@articles = @articles.reverse
 		else
 			@articles = Article.where(tag: Tag.find_by(name:params[:content]))
+			@articles = @articles.reverse
 		end
 	end
 

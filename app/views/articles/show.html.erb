@@ -1,6 +1,6 @@
 <%= @article.title %><br>
 <%= @article.content %><br>
-<%= @article.user.email %><br>
+<%= link_to @article.user.email, profile_path(@article.user) %><br>
 <%= @tag.name %><br>
 <% if current_user == @user %>
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>

@@ -15,6 +15,12 @@
 			<%= link_to friend.email, profile_path(friend.id) %><br>
 		<% end %>
 	<% end %>
+	<% unless @new_messages == nil %>
+		<%= "Unread messages : " + @new_messages.length.to_s %><br>
+		<% @new_messages.each do |message| %>
+			<%= link_to message.sender.email, conversation_path(@user.conversations.find_by(interlocutor: message.sender).id) %><br>
+		<% end %>
+	<% end %>
 	<% if @user.conversations.length > 0 %>
 		<%= "My messages with :" %><br>
 		<% @user.conversations.each do |convo| %>

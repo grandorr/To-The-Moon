@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
 			content: params[:content],
 			recipient: User.find(params[:recipient].to_i),
 			sender: current_user,
+			has_been_read: true,
 			conversation: current_user.conversations.find_by(interlocutor: User.find(params[:recipient].to_i))
 			)
 		if params[:checker] == "true"

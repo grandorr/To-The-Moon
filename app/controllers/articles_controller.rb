@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
 	def index
+		@hello = Article.say_hello
 		if params[:content] == nil || params[:content] == ""
 			@articles = Article.all
 			@articles = @articles.reverse

@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
+    t.boolean "has_been_read"
     t.bigint "conversation_id"
     t.bigint "recipient_id"
     t.bigint "sender_id"

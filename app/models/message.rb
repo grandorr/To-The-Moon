@@ -14,6 +14,7 @@ class Message < ApplicationRecord
 				content: self.content,
 				recipient: self.recipient,
 				sender: self.sender,
+				has_been_read: false,
 				conversation: self.recipient.conversations.find_by(interlocutor: self.sender)
 				)
 			end
@@ -22,6 +23,7 @@ class Message < ApplicationRecord
 				content: self.content,
 				recipient: self.recipient,
 				sender: self.sender,
+				has_been_read: false,
 				conversation: self.recipient.conversations.find_by(interlocutor: self.sender)
 				)
 		end

@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_210701) do
 
   create_table "crypto_currencies", force: :cascade do |t|
     t.string "name"
+    t.string "crypto_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

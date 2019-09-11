@@ -27,12 +27,6 @@ end
 
 n = 0
 5.times do
-	CryptoCurrency.create(name: cryptos[n])
-	n += 1
-end
-
-n = 0
-5.times do
 	Tag.create(name: tags[n])
 	n += 1
 end

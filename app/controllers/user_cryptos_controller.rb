@@ -12,7 +12,10 @@ class UserCryptosController < ApplicationController
 				crypto_currency: CryptoCurrency.find_by(name: params[:name])
 				)
 		else
-			@crypto =	CryptoCurrency.create(name: params[:name])
+			@crypto =	CryptoCurrency.create(
+				name: params[:name],
+				crypto_id: params[:id]
+				)
 			UserCrypto.create(
 				user: current_user, 
 				crypto_currency: @crypto

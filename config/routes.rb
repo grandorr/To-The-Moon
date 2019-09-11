@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :friendships
   resources :profiles
   resources :messages
+  resources :conversations
   resources :home
 
   resources :news

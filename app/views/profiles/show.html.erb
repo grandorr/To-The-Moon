@@ -19,7 +19,7 @@
 		<%= "My messages with :" %><br>
 		<% @user.conversations.each do |convo| %>
 			<% unless convo.messages.length == 0 %>
-				<%= convo.interlocutor.email %><br>
+				<%= link_to convo.interlocutor.email, conversation_path(convo.id) %><br>
 				<br/><br/>
 			<% end %>
 		<% end %>

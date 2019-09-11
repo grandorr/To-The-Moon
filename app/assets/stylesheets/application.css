@@ -99,7 +99,6 @@
    margin: 0;
    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    font-size: 0.875rem;
-   font-weight: 400;
    line-height: 1.5;
    color: #919aa1;
    text-align: left;
@@ -405,7 +404,6 @@
  h1, h2, h3, h4, h5, h6,
  .h1, .h2, .h3, .h4, .h5, .h6 {
    margin-bottom: 0.5rem;
-   font-weight: 600;
    line-height: 1.2;
    color: #1a1a1a;
  }
@@ -10404,7 +10402,6 @@
  }
 
  body {
-   font-weight: 200;
    letter-spacing: 1px;
  }
 
@@ -10590,3 +10587,53 @@
   position:relative;
   top:1px;
 }
+
+/*  ###   RCC Edit   ###################################################################################   */
+
+.pages-container{
+  height: auto;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.space-bg{
+  background-color: #11002d;
+  width: 100vw;
+  height: auto;
+}
+
+.index-jumbotron{
+
+}
+
+.index-jumbotron-img{
+  width: 100vw;
+  height: auto;
+}
+
+.index-jumbotron-title{
+  height: 0;
+  position: relative;
+  top: 5.5vw;
+}
+
+div.index-jumbotron-title h1.index-jumbotron-title-small{
+  font-family: "Saira Condensed";
+  font-size: 45px;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+
+div.index-jumbotron-title h1.index-jumbotron-title-big{
+  font-family: "Saira Condensed";
+  font-size: 70px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+
+
+
+
+

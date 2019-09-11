@@ -2,7 +2,7 @@
   <% n = 0 %>
   <% @cryptos.each do |crypto| %>
 
-  	<%= crypto.name %><br>
+  	<%= link_to crypto.name, crypto_index_path(:name => crypto.name) %><br>
   	<%= "Quantity : " + @user_cryptos[n].quantity.to_s %><br>
   	<%= form_tag user_crypto_path(@user_cryptos[n]),:method => :put do %>
       <div class="form-group">

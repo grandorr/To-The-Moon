@@ -9,7 +9,8 @@
 <% unless @articles == nil %>
 	<% @articles.each do |article| %>
 		<%= link_to article.title, article_path(article.id) %><br>
-		<%= "Author : " + article.user.email %><br> 
+		<%= "Author : " %> 
+		<%= link_to article.user.email, profile_path(article.user.id) %><br> 
 		<%= article.tag.name %><br>
 		<br/><br/>
 	<% end %>

@@ -1,15 +1,49 @@
-<%= @user.email %><br>
-<% if current_user.friends.include?(@user) == false %>
-	<%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %><br>
-<% elsif @user.pending_friends.include? current_user %>
-	<%= "Friend request already sent" %>
-<% else %>
-	<%= "Send Message" %><br>
-<% end %>
-
-<%= "User's articles : "%><br>
-<% unless @articles == nil %>
-	<% @articles.each do |article| %>
-		<%= link_to article.title, article_path(article.id) %><br>
+<% if @user == current_user %>
+	
+	<%= @user.email %><br>
+	<% if @user.pending_friends.length > 0 %>
+		<%= "Pending friend requests :" %><br>
+		<% @pending_friends.each do |pending_friend| %>
+			<%= link_to pending_friend.email, profile_path(pending_friend.id) %><br>
+			<%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id), method: :post %>
+			<br/>
+		<% end %>
 	<% end %>
+	<% if @user.friends.length > 0 %>
+		<%= "My friends :" %><br>
+		<% @friends.each do |friend| %>
+			<%= link_to friend.email, profile_path(friend.id) %><br>
+		<% end %>
+	<% end %>
+	<%= "My articles : "%><br>
+	<% unless @articles == nil %>
+		<% @articles.each do |article| %>
+			<%= link_to article.title, article_path(article.id) %><br>
+		<% end %>
+	<% end %>
+
+<% else %>
+	
+	<%= @user.email %><br>
+	<% unless current_user.friends.include?(@user) %>
+		<% unless @user.pending_friends.include? current_user %>
+			<% if current_user.pending_friends.include?(@user) %>
+				<%= link_to "Accept friend request", friendships_path(:friend_id => @user.id), method: :post %><br>
+			<% else %>
+				<%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %><br>
+			<% end %>
+		<% else %>
+			<%= "Friend request already sent" %><br>
+		<% end %>
+	<% else %>
+		<%= "Send Message" %><br>
+		<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
+	<% end %>
+	<%= "User's articles : "%><br>
+	<% unless @articles == nil %>
+		<% @articles.each do |article| %>
+			<%= link_to article.title, article_path(article.id) %><br>
+		<% end %>
+	<% end %>
+
 <% end %>

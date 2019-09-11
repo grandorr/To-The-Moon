@@ -25,10 +25,9 @@ class ArticlesController < ApplicationController
 			user: current_user,
 			tag: Tag.find_by(name: params[:tag])
 		)
-				puts '$$$$$$$$$$$$$$$$$$$$$$$'
-		puts params
-		puts '$$$$$$$$$$$$$$$$$$$$$$$'
-		  @article.picture.attach(params[:picture])
+		@article.picture.attach(params[:picture])
+
+
 		redirect_to articles_path
 	end
 
@@ -48,6 +47,7 @@ class ArticlesController < ApplicationController
 		@article.update_attribute(:user, current_user)
 		@article.update_attribute(:tag, Tag.find_by(name: params[:tag]))
 		@article.picture.attach(params[:picture])
+
 		redirect_to articles_path
 	end
 
@@ -55,5 +55,9 @@ class ArticlesController < ApplicationController
 		Article.find(params[:id]).destroy
 	end
 
+
+	def article_params
+	  params.require(:@article).permit(:picture)
+	end
 
 end

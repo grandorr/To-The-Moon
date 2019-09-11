@@ -10,7 +10,7 @@ gem 'table_print'
 gem 'devise'
 gem 'faker'
 # GEM TEST #
-
+gem "google-cloud-storage", "~> 1.8", require: false
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

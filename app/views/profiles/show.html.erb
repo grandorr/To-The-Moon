@@ -15,6 +15,17 @@
 			<%= link_to friend.email, profile_path(friend.id) %><br>
 		<% end %>
 	<% end %>
+	<% if @user.received_messages.length > 0 || @user.sent_messages.length > 0 %>
+		<%= "My messages :" %><br>
+		<% @user.received_messages.each do |received_message| %>
+			<%= received_message.sender.email %><br>
+			<%= received_message.content %><br/><br/>
+		<% end %>
+		<% @user.sent_messages.each do |sent_message| %>
+			<%= sent_message.recipient.email %><br>
+			<%= sent_message.content %><br/><br/>
+		<% end %>
+	<% end %>
 	<%= "My articles : "%><br>
 	<% unless @articles == nil %>
 		<% @articles.each do |article| %>

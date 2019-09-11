@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
 			recipient: User.find(params[:recipient].to_i),
 			sender: current_user
 			)
+
 	end
 
 end

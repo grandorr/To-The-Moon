@@ -1,8 +1,11 @@
+<p>
+  <%= image_tag(@article.picture, width: 200) if @article.picture.attached? %>
+</p>
 <%= @article.title %><br>
 <%= @article.content %><br>
 <%= link_to @article.user.email, profile_path(@article.user) %><br>
 <%= @tag.name %><br>
 <% if current_user == @user %>
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
-	<%= link_to "Delete article", article_path, :method => :delete %> 
+	<%= link_to "Delete article", article_path, :method => :delete %>
 <% end %>

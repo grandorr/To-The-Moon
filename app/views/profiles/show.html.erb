@@ -36,7 +36,7 @@
 			<%= "Friend request already sent" %><br>
 		<% end %>
 	<% else %>
-		<%= "Send Message" %><br>
+		<%= link_to "Send Message", new_message_path(:id => @user.id) %><br>
 		<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
 	<% end %>
 	<%= "User's articles : "%><br>

@@ -5,17 +5,26 @@
 <%= @article.content %><br>
 <%= link_to @article.user.email, profile_path(@article.user) %><br>
 <%= @tag.name %><br>
-<% if @article.likes == nil %>
-	<%= "Like : 0" %><br>
+
+<%# if @article.likes == nil %>
+	<%#= "Like : 0" %>
+<%# else %>
+	<%#= "Likes : " + @article.likes.length.to_s %>
+<%# end %>
+
+<%# unless current_user.likes.find_by(article: @article) %>
+	<%#= link_to "Like", likes_path(:article => @article.id), :method => :post %>
+<%# else %>
+	<%#= link_to "Unlike", like_path(:article => @article.id), :method => :delete %>
+<%# end %>
+
+<% unless current_user == @article.user %> 
+	<% unless current_user.favorite_articles.include? @article %>	
+		<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post %><br>
+	<% else %>
+		<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete %><br>
+	<% end %>
 <% else %>
-	<%= "Likes : " + @article.likes.length.to_s %><br>
-<% end %>
-<% unless current_user.likes.find_by(article: @article) %>
-	<%= link_to "Like", likes_path(:article => @article.id), :method => :post %><br>
-<% else %>
-	<%= link_to "Unlike", like_path(:article => @article.id), :method => :delete %><br>
-<% end %>
-<% if current_user == @user %>
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
 	<%= link_to "Delete article", article_path, :method => :delete %> 
 <% end %>
@@ -26,15 +35,14 @@
 		<%= comment.content %><br>
 		<%= comment.user.email %><br>
 		<%= comment.created_at %><br>
-		<% if comment.likes == nil %>
-			<%= "Like : 0" %><br>
-		<% else %>
-			<%= "Likes : " + comment.likes.length.to_s %><br>
-		<% end %>
 		<% unless current_user.likes.find_by(comment: comment) %>
-			<%= link_to "Like", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+			<% if comment.likes.length == 0 %>
+				<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+			<% else %>
+				<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+			<% end %>
 		<% else %>
-			<%= link_to "Unlike", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+			<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
 		<% end %>
 		<% if current_user == comment.user %>
 			<%= link_to "Edit comment", edit_comment_path(comment.id) %><br>

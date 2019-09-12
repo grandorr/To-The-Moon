@@ -10679,6 +10679,21 @@ div.form-group input:focus{
   text-transform: uppercase;
 }
 
+.pw-reset-email-form{
+    margin-top: 5vh;
+}
+
+.pw-reset-ttm-btn{
+  margin: 8vh 0 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 /*  ###############  Index  */
 
 /*  Jumbotron  */

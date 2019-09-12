@@ -5,6 +5,16 @@
 <%= @article.content %><br>
 <%= link_to @article.user.email, profile_path(@article.user) %><br>
 <%= @tag.name %><br>
+<% if @article.likes == nil %>
+	<%= "Like : 0" %><br>
+<% else %>
+	<%= "Likes : " + @article.likes.length.to_s %><br>
+<% end %>
+<% unless current_user.likes.find_by(article: @article) %>
+	<%= link_to "Like", likes_path(:article => @article.id), :method => :post %><br>
+<% else %>
+	<%= link_to "Unlike", like_path(:article => @article.id), :method => :delete %><br>
+<% end %>
 <% if current_user == @user %>
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
 	<%= link_to "Delete article", article_path, :method => :delete %> 

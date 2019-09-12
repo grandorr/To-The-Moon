@@ -45,7 +45,7 @@
 
 
         <% if current_user.is_admin? %>
-          <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
+          <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", admin_index_path %></a>
         <% end %>
 
       <% else %>

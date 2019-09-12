@@ -1,23 +1,41 @@
-<div class="card-group d-flex justify-content-start bg-purple">
 
-  <div>
-    <div class="card-perso bg-purple">
-      <a  role="button" class="myButtonsimple2"<%= link_to "All Articles", articles_path%> </a>
-    </div>
-  </div>
-
-<div>
-  <div class="card-perso bg-purple">
-    	<a  role="button" class="myButtonsimple2"<%= link_to "Your friends articles", articles_path%> </a>
-  </div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Ta mère la gentille</div>
+  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">Ton père </div>
 </div>
 
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="myButtonsimple3bis card-perso bg-purple nav-item">
+    <a  class=" nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" <%= link_to "All Articles", articles_path%> </a>
+  </li>
+  <li class="myButtonsimple3bis card-perso bg-purple nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile" aria-selected="false"<%= link_to "Your friends articles", articles_path%> </a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Ta mère la gentilsdvdscvdle</div>
+  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">Ton père </div>
 </div>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
 
 <p>
   <%= image_tag(@article.picture, width: 200) if @article.picture.attached? %>
 </p>
-
 
 
 <%= @article.title %><br>
@@ -26,7 +44,7 @@
 <%= @tag.name %><br>
 <% if current_user == @user %>
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
-	<%= link_to "Delete article", article_path, :method => :delete %> 
+	<%= link_to "Delete article", article_path, :method => :delete %>
 <% end %>
 <br/><br/>
 

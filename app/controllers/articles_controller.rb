@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+		before_action :authenticate_user!, except: [:show,:index]
 	def index
 		if params[:content] == nil || params[:content] == ""
 			@articles = Article.all
@@ -8,6 +9,11 @@ class ArticlesController < ApplicationController
 			@articles = @articles.reverse
 		end
 	end
+
+
+	def new
+	end
+
 
 	def show
 		@article = Article.find(params[:id])

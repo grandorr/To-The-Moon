@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   resources :news
   resources :articles
 
+  get 'static_pages/about'
+  get 'static_pages/contact'
+  get 'static_pages/terms_and_conditions'
+  get 'static_pages/privacy_policy'
+
 end

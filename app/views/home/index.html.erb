@@ -44,10 +44,12 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to root_path do %>
-                  <div class="ttm-btn">Sign In</div>
+                <% unless current_user %>
+                  <%= link_to '/users/sign_up' do %>
+                    <div class="ttm-btn">Sign Up</div>
+                  <% end %>
                 <% end %>
-                <%= link_to root_path do %>
+                <%= link_to '/static_pages/about' do %>
                   <div class="ttm-btn">About Us</div>
                 <% end %>
               </div>
@@ -70,15 +72,21 @@
               In short, the main tools are:
               </p>
 
-              <p class="index-card-text-bold-p">
+              <p class="index-card-text-bold-p index-card-text-bold-n">
               - Real time price for more thant 2 500 Cryptos.</br>
               - Chart evolution</br>
               - Currency converter</br>
               - Market cap
               </p>
+
+              <div class="d-flex">
+              <% if current_user %>
+                <%= link_to '/user_cryptos' do %>
+                  <div class="ttm-btn">Portfolio</div>
+                <% end %>
+              <% end %>
             </div>
-
-
+            </div>
           </div>  
         </div>
 
@@ -99,7 +107,7 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to root_path do %>
+                <%= link_to '/news' do %>
                   <div class="ttm-btn">News</div>
                 <% end %>
               </div>
@@ -126,7 +134,7 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to root_path do %>
+                <%= link_to '/articles' do %>
                   <div class="ttm-btn">Articles</div>
                 <% end %>
               </div>

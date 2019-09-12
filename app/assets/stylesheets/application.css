@@ -10613,6 +10613,72 @@
   border-radius: 7px;
 }
 
+/*  ###############  Sign Up / Sign In / Log out  */
+
+/*  Common card  */
+
+.sign-card-container{
+  padding: 10px;
+  height: calc(100vh - 85px);
+}
+
+@media (max-width: 1050px) {
+  .sign-card{
+    transform: scale(0.8);
+  }
+}
+
+.sign-card{
+  width: 420px;
+  padding: 2%;
+  margin: auto 0;
+  border: 26px solid #848484;
+  background-color: #f2e9ff;
+  border-radius: 7px;
+  flex-direction: column;
+  border-radius: 170px 170px 50px 50px;
+}
+
+@media (max-width: 768px) {
+  .sign-card{
+      padding: 5%;;
+  }
+}
+
+.sign-card-img{
+  margin: calc(30px - calc(2vw)) auto 0 auto;
+  width: 80%;
+  height: auto;
+}
+
+div.sign-card.d-flex.justify-content-center form#new_user.form-signin.mt-3 div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+div.form-group input{
+  height: 35px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+}
+
+div.form-group input:focus{
+  border: 1px solid #848484;
+  box-shadow: none;
+}
+
+.sign-ttm-btn{
+  margin: 20px 0 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 /*  ###############  Index  */
 
 /*  Jumbotron  */

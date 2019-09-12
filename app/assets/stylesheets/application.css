@@ -10619,7 +10619,7 @@
 
 .sign-card-container{
   padding: 10px;
-  height: calc(100vh - 85px);
+ height: 90vh;
 }
 
 @media (max-width: 1050px) {
@@ -10631,7 +10631,6 @@
 .sign-card{
   width: 420px;
   padding: 2%;
-  margin: auto 0;
   border: 26px solid #848484;
   background-color: #f2e9ff;
   border-radius: 7px;
@@ -10641,7 +10640,8 @@
 
 @media (max-width: 768px) {
   .sign-card{
-      padding: 5%;;
+      padding: 5%;
+      margin-top: -50px;
   }
 }
 

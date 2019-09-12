@@ -65,25 +65,6 @@
            box-sizing: border-box;
  }
 
-.green {
-  color: green
-}
-.red {
-  color: red
-}
-
-.logo {
-  display: inline;
-  height:50px !important;
-  width:50px !important;
-
-}
- .moon {
- background-image: url("home/to_moon.jpg");
- background-size: 100%;
-  background-repeat: no-repeat;
- }
-
  html {
    font-family: sans-serif;
    line-height: 1.15;
@@ -10851,18 +10832,52 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   text-transform: uppercase;
 }
 
+/*  ###############  Cryptolist  */
 
+/*  List  */
 
+.cryptolist-table{
+  margin-bottom: : 40px;
+}
 
+.green {
+  color: green
+}
+.red {
+  color: red
+}
 
+.cryptolist-logo {
+  display: inline;
+  height: 35px;
+  width: 35px;
+}
 
+.logo-name-container{
+  background-color: #fff;
+}
 
+.cryptolist-name{
+  font-size: 20px;
+  margin: 0;
+}
 
+table.table.ttm-card-bg.cryptolist-table tbody tr td.cryptolist-td, table.table.ttm-card-bg.cryptolist-table tbody tr th.cryptolist-th{
+  padding: 30px 25px 0;
+  height: 30px;
+}
 
-
-
-
-
+html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
+  padding: 10px;
+  margin: 0 5px;
+  width: 45px;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 
 
 

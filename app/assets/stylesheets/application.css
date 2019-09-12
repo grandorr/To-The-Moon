@@ -4773,7 +4773,7 @@
  }
 
  .navbar-dark .navbar-toggler-icon {
-   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
  }
 
  .navbar-dark .navbar-text {
@@ -4938,7 +4938,7 @@
  }
 
  .card-group > .card {
-   margin-bottom: 15px;
+   margin-bottom: 0px;
  }
 
  @media (min-width: 576px) {
@@ -8627,7 +8627,7 @@
 
  .mr-auto,
  .mx-auto {
-   margin-right: auto !important;
+   margin-right: 0px !important;
  }
 
  .mb-auto,
@@ -10465,14 +10465,55 @@
  /*	###   matthieu Edit   ###################################################################################   */
 
 
-.items-center {
-  margin: 0px 150px 0px 250px;
-}
+ .dropdown-menu-perso {
+   position: absolute;
+   top: 100%;
+   left: 0;
+   z-index: 1000;
+   display: none;
+   float: left;
+   min-width: 10rem;
+   padding: 0.5rem 0;
+   margin: 0.125rem 0 0;
+   font-size: 0.875rem;
+   color: #493b72;
+   text-align: left;
+   list-style: none;
+   background-color: #493b72;
+   background-clip: padding-box;
+   border: 1px solid rgba(0, 0, 0, 0.15);
+ }
 
+ .card-perso {
+   -webkit-box-flex: 1;
+       -ms-flex: 1 1 auto;
+           flex: 1 1 auto;
+             margin: 5px 20px 5px;
+
+ }
+
+.bg-purple {
+   background-color: #493b72 !important;
+ }
+
+.nav-weight {
+
+  width: 1
+}
+ .mr-right {
+   align-items: flex-end;
+ }
+
+ .nav-perso {
+   margin-top: 8px;
+ }
+
+ .nav-perso2 {
+   margin-top: 8px 10px;
+ }
 
  .head-color {
    background-color: #f9f9f9 !important;
-   padding: 0px, 0px, 0px;
  }
  .btn-header {
    color: #343a40;
@@ -10564,6 +10605,21 @@
   text-align: left;
 }
 
+.myButtonsimple2 {
+  font-family:"Saira Condensed";
+  color: #FFF;
+  font-size:15px;
+  margin: 0px 20px;
+  text-align: left;
+}
+
+.myButtonsimple3 {
+  font-family:"Saira Condensed";
+  color: #FFF;
+  font-size:20px;
+  margin: 5px 20px 5px;
+  text-align: left;
+}
 .text-home {
   font-family:"Saira Condensed";
   color: #000;
@@ -10589,4 +10645,43 @@
 .myButtonheader:active {
   position:relative;
   top:1px;
+}
+
+.myButtonheader2 {
+  background-color:transparent;
+  border-radius:10px;
+  border:1px solid #4e6096;
+  font-family:"Saira Condensed";
+  color: #FFF;
+  font-size:20px;
+  padding:6px 15px;
+  text-decoration:none;
+  margin: 0px 20px;
+}
+.myButtonheader:hover {
+  background-color:transparent;
+}
+.myButtonheader:active {
+  position:relative;
+  top:1px;
+}
+
+.navbar-nav2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+          justify-content: flex-end !important;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+
+.mr-auto2,
+.mx-auto {
+  margin-left: 0px !important;
 }

@@ -1,8 +1,26 @@
+<div class="card-group d-flex justify-content-start bg-purple">
+
+  <div>
+    <div class="card-perso bg-purple">
+      <a  role="button" class="myButtonsimple2"<%= link_to "All Articles", articles_path%> </a>
+    </div>
+  </div>
+
+<div>
+  <div class="card-perso bg-purple">
+    	<a  role="button" class="myButtonsimple2"<%= link_to "Your friends articles", articles_path%> </a>
+  </div>
+</div>
+
+</div>
+
+
+
 <%= @article.title %><br>
 <%= @article.content %><br>
 <%= link_to @article.user.email, profile_path(@article.user) %><br>
 <%= @tag.name %><br>
 <% if current_user == @user %>
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
-	<%= link_to "Delete article", article_path, :method => :delete %> 
+	<%= link_to "Delete article", article_path, :method => :delete %>
 <% end %>

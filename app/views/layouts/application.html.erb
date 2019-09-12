@@ -11,48 +11,75 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </head>
 
+
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark head-color">
-    <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark head-color">
 
-          <div class="collapse navbar-collapse" id="navbarColor02">
+
+       <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
+
+
+<div class=" navbar-expand-lg collapse navbar-collapse " id="navbarColor02">
+
+        <ul class="navbar-nav mr-auto">
+<div class=" navbar-expand-lg collapse navbar-collapse " id="navbarColor02">
+
+          <li class="nav-perso active">
+                <a role="button" class="myButtonsimple"<%= link_to "Users", profiles_path%></a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "News", root_path%> </a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
+          </li>
+
+</ul>
+</div>
         <ul class="navbar-nav mr-auto">
 
-          <div class="items-center" id="navbarColor02">
+        <% if user_signed_in? %>
 
-    <a class="btn btn-primary btn "  role="button" <%= link_to "Users", profiles_path%></a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "News", root_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
-        </ul>
-          </div>
-      <% if user_signed_in? %>
+       <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
+
+       <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+
+       <% if current_user.is_admin? %>
 
 
+         <a role="button" class="myButtonheader" <%= link_to "Dashboard", sales_path %></a>
 
-        <a type="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
-        <a type="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+       <% end %>
+
+     <% else %>
 
 
-        <% if current_user.is_admin? %>
-          <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", sales_path %></a>
-        <% end %>
+       <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
+       <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
 
-      <% else %>
-        <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
-        <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
-      <% end %>
-    </div>
+     <% end %>
+  </div>
+     </ul>
 
-  </nav>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+    </nav>
+
     <%= yield %>
 <br/><br/>
     <footer id="footer" class="page-footer font-small fixed-bottom bg-dark">

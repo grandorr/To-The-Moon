@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   resources :news
   resources :articles do
     resources :pictures, only: [:create]
-  end 
+  end
   resources :comments
+
+  resources :admin
 
 
 end

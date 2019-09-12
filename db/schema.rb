@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_125833) do
 
   create_table "crypto_currencies", force: :cascade do |t|
     t.string "name"
-    t.string "crypto_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,13 +92,10 @@ ActiveRecord::Schema.define(version: 2019_09_11_125833) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.boolean "has_been_read"
-    t.bigint "conversation_id"
     t.bigint "recipient_id"
     t.bigint "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["recipient_id"], name: "index_messages_on_recipient_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end

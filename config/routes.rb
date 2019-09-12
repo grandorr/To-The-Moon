@@ -11,9 +11,15 @@ Rails.application.routes.draw do
   resources :friend_requests
   resources :friendships
   resources :profiles
+  resources :messages
+  resources :conversations
   resources :home
 
   resources :news
-  resources :articles
+  resources :articles do
+    resources :pictures, only: [:create]
+  end 
+  resources :comments
+
 
 end

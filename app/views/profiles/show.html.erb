@@ -15,6 +15,21 @@
 			<%= link_to friend.email, profile_path(friend.id) %><br>
 		<% end %>
 	<% end %>
+	<% unless @new_messages == nil %>
+		<%= "Unread messages : " + @new_messages.length.to_s %><br>
+		<% @new_messages.each do |message| %>
+			<%= link_to message.sender.email, conversation_path(@user.conversations.find_by(interlocutor: message.sender).id) %><br>
+		<% end %>
+	<% end %>
+	<% if @user.conversations.length > 0 %>
+		<%= "My messages with :" %><br>
+		<% @user.conversations.each do |convo| %>
+			<% unless convo.messages.length == 0 %>
+				<%= link_to convo.interlocutor.email, conversation_path(convo.id) %><br>
+				<br/><br/>
+			<% end %>
+		<% end %>
+	<% end %>
 	<%= "My articles : "%><br>
 	<% unless @articles == nil %>
 		<% @articles.each do |article| %>
@@ -36,7 +51,7 @@
 			<%= "Friend request already sent" %><br>
 		<% end %>
 	<% else %>
-		<%= "Send Message" %><br>
+		<%= link_to "Send Message", new_message_path(:id => @user.id) %><br>
 		<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
 	<% end %>
 	<%= "User's articles : "%><br>

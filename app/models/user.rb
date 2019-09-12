@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :crypto_currencies, through: :user_cryptos 
   has_many :articles
   has_many :comments
+  has_many :conversations
   has_many :sent_messages, foreign_key: "sender_id", class_name: "Message"
   has_many :received_messages, foreign_key: "recipient_id", class_name: "Message"
   has_many :friendships, dependent: :destroy

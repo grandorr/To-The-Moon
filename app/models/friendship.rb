@@ -8,7 +8,10 @@ class Friendship < ApplicationRecord
 		unless self.friend.friends.include? self.user 
 			@user = self.friend
 			@friend = self.user
+			Conversation.create(user: @user, interlocutor: @friend)
+			Conversation.create(user: @friend, interlocutor: @user)
 			Friendship.create(user: @user, friend: @friend)
+
 		end
 	end
 

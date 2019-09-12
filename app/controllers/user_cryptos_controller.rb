@@ -9,7 +9,8 @@ class UserCryptosController < ApplicationController
 		unless CryptoCurrency.where(name: params[:name]).length == 0
 			UserCrypto.create(
 				user: current_user, 
-				crypto_currency: CryptoCurrency.find_by(name: params[:name])
+				crypto_currency: CryptoCurrency.find_by(name: params[:name]),
+				quantity: 0
 				)
 		else
 			@crypto =	CryptoCurrency.create(

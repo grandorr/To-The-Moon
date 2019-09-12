@@ -12,7 +12,15 @@
     <%= label_tag 'Tag' %>  <br>
     <%= text_field_tag 'tag', @tag %>
   </div>
+
+
+
   <div class="actions mt-5">
     <%= submit_tag "Update article", class: "btn btn-lg btn-secondary btn-block" %>
   </div>
+<% end %>
+
+<%= form_tag article_pictures_path(@article.id), multipart: true do %>
+<%= file_field_tag :picture %>
+<%= submit_tag "mettre à jour" %>
 <% end %>

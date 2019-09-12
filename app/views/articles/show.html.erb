@@ -19,43 +19,62 @@
 <%# end %>
 
 <% unless current_user == @article.user %> 
+
 	<% unless current_user.favorite_articles.include? @article %>	
 		<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post %><br>
 	<% else %>
 		<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete %><br>
 	<% end %>
+
 <% else %>
+
 	<%= link_to "Edit article", edit_article_path(@article.id) %><br>
 	<%= link_to "Delete article", article_path, :method => :delete %> 
+
 <% end %>
+
 <br/><br/>
 
 <% unless @comments == nil %>
+
 	<% @comments.each do |comment| %>
+
 		<%= comment.content %><br>
 		<%= comment.user.email %><br>
 		<%= comment.created_at %><br>
+
 		<% unless current_user.likes.find_by(comment: comment) %>
+
 			<% if comment.likes.length == 0 %>
 				<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
 			<% else %>
 				<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
 			<% end %>
+
 		<% else %>
+
 			<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+			
 		<% end %>
+
 		<% if current_user == comment.user %>
 			<%= link_to "Edit comment", edit_comment_path(comment.id) %><br>
 			<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %> 
 		<% end %>
-		<br><br>
+
 	<% end %>
+
 <% end %>
+
+<br><br>
+
 <% unless current_user == nil %>
+
 	<%= form_tag comments_path, method: "post" do %>
 	  <%= text_field_tag 'content' %><br>
 	  <%= hidden_field_tag "article", @article.id %>
 	  <%= submit_tag "Comment" %>
 	<% end %>
+
 <% end %>
 

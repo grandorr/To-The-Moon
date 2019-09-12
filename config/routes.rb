@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :favorites
   resources :likes
   root to: 'home#index'
 

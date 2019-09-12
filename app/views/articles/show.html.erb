@@ -26,6 +26,16 @@
 		<%= comment.content %><br>
 		<%= comment.user.email %><br>
 		<%= comment.created_at %><br>
+		<% if comment.likes == nil %>
+			<%= "Like : 0" %><br>
+		<% else %>
+			<%= "Likes : " + comment.likes.length.to_s %><br>
+		<% end %>
+		<% unless current_user.likes.find_by(comment: comment) %>
+			<%= link_to "Like", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+		<% else %>
+			<%= link_to "Unlike", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+		<% end %>
 		<% if current_user == comment.user %>
 			<%= link_to "Edit comment", edit_comment_path(comment.id) %><br>
 			<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %> 

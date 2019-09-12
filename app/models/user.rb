@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests
   has_many :likes
+  has_many :favorites, foreign_key: "interested_user"
+  has_many :favorite_articles, through: :favorites, foreign_key: "interested_user"
 
 after_create :welcome_user_email
 

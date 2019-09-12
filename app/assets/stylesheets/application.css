@@ -2041,12 +2041,13 @@
  }
 
  .form-control {
+  font-size: 18px;
+  font-weight: 200;
+  padding: 0 10px;
+
    display: block;
    width: 100%;
    height: calc(1.5em + 1.5rem + 0px);
-   padding: 0.75rem 1.5rem;
-   font-size: 0.875rem;
-   font-weight: 400;
    line-height: 1.5;
    color: #55595c;
    background-color: #f7f7f9;
@@ -10593,7 +10594,7 @@
 /*  ###############  Layout  */
 
 .pages-container{
-  height: auto;
+  height: 100%;
   width: 100vw;
   overflow: hidden;
 }
@@ -10603,7 +10604,7 @@
   background-size: 100%;
   background-repeat: repeat;
   width: 100vw;
-  height: auto;
+  height: 100%;
 }
 
 /*  ###############  General Cells CSS  */
@@ -10613,13 +10614,13 @@
   border-radius: 7px;
 }
 
-/*  ###############  Sign Up / Sign In / Log out  */
+/*  ###############  Sign Up / Sign In  */
 
-/*  Common card  */
+/*  Sign card  */
 
 .sign-card-container{
   padding: 10px;
- height: 90vh;
+  height: 90vh;
 }
 
 @media (max-width: 1050px) {
@@ -10679,6 +10680,8 @@ div.form-group input:focus{
   text-transform: uppercase;
 }
 
+/*  Password reset  */
+
 .pw-reset-email-form{
     margin-top: 5vh;
 }
@@ -10694,6 +10697,24 @@ div.form-group input:focus{
   font-weight: 500;
   text-transform: uppercase;
 }
+
+/*  ###############  Profil User / Edit User  */
+
+/*  Edit User  */
+
+.edit-user-card{
+  padding: 20px 50px 35px;
+}
+
+div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form#edit_user.form-signin div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.pw-confirmation-form{
+  margin-bottom: 10px;
+}
+
 /*  ###############  Index  */
 
 /*  Jumbotron  */

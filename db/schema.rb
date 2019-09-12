@@ -93,13 +93,10 @@ ActiveRecord::Schema.define(version: 2019_09_11_125833) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.boolean "has_been_read"
-    t.bigint "conversation_id"
     t.bigint "recipient_id"
     t.bigint "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["recipient_id"], name: "index_messages_on_recipient_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
@@ -126,9 +123,9 @@ ActiveRecord::Schema.define(version: 2019_09_11_125833) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.boolean "is_admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_admin?"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

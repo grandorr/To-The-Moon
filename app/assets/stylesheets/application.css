@@ -105,6 +105,7 @@
  p {
    margin-top: 0;
    margin-bottom: 1rem;
+   font-size: 18px;
  }
 
  abbr[title],
@@ -10594,11 +10595,85 @@
   margin-bottom: 40px;
 }
 
-/*  ###############  General Cells CSS  */
+/*  ###############  General Cells  */
 
 .ttm-card-bg{
   background-color: #f2e9ff;
   border-radius: 7px;
+}
+
+/*  Comments  */
+
+.post-comment-text-area{
+  width: 300px;
+  height: 54px;
+  border-radius: 7px;
+  border: 1px solid #eee
+}
+
+.post-comment-form-container{
+  margin-bottom: 18px;
+}
+
+.post-comment-text-area:focus{
+  border: 1px solid #848484
+}
+
+.comment-container{
+  background-color: #e8dff4;
+  border-radius: 7px;
+  padding: 15px 22px;
+  margin-bottom: 20px;
+}
+
+.comment-user{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.comment-date{
+  margin: 3px 0 0 25px;
+}
+
+.comment-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.comment-content{
+  margin-left: 10px;
+}
+
+.post-comment-btn{
+  display: hidden;
+}
+
+.comment-btn-container{
+  margin-top: 24px;
+}
+
+div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
+  font-size: 15px;
+  margin: 0 20px 0 0;
+  padding: 5px 20px 4px 20px;
+}
+
+/*  Tags  */
+
+.tags-container{
+  margin-top: 26px;
+}
+
+.tags{
+  display: inline-block;
+  font-size: 14px;
+  color: #fff;
+  background-color: #493b72;
+  padding: 6px 14px;
+  border-radius: 30px;
 }
 
 /*  ###############  Sign Up / Sign In  */
@@ -10885,7 +10960,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   text-transform: uppercase;
 }
 
-/*  ###############  News  */
+/*  ###############  News Index */
 
 .news-container{
   padding: 50px 4vw;
@@ -10925,7 +11000,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   padding: 20px;
 }
 
-/*  ###############  Articles  */
+/*  ###############  Articles Index  */
 
 /*  Articles Toolbar  */
 
@@ -11002,7 +11077,7 @@ input.new-article-input-btn{
 /*  Articles Cards  */
 
 .article-cards{
-  padding: 20px;
+  padding: 20px 28px;
   border: 0px solid transparent;
 }
 
@@ -11021,10 +11096,14 @@ input.new-article-input-btn{
   margin-bottom: 10px;
 }
 
+/*  ###############  Articles Show  */
 
-
-
-
+.article-user a{
+  font-size: 20px;
+  font-weight: 600;
+  color: #493b72;
+  text-decoration: underline;
+}
 
 
 

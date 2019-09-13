@@ -10,13 +10,13 @@
 					<%= link_to "New article", new_article_path %>
 				</a>
 
-					<%= @hello %>
-					<%= form_tag articles_path,class: "search-articles-form", :method => :get do %>
-						<div class="d-flex justify-content-center align-content-center articles-search-form-elements">
-							<%= text_field_tag 'content', "",class: "new-article-input-textarea" %>
-							<%= submit_tag "Search article", class: "btn new-article-input-btn" %>
-						</div>
-					<% end %>
+				<%= @hello %>
+				<%= form_tag articles_path,class: "search-articles-form", :method => :get do %>
+					<div class="d-flex justify-content-center align-content-center articles-search-form-elements">
+						<%= text_field_tag 'content', "",class: "new-article-input-textarea" %>
+						<%= submit_tag "Search article", class: "btn new-article-input-btn" %>
+					</div>
+				<% end %>
 			</div>
 
 			<div class="card-columns">

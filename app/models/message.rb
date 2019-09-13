@@ -40,4 +40,14 @@ class Message < ApplicationRecord
 		end
 	end
 
+	# Defines where to redirect according to the current user's position
+
+	def self.path_to_redirect?(checker, message)
+		if checker == "true"
+			return true
+		else	
+			return false
+		end
+	end
+
 end

@@ -10582,7 +10582,7 @@
 }
 
 .space-bg{
-  background-image: url("/assets/to-the-moon-space-bg.png");
+  background-image: url("/public/to-the-moon-space-bg.png");
   background-size: 100%;
   background-repeat: repeat;
   width: 100vw;

@@ -1,6 +1,9 @@
 <% if @user == current_user %>
 	
 	<%= @user.email %><br>
+
+	<br/><br/>
+	
 	<% if @user.pending_friends.length > 0 %>
 		<%= "Pending friend requests :" %><br>
 		<% @pending_friends.each do |pending_friend| %>
@@ -15,14 +18,20 @@
 			<%= link_to friend.email, profile_path(friend.id) %><br>
 		<% end %>
 	<% end %>
-	<% unless @new_messages == nil %>
-		<%= "Unread messages : " + @new_messages.length.to_s %><br>
-		<% @new_messages.each do |message| %>
-			<%= link_to message.sender.email, conversation_path(@user.conversations.find_by(interlocutor: message.sender).id) %><br>
+
+	<br/><br/>
+
+	<% unless @unread_messages == 0 %>
+		<%= "Unread messages : " + @unread_messages.to_s %><br>
+		<% @senders.each do |sender| %>
+			<%= link_to sender, conversation_path(@user.conversations.find_by(interlocutor: User.find_by(email: sender)).id) %><br>
 		<% end %>
 	<% end %>
+
+	<br/><br/>
+
 	<% if @user.conversations.length > 0 %>
-		<%= "My messages with :" %><br>
+		<%= "Conversations with :" %><br>
 		<% @user.conversations.each do |convo| %>
 			<% unless convo.messages.length == 0 %>
 				<%= link_to convo.interlocutor.email, conversation_path(convo.id) %><br>
@@ -30,16 +39,31 @@
 			<% end %>
 		<% end %>
 	<% end %>
-	<%= "My articles : "%><br>
+
+	<br/><br/>
+	
 	<% unless @articles == nil %>
+		<%= "My articles : "%><br>
 		<% @articles.each do |article| %>
 			<%= link_to article.title, article_path(article.id) %><br>
+		<% end %>
+	<% end %>
+	
+	<br/><br/>
+
+	<% unless @favorite_articles == nil %>
+		<%= "Favorites" %><br>
+		<% @favorite_articles.each do |fav_article| %>
+			<%= link_to fav_article.title, article_path(fav_article.id) %><br>
 		<% end %>
 	<% end %>
 
 <% else %>
 	
 	<%= @user.email %><br>
+
+	<br/><br/>
+
 	<% unless current_user.friends.include?(@user) %>
 		<% unless @user.pending_friends.include? current_user %>
 			<% if current_user.pending_friends.include?(@user) %>
@@ -54,6 +78,9 @@
 		<%= link_to "Send Message", new_message_path(:id => @user.id) %><br>
 		<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
 	<% end %>
+
+	<br/><br/>
+
 	<%= "User's articles : "%><br>
 	<% unless @articles == nil %>
 		<% @articles.each do |article| %>

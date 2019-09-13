@@ -1,13 +1,32 @@
 class ArticlesController < ApplicationController
+		before_action :authenticate_user!, except: [:show,:index]
 	def index
 		if params[:content] == nil || params[:content] == ""
 			@articles = Article.all
 			@articles = @articles.reverse
 		else
-			@articles = Article.where(tag: Tag.find_by(name:params[:content]))
+			@articles = []
+			@find_articles = Article.all
+			@find_articles.each do |article|
+				if article.tag.name.include? params[:content]
+					@articles.append(article)
+				elsif article.user.email.include? params[:content]
+					@articles.append(article)
+				elsif article.content.include? params[:content]
+					@articles.append(article)
+				elsif article.title.downcase.include? params[:content]
+					@articles.append(article)
+				end
+			end
+			#@articles = Article.where(tag: Tag.find_by(name:params[:content]))
 			@articles = @articles.reverse
 		end
 	end
+
+
+	def new
+	end
+
 
 	def show
 		@article = Article.find(params[:id])

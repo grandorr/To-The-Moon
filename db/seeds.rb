@@ -16,14 +16,16 @@ tags = ["#bitcoin", "#ethereum", "#litecoin", "#tether", "#monero"]
 cryptos = ["bitcoin", "ethereum", "litecoin", "tether", "monero"]
 emails = ["jon@mail.com", "jak@mail.com", "jim@mail.com", "jail@mail.com", "me@mail.com"]
 
+
 n = 0
 5.times do
-	User.create(email: emails[n], 
-		password: "monmdp", 
+	User.create(email: emails[n],
+		password: "monmdp",
 		password_confirmation: "monmdp"
 		)
 	n += 1
 end
+
 
 n = 0
 5.times do
@@ -37,16 +39,16 @@ tags = Tag.all
 
 10.times do
 	UserCrypto.create(
-		user: users.sample, 
-		crypto_currency: cryptos.sample, 
+		user: users.sample,
+		crypto_currency: cryptos.sample,
 		quantity: rand(1..25)
-		) 
+		)
 end
 
 10.times do
 	Article.create(
-		user: users.sample, 
-		tag: tags.sample, 
+		user: users.sample,
+		tag: tags.sample,
 		title: Faker::Science.element,
 		content: Faker::Movies::Lebowski.quote
 		)

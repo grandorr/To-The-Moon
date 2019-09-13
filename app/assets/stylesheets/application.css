@@ -54,7 +54,7 @@
    --breakpoint-md: 768px;
    --breakpoint-lg: 992px;
    --breakpoint-xl: 1200px;
-   --font-family-sans-serif: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   --font-family-sans-serif: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
  }
 
@@ -63,25 +63,6 @@
  *::after {
    -webkit-box-sizing: border-box;
            box-sizing: border-box;
- }
-
-.green {
-  color: green
-}
-.red {
-  color: red
-}
-
-.logo {
-  display: inline;
-  height:50px !important;
-  width:50px !important;
-
-}
- .moon {
- background-image: url("home/to_moon.jpg");
- background-size: 100%;
-  background-repeat: no-repeat;
  }
 
  html {
@@ -97,11 +78,10 @@
 
  body {
    margin: 0;
-   font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    font-size: 0.875rem;
-   font-weight: 400;
    line-height: 1.5;
-   color: #919aa1;
+   color: #11002d;
    text-align: left;
    background-color: #fff;
  }
@@ -125,6 +105,7 @@
  p {
    margin-top: 0;
    margin-bottom: 1rem;
+   font-size: 18px;
  }
 
  abbr[title],
@@ -405,9 +386,8 @@
  h1, h2, h3, h4, h5, h6,
  .h1, .h2, .h3, .h4, .h5, .h6 {
    margin-bottom: 0.5rem;
-   font-weight: 600;
    line-height: 1.2;
-   color: #1a1a1a;
+   color: #493b72;
  }
 
  h1, .h1 {
@@ -2043,12 +2023,13 @@
  }
 
  .form-control {
+  font-size: 18px;
+  font-weight: 200;
+  padding: 0 10px;
+
    display: block;
    width: 100%;
    height: calc(1.5em + 1.5rem + 0px);
-   padding: 0.75rem 1.5rem;
-   font-size: 0.875rem;
-   font-weight: 400;
    line-height: 1.5;
    color: #55595c;
    background-color: #f7f7f9;
@@ -6111,7 +6092,7 @@
    z-index: 1070;
    display: block;
    margin: 0;
-   font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    font-style: normal;
    font-weight: 400;
    line-height: 1.5;
@@ -6223,7 +6204,7 @@
    z-index: 1060;
    display: block;
    max-width: 276px;
-   font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    font-style: normal;
    font-weight: 400;
    line-height: 1.5;
@@ -10404,7 +10385,6 @@
  }
 
  body {
-   font-weight: 200;
    letter-spacing: 1px;
  }
 
@@ -10590,3 +10570,546 @@
   position:relative;
   top:1px;
 }
+
+/*  ###  RCC Edit   ###################################################################################  */
+
+/*  ###############  Layout  */
+
+.pages-container{
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.space-bg{
+  background-image: url("to-the-moon-space-bg.png");
+  background-size: 100%;
+  background-repeat: repeat;
+  width: 100vw;
+  height: 100%;
+}
+
+.page-title{
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+/*  ###############  General Cells  */
+
+.ttm-card-bg{
+  background-color: #f2e9ff;
+  border-radius: 7px;
+}
+
+/*  Comments  */
+
+.post-comment-text-area{
+  width: 300px;
+  height: 54px;
+  border-radius: 7px;
+  border: 1px solid #eee
+}
+
+.post-comment-form-container{
+  margin-bottom: 18px;
+}
+
+.post-comment-text-area:focus{
+  border: 1px solid #848484
+}
+
+.comment-container{
+  background-color: #e8dff4;
+  border-radius: 7px;
+  padding: 15px 22px;
+  margin-bottom: 20px;
+}
+
+.comment-user{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.comment-date{
+  margin: 3px 0 0 25px;
+}
+
+.comment-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.comment-content{
+  margin-left: 10px;
+}
+
+.post-comment-btn{
+  display: hidden;
+}
+
+.comment-btn-container{
+  margin-top: 24px;
+}
+
+div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
+  font-size: 15px;
+  margin: 0 20px 0 0;
+  padding: 5px 20px 4px 20px;
+}
+
+/*  Tags  */
+
+.tags-container{
+  margin-top: 26px;
+}
+
+.tags{
+  display: inline-block;
+  font-size: 14px;
+  color: #fff;
+  background-color: #493b72;
+  padding: 6px 14px;
+  border-radius: 30px;
+}
+
+/*  ###############  Sign Up / Sign In  */
+
+/*  Sign card  */
+
+.sign-card-container{
+  padding: 10px;
+  height: 90vh;
+}
+
+@media (max-width: 1050px) {
+  .sign-card{
+    transform: scale(0.8);
+  }
+}
+
+.sign-card{
+  width: 420px;
+  padding: 2%;
+  border: 26px solid #848484;
+  background-color: #f2e9ff;
+  border-radius: 7px;
+  flex-direction: column;
+  border-radius: 170px 170px 50px 50px;
+}
+
+@media (max-width: 768px) {
+  .sign-card{
+      padding: 5%;
+      margin-top: -50px;
+  }
+}
+
+.sign-card-img{
+  margin: calc(30px - calc(2vw)) auto 0 auto;
+  width: 80%;
+  height: auto;
+}
+
+div.sign-card.d-flex.justify-content-center form#new_user.form-signin.mt-3 div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+div.form-group input{
+  height: 35px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+}
+
+div.form-group input:focus{
+  border: 1px solid #848484;
+  box-shadow: none;
+}
+
+.sign-ttm-btn{
+  margin: 20px 0 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  Password reset  */
+
+.pw-reset-email-form{
+    margin-top: 5vh;
+}
+
+.pw-reset-ttm-btn{
+  margin: 8vh 0 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  ###############  Profil User / Edit User  */
+
+/*  Edit User  */
+
+.edit-user-card{
+  padding: 20px 50px 35px;
+}
+
+div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form#edit_user.form-signin div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.pw-confirmation-form{
+  margin-bottom: 10px;
+}
+
+/*  ###############  Index  */
+
+/*  Jumbotron  */
+
+.index-jumbotron{
+
+}
+
+.index-jumbotron-img{
+  width: 100vw;
+  height: auto;
+}
+
+.index-jumbotron-title{
+  height: 0;
+  position: relative;
+  top: 5.6vw;
+}
+
+div.index-jumbotron-title h1.index-jumbotron-title-small{
+  font-size: 2.6vw;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+
+div.index-jumbotron-title h1.index-jumbotron-title-big{
+  font-size: 4.6vw;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+
+/*  Cards  */
+
+.index-two-cards{
+  flex-direction: column;
+}
+
+.index-cards-container-row, .index-cards-container-row-alt{
+  width: 100vw;
+  height: auto;
+  padding: 3vw 3vw 0 3vw;
+}
+
+.index-cards-container{
+}
+
+@media (max-width: 1050px) {
+  .index-cards-container{
+    flex-direction: column-reverse;
+  }
+}
+
+.index-cards-container-alt{
+  flex-flow: row-reverse;
+}
+
+@media (max-width: 1050px) {
+  .index-cards-container-alt{
+    flex-direction: column-reverse;
+  }
+}
+
+.index-cards-img-container{
+}
+
+.index-cards-img{
+  margin: auto auto;
+  height: 450px;
+  width: 450px;
+}
+
+.index-card{
+  margin: 0 20px;
+  padding: 30px 40px;
+  width: 70%;
+}
+
+@media (max-width: 1050px) {
+  .index-card{
+    margin: auto 0 40px auto;
+    width: auto;
+  }
+}
+
+.index-card-title{
+  font-size: 40px;
+}
+
+.index-card-hr{
+  border: 3px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.index-card-text{
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+
+.index-card-text-bold{
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.index-card-text-p{
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.index-card-text-bold-p{
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.index-card-text-bold-n{
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+.ttm-btn{
+  margin: 0 30px 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  ###############  Cryptolist  */
+
+/*  List  */
+
+.cryptolist-table{
+  margin-bottom: : 40px;
+}
+
+.green {
+  color: green
+}
+.red {
+  color: red
+}
+
+.cryptolist-logo {
+  display: inline;
+  height: 35px;
+  width: 35px;
+}
+
+.logo-name-container{
+  background-color: #fff;
+}
+
+.cryptolist-name{
+  font-size: 20px;
+  margin: 0;
+}
+
+table.table.ttm-card-bg.cryptolist-table tbody tr td.cryptolist-td, table.table.ttm-card-bg.cryptolist-table tbody tr th.cryptolist-th{
+  padding: 30px 25px 0;
+  height: 30px;
+}
+
+html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
+  padding: 10px;
+  margin: 0 5px;
+  width: 45px;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  ###############  News Index */
+
+.news-container{
+  padding: 50px 4vw;
+}
+
+.news-card{
+  border: 0px solid transparent;
+}
+
+.news-container .card-columns .news-card{
+  margin-bottom: 22px;
+}
+
+.news-title{
+  font-size: 25px;
+}
+
+.news-img-container{
+  overflow: hidden;
+  height: 250px;
+  position: relative;
+}
+
+.news-img-container img{
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
+.news-title-container, .news-text-btn-container{
+  padding: 20px;
+}
+
+/*  ###############  Articles Index  */
+
+/*  Articles Toolbar  */
+
+.articles-page-tools{
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .articles-page-tools{
+    flex-direction: column;
+    height: 200px;
+  }
+}
+
+.new-article-btn{
+  height: 42px;
+  margin: 0 20px;
+}
+
+.search-articles-form{
+
+}
+
+@media (max-width: 768px) {
+  .search-articles-form{
+    width: 80%;
+    margin-top: 20px;
+  }
+}
+
+.articles-search-form-elements{
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .articles-search-form-elements{
+    flex-direction: column;
+  }
+}
+
+.new-article-input-textarea{
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px 0 0 7px;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .new-article-input-textarea{
+    border-radius: 7px 7px 0 0;
+    height: 40px;
+    width: 100%;
+  }
+}
+
+input.new-article-input-btn{
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 0 7px 7px 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  input.new-article-input-btn{
+    border-radius: 0 0 7px 7px;
+  }
+}
+
+/*  Articles Cards  */
+
+.article-cards{
+  padding: 20px 28px;
+  border: 0px solid transparent;
+}
+
+.article-card-title{
+  margin-bottom: 20px;
+}
+
+.articles-card-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-card-text{
+  margin-bottom: 10px;
+}
+
+/*  ###############  Articles Show  */
+
+.article-user a{
+  font-size: 20px;
+  font-weight: 600;
+  color: #493b72;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+

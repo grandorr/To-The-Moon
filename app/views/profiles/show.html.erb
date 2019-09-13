@@ -4,7 +4,7 @@
 
 	<br/><br/>
 	
-	<% if @user.pending_friends.length > 0 %>
+	<% if @pending_friends.length > 0 %>
 		<%= "Pending friend requests :" %><br>
 		<% @pending_friends.each do |pending_friend| %>
 			<%= link_to pending_friend.email, profile_path(pending_friend.id) %><br>

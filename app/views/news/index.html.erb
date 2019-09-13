@@ -1,4 +1,9 @@
 
+<div class="pages-container">
+  <div class="space-bg">
+    <div class="news-container">
+
+      <h1 class="page-title text-center">News</h1>
       <div class="card-columns">
         <% @news_list = api_request('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')%>
 
@@ -27,3 +32,6 @@
         <% end %>
 
       </div>
+    </div>
+  </div>
+</div>

@@ -37,7 +37,7 @@
             <tr>
               <td class="text-dark"><%= coin['rank'] %></td>
                 <% symbol = coin_symbol_helper_check(coin['symbol']) %>
-              <td> <img  class ="logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %>  </td>
+              <td> <img  class ="cryptolist-logo " alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %>  </td>
               <td >   	<%= link_to crypto.name, crypto_path(crypto.crypto_id) %><br> </td>
               <% price = coin['price_usd'] %>
               <% if price.to_f > 500 %>

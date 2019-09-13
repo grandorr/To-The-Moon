@@ -5,7 +5,20 @@ class ArticlesController < ApplicationController
 			@articles = Article.all
 			@articles = @articles.reverse
 		else
-			@articles = Article.where(tag: Tag.find_by(name:params[:content]))
+			@articles = []
+			@find_articles = Article.all
+			@find_articles.each do |article|
+				if article.tag.name.include? params[:content]
+					@articles.append(article)
+				elsif article.user.email.include? params[:content]
+					@articles.append(article)
+				elsif article.content.include? params[:content]
+					@articles.append(article)
+				elsif article.title.downcase.include? params[:content]
+					@articles.append(article)
+				end
+			end
+			#@articles = Article.where(tag: Tag.find_by(name:params[:content]))
 			@articles = @articles.reverse
 		end
 	end

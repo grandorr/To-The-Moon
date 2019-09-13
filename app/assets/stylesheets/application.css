@@ -65,25 +65,6 @@
            box-sizing: border-box;
  }
 
-.green {
-  color: green
-}
-.red {
-  color: red
-}
-
-.logo {
-  display: inline;
-  height:50px !important;
-  width:50px !important;
-
-}
- .moon {
- background-image: url("home/to_moon.jpg");
- background-size: 100%;
-  background-repeat: no-repeat;
- }
-
  html {
    font-family: sans-serif;
    line-height: 1.15;
@@ -2041,12 +2022,13 @@
  }
 
  .form-control {
+  font-size: 18px;
+  font-weight: 200;
+  padding: 0 10px;
+
    display: block;
    width: 100%;
    height: calc(1.5em + 1.5rem + 0px);
-   padding: 0.75rem 1.5rem;
-   font-size: 0.875rem;
-   font-weight: 400;
    line-height: 1.5;
    color: #55595c;
    background-color: #f7f7f9;
@@ -10593,7 +10575,7 @@
 /*  ###############  Layout  */
 
 .pages-container{
-  height: auto;
+  height: 100%;
   width: 100vw;
   overflow: hidden;
 }
@@ -10603,7 +10585,13 @@
   background-size: 100%;
   background-repeat: repeat;
   width: 100vw;
-  height: auto;
+  height: 100%;
+}
+
+.page-title{
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
 /*  ###############  General Cells CSS  */
@@ -10611,6 +10599,107 @@
 .ttm-card-bg{
   background-color: #f2e9ff;
   border-radius: 7px;
+}
+
+/*  ###############  Sign Up / Sign In  */
+
+/*  Sign card  */
+
+.sign-card-container{
+  padding: 10px;
+  height: 90vh;
+}
+
+@media (max-width: 1050px) {
+  .sign-card{
+    transform: scale(0.8);
+  }
+}
+
+.sign-card{
+  width: 420px;
+  padding: 2%;
+  border: 26px solid #848484;
+  background-color: #f2e9ff;
+  border-radius: 7px;
+  flex-direction: column;
+  border-radius: 170px 170px 50px 50px;
+}
+
+@media (max-width: 768px) {
+  .sign-card{
+      padding: 5%;
+      margin-top: -50px;
+  }
+}
+
+.sign-card-img{
+  margin: calc(30px - calc(2vw)) auto 0 auto;
+  width: 80%;
+  height: auto;
+}
+
+div.sign-card.d-flex.justify-content-center form#new_user.form-signin.mt-3 div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+div.form-group input{
+  height: 35px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+}
+
+div.form-group input:focus{
+  border: 1px solid #848484;
+  box-shadow: none;
+}
+
+.sign-ttm-btn{
+  margin: 20px 0 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  Password reset  */
+
+.pw-reset-email-form{
+    margin-top: 5vh;
+}
+
+.pw-reset-ttm-btn{
+  margin: 8vh 0 0 0;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  ###############  Profil User / Edit User  */
+
+/*  Edit User  */
+
+.edit-user-card{
+  padding: 20px 50px 35px;
+}
+
+div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form#edit_user.form-signin div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.pw-confirmation-form{
+  margin-bottom: 10px;
 }
 
 /*  ###############  Index  */
@@ -10747,4 +10836,188 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   font-size: 23px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+
+/*  ###############  Cryptolist  */
+
+/*  List  */
+
+.cryptolist-table{
+  margin-bottom: : 40px;
+}
+
+.green {
+  color: green
+}
+.red {
+  color: red
+}
+
+.cryptolist-logo {
+  display: inline;
+  height: 35px;
+  width: 35px;
+}
+
+.logo-name-container{
+  background-color: #fff;
+}
+
+.cryptolist-name{
+  font-size: 20px;
+  margin: 0;
+}
+
+table.table.ttm-card-bg.cryptolist-table tbody tr td.cryptolist-td, table.table.ttm-card-bg.cryptolist-table tbody tr th.cryptolist-th{
+  padding: 30px 25px 0;
+  height: 30px;
+}
+
+html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
+  padding: 10px;
+  margin: 0 5px;
+  width: 45px;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*  ###############  News  */
+
+.news-container{
+  padding: 50px 4vw;
+}
+
+.news-card{
+  border: 0px solid transparent;
+}
+
+.news-container .card-columns .news-card{
+  margin-bottom: 22px;
+}
+
+.news-title{
+  font-size: 25px;
+}
+
+.news-img-container{
+  overflow: hidden;
+  height: 250px;
+  position: relative;
+}
+
+.news-img-container img{
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
+.news-title-container, .news-text-btn-container{
+  padding: 20px;
+}
+
+/*  ###############  Articles  */
+
+/*  Articles Toolbar  */
+
+.articles-page-tools{
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .articles-page-tools{
+    flex-direction: column;
+    height: 200px;
+  }
+}
+
+.new-article-btn{
+  height: 42px;
+  margin: 0 20px;
+}
+
+.search-articles-form{
+
+}
+
+@media (max-width: 768px) {
+  .search-articles-form{
+    width: 80%;
+    margin-top: 20px;
+  }
+}
+
+.articles-search-form-elements{
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .articles-search-form-elements{
+    flex-direction: column;
+  }
+}
+
+.new-article-input-textarea{
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px 0 0 7px;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .new-article-input-textarea{
+    border-radius: 7px 7px 0 0;
+    height: 40px;
+    width: 100%;
+  }
+}
+
+input.new-article-input-btn{
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 0 7px 7px 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  input.new-article-input-btn{
+    border-radius: 0 0 7px 7px;
+  }
+}
+
+/*  Articles Cards  */
+
+.article-cards{
+  padding: 20px;
+  border: 0px solid transparent;
+}
+
+.article-card-title{
+  margin-bottom: 20px;
+}
+
+.articles-card-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-card-text{
+  margin-bottom: 10px;
 }

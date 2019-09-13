@@ -10925,10 +10925,27 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   padding: 20px;
 }
 
+/*  ###############  Articles  */
 
+.article-cards{
+  padding: 20px;
+  border: 0px solid transparent;
+}
 
+.article-card-title{
+  margin-bottom: 20px;
+}
 
+.articles-card-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
 
+.article-card-text{
+  margin-bottom: 10px;
+}
 
 
 

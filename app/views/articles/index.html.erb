@@ -3,16 +3,25 @@
   <%= text_field_tag 'content'%><br>
   <%= submit_tag "Search article" %>
 <% end %>
+
 <br/><br/>
 <%= link_to "New article", new_article_path %>
 <br/><br/>
 
-<% unless @articles == nil %>
-	<% @articles.each do |article| %>
-		<%= link_to article.title, article_path(article.id) %><br>
-		<%= "Author : " %> 
-		<%= link_to article.user.email, profile_path(article.user.id) %><br> 
-		<%= article.tag.name %><br>
-		<br/><br/>
+<div class="card-columns">
+	<% unless @articles == nil %>
+		<% @articles.each do |article| %>
+			<div class="card ttm-card-bg article-cards">
+				<h3 class="article-card-title">
+					<%= link_to article.title, article_path(article.id) %>
+				</h3>
+
+				<hr class="articles-card-hr">
+
+				<%= "Author : " %> 
+				<p class="article-card-text"><%= link_to article.user.email, profile_path(article.user.id) %></p>
+				<p class="article-card-text"><%= article.tag.name %></p>
+			</div>
+		<% end %>
 	<% end %>
-<% end %>
+</div>

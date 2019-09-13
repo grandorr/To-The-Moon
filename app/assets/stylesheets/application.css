@@ -10507,6 +10507,7 @@
   margin: auto;
   display: block;
 }
+
 .footer-column-container{
   border-right: 2px solid #fff;
   padding: 0 0px;
@@ -10599,6 +10600,11 @@
 
 .ttm-card-bg{
   background-color: #f2e9ff;
+  border-radius: 7px;
+}
+
+.ttm-card-light-bg{
+  background-color: #fbf8ff;
   border-radius: 7px;
 }
 
@@ -10923,6 +10929,37 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   margin-bottom: : 40px;
 }
 
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table thead tr.text-dark th.logo-name-container{
+  background-color: #fff;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr th.cryptolist-th.logo-name-container{
+  padding: 0px 20px 0 20px;
+  height: 30px;
+  background-color: #fff;
+}
+
+table tbody tr td.cryptolist-td{
+  padding: 25px 20px 0 20px;
+}
+
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container{
+  padding: 0px 20px 0 20px;
+  background-color: #fff;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-logo-container{
+  padding-top: 8px;
+}
+
+.html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr th.cryptolist-th.logo-name-container.cryptolist-rank-container{
+  padding-top: 15px;
+}
+
+.cryptolist-values{
+  font-size: 13px;
+}
+
 .green {
   color: green
 }
@@ -10936,18 +10973,33 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   width: 35px;
 }
 
-.logo-name-container{
-  background-color: #fff;
+.cryptolist-rank-container{
+  border-top-left-radius: 7px;
 }
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
+  padding-top: 20px;
+}
+
 
 .cryptolist-name{
   font-size: 20px;
   margin: 0;
 }
 
-table.table.ttm-card-bg.cryptolist-table tbody tr td.cryptolist-td, table.table.ttm-card-bg.cryptolist-table tbody tr th.cryptolist-th{
-  padding: 30px 25px 0;
-  height: 30px;
+.cryptolist-add-ttm-btn{
+  font-size: 16px;
+  height: 50px;
+  width: 100px;
+  padding: 7px 10px;
+  margin-top: 0;
+  line-height: 18px;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.cryptolist-td.cryptolist-add-container{
+  padding-top: 0;
+  margin-top: 6px;
+  height: 100%;
 }
 
 html body center a.btn.btn-primary, html body center a.btn.btn-secondary{

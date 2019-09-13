@@ -1,38 +1,29 @@
-<<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
 
-  </body>
-</html>
+      <div class="card-columns">
+        <% @news_list = api_request('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')%>
 
+        <% @news_list["Data"].each do |new| %>
+          <div class="card ttm-card-bg news-card">
 
+            <div class="news-title-container">
+              <h3 class="news-title">
+                <%= new['title'] %>
+              </h3>
+            </div>
 
+            <div class="news-img-container">
+              <%= image_tag new["imageurl"] %>
+            </div>
 
+            <div class="news-text-btn-container">
+              <p class="card-text"><%= new['body'] %> </p>
 
+              <a class="btn sign-ttm-btn"
+                <%= link_to 'view more', new['url'] %>
+              </a>
+            </div>
 
+          </div>
+        <% end %>
 
-
-
-
-<div class="card-columns">
-  <% @news_list = api_request('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')%>
-  <% @news_list["Data"].each do |new| %>
-
-<div class="card  ">
-<div class="card-sm" style="weight: 100%" %><%= image_tag new["imageurl"] %></div>
-
-  <div class="card-body bg-light card-md ">
-    <p class="card-title text-dark"><%= new['title'] %> </p>
-      <p class="card-text"><%= new['body'] %> </p>
-       <small class="text-muted">    <%= link_to 'view more', new['url'] %></small>
-  </div>
-</div>
-
-
-<% end %>
-
-</div>
+      </div>

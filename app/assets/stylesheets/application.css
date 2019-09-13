@@ -10588,6 +10588,12 @@
   height: 100%;
 }
 
+.page-title{
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
 /*  ###############  General Cells CSS  */
 
 .ttm-card-bg{
@@ -10879,12 +10885,45 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   text-transform: uppercase;
 }
 
+/*  ###############  News  */
 
+.news-container{
+  padding: 50px;
+}
 
+.news-card{
+  border: 0px solid transparent;
+}
 
+.news-container .card-columns .news-card{
+  margin-bottom: 22px;
+}
 
+.news-title{
+  font-size: 25px;
+}
 
+.news-img-container{
+  overflow: hidden;
+  height: 250px;
+  position: relative;
+}
 
+.news-img-container img{
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
+.news-title-container, .news-text-btn-container{
+  padding: 20px;
+}
 
 
 

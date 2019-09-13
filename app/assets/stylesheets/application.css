@@ -10643,13 +10643,13 @@
 .myButtonheader {
   background-color:transparent;
   border-radius:10px;
-  border:1px solid #4e6096;
+  border:2px solid #4e6096;
   font-family:"Saira Condensed";
   color: #000;
   font-size:20px;
-  padding:6px 15px;
+  padding:4px 10px;
   text-decoration:none;
-  margin: 0px 20px;
+  margin: 0px 5px;
 }
 .myButtonheader:hover {
   background-color:transparent;
@@ -10666,9 +10666,9 @@
   font-family:"Saira Condensed";
   color: #FFF;
   font-size:20px;
-  padding:6px 15px;
+  padding:4px 10px;
   text-decoration:none;
-  margin: 0px 20px;
+  margin: 0px 10px;
 }
 .myButtonheader:hover {
   background-color:transparent;
@@ -10682,7 +10682,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -10704,4 +10703,20 @@ box-shadow: 0px 10px 15px rgba(48, 35, 73, 0.4);
 
 .navbar-shadow {
 box-shadow: 0px 10px 15px rgba(249, 249, 249, 0.2);
+}
+
+.footer-shadow {
+box-shadow: 0px -15px 15px rgba(145, 154, 161, 0.4);
+}
+
+
+
+.pond {
+  display: flex;
+flex-direction: row;
+}
+
+.pond2 {
+  display: flex;
+justify-content: center;
 }

@@ -5,6 +5,7 @@ class UserCryptosController < ApplicationController
 		@user_cryptos = current_user.user_cryptos
 	end
 
+
 	def create
 		unless CryptoCurrency.where(name: params[:name]).length == 0
 			UserCrypto.create(

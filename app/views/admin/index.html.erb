@@ -7,12 +7,17 @@
   <ul>
   <% User.all.each do |user| %>
   <li><%= user.email %></li>
+  <%= link_to 'See user', profile_path(user.id) %>
   <% end %>
   </ul>
   <h3> Articles </h3>
   <p>Number of article create : <%= Article.all.length %> </p>
   <% Article.all.each do |article| %>
-  <%= article.title %>
+  <div>
+<p>  <%= article.title %></p>
+  <%= link_to "See article", article_path(article.id) %>
+  <%= link_to "Delete article", article_path(article.id), :method => :delete %>
+  </div>
   <% end %>
   <br/>
   <h2> Article report </h2>

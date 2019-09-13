@@ -10607,7 +10607,7 @@
 .post-comment-text-area{
   width: 300px;
   height: 54px;
-  border-radius: 7px;
+  border-radius: 7px 7px 0 7px;
   border: 1px solid #eee
 }
 
@@ -10622,33 +10622,35 @@
 .comment-container{
   background-color: #e8dff4;
   border-radius: 7px;
-  padding: 15px 22px;
+  padding: 8px 22px 15px;
   margin-bottom: 20px;
 }
 
 .comment-user{
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   margin: 0;
 }
 
 .comment-date{
-  margin: 3px 0 0 25px;
+  font-size: 15px;
+  margin: 2px 0 0 25px;
 }
 
 .comment-hr{
   border: 2px solid #493b72;
   width: 15%;
   border-radius: 3px;
-  margin-bottom: 10px;
+  margin: 8px 0 10px;
 }
 
 .comment-content{
   margin-left: 10px;
 }
 
-.post-comment-btn{
-  display: hidden;
+.post-comment-form-container form .post-comment-btn{
+  margin: 0;
+  border-radius: 0 7px 7px 0;
 }
 
 .comment-btn-container{

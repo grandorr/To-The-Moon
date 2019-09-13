@@ -13,12 +13,16 @@ class ProfilesController < ApplicationController
 		@friendship = current_user.friendships.find_by(friend: @user)
 		@conversations = @user.conversations
 		@messages = @user.received_messages
-		@new_messages = []
+		@senders = []
+		@unread_messages = 0
 		@messages.each do |message|
 			if message.has_been_read == false
-				@new_messages.append(message)
+				@senders.append(message.sender.email)
+				@unread_messages += 1
 			end
 		end
+		@senders = @senders.uniq
+		@favorite_articles = current_user.favorite_articles
 	end
 
 end

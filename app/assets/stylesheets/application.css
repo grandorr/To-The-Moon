@@ -11159,8 +11159,15 @@ input.new-article-input-btn{
   text-decoration: underline;
 }
 
+/*  ###############  Profile Show  */
 
-
+.profile-container{
+}
+.profile-card{
+  width: 50%;
+  padding: 40px;
+  margin: 0 auto;
+}
 
 
 

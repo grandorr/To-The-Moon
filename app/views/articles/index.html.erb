@@ -1,27 +1,41 @@
-<%= @hello %>
-<%= form_tag articles_path,:method => :get do %>
-  <%= text_field_tag 'content'%><br>
-  <%= submit_tag "Search article" %>
-<% end %>
+<div class="pages-container">
+	<div class="space-bg">
+		<div class="news-container">
+    		<h1 class="page-title text-center">
+    			Articles
+    		</h1>
 
-<br/><br/>
-<%= link_to "New article", new_article_path %>
-<br/><br/>
+			<div class="d-flex justify-content-center align-items-center articles-page-tools ttm-card-bg">
+				<a class="btn ttm-btn new-article-btn"
+					<%= link_to "New article", new_article_path %>
+				</a>
 
-<div class="card-columns">
-	<% unless @articles == nil %>
-		<% @articles.each do |article| %>
-			<div class="card ttm-card-bg article-cards">
-				<h3 class="article-card-title">
-					<%= link_to article.title, article_path(article.id) %>
-				</h3>
-
-				<hr class="articles-card-hr">
-
-				<%= "Author : " %> 
-				<p class="article-card-text"><%= link_to article.user.email, profile_path(article.user.id) %></p>
-				<p class="article-card-text"><%= article.tag.name %></p>
+					<%= @hello %>
+					<%= form_tag articles_path,class: "search-articles-form", :method => :get do %>
+						<div class="d-flex justify-content-center align-content-center articles-search-form-elements">
+							<%= text_field_tag 'content', "",class: "new-article-input-textarea" %>
+							<%= submit_tag "Search article", class: "btn new-article-input-btn" %>
+						</div>
+					<% end %>
 			</div>
-		<% end %>
-	<% end %>
+
+			<div class="card-columns">
+				<% unless @articles == nil %>
+					<% @articles.each do |article| %>
+						<div class="card ttm-card-bg article-cards">
+							<h3 class="article-card-title">
+								<%= link_to article.title, article_path(article.id) %>
+							</h3>
+
+							<hr class="articles-card-hr">
+
+							<%= "Author : " %> 
+							<p class="article-card-text"><%= link_to article.user.email, profile_path(article.user.id) %></p>
+							<p class="article-card-text"><%= article.tag.name %></p>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

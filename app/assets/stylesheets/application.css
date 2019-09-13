@@ -10888,7 +10888,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 /*  ###############  News  */
 
 .news-container{
-  padding: 50px;
+  padding: 50px 4vw;
 }
 
 .news-card{
@@ -10927,6 +10927,80 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 
 /*  ###############  Articles  */
 
+/*  Articles Toolbar  */
+
+.articles-page-tools{
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .articles-page-tools{
+    flex-direction: column;
+    height: 200px;
+  }
+}
+
+.new-article-btn{
+  height: 42px;
+  margin: 0 20px;
+}
+
+.search-articles-form{
+
+}
+
+@media (max-width: 768px) {
+  .search-articles-form{
+    width: 80%;
+    margin-top: 20px;
+  }
+}
+
+.articles-search-form-elements{
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .articles-search-form-elements{
+    flex-direction: column;
+  }
+}
+
+.new-article-input-textarea{
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px 0 0 7px;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .new-article-input-textarea{
+    border-radius: 7px 7px 0 0;
+    height: 40px;
+    width: 100%;
+  }
+}
+
+input.new-article-input-btn{
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 0 7px 7px 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  input.new-article-input-btn{
+    border-radius: 0 0 7px 7px;
+  }
+}
+
+/*  Articles Cards  */
+
 .article-cards{
   padding: 20px;
   border: 0px solid transparent;
@@ -10946,8 +11020,6 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 .article-card-text{
   margin-bottom: 10px;
 }
-
-
 
 
 

@@ -1,81 +1,110 @@
 <header>
   <script src="https://kit.fontawesome.com/068a9d7e61.js"></script>
 </header>
-<% unless @cryptos == nil %>
-  <% @n = 0 %>
-  <% @total = 0 %>
-  <% @total_coin = 0 %>
 
-  <table class="table">
-    <thead>
-      <tr class="text-dark">
-        <h1><th scope="col">rank</th>
-        <th scope="col">Symbol</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity</th>
-      <th scope="col"> Total </th>
-        <th scope="col"> 1h Change </th>
-        <th scope="col"> 24h Change </th>
-      <th scope="col"> 7 day Change </th></h1>
+<div class="pages-container">
+  <div class="space-bg">
+    <div class="news-container">
+      <h1 class="page-title text-center">
+        Articles
+      </h1>
+      <% unless @cryptos == nil %>
+        <% @n = 0 %>
+        <% @total = 0 %>
+        <% @total_coin = 0 %>
 
-      <th scope ="col"> 7 day chart  </th>
-            <th scope ="col">  </th>
-      </tr>
-    </thead>
-      <% @cryptos.each do |crypto| %>
-      <%  @url = 'https://api.coinlore.com/api/ticker/?id=' + crypto.crypto_id.to_s %>
-      <% @coin = api_request(@url) %>
-      <% @coin.each do |coin| %>
+        <table class="table ttm-card-bg">
+          <thead>
+            <tr class="text-dark">
+              <th scope="col">rank</th>
+              <th scope="col">Symbol</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col"> Total </th>
+              <th scope="col"> 1h Change </th>
+              <th scope="col"> 24h Change </th>
+              <th scope="col"> 7 day Change </th></h1>
+              <th scope ="col"> 7 day chart </th>
+              <th scope ="col"></th>
+            </tr>
+          </thead>
+          <% @cryptos.each do |crypto| %>
+          <%  @url = 'https://api.coinlore.com/api/ticker/?id=' + crypto.crypto_id.to_s %>
+            <% @coin = api_request(@url) %>
+            <% @coin.each do |coin| %>
 
+              <tbody>
+                <tr>
+                  <td class="text-dark">
+                    <%= coin['rank'] %>
+                  </td>
+                  <% symbol = coin_symbol_helper_check(coin['symbol']) %>
+                  <td>
+                    <img  class ="cryptolist-logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %>  
+                  </td>
+                  <td>
+                    <p>
+                      <%= link_to crypto.name, crypto_path(crypto.crypto_id) %>
+                    </p>
+                  </td>
+                  <td> 
+                    $ <%= price = coin['price_usd'] %>                  
+                  </td>
+                  <td>
+                  	<%= form_tag user_crypto_path(@user_cryptos[@n]),:method => :put do %>
+                      <%= text_field_tag 'quantity', @user_cryptos[@n].quantity.to_s%>
+                      <%= submit_tag "Update" %>
+                    <% end %>
+                  </td>
 
+                  <% if @user_cryptos[@n].quantity != nil %>
+                    <td>
+                      $ <%= @total_coin = (price.to_f * @user_cryptos[@n].quantity).round %>                    
+                    </td>
+                  <% else %>
+                    <td> Please add quantity </td>
+                  <% end %>
 
-      <tbody>
-            <tr>
-              <td class="text-dark"><%= coin['rank'] %></td>
-                <% symbol = coin_symbol_helper_check(coin['symbol']) %>
-              <td> <img  class ="logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %>  </td>
-              <td >   	<%= link_to crypto.name, crypto_path(crypto.crypto_id) %><br> </td>
-              <td>   $  <%= price = coin['price_usd'] %> </td>
-              <td>
+                  <% if coin["percent_change_1h"].to_f > 0 %>
+                    <td class="green" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-up"></i></td>
+                  <% else %>
+                    <td class="red" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-down" ></i></td>
+                  <% end %>
 
-            	<%= form_tag user_crypto_path(@user_cryptos[@n]),:method => :put do %>
-              <%= text_field_tag 'quantity', @user_cryptos[@n].quantity.to_s%>
-                                <%= submit_tag "Update" %>
-                <% end %>
-          </td>
-          <% if @user_cryptos[@n].quantity != nil %>
-                <td> $ <%= @total_coin = (price.to_f * @user_cryptos[@n].quantity).round %></td>
-          <% else %>
-              <td> Please add quantity </td>
-              <% end %>
-              <% if coin["percent_change_1h"].to_f > 0 %>
-                 <td class="green" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-up"></i></td>
-              <% else %>
-               <td class="red" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-down" ></i></td>
-                <%end%>
-              <% if coin["percent_change_24h"].to_f > 0 %>
-               <td class="green" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-up"></i></td>
-              <% else %>
-               <td class="red" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-down"></i></td>
-              <%end%>
-              <% if coin["percent_change_7d"].to_f > 0 %>
-               <td class="green" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-up"></i></td>
-              <% else %>
-               <td class="red" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-down"></i></td>
-              <%end%>
-              <% coin_name = coin["symbol"].downcase +  "-" + coin["name"].downcase.gsub(/\s+/, "-") %>
-              <%    coin_name = coin_name_chart_helper_check(coin_name) %>
+                  <% if coin["percent_change_24h"].to_f > 0 %>
+                    <td class="green" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-up"></i></td>
+                  <% else %>
+                     <td class="red" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-down"></i></td>
+                  <%end%>
 
-                    <td class=> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %></td>
+                  <% if coin["percent_change_7d"].to_f > 0 %>
+                     <td class="green" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-up"></i></td>
+                  <% else %>
+                     <td class="red" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-down"></i></td>
+                  <%end%>
 
-                <td> 	<%= link_to "x", user_crypto_path(@user_cryptos[@n].id), :method => :delete,data: { confirm: 'Are you sure to delete '+crypto.name+ " to your portfolio?"} %></td>
-              </tr>
-                </tbody>
-    <% end %>
-          <% @total += @total_coin %>
-    <% @n += 1 %>
-  <% end %>
-                    </table>
-                  <center>  <h1> TOTAL:    $ <%= @total %> </h1> </center>
-<% end %>
+                  <% coin_name = coin["symbol"].downcase +  "-" + coin["name"].downcase.gsub(/\s+/, "-") %>
+                  <% coin_name = coin_name_chart_helper_check(coin_name) %>
+
+                  <td class=> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %>
+                  </td>
+
+                  <td><%= link_to "x", user_crypto_path(@user_cryptos[@n].id), :method => :delete,data: { confirm: 'Are you sure to delete '+crypto.name+ " to your portfolio?"} %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+            <% @total += @total_coin %>
+            <% @n += 1 %>
+          <% end %>
+        </table>
+        <center>
+          <h1>
+            TOTAL: $ <%= @total %>
+          </h1>
+        </center>
+      <% end %>
+    </div>
+  </div>
+</div>

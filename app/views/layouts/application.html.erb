@@ -31,9 +31,6 @@
 
         <ul class="navbar-nav mr-auto">
 
-          <li class="nav-perso active">
-                <a role="button" class="myButtonsimple"<%= link_to "Users", profiles_path%></a>
-          </li>
           <li class="nav-perso">
                 <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
           </li>
@@ -41,7 +38,7 @@
                 <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
           </li>
           <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "News", root_path%> </a>
+                <a  role="button" class="myButtonsimple"<%= link_to "News", news_index_path %> </a>
           </li>
           <li class="nav-perso">
                 <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>

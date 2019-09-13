@@ -13,17 +13,24 @@
 				<% if current_user == @user %>
 					<%= link_to "Edit article", edit_article_path(@article.id) %><br>
 					<%= link_to "Delete article", article_path, :method => :delete %>
+					<br/><br/>
+				<% else %> 
+					<% unless current_user.favorite_articles.include? @article %>	
+							<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post %><br>
+					<% else %>
+							<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete %><br>
+					<% end %>
 				<% end %>
-				<br/><br/>
 
 				<% if current_user%>
-				<div class="d-flex align-items-center post-comment-form-container">
-					<%= form_tag comments_path, method: "post" do %>
+				<div class="post-comment-form-container">
+					<%= form_tag comments_path, method: "post", class: "d-flex align-items-end" do %>
 					  <%= text_area_tag 'content','',class: "post-comment-text-area" %>
 					  <%= hidden_field_tag "article", @article.id %>
-					  	<%= submit_tag "Comment"%>
+					  	<%= submit_tag "Comment", class: "btn sign-ttm-btn post-comment-btn" %>
 					<% end %>
 				</div>
+
 				<% end %>
 
 				<% unless @comments == nil %>
@@ -34,6 +41,15 @@
 							</div>
 							<hr class="comment-hr" align="left">
 							<p class="comment-content"><%= comment.content %></p>
+							<% unless current_user.likes.find_by(comment: comment) %>
+								<% if comment.likes.length == 0 %>
+									<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+								<% else %>
+									<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+								<% end %>
+							<% else %>
+								<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+							<% end %>
 							<% if current_user == comment.user %>
 								<div class="comment-btn-container">
 									<a class="btn ttm-btn comment-btn"

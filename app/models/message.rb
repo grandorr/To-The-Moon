@@ -28,4 +28,15 @@ class Message < ApplicationRecord
 				)
 		end
 	end
+
+	# Checks if the user's messages includes unread messages and updates its status if so
+
+	def self.has_been_read?(messages)
+		messages.each do |message|
+			if message.has_been_read == false
+				message.update_attribute(:has_been_read, true)
+			end
+		end
+	end
+
 end

@@ -1,4 +1,4 @@
-class CryptoController < ApplicationController
+class CryptoCurrenciesController < ApplicationController
 
   def show
     @coin_id = params[:id]

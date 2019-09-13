@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :user_cryptos
-  resources :crypto
+  resources :crypto_currencies
   resources :cryptolist
 
   resources :friend_requests

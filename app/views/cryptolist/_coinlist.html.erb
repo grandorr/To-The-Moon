@@ -30,7 +30,7 @@
 
       <td class="logo-name-container"><img class ="cryptolist-logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %> </td>
 
-      <td class="logo-name-container cryptolist-td"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %></h1></td>
+      <td class="logo-name-container cryptolist-td"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_currency_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %></h1></td>
 
       <td class="text-dark cryptolist-td"><strong> $ <%= coin['price_usd'] %></strong></td>
 

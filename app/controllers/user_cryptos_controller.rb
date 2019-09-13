@@ -31,7 +31,7 @@ class UserCryptosController < ApplicationController
 
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
 		current_user.user_cryptos.find_by(crypto_currency: crypto_currency).update_attribute(:quantity, params[:quantity])
-		
+
 
 		redirect_back(fallback_location: root_path)
 	end

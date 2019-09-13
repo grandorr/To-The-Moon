@@ -5,7 +5,7 @@
     <title>To The Moon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/068a9d7e61.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Saira+Condensed&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -60,12 +60,11 @@
 
        <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
 
-       <% if current_user.is_admin? %>
 
+        <% if current_user.is_admin? %>
+          <a type="button" class="myButtonheader" <%= link_to "Dashboard", admin_index_path %></a>
+        <% end %>
 
-         <a role="button" class="myButtonheader" <%= link_to "Dashboard", sales_path %></a>
-
-       <% end %>
 
      <% else %>
 

@@ -1,10 +1,16 @@
-<%= render "global" %>
+<div class="pages-container">
+	<div class="space-bg">
+		<div class="news-container">
+			<h1 class="page-title text-center">
+    			Cryptocurrencies
+    		</h1>
 
+			<%= render "global" %>
 
-<% n = @n.to_s %>
-<% url = 'https://api.coinlore.com/api/tickers/?start=' + n + '&limit=100'  %>
+			<% n = @n.to_s %>
 
-<% @coin_list = api_request(url) %>
-
-<%= render "coinlist" %>
-<center><%= render "naviguate_page" %></center>
+			<%= render "coinlist" %>
+			<center><%= render "naviguate_page" %></center>
+		</div>
+	</div>
+</div>

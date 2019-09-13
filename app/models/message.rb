@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+	
 	belongs_to :sender, class_name: "User"
 	belongs_to :recipient, class_name: "User"
 	belongs_to :conversation
@@ -28,4 +29,25 @@ class Message < ApplicationRecord
 				)
 		end
 	end
+
+	# Checks if the user's messages includes unread messages and updates its status if so
+
+	def self.has_been_read?(messages)
+		messages.each do |message|
+			if message.has_been_read == false
+				message.update_attribute(:has_been_read, true)
+			end
+		end
+	end
+
+	# Defines where to redirect according to the current user's position
+
+	def self.path_to_redirect?(checker, message)
+		if checker == "true"
+			return true
+		else	
+			return false
+		end
+	end
+
 end

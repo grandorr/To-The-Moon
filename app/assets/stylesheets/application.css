@@ -10553,6 +10553,7 @@
   margin: auto;
   display: block;
 }
+
 .footer-column-container{
   border-right: 2px solid #fff;
   padding: 0 0px;
@@ -10731,12 +10732,17 @@ justify-content: center;
   border-radius: 7px;
 }
 
+.ttm-card-light-bg{
+  background-color: #fbf8ff;
+  border-radius: 7px;
+}
+
 /*  Comments  */
 
 .post-comment-text-area{
   width: 300px;
   height: 54px;
-  border-radius: 7px;
+  border-radius: 7px 7px 0 7px;
   border: 1px solid #eee
 }
 
@@ -10751,33 +10757,35 @@ justify-content: center;
 .comment-container{
   background-color: #e8dff4;
   border-radius: 7px;
-  padding: 15px 22px;
+  padding: 8px 22px 15px;
   margin-bottom: 20px;
 }
 
 .comment-user{
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   margin: 0;
 }
 
 .comment-date{
-  margin: 3px 0 0 25px;
+  font-size: 15px;
+  margin: 2px 0 0 25px;
 }
 
 .comment-hr{
   border: 2px solid #493b72;
   width: 15%;
   border-radius: 3px;
-  margin-bottom: 10px;
+  margin: 8px 0 10px;
 }
 
 .comment-content{
   margin-left: 10px;
 }
 
-.post-comment-btn{
-  display: hidden;
+.post-comment-form-container form .post-comment-btn{
+  margin: 0;
+  border-radius: 0 7px 7px 0;
 }
 
 .comment-btn-container{
@@ -11042,12 +11050,44 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   text-transform: uppercase;
 }
 
+
 /*  ###############  Cryptolist  */
 
 /*  List  */
 
 .cryptolist-table{
   margin-bottom: : 40px;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table thead tr.text-dark th.logo-name-container{
+  background-color: #fff;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr th.cryptolist-th.logo-name-container{
+  padding: 0px 20px 0 20px;
+  height: 30px;
+  background-color: #fff;
+}
+
+table tbody tr td.cryptolist-td{
+  padding: 25px 20px 0 20px;
+}
+
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container{
+  padding: 0px 20px 0 20px;
+  background-color: #fff;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-logo-container{
+  padding-top: 8px;
+}
+
+.html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr th.cryptolist-th.logo-name-container.cryptolist-rank-container{
+  padding-top: 15px;
+}
+
+.cryptolist-values{
+  font-size: 13px;
 }
 
 .green {
@@ -11063,18 +11103,33 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   width: 35px;
 }
 
-.logo-name-container{
-  background-color: #fff;
+.cryptolist-rank-container{
+  border-top-left-radius: 7px;
 }
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
+  padding-top: 20px;
+}
+
 
 .cryptolist-name{
   font-size: 20px;
   margin: 0;
 }
 
-table.table.ttm-card-bg.cryptolist-table tbody tr td.cryptolist-td, table.table.ttm-card-bg.cryptolist-table tbody tr th.cryptolist-th{
-  padding: 30px 25px 0;
-  height: 30px;
+.cryptolist-add-ttm-btn{
+  font-size: 16px;
+  height: 50px;
+  width: 100px;
+  padding: 7px 10px;
+  margin-top: 0;
+  line-height: 18px;
+}
+
+html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.cryptolist-td.cryptolist-add-container{
+  padding-top: 0;
+  margin-top: 6px;
+  height: 100%;
 }
 
 html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
@@ -11232,4 +11287,14 @@ input.new-article-input-btn{
   font-weight: 600;
   color: #493b72;
   text-decoration: underline;
+}
+
+/*  ###############  Profile Show  */
+
+.profile-container{
+}
+.profile-card{
+  width: 50%;
+  padding: 40px;
+  margin: 0 auto;
 }

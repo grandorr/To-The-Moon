@@ -5,7 +5,7 @@ class CryptoController < ApplicationController
     @coin_symbol = params[:symbol]
     @coin_name = params[:name]
     @url = 'https://api.coinlore.com/api/ticker/?id=' + @coin_id
-    @coin = Crypto.api_request(@url)
+    @coin = api_request(@url)
     @coin.each do |coin|
       if @coin_symbol == nil
         @coin_symbol = coin["symbol"]

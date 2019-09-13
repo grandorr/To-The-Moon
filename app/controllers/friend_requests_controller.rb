@@ -1,7 +1,4 @@
 class FriendRequestsController < ApplicationController
-	
-	def new
-	end
 
 	def create
 		@user = User.find(params[:user].to_i)

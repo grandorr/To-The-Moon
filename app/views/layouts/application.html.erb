@@ -1,64 +1,94 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>To The Moon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/068a9d7e61.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Saira+Condensed&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </head>
 
+
+
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark head-color">
-    <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class=" navbar-shadow navbar navbar-expand-lg navbar-dark bg-dark head-color">
 
-          <div class="collapse navbar-collapse" id="navbarColor02">
+
+       <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
+
+
+<div class=" navbar-expand-lg collapse navbar-collapse pond2 " id="navbarColor02">
+
         <ul class="navbar-nav mr-auto">
 
-          <div class="items-center" id="navbarColor02">
+          <li class="nav-perso active">
+                <a role="button" class="myButtonsimple"<%= link_to "Users", profiles_path%></a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "News", root_path%> </a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
+          </li>
+          <li class="nav-perso">
+                <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
+          </li>
 
-    <a class="btn btn-primary btn "  role="button" <%= link_to "Users", profiles_path%></a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "News", news_index_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
-    <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
-        </ul>
-          </div>
-      <% if user_signed_in? %>
+</ul>
+</div>
+        <ul class="navbar-nav mr-auto pond">
 
+        <% if user_signed_in? %>
 
+       <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
 
-        <a type="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
-        <a type="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+       <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
 
 
         <% if current_user.is_admin? %>
-          <a type="button" class="btn btn-secondary" <%= link_to "Dashboard", admin_index_path %></a>
+          <a type="button" class="myButtonheader" <%= link_to "Dashboard", admin_index_path %></a>
         <% end %>
 
-      <% else %>
-        <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
-        <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
-      <% end %>
-    </div>
 
-  </nav>
+     <% else %>
+
+
+       <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
+       <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
+
+     <% end %>
+
+     </ul>
+
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+    </nav>
+
     <%= yield %>
+
 <br/><br/>
-    <footer id="footer" class="page-footer font-small fixed-bottom bg-dark">
-    <div class="card bg-dark  cart_card footer">
+
+
+    <footer id="footer" class="footer-shadow page-footer font-small fixed-bottom bg-dark">
+
+    <div class=" card bg-dark  cart_card footer">
       <!-- Footer Links -->
       <div class="container-fluid text-center text-md-left" style="color:#FFF;">
         <!-- Grid row -->
@@ -69,8 +99,8 @@
           <!-- Grid column -->
           <div class="col-md-6 mt-md-0 mt-3 footer-column-container-2">
             <!-- Content -->
-            <h4 class="text-uppercase bold"  style="color:#FFF;"" >Purpose</h4>
-            </br>
+          </br>
+            <h4 class="text-uppercase bold"  style="color:#FFF;" >Purpose</h4>
             <p> Our platform is designed for new comers who want to become more knowledgeable on crypto-currencies.</p>
             <p> To the moon aim to inform its users on distributed ledger technology (technology behind crypto-currencies).</p>
           </div>
@@ -79,17 +109,21 @@
           <!-- Grid column -->
           <div class="col-md-3 mb-md-0 mb-3 footer-column-container-3">
             <!-- Links -->
+            </br>
             <h4 class="text-uppercase bold" style=color:#FFF;"">Sections</h4>
 
             <ul class="list-unstyled">
               <li>
-                <a href="#!" style="color:#FFFFFF;">Mes Cryptos</a>
+                <a style="color:#FFF;" <%= link_to "Terms And Conditions",'/static_pages/terms_and_conditions' %></a>
               </li>
               <li>
-                <a href="#!" style="color:#FFFFFF;">Mes news</a>
+                <a style="color:#FFF;" <%= link_to "Privacy Policy",'/static_pages/privacy_policy' %></a>
               </li>
               <li>
-                <a href="#!" style="color:#FFFFFF;">Mes amis</a>
+                <a style="color:#FFF;" <%= link_to "Contact",'/static_pages/contact' %></a>
+              </li>
+              <li>
+                <a style="color:#FFF;" <%= link_to "About",'/static_pages/about' %></a>
               </li>
             </ul>
           </div>
@@ -101,7 +135,6 @@
     </div>
     <!-- Card Links -->
   </footer>
-  <!-- Footer -->
+  <!-- Footer →
 
-  </body>
-</html>
+    </html>

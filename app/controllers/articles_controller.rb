@@ -1,32 +1,14 @@
 class ArticlesController < ApplicationController
 		before_action :authenticate_user!, except: [:show,:index]
+	
 	def index
-		if params[:content] == nil || params[:content] == ""
-			@articles = Article.all
-			@articles = @articles.reverse
+		@research = params
+		unless Article.check_if_research(@research)
+			@articles = Article.all.reverse
 		else
-			@articles = []
-			@find_articles = Article.all
-			@find_articles.each do |article|
-				if article.tag.name.include? params[:content]
-					@articles.append(article)
-				elsif article.user.email.include? params[:content]
-					@articles.append(article)
-				elsif article.content.include? params[:content]
-					@articles.append(article)
-				elsif article.title.downcase.include? params[:content]
-					@articles.append(article)
-				end
-			end
-			#@articles = Article.where(tag: Tag.find_by(name:params[:content]))
-			@articles = @articles.reverse
+			@articles = Article.make_research(@research)
 		end
 	end
-
-
-	def new
-	end
-
 
 	def show
 		@article = Article.find(params[:id])
@@ -36,9 +18,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		if Tag.find_by(name: params[:tag]) == nil
-			Tag.create(name: params[:tag])
-		end
+		Article.tag_exists?(params[:tag])
 		@article = Article.create(
 			title: params[:title],
 			content: params[:content],
@@ -46,8 +26,6 @@ class ArticlesController < ApplicationController
 			tag: Tag.find_by(name: params[:tag])
 		)
 		@article.picture.attach(params[:picture])
-
-
 		redirect_to articles_path
 	end
 
@@ -58,26 +36,20 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-		if Tag.find_by(name: params[:tag]) == nil
-			Tag.create(name: params[:tag])
-		end
+		Article.tag_exists?(params[:tag])
 		@article = Article.find(params[:id])
-		@article.update_attribute(:title, params[:title])
-		@article.update_attribute(:content, params[:content])
-		@article.update_attribute(:user, current_user)
-		@article.update_attribute(:tag, Tag.find_by(name: params[:tag]))
+		@article.update_attributes(
+			:title => params[:title], 
+			:content => params[:content], 
+			:user => current_user, 
+			:tag => Tag.find_by(name: params[:tag])
+			)
 		@article.picture.attach(params[:picture])
-
 		redirect_to articles_path
 	end
 
 	def destroy
 		Article.find(params[:id]).destroy
-	end
-
-
-	def article_params
-	  params.require(:@article).permit(:picture)
 	end
 
 end

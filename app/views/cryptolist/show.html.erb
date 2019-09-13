@@ -8,9 +8,6 @@
 			<%= render "global" %>
 
 			<% n = @n.to_s %>
-			<% url = 'https://api.coinlore.com/api/tickers/?start=' + n + '&limit=100'%>
-
-			<% @coin_list = api_request(url) %>
 
 			<%= render "coinlist" %>
 			<center><%= render "naviguate_page" %></center>

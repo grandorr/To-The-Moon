@@ -6,7 +6,9 @@ class FriendRequestsController < ApplicationController
 			user: @user,
 			pending_friend: current_user
 			)
-		redirect_to profile_path(@user.id)
+
+	  redirect_to profile_path(@user.id) 
+
 	end
 
 end

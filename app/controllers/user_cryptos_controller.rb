@@ -1,7 +1,6 @@
 class UserCryptosController < ApplicationController
+
 	before_action :authenticate_user!
-
-
 
 	def index
 			crypto_array = get_coin
@@ -11,28 +10,18 @@ class UserCryptosController < ApplicationController
 
 
 	def create
-		unless CryptoCurrency.where(name: params[:name]).length == 0
-			UserCrypto.create(
-				user: current_user,
-				crypto_currency: CryptoCurrency.find_by(name: params[:name]),
-				quantity: 0
-				)
-		else
-			@crypto =	CryptoCurrency.create(
-				name: params[:name],
-				crypto_id: params[:id]
-				)
-			UserCrypto.create(
-				user: current_user,
-				crypto_currency: @crypto,
-				quantity: 0
-				)
-		end
+		crypto_currency = CryptoCurrency.crypto_exists?(params[:name],  params[:id])
+		UserCrypto.create(
+			user: current_user,
+			crypto_currency: crypto_currency,
+			quantity: 0
+			)
 	end
 
 	def update
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
-		current_user.user_cryptos.find_by(crypto_currency: crypto_currency).update_attribute(:quantity, params[:quantity])
+		quantity = UserCrypto.check_quantity(params[:quantity].to_i)	
+		current_user.user_cryptos.find_by(crypto_currency: crypto_currency).update_attribute(:quantity, quantity)
 		redirect_back(fallback_location: root_path)
 	end
 

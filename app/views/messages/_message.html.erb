@@ -1,0 +1,10 @@
+<li>
+	<% if message.sender.email == current_user.email %>
+		<%= "Me :" %><br>
+	<% else %> 
+		<%= message.sender.email + " :" %><br>
+	<% end %>
+	<%= message.content %><br>
+	<%= message.created_at %>
+	<br/><br/>
+</li>

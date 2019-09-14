@@ -85,7 +85,7 @@
 							<% if current_user.pending_friends.include?(@user) %>
 								<a <%= link_to "Accept friend request", friendships_path(:friend_id => @user.id), method: :post %></a>
 							<% else %>
-								<a <%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %></a>
+								<a <%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post%></a>
 							<% end %>
 						<% else %>
 							<%= "Friend request already sent" %></p>

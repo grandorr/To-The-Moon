@@ -31,10 +31,6 @@ class UserCryptosController < ApplicationController
 	end
 
 	def destroy
-		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		puts(params)
-		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-
 		@crypto = params[:crypto]
 		@n = params[:n].to_i
 		current_user.user_cryptos.find(params[:id]).destroy

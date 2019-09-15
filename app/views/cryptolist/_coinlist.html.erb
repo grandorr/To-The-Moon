@@ -59,18 +59,23 @@
       <%    coin_name = coin_name_chart_helper_check(coin_name) %>
       <td class="cryptolist-td cryptolist-add-container d-flex align-items-center">
         <% checker = [] %>
-        <% @coin_tab.each do |crypto| %>
-          <% if crypto.crypto_id != coin["id"] %>
-            <% checker << false %>
-          <% else %>
-            <% checker << true %>
+        <% if @coin_tab %>
+          <% @coin_tab.each do |crypto| %>
+            <% if crypto.crypto_id != coin["id"] %>
+              <% checker << false %>
+            <% else %>
+              <% checker << true %>
+            <% end %>
           <% end %>
-        <% end %>
-        <% unless checker.include?(true) %>
-          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post, :remote => true %></a>
+          <% unless checker.include?(true) %>
+            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+            <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post, :remote => true %></a>
+          <% else %>
+            <%= "Already in portfolio" %>
+          <% end %>
         <% else %>
-          <%= "Already in portfolio" %>
+          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+            <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post %></a>
         <% end %>
         
         </a>

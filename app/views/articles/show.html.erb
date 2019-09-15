@@ -16,11 +16,13 @@
 						<%= link_to "Delete article", article_path, :method => :delete %>
 						<br/><br/>
 					<% else %> 
+					<div id="favorite">
 						<% unless current_user.favorite_articles.include? @article %>	
-								<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post %><br>
+								<a id="add"<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post, remote: true %><a><br>
 						<% else %>
-								<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete %><br>
+								<a id="withdraw"<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete, remote: true %><a><br>
 						<% end %>
+					</div>
 					<% end %>
 				<div class="post-comment-form-container">
 					<%= form_tag comments_path, method: "post", class: "d-flex align-items-end" do %>

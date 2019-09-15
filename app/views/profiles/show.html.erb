@@ -37,7 +37,7 @@
 						<p><%= "My friends :" %></p>
 						<% @friends.each do |friend| %>
 						<li>
-							<a <%= link_to friend.email, profile_path(friend.id) %></a> - 
+							<a <%= link_to friend.email, profile_path(friend.id) %></a>
 						</li>
 						<% end %>
 					<% end %>
@@ -67,7 +67,7 @@
 					<% unless @articles == nil %>
 						<p><%= "My articles : "%></p>
 						<% @articles.each do |article| %>
-							<a <%= link_to article.title, article_path(article.id) %></a>a>
+							<a <%= link_to article.title, article_path(article.id) %></a>
 						<% end %>
 					<% end %>
 					

@@ -1,5 +1,24 @@
-var quantity = parseFloat("<%= @quantity %>")
-var n = ("<%= @n %>")
-console.log(quantity)
-console.log(n)
-document.getElementsByClassName("quantity-input")[n].childNodes[0].value = quantity
+var quantity = parseFloat("<%= @quantity %>");
+console.log(quantity);
+var n = ("<%= @n %>");
+var price = parseFloat("<%= @price %>");
+console.log(price);
+var newPrice = (quantity * price).toFixed(2);
+console.log(newPrice);
+var total = 0;
+var arr = [];
+var reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+console.log(document.getElementsByClassName("crypto-price")[n].childNodes[0].textContent);
+document.getElementsByClassName("quantity-input")[n].childNodes[0].value = quantity;
+document.getElementsByClassName("crypto-price")[n].childNodes[0].textContent = newPrice;
+
+var cryptoPrices = document.getElementsByClassName("crypto-price");
+console.log(cryptoPrices.length)
+for (var i = 0; i < cryptoPrices.length; i++) {
+	arr.push(parseFloat(cryptoPrices[i].childNodes[0].textContent));
+  console.log(cryptoPrices[i].childNodes[0].textContent);
+  }
+console.log(arr);
+total = arr.reduce(reducer).toFixed(2);
+document.getElementById("total").childNodes[0].textContent = "TOTAL : $" + total;

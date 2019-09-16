@@ -30,6 +30,7 @@ class UserCryptosController < ApplicationController
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
 		quantity = UserCrypto.check_quantity(params[:quantity].to_i)	
 		@n = params[:n].to_i
+		@price = params[:price].to_f
 		@quantity = params[:quantity].to_f
 		@user_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto_currency)
 		@user_crypto.update_attribute(:quantity, quantity)

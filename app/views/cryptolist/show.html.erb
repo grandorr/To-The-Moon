@@ -10,7 +10,9 @@
 			<% n = @n.to_s %>
 
 			<%= render "coinlist" %>
+			<% if @coin_list.length != 1 %>
 			<center><%= render "naviguate_page" %></center>
+			<% end %> 
 		</div>
 	</div>
 </div>

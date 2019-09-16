@@ -3,7 +3,7 @@
   <script src="https://kit.fontawesome.com/068a9d7e61.js"></script>
 </header>
 
-<%= form_tag articles_path,class: "search-articles-form", :method => :get do %>
+<%= form_tag cryptolist_path,class: "search-articles-form", :method => :get do %>
   <div class="d-flex justify-content-center align-content-center articles-search-form-elements">
     <%= text_field_tag 'content', "",class: "new-article-input-textarea" %>
     <%= submit_tag "Search crypto", class: "btn new-article-input-btn" %>
@@ -28,6 +28,10 @@
   </thead>
 
 
+
+
+
+  <% if @coin_list.length != 1 %>
   <% @coin_list["data"].each do |coin| %>
   <% @crypto_name = coin["name"] %>
   <% symbol = coin_symbol_helper_check(coin['symbol']) %>
@@ -91,5 +95,72 @@
       <td class="cryptolist-td"> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %></td>
 
   </tbody>
+<% end %>
+<% else %>
+<% @coin_list.each do |coin| %>
+<% @crypto_name = coin["name"] %>
+  <% symbol = coin["symbol"] %>
+
+
+<tbody>
+  <tr>
+    <th scope="row" class="cryptolist-th logo-name-container cryptolist-rank-container"><%= coin["rank"] %></th>
+
+    <td class="logo-name-container cryptolist-logo-container"><img class ="cryptolist-logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %> </td>
+
+    <td class="logo-name-container cryptolist-td cryptolist-name-container"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_currency_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %></h1></td>
+
+    <td class="text-dark cryptolist-td cryptolist-values"><strong> $ <%= coin['price_usd'] %></strong></td>
+
+    <td class=" cryptolist-td cryptolist-values"><%= number_to_currency(coin['market_cap_usd'], precision: 0, delimiter: " ") %></td>
+
+    <% if coin["percent_change_1h"].to_f > 0 %>
+       <td class="green cryptolist-td cryptolist-values" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-up"></i></td>
+    <% else %>
+     <td class="red cryptolist-td cryptolist-values" ><%= coin["percent_change_1h"]%>% <i class="fas fa-caret-down" ></i></td>
+      <%end%>
+
+    <% if coin["percent_change_24h"].to_f > 0 %>
+     <td class="green cryptolist-td cryptolist-values" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-up"></i></td>
+    <% else %>
+     <td class="red cryptolist-td cryptolist-values" ><%= coin["percent_change_24h"]%>% <i class="fas fa-caret-down"></i></td>
+    <%end%>
+
+    <% if coin["percent_change_7d"].to_f > 0 %>
+     <td class="green cryptolist-td cryptolist-values" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-up"></i></td>
+    <% else %>
+     <td class="red cryptolist-td cryptolist-values" ><%= coin["percent_change_7d"]%>% <i class="fas fa-caret-down"></i></td>
+    <% end%>
+
+
+    <% coin_name = coin["symbol"].downcase +  "-" + coin["name"].downcase.gsub(/\s+/, "-") %>
+    <%    coin_name = coin_name_chart_helper_check(coin_name) %>
+    <td class="cryptolist-td cryptolist-add-container d-flex align-items-center">
+      <% checker = [] %>
+      <% if @coin_tab %>
+        <% @coin_tab.each do |crypto| %>
+          <% if crypto.crypto_id != coin["id"] %>
+            <% checker << false %>
+          <% else %>
+            <% checker << true %>
+          <% end %>
+        <% end %>
+        <% unless checker.include?(true) %>
+          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post, :remote => true %></a>
+        <% else %>
+          <%= "Already in portfolio" %>
+        <% end %>
+      <% else %>
+        <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post %></a>
+      <% end %>
+
+      </a>
+    </td>
+    <td class="cryptolist-td"> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %></td>
+
+</tbody>
+<% end %>
 <% end %>
 </table>

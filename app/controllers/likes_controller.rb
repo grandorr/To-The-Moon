@@ -3,7 +3,7 @@ class LikesController < ApplicationController
 	end
 
 	def create
-		if params[:comment] == nil
+		if Like.for_comment_or_article?(params[:comment])
 			Like.create(
 				user: current_user,
 				article: Article.find(params[:article].to_i)
@@ -18,11 +18,12 @@ class LikesController < ApplicationController
 	end
 
 	def destroy
-		if params[:article] == nil
+		if Like.for_comment_or_article?(params[:article])
 			current_user.likes.find_by(article: params[:article]).destroy
 		else
 			current_user.likes.find_by(comment: params[:comment]).destroy
 		end
 		redirect_to article_path(params[:article].to_i)
 	end
+	
 end

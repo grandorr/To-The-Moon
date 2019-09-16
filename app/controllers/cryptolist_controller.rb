@@ -9,6 +9,7 @@ class CryptolistController < ApplicationController
 
    if current_user
      @coin_tab = current_user.crypto_currencies.all
+
    end
   end
 

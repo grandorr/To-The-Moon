@@ -45,7 +45,7 @@ tags = Tag.all
 		)
 end
 
-10.times do
+7.times do
 	Article.create(
 		user: users.sample,
 		tag: tags.sample,
@@ -53,3 +53,12 @@ end
 		content: Faker::Movies::Lebowski.quote
 		)
 end
+
+n = User.first.id
+
+2.times do
+	FriendRequest.create(user: User.find(n), pending_friend: User.find(n + 1))
+	n += 2
+end
+
+Friendship.create(user: User.first, friend: User.last)

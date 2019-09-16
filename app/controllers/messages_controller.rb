@@ -12,10 +12,13 @@ class MessagesController < ApplicationController
 			has_been_read: true,
 			conversation: current_user.conversations.find_by(interlocutor: User.find(params[:recipient].to_i))
 			)
-		if params[:checker] == "true"
+		if Message.path_to_redirect?(params[:checker], @message)
 			redirect_to profile_path(@message.recipient.id)
 		else	
-			redirect_back(fallback_location: root_path)
+			respond_to do |format|
+      	format.html { redirect_back(fallback_location: root_path) }
+      	format.js { }
+    	end
 		end
 	end
 

@@ -1,13 +1,9 @@
 class ConversationsController < ApplicationController
-
+	before_action :authenticate_user!
 	def show
 		@conversation = Conversation.find(params[:id])
 		@messages = @conversation.messages
-		@messages.each do |message|
-			if message.has_been_read == false
-				message.update_attribute(:has_been_read, true)
-			end
-		end
+		Message.has_been_read?(@messages)
 	end
 
 end

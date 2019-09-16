@@ -1,12 +1,6 @@
-class CryptoController < ApplicationController
-
-
-
-  def index
-  end
+class CryptoCurrenciesController < ApplicationController
 
   def show
-
     @coin_id = params[:id]
     @coin_symbol = params[:symbol]
     @coin_name = params[:name]

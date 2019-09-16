@@ -45,9 +45,10 @@ class ArticlesController < ApplicationController
 			:user => current_user,
 			:tag => Tag.find_by(name: params[:tag])
 			)
+
 		if params[:picture]
-		@article.picture.attach(params[:picture])
-	end
+			@article.picture.attach(params[:picture])
+		end
 		redirect_to articles_path
 	end
 

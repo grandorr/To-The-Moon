@@ -12,8 +12,9 @@ class UserCryptosController < ApplicationController
 	def create
 		puts params
 		@n = params[:n].to_i
+
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
-		UserCrypto.create(
+		@crypto = UserCrypto.create(
 			user: current_user,
 			crypto_currency: crypto_currency,
 			quantity: 0
@@ -25,11 +26,18 @@ class UserCryptosController < ApplicationController
 	end
 
 	def update
-		puts params
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
-		quantity = UserCrypto.check_quantity(params[:quantity].to_i)
-		current_user.user_cryptos.find_by(crypto_currency: crypto_currency).update_attribute(:quantity, quantity)
-		redirect_back(fallback_location: root_path)
+		quantity = UserCrypto.check_quantity(params[:quantity].to_i)	
+		@n = params[:n].to_i
+		@price = params[:price].to_f
+		@quantity = params[:quantity].to_f
+		@user_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto_currency)
+		@user_crypto.update_attribute(:quantity, quantity)
+		
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 	def destroy

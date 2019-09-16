@@ -44,7 +44,6 @@ class ArticlesController < ApplicationController
 			:user => current_user, 
 			:tag => Tag.find_by(name: params[:tag])
 			)
-		@article.picture.attach(params[:picture])
 		redirect_to articles_path
 	end
 

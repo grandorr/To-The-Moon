@@ -2,7 +2,6 @@
 <header>
   <script src="https://kit.fontawesome.com/068a9d7e61.js"></script>
 </header>
-
 <table class="table ttm-card-light-bg cryptolist-table">
   <thead>
     <tr class="text-dark">
@@ -77,7 +76,7 @@
           <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
             <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post %></a>
         <% end %>
-        
+
         </a>
       </td>
       <td class="cryptolist-td"> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %></td>

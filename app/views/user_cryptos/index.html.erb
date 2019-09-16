@@ -41,9 +41,10 @@
                 <td>  <%= number_to_currency(price, precision: 2, delimiter: " ") %>  </td>
                 <% end %>
                 <td>
-                <%= form_tag user_crypto_path(crypto.crypto_id),:method => :put do %>
-                <%= text_field_tag 'quantity', crypto_currency[n].quantity.to_s%>
-                                  <%= submit_tag "Update" %>
+                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n => n),:method => :put, :remote => true do %>
+                <div class="quantity-input"><%= text_field_tag 'quantity', crypto_currency[n].quantity.to_s%>
+                  <%= submit_tag "Update" %>
+                  </div>
                   <% end %>
                 </td>
                 <% if crypto_currency[n].quantity != nil %>

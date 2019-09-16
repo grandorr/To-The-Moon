@@ -15,9 +15,9 @@
 						<%= link_to "Edit article", edit_article_path(@article.id) %><br>
 						<%= link_to "Delete article", article_path, :method => :delete %>
 						<br/><br/>
-					<% else %> 
+					<% else %>
 					<div id="favorite">
-						<% unless current_user.favorite_articles.include? @article %>	
+						<% unless current_user.favorite_articles.include? @article %>
 								<a id="add"<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post, remote: true %><a><br>
 						<% else %>
 								<a id="withdraw"<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete, remote: true %><a><br>
@@ -33,6 +33,7 @@
 				</div>
 
 				<% end %>
+<<<<<<< HEAD
 				<% unless @comments == nil %>
 					<% @comments.each do |comment| %>
 						<div class="comment-container">
@@ -44,23 +45,38 @@
 							<% unless current_user.likes.find_by(comment: comment) %>
 								<% if comment.likes.length == 0 %>
 									<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
-								<% else %>
-									<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
-								<% end %>
-							<% else %>
-								<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
-							<% end %>
-							<% if current_user == comment.user %>
-								<div class="comment-btn-container">
-									<a class="btn ttm-btn comment-btn"
-										<%= link_to "Edit comment", edit_comment_path(comment.id) %>
-									</a>
-									<a class="btn ttm-btn comment-btn"
-										<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %>
-									</a>
+=======
+				<% if current_user %>
+					<% unless @comments == nil %>
+						<% @comments.each do |comment| %>
+							<div class="comment-container">
+								<div class="d-flex">
+									<p class="comment-user"><%= comment.user.email %></p><p class="comment-date"><%= comment.created_at %>
 								</div>
-							<% end %>
-						</div>
+								<hr class="comment-hr" align="left">
+								<p class="comment-content"><%= comment.content %></p>
+								<% unless current_user.likes.find_by(comment: comment) %>
+									<% if comment.likes.length == 0 %>
+										<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+									<% else %>
+										<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+									<% end %>
+>>>>>>> master
+								<% else %>
+									<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+								<% end %>
+								<% if current_user == comment.user %>
+									<div class="comment-btn-container">
+										<a class="btn ttm-btn comment-btn"
+											<%= link_to "Edit comment", edit_comment_path(comment.id) %>
+										</a>
+										<a class="btn ttm-btn comment-btn"
+											<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %>
+										</a>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
 					<% end %>
 				<% end %>
 			</div>

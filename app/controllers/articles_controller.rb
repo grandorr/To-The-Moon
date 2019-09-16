@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 		before_action :authenticate_user!, except: [:show,:index]
-	
+
 	def index
 		@research = params
 		unless Article.check_if_research(@research)
@@ -38,12 +38,17 @@ class ArticlesController < ApplicationController
 	def update
 		Article.tag_exists?(params[:tag])
 		@article = Article.find(params[:id])
+		puts params
 		@article.update_attributes(
-			:title => params[:title], 
-			:content => params[:content], 
-			:user => current_user, 
+			:title => params[:title],
+			:content => params[:content],
+			:user => current_user,
 			:tag => Tag.find_by(name: params[:tag])
 			)
+
+		if params[:picture]
+			@article.picture.attach(params[:picture])
+		end
 		redirect_to articles_path
 	end
 

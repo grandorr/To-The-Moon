@@ -31,7 +31,7 @@ emails = ["jon@mail.com", "jak@mail.com", "jim@mail.com", "jail@mail.com", "me@m
 	@coin_list = api_request(url)
 
 	@coin_list["data"].each do |coin|
-	CryptoCurrency.create(name: coin["name"], crypto_id: coin["id"])
+	CryptoCurrency.create(name: coin["name"].downcase, crypto_id: coin["id"], symbol: coin["symbol"].downcase)
 	@n += 100
 	end
 end

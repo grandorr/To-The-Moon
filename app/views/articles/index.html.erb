@@ -5,8 +5,8 @@
     			Articles
     		</h1>
 
-			<div class="d-flex justify-content-center align-items-center articles-page-tools ttm-card-bg">
-				<a class="btn ttm-btn new-article-btn"
+			<div class="d-flex justify-content-between align-items-center articles-page-tools">
+				<a class="btn new-articles-ttm-btn"
 					<%= link_to "New article", new_article_path %>
 				</a>
 
@@ -27,11 +27,19 @@
 								<%= link_to article.title, article_path(article.id) %>
 							</h3>
 
-							<hr class="articles-card-hr">
+							<% if article.picture.attached? %>
+								<div class="article-card-img-container">
+									<%= image_tag(article.picture, class: "article-show-img") %>
+								</div>
+							<% else %>
+								<hr class="articles-card-hr">
+							<% end %>
 
-							<%= "Author : " %> 
-							<p class="article-card-text"><%= link_to article.user.email, profile_path(article.user.id) %></p>
-							<p class="article-card-text"><%= article.tag.name %></p>
+							<div class="article-card-bottom">
+								<p>Author :</p>
+								<p class="article-card-text"><%= link_to article.user.email, profile_path(article.user.id) %></p>
+								<p class="article-card-text"><%= article.tag.name %></p>
+							</div>
 						</div>
 					<% end %>
 				<% end %>

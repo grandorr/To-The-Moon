@@ -11054,6 +11054,61 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 
 /*  ###############  Cryptolist  */
 
+
+/*  Update crypto quantity Form Popup  */
+
+.update-crypto-number-container-container{
+  height: 0;
+  position: sticky;
+  top: 0;
+}
+
+.update-crypto-number-container{
+  z-index: 100;
+  background-color: rgba(0,0,0,0.4);
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.update-crypto-number-card{
+ padding: 50px;
+ width: 50vw;
+ min-width: 300px;
+}
+
+.update-crypto-number-form{
+
+
+}
+
+/*  Search form  */
+
+.cryptolist-search-container{
+
+}
+
+.search-cryptolist-input-textarea{
+  height: 38px;
+  margin-right: -5px;
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px 0 0 7px;
+  width: 200px;
+}
+
+.search-cryptolist-input-btn{
+  margin-top: -3px;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 0 7px 7px 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 /*  List  */
 
 .cryptolist-table{
@@ -11147,6 +11202,17 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 
 /*  ###############  News Index */
 
+.new-articles-ttm-btn{
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 .news-container{
   padding: 50px 4vw;
 }
@@ -11190,8 +11256,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 /*  Articles Toolbar  */
 
 .articles-page-tools{
-  height: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 @media (max-width: 768px) {
@@ -11218,7 +11283,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 }
 
 .articles-search-form-elements{
-  margin: 0 20px;
+
 }
 
 @media (max-width: 768px) {
@@ -11262,32 +11327,82 @@ input.new-article-input-btn{
 /*  Articles Cards  */
 
 .article-cards{
-  padding: 20px 28px;
   border: 0px solid transparent;
 }
 
+.article-card-img-container{
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.article-card-img-container img{
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
 .article-card-title{
+  padding: 20px 28px 0;
   margin-bottom: 20px;
 }
 
-.articles-card-hr{
+.article-cards .articles-card-hr{
   border: 2px solid #493b72;
   width: 15%;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin: 0 0 10px 28px;
 }
 
 .article-card-text{
   margin-bottom: 10px;
 }
 
+.article-card-bottom{
+  padding: 0 28px 20px;
+}
+
 /*  ###############  Articles Show  */
+
+.article-show-container{
+  padding: 0 28px 20px;
+}
+
+@media (max-width: 768px) {
+  .article-show-container{
+    flex-direction: column-reverse;
+  }
+}
 
 .article-user a{
   font-size: 20px;
   font-weight: 600;
   color: #493b72;
   text-decoration: underline;
+}
+
+.article-show-img-container{
+  width: 30%;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 768px) {
+  .article-show-img-container{
+    width: 100%;
+  }
+}
+
+.article-show-img{
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 /*  ###############  Profile Show  */

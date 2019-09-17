@@ -9,9 +9,6 @@ class UserCryptosController < ApplicationController
 	end
 
 	def new
-		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		puts(params)
-		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		@n = params[:n]
 		@id = params[:id].to_i
 		respond_to do |format|
@@ -25,12 +22,16 @@ class UserCryptosController < ApplicationController
 		puts params
 		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:crypto].to_i)
+		@n = params[:n].to_i
 		@crypto = UserCrypto.create(
 			user: current_user,
 			crypto_currency: crypto_currency,
 			quantity: params[:quantity].to_i
 		)
-		redirect_back(fallback_location: root_path)
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 	def update

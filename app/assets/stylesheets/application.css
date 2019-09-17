@@ -10964,6 +10964,17 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 
 /*  ###############  News Index */
 
+.new-articles-ttm-btn{
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 .news-container{
   padding: 50px 4vw;
 }
@@ -11007,8 +11018,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 /*  Articles Toolbar  */
 
 .articles-page-tools{
-  height: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 @media (max-width: 768px) {
@@ -11035,7 +11045,7 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 }
 
 .articles-search-form-elements{
-  margin: 0 20px;
+
 }
 
 @media (max-width: 768px) {

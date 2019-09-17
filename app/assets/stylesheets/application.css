@@ -10442,7 +10442,7 @@
  }
 
 
- /*	###   matthieu Edit   ###################################################################################   */
+ /* ###   matthieu Edit   ###################################################################################   */
 
 
 .bar-news {
@@ -11056,6 +11056,7 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   height: 0;
   position: sticky;
   top: 0;
+  display: none;
 }
 
 .update-crypto-number-container{

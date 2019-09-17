@@ -76,14 +76,14 @@
                 <td>  <%= number_to_currency(price, precision: 2, delimiter: " ") %>  </td>
                 <% end %>
                 <td class="quantity-input">
-                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price),:method => :put, :remote => true do %>
+                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price, :name => crypto.name),:method => :put, :remote => true do %>
                 <%= text_field_tag 'quantity', crypto_currency[n].quantity.to_s%>
                                   <%= submit_tag "Update" %>
                   <% end %>
                 </td>
                 <% if crypto_currency[n].quantity != nil %>
                   <% @total_coin = (price.to_f * crypto_currency[n].quantity) %>
-                  <td class="crypto-price"><%= @total_coin.round(2) %></td>
+                  <td class="crypto-price"><%= number_to_currency(@total_coin.round(2), precision: 0, delimiter: " ") %></td>
                 <% end %>
 
                 <% if @coin[n][0]["percent_change_1h"].to_f > 0 %>

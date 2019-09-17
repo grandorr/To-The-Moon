@@ -1,5 +1,5 @@
 var n = ("<%= @n %>")
 console.log("<%= @id %>");
-console.log(document.getElementsByClassName("update-crypto-number-container-container"));
-console.log(window.scrollY)
+document.getElementsByClassName("update-crypto-number-container-container")[0].children[0].children[0].children[0].childNodes[1][4].value = ("<%= @id %>");
 document.getElementsByClassName("update-crypto-number-container-container")[0].style.display='block';
+console.log(document.getElementsByClassName("update-crypto-number-container-container")[0].children[0].children[0].children[0].childNodes[1][4].value);

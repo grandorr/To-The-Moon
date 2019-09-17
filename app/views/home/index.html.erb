@@ -81,11 +81,7 @@
               </p>
 
               <div class="d-flex">
-              <% if current_user %>
-
                   <a class="ttm-btn"<%= link_to 'Portfolio', user_cryptos_path %></a>
-
-              <% end %>
             </div>
             </div>
           </div>
@@ -108,9 +104,7 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to '/news' do %>
-                  <div class="ttm-btn">News</div>
-                <% end %>
+                <a class="ttm-btn"<%= link_to 'News', news_index_path %></a>
               </div>
             </div>
           </div>
@@ -135,9 +129,7 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to '/articles' do %>
-                  <div class="ttm-btn">Articles</div>
-                <% end %>
+                <a class="ttm-btn"<%= link_to 'Articles', articles_path %></a>
               </div>
             </div>
 

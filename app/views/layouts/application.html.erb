@@ -46,7 +46,7 @@
                 <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
           </li>
           <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
+                <a  role="button" class="myButtonsimple"<%= link_to "About", '/static_pages/about'%> </a>
           </li>
 
 </ul>
@@ -79,14 +79,13 @@
        <span class="navbar-toggler-icon"></span>
      </button>
     </nav>
-
     <%= yield %>
 
 
 
-    <footer id="footer" class="footer-shadow fixed-bottom bg-dark">
+    <footer  class="footer-shadow bg-dark">
 
-      <div class=" card bg-dark  cart_card footer">
+      <div class=" card bg-dark  cart_card ">
         <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left" style="color:#FFF;">
           <!-- Grid row -->
@@ -133,5 +132,5 @@
       </div>
       <!-- Card Links -->
     </footer>
-
+</body>
     </html>

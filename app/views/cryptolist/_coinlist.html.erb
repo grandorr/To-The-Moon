@@ -24,11 +24,12 @@
 
 
 
-
+  <% n = 0 %>
   <% if @coin_list.length != 1 %>
   <% @coin_list["data"].each do |coin| %>
   <% @crypto_name = coin["name"] %>
   <% symbol = coin_symbol_helper_check(coin['symbol']) %>
+  <% n += 1 %>
   <% @n += 1 %>
   <tbody>
     <tr>
@@ -75,13 +76,13 @@
           <% end %>
           <% unless checker.include?(true) %>
             <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-            <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post, :remote => true %></a>
+            <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => n), method: :post, :remote => true %></a>
           <% else %>
             <%= "Already in portfolio" %>
           <% end %>
         <% else %>
           <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-            <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post %></a>
+            <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => n), method: :post,  :remote => true %></a>
         <% end %>
 
         </a>
@@ -157,13 +158,13 @@
         <% end %>
         <% unless checker.include?(true) %>
           <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post, :remote => true %></a>
+          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => 1), method: :post, :remote => true %></a>
         <% else %>
           <%= "Already in portfolio" %>
         <% end %>
       <% else %>
         <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => @n), method: :post %></a>
+          <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => coin["id"], :n => 1), method: :post, :remote => true %></a>
       <% end %>
 
       </a>

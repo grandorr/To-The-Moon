@@ -40,7 +40,7 @@
               <p class="index-card-text">
               Our platform is designed as a tool-kit for cryptocurrencies investors who wants to get more knowledgeable on the crypto-market.
               </br>
-              To the moon show you real-time prices from the 300 most promising cryptos projects, allows you to make previsions, gives you latest news, set up alerts on targeted cryptos prices and provides basic tools like exchanges prices and conversion.
+              To the moon show you real-time prices from 1000+ cryptos projects, allows you to make previsions, gives you latest news, set up alerts on targeted cryptos prices and provides basic tools like exchanges prices and conversion.
               </p>
 
               <div class="d-flex">
@@ -73,7 +73,7 @@
               </p>
 
               <p class="index-card-text-bold-p index-card-text-bold-n">
-              - Real time price for more thant 2 500 Cryptos.</br>
+              - Real time price for more thant 1000 Cryptos.</br>
               - Chart evolution</br>
               - Currency converter</br>
               - Market cap
@@ -81,9 +81,9 @@
 
               <div class="d-flex">
               <% if current_user %>
-                <%= link_to '/user_cryptos' do %>
-                  <div class="ttm-btn">Portfolio</div>
-                <% end %>
+
+                  <a class="ttm-btn"<%= link_to 'Portfolio', user_cryptos_path %></a>
+
               <% end %>
             </div>
             </div>

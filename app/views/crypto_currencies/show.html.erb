@@ -5,7 +5,28 @@
     <title></title>
   </head>
   <body>
-
+    <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">
+    <% checker = [] %>
+    <% if @coin_tab %>
+      <% @coin_tab.each do |crypto| %>
+        <% if crypto.crypto_id != @coin_id %>
+          <% checker << false %>
+        <% else %>
+          <% checker << true %>
+        <% end %>
+      <% end %>
+      <% unless checker.include?(true) %>
+        <a class="cryptolist-td cryptolist-add-container d-flex align-items-center"
+        <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => @coin_id, :n => 1), method: :post, :remote => true %></a>
+      <% else %>
+        <p> Already in portfolio </p>
+      <% end %>
+    <% else %>
+      <a class="cryptolist-td cryptolist-add-container d-flex align-items-center"
+        <%= link_to "Add to portfolio", user_cryptos_path(:name => @crypto_name, :id => @coin_id, :n => 1), method: :post,  :remote => true %></a>
+    <% end %>
+    </div>
+    <%= link_to 'Back', :back %>
 
 <center><% @coin_name = @coin_name.downcase.gsub(/\s+/, "-") %>
 <%    @coin_name = coin_name_helper_check(@coin_name) %>

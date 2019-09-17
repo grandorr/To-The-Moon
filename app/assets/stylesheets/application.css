@@ -11443,7 +11443,7 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
 
 .profile-cards-img{
   width: 100%;
-  margin: 0 0 30px;
+  margin: -10px 0 30px;
   transform: scale(1.1);
 }
 

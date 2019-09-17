@@ -8,6 +8,17 @@ class UserCryptosController < ApplicationController
 		  @cryto_currency = crypto_array[1]
 	end
 
+	def new
+		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+		puts(params)
+		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+		@n = params[:n]
+		@id = params[:id].to_i
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
+	end
 
 	def create
 		puts params

@@ -1,3 +1,19 @@
+<div class="update-crypto-number-container-container">
+  <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
+    <div class="update-crypto-number-card ttm-card-bg">
+      <div class="update-crypto-number-form">
+        <%= form_tag user_cryptos_path, method: "post", multipart: true do %>
+          <div class="form-group">
+            <%= label_tag 'Choose quantity' %><br/>
+              <%= text_field_tag 'quantity'%>
+              <%= hidden_field_tag 'user', current_user %>
+          </div>
+              <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
+        <% end %>
+	    </div>
+	  </div>
+	</div>
+</div>
 <div class="pages-container">
 	<div class="space-bg">
 		<div class="news-container">
@@ -5,7 +21,8 @@
     			Cryptocurrencies
 
     		</h1>
-  </div>
+
+  
 				<h2>
 				<%= form_tag cryptolist_path,class: "search-articles-form", :method => :get do %>
 

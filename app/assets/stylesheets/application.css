@@ -11082,6 +11082,33 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 
 }
 
+/*  Search form  */
+
+.cryptolist-search-container{
+
+}
+
+.search-cryptolist-input-textarea{
+  height: 38px;
+  margin-right: -5px;
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px 0 0 7px;
+  width: 200px;
+}
+
+.search-cryptolist-input-btn{
+  margin-top: -3px;
+  padding: 7px 35px;
+  width: auto;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 0 7px 7px 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 /*  List  */
 
 .cryptolist-table{

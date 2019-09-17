@@ -4,7 +4,7 @@
 				<div class="ttm-card-bg article-cards d-flex justify-content-between article-show-container">
 					<div>
 						<h3><%= @article.title %></h3>
-						<hr class="articles-card-hr" align="left">
+						<hr class="articles-show-card-hr" align="left">
 						<p class="article-user"><%= link_to @article.user.email, profile_path(@article.user) %></p>
 						<p class=""><%= @article.content %></p>
 						<div class="d-flex tags-container">

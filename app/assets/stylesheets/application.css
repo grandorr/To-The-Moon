@@ -10823,12 +10823,6 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
   height: 90vh;
 }
 
-@media (max-width: 1050px) {
-  .sign-card{
-    transform: scale(0.8);
-  }
-}
-
 .sign-card{
   width: 420px;
   padding: 2%;
@@ -10837,6 +10831,12 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
   border-radius: 7px;
   flex-direction: column;
   border-radius: 170px 170px 50px 50px;
+}
+
+@media (max-width: 1050px) {
+  .sign-card{
+    transform: scale(0.8);
+  }
 }
 
 @media (max-width: 768px) {
@@ -11053,7 +11053,6 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 
 
 /*  ###############  Cryptolist  */
-
 
 /*  Update crypto quantity Form Popup  */
 
@@ -11361,6 +11360,13 @@ input.new-article-input-btn{
   margin: 0 0 10px 28px;
 }
 
+.articles-show-card-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin: 0 0 10px;
+}
+
 .article-card-text{
   margin-bottom: 10px;
 }
@@ -11372,7 +11378,7 @@ input.new-article-input-btn{
 /*  ###############  Articles Show  */
 
 .article-show-container{
-  padding: 0 28px 20px;
+  padding: 20px 20px 20px;
 }
 
 @media (max-width: 768px) {
@@ -11405,12 +11411,70 @@ input.new-article-input-btn{
   margin-bottom: 20px;
 }
 
+/*  New Article  */
+
+.image-upload-container{
+  margin: 20px 0;
+}
+
+html body div.pages-container div.space-bg div.news-container div.d-flex.justify-content-center div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
 /*  ###############  Profile Show  */
 
-.profile-container{
+.profile-card-container{
+  width: 25vw;
+  min-width: 300px;
+  padding: 3%;
+  border: 26px solid #848484;
+  background-color: #f2e9ff;
+  border-radius: 7px;
+  flex-direction: column;
+  border-radius: 300px 300px 50px 50px;
 }
+
+@media (max-width: 768px) {
+  .profile-card-container{
+    border: 18px solid #848484;
+  }
+}
+
+.profile-cards-img{
+  width: 100%;
+  margin: 0 0 30px;
+  transform: scale(1.1);
+}
+
 .profile-card{
-  width: 50%;
-  padding: 40px;
-  margin: 0 auto;
+
 }
+
+.profile-title{
+  font-size: 1.8vw;
+}
+
+@media (max-width: 768px) {
+  .profile-title{
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-friends-conv-container{
+    flex-direction: column;
+  }
+}
+
+ul#friend-list{
+  margin-left: -40px;
+}
+
+ul#friend-list li{
+  margin-left: 30px;
+}
+
+
+
+

@@ -11054,6 +11054,34 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 
 /*  ###############  Cryptolist  */
 
+
+/*  Update crypto quantity Form Popup  */
+
+.update-crypto-number-container-container{
+  height: 0;
+  position: sticky;
+  top: 0;
+}
+
+.update-crypto-number-container{
+  z-index: 100;
+  background-color: rgba(0,0,0,0.4);
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.update-crypto-number-card{
+ padding: 50px;
+ width: 50vw;
+ min-width: 300px;
+}
+
+.update-crypto-number-form{
+
+
+}
+
 /*  List  */
 
 .cryptolist-table{

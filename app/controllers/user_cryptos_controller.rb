@@ -33,7 +33,7 @@ class UserCryptosController < ApplicationController
 		@quantity = params[:quantity].to_f
 		@user_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto_currency)
 		@user_crypto.update_attribute(:quantity, quantity)
-		
+		@crypto_name = params[:name]
 		respond_to do |format|
     	format.html { redirect_back(fallback_location: root_path) }
     	format.js { }

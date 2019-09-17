@@ -11425,7 +11425,7 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
 /*  ###############  Profile Show  */
 
 .profile-card-container{
-  width: 25vw;
+  width: 35vw;
   min-width: 300px;
   padding: 3%;
   border: 26px solid #848484;
@@ -11442,7 +11442,7 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
 }
 
 .profile-cards-img{
-  width: 100%;
+  width: 70%;
   margin: -10px 0 30px;
   transform: scale(1.1);
 }
@@ -11461,7 +11461,11 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
   }
 }
 
-@media (max-width: 768px) {
+.profile-friends-conv-container{
+  padding-left: 2.4vw;
+}
+
+@media (max-width: 1000px) {
   .profile-friends-conv-container{
     flex-direction: column;
   }
@@ -11475,6 +11479,9 @@ ul#friend-list li{
   margin-left: 30px;
 }
 
-
+.profile-conversations, .profile-favorites{
+  width: 40%;
+  text-align: left;
+}
 
 

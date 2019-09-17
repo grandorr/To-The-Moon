@@ -32,7 +32,7 @@
 							<div class="d-flex justify-content-between profile-friends-conv-container">
 								<ul id="friend-list">
 								<% if @user.friends.length > 0 %>
-									<p><%= "My friends :" %></p>
+									<p><%= "My friends" %></p>
 									<% @friends.each do |friend| %>
 									<li>
 										<a <%= link_to friend.email, profile_path(friend.id) %></a>
@@ -42,7 +42,7 @@
 								</ul>
 
 								<% unless @unread_messages == 0 %>
-									<p><%= "Unread messages : " + @unread_messages.to_s %></p>
+									<p><%= "Unread messages" + @unread_messages.to_s %></p>
 									<% @senders.each do |sender| %>
 										<a <%= link_to sender, conversation_path(@user.conversations.find_by(interlocutor: User.find_by(email: sender)).id) %></a>
 									<% end %>
@@ -52,7 +52,7 @@
 
 								<% if @user.conversations.length > 0 %>
 									<div class="profile-conversations">
-										<p><%= "Conversations with :" %></p>
+										<p><%= "Conversations:" %></p>
 										<% @user.conversations.each do |convo| %>
 											<% unless convo.messages.length == 0 %>
 												<a <%= link_to convo.interlocutor.email, conversation_path(convo.id) %></a>
@@ -66,9 +66,9 @@
 							<br/>
 							
 							<div class="d-flex justify-content-between profile-friends-conv-container">
-								<div>
+								<div class="">
 									<% unless @articles == nil %>
-										<p><%= "My articles : "%></p>
+										<p><%= "My articles"%></p>
 										<% @articles.each do |article| %>
 											<a <%= link_to article.title, article_path(article.id) %></a>
 										<% end %>
@@ -77,9 +77,9 @@
 								
 								<br/>
 
-								<div>
+								<div class="profile-favorites">
 									<% unless @favorite_articles == nil %>
-										<p><%= "Favorites" %></p>
+										<p><%= "My favorites" %></p>
 										<% @favorite_articles.each do |fav_article| %>
 											<a <%= link_to fav_article.title, article_path(fav_article.id) %></a>
 										<% end %>

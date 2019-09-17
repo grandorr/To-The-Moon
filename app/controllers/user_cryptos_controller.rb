@@ -8,16 +8,25 @@ class UserCryptosController < ApplicationController
 		  @cryto_currency = crypto_array[1]
 	end
 
+	def new
+		@n = params[:n]
+		@id = params[:id].to_i
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
+	end
 
 	def create
+		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		puts params
+		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:crypto].to_i)
 		@n = params[:n].to_i
-
-		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
 		@crypto = UserCrypto.create(
 			user: current_user,
 			crypto_currency: crypto_currency,
-			quantity: 0
+			quantity: params[:quantity].to_i
 		)
 		respond_to do |format|
     	format.html { redirect_back(fallback_location: root_path) }
@@ -33,7 +42,7 @@ class UserCryptosController < ApplicationController
 		@quantity = params[:quantity].to_f
 		@user_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto_currency)
 		@user_crypto.update_attribute(:quantity, quantity)
-		
+		@crypto_name = params[:name]
 		respond_to do |format|
     	format.html { redirect_back(fallback_location: root_path) }
     	format.js { }

@@ -1,322 +1,1076 @@
-<body class="bg-purple">
+<head>
+<link rel="stylesheet" href="/stylesheets/game.css">
+</head>
 
+<div class="container">
+  <div id="overlay" class="screen-overlay"></div>
+  <div id="popup" class="popup-box">
+    <div class='popup-text'>
+      <h2>The planet is in danger!</h2>
+      <p>Use the arrow keys to control the rocket and blast the asteroids with the spacebar!</p>
+      <button id="start" class="start-button">Start</button>
+    </div>
+  </div>
+  <!--POPUP END-->
+  <div id="results" class="popup-results">
+    <div class='popup-text'>
+      <h3 class="result"></h3>
+      <h3 class="message"></h3>
+      <button id="restart" class="start-button">Play Again?</button>
+    </div>
+  </div>
+  <!--RESULTS END-->
+  <p class="counter">0</p>
+  <canvas class="gameboard"></canvas>
+  <canvas class="canvasPlanet"></canvas>
+  <div class="crash">
+    <svg class="explosion" version="1" width="512" height="512">
+          <path d="M309 5l-77 156-29-31-7 58-170-49 112 114-32 16 50 26-40 88 73-17-7 141 69-129 61 55 6-75 140 50-103-101 131-47-143-35 20-39-50 8-4-189z" fill="#f24501" stroke="#9f0001" stroke-width="10" stroke-linejoin="miter"/>
+          <path d="M275 126l-37 86-16-16-3 31-92-21 63 58-16 9 27 12-18 49 38-12v76l34-71 34 28 1-41 76 23-58-51 69-29-78-14 10-22-26 6-8-101z" fill="#fcdd09" stroke="#ff9702" stroke-width="3" stroke-linejoin="miter"/>
+        </svg>
+  </div>
+  <!--CRASH END-->
+  <svg xmlns="http://www.w3.org/2000/svg" version="1" id="planet" class="planet-one" viewbox="0 0 1402 1402" width="200" height="200">
+        <circle class="p1bg" fill="#018FD5" cx="701" cy="701" r="701"/>
+        <path class="p1c" fill="#75B84B" d="M232 900c-7-89-111-70-171-145s228-60 264-398c15-141-13-196-51-212A700 700 0 0 0 49 958c63 10 189 19 183-58zM997 312c-22 53-270 127-46 182 79 20 49 113 112 103s-23-106 56-181c19-18 102-81 149-128a705 705 0 0 0-167-163c-4 4-37 30-104 187zM549 239c29 152 441-57 482-157a698 698 0 0 0-696 21c98 41 192 20 214 136zM1355 450c-32 80-126 316-244 294-88-16-246 26-272 152-38 185-18 290 120 239 84-31 187 43 282-71 23-28 84-91 128-152a700 700 0 0 0-14-462zM557 450c-321 18-115 332-99 379 16 46 95 180 172 145s161-287 125-415c-39-134-134-112-198-109zM513 1175c30-241-234-60-304 25a699 699 0 0 0 805 128c72-161-534 109-501-153z"/>
+        <path fill="#186DA0" opacity=".2" d="M959 1186A701 701 0 0 1 393 71a701 701 0 1 0 874 1044c-93 45-198 71-308 71z"/>
+      </svg>
+  <div class="planet-two">
+    <svg version="1" viewbox="0 0 1443 1443">
+          <circle class="p2bg" fill="#FCEE21" cx="721" cy="721" r="721"/>
+          <circle class="p2c" fill="#E0C922" cx="303" cy="408" r="110"/>
+          <circle class="p2c" fill="#E0C922" cx="219" cy="715" r="103"/>
+          <circle class="p2c" fill="#E0C922" cx="522" cy="619" r="71"/>
+          <circle class="p2c" fill="#E0C922" cx="536" cy="864" r="71"/>
+          <circle class="p2c" fill="#E0C922" cx="324" cy="942" r="47"/>
+          <circle class="p2c" fill="#E0C922" cx="577" cy="359" r="107"/>
+          <circle class="p2c" fill="#E0C922" cx="771" cy="164" r="84"/>
+          <circle class="p2c" fill="#E0C922" cx="462" cy="183" r="38"/>
+          <circle class="p2c" fill="#E0C922" cx="921" cy="607" r="125"/>
+          <circle class="p2c" fill="#E0C922" cx="846" cy="957" r="102"/>
+          <circle class="p2c" fill="#E0C922" cx="641" cy="1213" r="145"/>
+          <circle class="p2c" fill="#E0C922" cx="388" cy="1170" r="55"/>
+          <circle class="p2c" fill="#E0C922" cx="715" cy="735" r="42"/>
+          <circle class="p2c" fill="#E0C922" cx="1180" cy="916" r="121"/>
+          <circle class="p2c" fill="#E0C922" cx="1038" cy="1188" r="57"/>
+          <circle class="p2c" fill="#E0C922" cx="1059" cy="346" r="114"/>
+          <circle class="p2c" fill="#E0C922" cx="1280" cy="646" r="99"/>
+          <path fill="#000" opacity=".15" d="M1030 1209A721 721 0 0 1 457 50a722 722 0 1 0 838 1109c-82 32-171 50-265 50z"/>
+        </svg>
+  </div>
+  <!--PLANET-TWO END-->
+  <div class="star">
+    <svg id="star" viewBox="0 0 513 513" version="1">
+          <path fill="#f5ede7" class="star-body" d="M400 503c-3 0-7-1-10-3l-134-68-134 68a23 23 0 0 1-33-24l23-149L7 219a23 23 0 0 1 12-38l148-25 69-134a23 23 0 0 1 40 0l69 134 148 25a23 23 0 0 1 12 38L400 327l23 149a23 23 0 0 1-23 27z"/>
+        </svg>
+  </div>
+  <!--STAR END-->
+  <div class="space"></div>
+</div>
+<div class="hidden-assets">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1" viewbox="0 0 741 1255" width="67.7" height="67.7" id="rocket">
+        <path fill="#ED1C24" d="M565 728c-6 68-15 130-29 186 88 38 156 106 187 188 12-32 18-65 18-100 0-116-70-217-176-274zM265 1020l8 25h194l9-25H265z"/>
+        <path fill="#8074B5" d="M210 937c8 30 17 58 26 83h269c9-25 18-53 26-83H210z"/>
+        <path fill="#ED1C24" d="M0 1002c0 35 6 68 18 100 31-82 99-150 187-188-14-55-23-118-29-186A314 314 0 0 0 0 1002z"/>
+        <path fill="#DFE3E5" d="M571 585c0-125-30-241-67-337a395 395 0 0 1-270 0c-36 94-64 209-64 337a1658 1658 0 0 0 34 329l6 23h321l5-23a1313 1313 0 0 0 35-329z"/>
+        <circle fill="#B8BDBF" cx="370" cy="481" r="100"/>
+        <path fill="#B3E3F4" d="M455 481a85 85 0 1 1-170 0 85 85 0 0 1 170 0z"/>
+        <path fill="#ED1C24" d="M234 248a394 394 0 0 0 270 0C446 98 370 0 370 0c-9 10-81 104-136 248z"/>
+      </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1" viewbox="0 0 741 1255" width="67.7" height="67.7" id="flicker">
+        <g>
+          <path fill="#F7931E" d="M370 1255c31 0 60-79 83-210H288c23 131 51 210 82 210z"/>
+          <path fill="#EDBB0B" d="M370 1145c26 0 50-38 69-100H302c19 62 43 100 68 100z"/>
+        </g>
+      </svg>
+</div>
+<style >
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-            <div class="central-body">
-                <img class="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px">
-                <a href="/" class="btn-go-home" target="_blank">GO BACK HOME</a>
-            </div>
-            <div class="objects">
-                <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px">
-                <div class="earth-moon">
-                    <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px">
-                    <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
-                </div>
-                <div class="box_astronaut">
-                    <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="140px">
-                </div>
-            </div>
-            <div class="glowing_stars">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
+  body {
+    background: #475471;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    height: 100%;
+    margin: 0px;
+  }
 
-            </div>
+  .container {
+    background-image: -webkit-radial-gradient(
+      50% 50%,
+      ellipse cover,
+      rgba(0, 0, 0, 0.3) 5%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+  }
 
-        </div>
+  .counter {
+    color: #f7931e;
+    position: absolute;
+    opacity: 0.8;
+    font-size: 2em;
+    letter-spacing: 1em;
+    padding: 0.5em 0 0 1em; // Offset padding to compensate for letter spacing
+    text-align: center;
+    width: 100%;
+    z-index: 15;
+  }
 
-    </body>
-<style>
+  .gameboard,
+  .canvasPlanet {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
 
-    @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
+  .gameboard {
+    z-index: 10;
+  }
 
-    @-moz-keyframes rocket-movement { 100% {-moz-transform: translate(1200px,-600px);} }
-    @-webkit-keyframes rocket-movement {100% {-webkit-transform: translate(1200px,-600px); } }
-    @keyframes rocket-movement { 100% {transform: translate(1200px,-600px);} }
-    @-moz-keyframes spin-earth { 100% { -moz-transform: rotate(-360deg); transition: transform 20s;  } }
-    @-webkit-keyframes spin-earth { 100% { -webkit-transform: rotate(-360deg); transition: transform 20s;  } }
-    @keyframes spin-earth{ 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); transition: transform 20s; } }
+  .canvasPlanet {
+    z-index: 5;
+  }
 
-    @-moz-keyframes move-astronaut {
-        100% { -moz-transform: translate(-160px, -160px);}
+  .planet-one {
+    height: 90vh;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    z-index: 15;
+  }
+
+  .planet-two {
+    filter: blur(0.05vmax);
+    height: 8vmin;
+    opacity: 0;
+    width: 8vmin;
+    z-index: 3;
+  }
+
+  .star {
+    position: absolute;
+    width: 1vmax;
+    height: 1vmax;
+    filter: blur(0.05vmax);
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+  }
+
+  // Popup Box
+  .screen-overlay {
+    display: none;
+    height: 100%;
+    left: 0%;
+    opacity: 0;
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    z-index: 9000;
+  }
+
+  .popup-box,
+  .popup-results {
+    background-color: #333;
+    border: 3px solid white;
+    box-shadow: 5px 5px 5px #444;
+    display: none;
+    left: 50%;
+    opacity: 1;
+    overflow: auto;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    z-index: 9100;
+  }
+
+  .popup-text {
+    color: white;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .popup-text p {
+    padding: 18px;
+  }
+
+  .popup-text h3 {
+    font-size: 30px;
+    line-height: 1.4;
+    padding: 14px;
+  }
+
+  .hidden-assets {
+    display: none;
+  }
+
+  button {
+    background: #f7931e;
+    border: 3px solid white;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 15px 10px;
+    outline: none;
+    padding: 15px 32px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    top: 10px;
+    z-index: 100;
+  }
+
+  button:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .crash {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    opacity: 0;
+    position: absolute;
+    z-index: 15;
+  }
+
+  .explode {
+    animation-name: boom;
+    animation-duration: 1s;
+    animation-iteration-count: 1; // Play the animation once
+    animation-fill-mode: both; // Lock the end position of the animation
+    animation-timing-function: ease;
+    transform-origin: 50% 50%;
+    z-index: 50;
+  }
+
+  @keyframes boom {
+    0% {
+      transform: scale(0.01);
     }
-    @-webkit-keyframes move-astronaut {
-        100% { -webkit-transform: translate(-160px, -160px);}
+    70% {
+      transform: scale(1);
     }
-    @keyframes move-astronaut{
-        100% { -webkit-transform: translate(-160px, -160px); transform:translate(-160px, -160px); }
+    100% {
+      transform: scale(10);
     }
-    @-moz-keyframes rotate-astronaut {
-        100% { -moz-transform: rotate(-720deg);}
-    }
-    @-webkit-keyframes rotate-astronaut {
-        100% { -webkit-transform: rotate(-720deg);}
-    }
-    @keyframes rotate-astronaut{
-        100% { -webkit-transform: rotate(-720deg); transform:rotate(-720deg); }
-    }
+  }
 
-    @-moz-keyframes glow-star {
-        40% { -moz-opacity: 0.3;}
-        90%,100% { -moz-opacity: 1; -moz-transform: scale(1.2);}
+</style>
+<script type="text/javascript">let canvas,
+  canvasPlanet,
+  centerPoint,
+  count,
+  ctx,
+  ctx2,
+  displayScore,
+  flameTimeout,
+  game_mode,
+  healthTimeout,
+  scoreTimeout,
+  playing,
+  start;
+
+const counterDisplay = document.querySelector(".counter");
+const crash = document.querySelector(".crash");
+const explosion = document.querySelector(".explosion");
+const message = document.querySelector(".message");
+const overlay = document.getElementById("overlay");
+const planet1 = document.querySelector(".planet-one");
+const planet2 = document.querySelector(".planet-two");
+const result = document.querySelector(".result");
+const space = document.querySelector(".space");
+const gutter = 150;
+
+let popup = document.getElementById("popup");
+
+// Input controls
+let thruster = false;
+let rotateLeft = false;
+let rotateRight = false;
+let fire = false;
+
+// Asteroid parameters
+let asteroids;
+let asteroidColor;
+const asteroidRate = 70;
+let asteroidMax = 40;
+let asteroidTimeout = asteroidRate;
+const asteroidColors = ["#9F96BC", "#666078", "#494556"];
+const asteroidSizeMax = 30;
+const asteroidSpeed = 2;
+const splitSize = 10;
+
+// Rocket parameters
+let rocket;
+const rocketSize = 33;
+const rocketWidth = 40;
+const acceleration = 0.15;
+const turnRate = 5;
+
+// Shooting parameters
+let shots;
+const shootingRate = 10;
+let shotTimeout = shootingRate;
+const shootingSpeed = 12;
+
+// Planet parameters
+let planet;
+const planetSize = 100;
+const planetHealthMax = 200;
+
+// Function to handle SVG files
+function importSVG(name) {
+  const svg = document.getElementById(name);
+  let object_svg = new Image();
+  const data = new XMLSerializer().serializeToString(svg);
+  object_svg.src = "data:image/svg+xml;base64," + window.btoa(data); // The btoa() method encodes a string in base-64
+  return object_svg;
+}
+
+// Import the inline SVG elements
+let rocket_svg = importSVG("rocket");
+let planet_svg = importSVG("planet");
+let flicker_svg = importSVG("flicker");
+
+// Set the size of the explosion early on because the size changes with the animation cause a bug
+const explosionSize = {
+  width: (explosion.getBoundingClientRect().width / 2).toFixed(),
+  height: (explosion.getBoundingClientRect().height / 2).toFixed()
+};
+
+// Popup UI handling
+function openPopup() {
+  start = popup.querySelector("button");
+  start.addEventListener("click", startGame);
+  popup.style.display = "block";
+  overlay.style.display = "block";
+  popup.style.opacity = "1";
+  overlay.style.opacity = "1";
+}
+
+function closePopup() {
+  start.removeEventListener("click", startGame);
+  overlay.style.opacity = "0";
+  popup.style.opacity = "0";
+  popup.style.display = "none";
+  overlay.style.display = "none";
+}
+
+// The following function creates a tesseract effect to keep the game objects roughly on screen
+function tesseractMove() {
+  // If on the right side of the screen then come back on the left side
+  if (this.x > canvas.width + gutter) {
+    this.x = 0 - gutter / 2 + this.vx;
+  } else if (this.x < 0 - gutter) {
+    // Or if they go off the left side then they come back on the right
+    this.x = canvas.width + gutter / 2 + this.vx;
+  } else {
+    // Otherwise just update the x position with the velocity
+    this.x += this.vx;
+  }
+  // If on the bottom side of the screen then come back on the top side
+  if (this.y > canvas.height + gutter) {
+    this.y = 0 - gutter / 2 + this.vy;
+  } else if (this.y < 0 - gutter) {
+    // Or if they go off the top side then they come back on the bottom
+    this.y = canvas.height + gutter / 2 + this.vy;
+  } else {
+    // Otherwise just update the y position with the velocity
+    this.y += this.vy;
+  }
+}
+
+// Function to check whether two positions intersect other by returning a distance
+function checkBoundary(dot1, dot2) {
+  const x1 = dot1[0],
+    y1 = dot1[1],
+    x2 = dot2[0],
+    y2 = dot2[1];
+  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+}
+
+// Math functions
+function rad(angle) {
+  return angle * Math.PI / 180;
+}
+
+// Define a new Planet
+function Planet() {
+  // Static position in the center of the screen
+  this.x = centerPoint.x;
+  this.y = centerPoint.y;
+  this.size = planetSize;
+  this.color = "rgba(0,0,0,0)";
+  this.health = planetHealthMax;
+  this.damage = 0;
+  this.render = renderPlanet;
+}
+
+// Reduce the health of the planet on contact with an asteroid
+function reduceHealth() {
+  if (playing && planet.damage > 0) {
+    healthTimeout--;
+    if (healthTimeout <= 0) {
+      // Check first if the damage sustained is more than the health remaining
+      if (planet.health - planet.damage <= 0) {
+        // If found true then it is game over
+        message.innerHTML = "The planet was destroyed!";
+        gameOver(planet);
+      }
+      // Gradually apply the damage to the health
+      let difference = Math.round(planet.damage / 3) + 1;
+      planet.damage -= difference;
+      planet.health -= difference;
+      planet.color = "rgba(" +
+      (planetHealthMax - planet.health) +
+      ", 40, 80, " +
+      (0.9 - planet.health * 0.0045).toFixed(2) +
+      ")";
+      planet.render();
+      healthTimeout = 30;
     }
-    @-webkit-keyframes glow-star {
-        40% { -webkit-opacity: 0.3;}
-        90%,100% { -webkit-opacity: 1; -webkit-transform: scale(1.2);}
+  }
+}
+
+// Define how the planet should be rendered on screen
+function renderPlanet() {
+  // Draw the planet SVG onto the secondary canvas
+  ctx2.clearRect(0, 0, canvasPlanet.width, canvasPlanet.height);
+  ctx2.drawImage(
+    planet_svg,
+    centerPoint.x - planet.size,
+    centerPoint.y - planet.size
+  );
+  // Apply an overlay filter which shows the health remaining of the planet
+  ctx2.beginPath();
+  // Draw a circle in the middle to cover the planet size
+  ctx2.arc(planet.x, planet.y, planet.size, 0, 2 * Math.PI);
+  ctx2.fillStyle = planet.color;
+  ctx2.fill();
+}
+
+// Define a new rocket
+function Rocket() {
+  // Starting position is in the center of the screen
+  this.x = centerPoint.x;
+  this.y = centerPoint.y;
+
+  // Starting velocity is 0 on both axis
+  this.vx = 0;
+  this.vy = 0;
+
+  // Set the direction for the rocket to be facing this needs to match the SVG direction to avoid a display bug on Safari (90 is towards the top of the screen)
+  this.direction = 90;
+
+  // Store all rocket's shots in an array
+  this.shots = [];
+
+  // Rocket methods
+  this.getPoints = getRocketPoints;
+  this.update = updateRocket;
+  this.move = tesseractMove;
+  this.render = renderRocket;
+}
+
+// Calculate the position of the rocket
+function getRocketPoints() {
+  // Store the points in an array to loop over later
+  let points = [];
+
+  let leftSide = rad(this.direction - rocketWidth);
+  let rightSide = rad(this.direction + rocketWidth);
+
+  // Simplify the rocket's shape to a triangle
+  // Rocket top point
+  points.push([
+    this.x + rocketSize * Math.cos(rad(this.direction)),
+    this.y - rocketSize * Math.sin(rad(this.direction))
+  ]);
+  // Rocket left point
+  points.push([
+    this.x - rocketSize * Math.cos(leftSide),
+    this.y + rocketSize * Math.sin(leftSide)
+  ]);
+  // Rocket right point
+  points.push([
+    this.x - rocketSize * Math.cos(rightSide),
+    this.y + rocketSize * Math.sin(rightSide)
+  ]);
+  // Return the array of points
+  return points;
+}
+
+// Update the effects on the rocket
+function updateRocket() {
+  // If pushing the up key then apply the thruster
+  if (thruster) {
+    this.vx += acceleration * Math.cos(rad(this.direction));
+    this.vy -= acceleration * Math.sin(rad(this.direction));
+  }
+  // Left rotates the rocket anti-clockwise
+  if (rotateLeft) {
+    this.direction += turnRate;
+  }
+  // Right rotates the rocket clockwise
+  if (rotateRight) {
+    this.direction -= turnRate;
+  }
+  // If the rocket is firing with the spacebar
+  if (fire) {
+    // Limit the shots being fired with a timeout
+    if (shotTimeout >= shootingRate) {
+      // Get the points for the rocket to work out where the rocket is firing from
+      let position = this.getPoints();
+      // Add a new shot taking into account the direction the shot is being fired
+      shots.push(new Shot(position[0][0], position[0][1], this.direction));
+      // Reset the timeout
+      shotTimeout = 0;
+    } else {
+      // Otherwise increase the timeout
+      shotTimeout++;
     }
-    @keyframes glow-star{
-        40% { -webkit-opacity: 0.3; opacity: 0.3;  }
-        90%,100% { -webkit-opacity: 1; opacity: 1; -webkit-transform: scale(1.2); transform: scale(1.2); border-radius: 999999px;}
+    // If not firing
+  } else {
+    // Reset shot timeout directly
+    shotTimeout = shootingRate;
+  }
+  // If the rocket is moving then slow this motion slightly
+  if (this.vx != 0) {
+    // Reduce X velocity
+    this.vx -= 0.01 * this.vx;
+  }
+  if (this.vy != 0) {
+    // Reduce Y velocity
+    this.vy -= 0.01 * this.vy;
+  }
+  // Move the rocket
+  this.move();
+}
+
+// Function to render the appearence of the rocket
+function renderRocket() {
+  // Get the points of the rocket
+  let points = this.getPoints();
+  // Calculate the angle it is facing
+  let angle = rad((this.direction + 270) * -1);
+  // The following between "save" and "restore" is used to position the SVG image in the right place and angle
+  ctx.save();
+  ctx.translate(points[0][0], points[0][1]);
+  ctx.rotate(angle);
+  ctx.translate(-33.85, 0);
+  ctx.drawImage(rocket_svg, 0, 0);
+  // Adding in the addition of the rocket's thruster if it is active
+  if (thruster) {
+    // First reset the timeout if the up key is pushed
+    flameTimeout = 12;
+  }
+  // If the timeout is above zero then add the flicker svg
+  if (flameTimeout > 0) {
+    ctx.drawImage(flicker_svg, 0, 0);
+    flameTimeout--;
+  }
+  ctx.restore();
+}
+
+// For a little variation let the asteroid color depend on the size
+function sizeColor(size) {
+  if (size > 30) {
+    return 2;
+  } else if (size > 20) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+// Define a new Asteroid
+function Asteroid(x, y, size, vx, vy) {
+  // Position on the x and y axis
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.radius = size * 2 + 5;
+  this.vx = vx;
+  this.vy = vy;
+
+  // Store the position of the points on the asteroid
+  this.points = [];
+  for (let i = 0; i < size; i++) {
+    // Calculate random sizes to create an asteroid-like jagged edge
+    let dist = Math.random() * 15 - 5 + this.radius;
+    // Distrubute the points around the whole circumference of the asteroid
+    let angle = i * 360 / size;
+    // Add the randomly calculated point to the array
+    this.points.push([
+      dist * Math.cos(rad(angle)),
+      dist * Math.sin(rad(angle))
+    ]);
+  }
+
+  //Define the color of the asteroid based on the size
+  this.color = sizeColor(this.size);
+
+  // Define the methods of the asteroid
+  this.explode = explodeAsteroid;
+  this.update = updateAsteroid;
+  this.move = tesseractMove;
+  this.render = renderAsteroid;
+}
+
+// Define what happens when the asteroid is blasted by a shot from the rocket
+function explodeAsteroid() {
+  // Reduce the size by the predefined split size variable
+  if (this.size - splitSize >= splitSize - 1) {
+    // This leaves two new asteroids, the first being the reduced size of the original
+    asteroids.push(
+      new Asteroid(this.x, this.y, this.size - splitSize, this.vx, this.vy)
+    );
+    // The second asteroid is the broken off piece
+    asteroids.push(
+      new Asteroid(
+        this.x,
+        this.y,
+        splitSize,
+        Math.random() * 4 - 2,
+        Math.random() * 4 - 2
+      )
+    );
+  }
+}
+
+// Update the affects of the asteroid
+function updateAsteroid(num) {
+  // Need the rocket points to check for collisions
+  let rocketPoints = rocket.getPoints();
+  // Set the asteroid's position in an array to check for collisions
+  const asteroid_xy = [this.x, this.y];
+
+  // Check all the rocket's points for collisions
+  for (let i = 0; i < rocketPoints.length; i++) {
+    // Check whether the rocket has crashed into the asteroid
+    let proximityToRocket = checkBoundary(asteroid_xy, [
+      rocketPoints[i][0],
+      rocketPoints[i][1]
+    ]);
+    // If the proximity is less than the radius then there has been a collision and it is game over because the rocket has 1HP
+    if (proximityToRocket < this.radius) {
+      // Update the message on the popup feedback
+      message.innerHTML =
+        "Your rocket was destroyed!<br>Who's going to save the planet now?";
+      // Trigger the game over function and state the cause as being the rocket
+      gameOver(rocket);
     }
+  }
+  // Check the proxmity to the planet.
+  let proximityToPlanet = checkBoundary(asteroid_xy, [
+    centerPoint.x,
+    centerPoint.y
+  ]);
+  // Use the radius to check if there has been a collision
+  if (proximityToPlanet - this.radius < planetSize) {
+    // Apply damage to the planet based on the size of the asteroid
+    planet.damage += this.radius;
+    // Trigger the health timeout
+    healthTimeout = 0;
+    // Remove the asteroid from the game
+    asteroids.splice(num, 1);
+    // If the asteroid hasn't collided then just move it as normal
+  } else {
+    // Move the asteroids
+    asteroids[num].move();
+  }
+}
 
-    .spin-earth-on-hover{
+// Define the appearance of the asteroids
+function renderAsteroid() {
+  ctx.beginPath();
+  ctx.moveTo(this.x + this.points[0][0], this.y + this.points[0][1]);
+  for (let i = this.size - 1; i >= 0; i -= 1) {
+    ctx.lineTo(this.x + this.points[i][0], this.y + this.points[i][1]);
+  }
+  ctx.fillStyle = asteroidColor;
+  ctx.fill();
+}
 
-        transition: ease 200s !important;
-        transform: rotate(-3600deg) !important;
+// Define a new shot being made in the game
+function Shot(x, y, direction) {
+  this.x = x;
+  this.y = y;
+  this.vx = shootingSpeed * Math.cos(rad(direction));
+  this.vy = -shootingSpeed * Math.sin(rad(direction));
+  this.hit = false;
+  this.update = updateShot;
+  this.render = renderShot;
+}
+
+// Update the game affects on the shot
+function updateShot(slug) {
+  // If the shot goes off screen then just count it as a hit for it to be easily removed from the game
+  if (
+    this.x > canvas.width ||
+    this.x < 0 ||
+    this.y > canvas.height ||
+    this.y < 0
+  ) {
+    this.hit = true;
+  }
+  // If the shot hasn't hit anything so far
+  if (!this.hit) {
+    // Check all the asteroids for collisions
+    for (let i = 0; i < asteroids.length; i++) {
+      let proximityToAsteroid = checkBoundary(
+        [asteroids[i].x, asteroids[i].y],
+        [this.x, this.y]
+      );
+      // Check whether the proximity is less than the asteroid's radius
+      if (proximityToAsteroid <= asteroids[i].radius) {
+        // Add points to the score counter based on the inverse size of the asteroid being destroyed
+        count += Math.ceil(1000 / asteroids[i].radius);
+        scoreTimeout = 0;
+        // Explode the asteroid which was hit, this creates two smaller asteroids
+        asteroids[i].explode();
+        // Remove the asteroid from the game
+        asteroids.splice(i, 1);
+        // The shot has hit something
+        this.hit = true;
+      }
     }
+  }
+  // Now remove the shot from the game if it has hit something
+  if (this.hit == true) {
+    shots.splice(slug, 1);
+  } else {
+    // Otherwise move the shot according to the velocity
+    this.x += this.vx;
+    this.y += this.vy;
+  }
+}
 
-    html, body{
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        font-family: 'Dosis', sans-serif;
-        font-weight: 300;
-        -webkit-user-select: none; /* Safari 3.1+ */
-        -moz-user-select: none; /* Firefox 2+ */
-        -ms-user-select: none; /* IE 10+ */
-        user-select: none; /* Standard syntax */
-    }
+// Define how the shot looks on screen
+function renderShot() {
+  ctx.strokeStyle = "#EDBB0B";
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  ctx.moveTo(this.x, this.y);
+  ctx.lineTo(this.x + this.vx, this.y + this.vy);
+  ctx.stroke();
+}
 
-    .bg-purple{
-        background: url(http://salehriaz.com/404Page/img/bg_purple.png);
-        background-repeat: repeat-x;
-        background-size: cover;
-        background-position: left top;
-        height: 100%;
-        overflow: hidden;
+// Show the score to the player
+function renderScore() {
+  if (playing && displayScore < count)
+    scoreTimeout--;
+  if (scoreTimeout <= 0) {
+    // Calculate the difference to stagger the increase
+    let difference = Math.round((count - displayScore) / 2);
+    // Update the variable where the score is saved
+    displayScore += difference;
+    // Update the dom with the current score
+    counterDisplay.innerHTML = displayScore;
+    scoreTimeout = 8;
+  }
+}
 
-    }
+// Handling the random position of the background planet
+function placePlanet(planet) {
+  let x = Math.floor(Math.random() * canvas.width);
+  let y = Math.floor(Math.random() * canvas.height);
+  let scale = 0.3 + Math.random();
+  let transform = "translate(" + x + "px, " + y + "px) scale(" + scale + ")";
+  planet.style.transform = transform;
+  planet.style.opacity = 1;
+}
 
-    .custom-navbar{
-        padding-top: 15px;
-    }
+// Deciding where things should go
+function placeElements() {
+  // Changing the opacity is to prevent a visual bug
+  planet2.style.opacity = 0;
+  space.style.opacity = 0;
+  // Calculate the new solar system layout
+  placePlanet(planet2);
+  createStars();
+  // Make the elements visible again
+  planet2.style.opacity = 1;
+  space.style.opacity = 1;
+}
 
-    .brand-logo{
-        margin-left: 25px;
-        margin-top: 5px;
-        display: inline-block;
-    }
+function createStars() {
+  let heightMax = window.innerHeight - 4,
+    widthMax = window.innerWidth - 4;
+  space.innerHTML = "";
 
-    .navbar-links{
-        display: inline-block;
-        float: right;
-        margin-right: 15px;
-        text-transform: uppercase;
+  for (let i = 0; i < 50; i++) {
+    const star =
+      '\n <div style="left:' +
+      Math.floor(Math.random() * widthMax) +
+      "px; top:" +
+      Math.floor(Math.random() * heightMax) +
+      "px; height:" +
+      Math.ceil(Math.random() * 100) / 100 +
+      "vmax; width:" +
+      Math.ceil(Math.random() * 100) / 100 +
+      'vmax;" class="star star' +
+      i +
+      '"><svg viewBox="0 0 513 513"><use xlink:href="#star"/></svg></div>';
+    space.insertAdjacentHTML("beforeend", star);
+  }
+}
 
+// Calculate the sizes for the game
+function calculateSizes() {
+  canvas = document.querySelector("canvas");
+  ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  centerPoint = {
+    x: canvas.width / 2,
+    y: canvas.height / 2
+  };
+  // Hide the score counter for the start of the game
+  counterDisplay.style.opacity = 0;
+  // Define a secondary canvas to host the planet SVG
+  canvasPlanet = document.querySelector(".canvasPlanet");
+  canvasPlanet.width = canvas.width;
+  canvasPlanet.height = canvas.height;
+  ctx2 = canvasPlanet.getContext("2d");
+}
 
-    }
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    /*    overflow: hidden;*/
-        display: flex;
-        align-items: center;
-    }
-
-    li {
-        float: left;
-        padding: 0px 15px;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        letter-spacing : 2px;
-        font-size: 12px;
-
-        -webkit-transition: all 0.3s ease-in;
-        -moz-transition: all 0.3s ease-in;
-        -ms-transition: all 0.3s ease-in;
-        -o-transition: all 0.3s ease-in;
-        transition: all 0.3s ease-in;
-    }
-
-    li a:hover {
-        color: #ffcb39;
-    }
-
-    .btn-request{
-        padding: 10px 25px;
-        border: 1px solid #FFCB39;
-        border-radius: 100px;
-        font-weight: 400;
-    }
-
-    .btn-request:hover{
-        background-color: #FFCB39;
-        color: #fff;
-        transform: scale(1.05);
-        box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
-    }
-
-    .btn-go-home{
-        position: relative;
-        z-index: 200;
-        margin: 15px auto;
-        width: 100px;
-        padding: 10px 15px;
-        border: 1px solid #FFCB39;
-        border-radius: 100px;
-        font-weight: 400;
-        display: block;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        letter-spacing : 2px;
-        font-size: 11px;
-
-        -webkit-transition: all 0.3s ease-in;
-        -moz-transition: all 0.3s ease-in;
-        -ms-transition: all 0.3s ease-in;
-        -o-transition: all 0.3s ease-in;
-        transition: all 0.3s ease-in;
-    }
-
-    .btn-go-home:hover{
-        background-color: #FFCB39;
-        color: #fff;
-        transform: scale(1.05);
-        box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
-    }
-
-    .central-body{
-    /*    width: 100%;*/
-        padding: 17% 5% 10% 5%;
-        text-align: center;
-    }
-
-    .objects img{
-        z-index: 90;
-        pointer-events: none;
-    }
-
-    .object_rocket{
-        z-index: 95;
-        position: absolute;
-        transform: translateX(-50px);
-        top: 75%;
-        pointer-events: none;
-        animation: rocket-movement 200s linear infinite both running;
-    }
-
-    .object_earth{
-        position: absolute;
-        top: 20%;
-        left: 15%;
-        z-index: 90;
-    /*    animation: spin-earth 100s infinite linear both;*/
-    }
-
-    .object_moon{
-        position: absolute;
-        top: 12%;
-        left: 25%;
-    /*
-        transform: rotate(0deg);
-        transition: transform ease-in 99999999999s;
-    */
-    }
-
-    .earth-moon{
-
-    }
-
-    .object_astronaut{
-        animation: rotate-astronaut 200s infinite linear both alternate;
-    }
-
-    .box_astronaut{
-        z-index: 110 !important;
-        position: absolute;
-        top: 60%;
-        right: 20%;
-        will-change: transform;
-        animation: move-astronaut 50s infinite linear both alternate;
-    }
-
-    .image-404{
-        position: relative;
-        z-index: 100;
-        pointer-events: none;
-    }
-
-    .stars{
-        background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
-        background-repeat: repeat;
-        background-size: contain;
-        background-position: left top;
-    }
-
-    .glowing_stars .star{
-        position: absolute;
-        border-radius: 100%;
-        background-color: #fff;
-        width: 3px;
-        height: 3px;
-        opacity: 0.3;
-        will-change: opacity;
-    }
-
-    .glowing_stars .star:nth-child(1){
-        top: 80%;
-        left: 25%;
-        animation: glow-star 2s infinite ease-in-out alternate 1s;
-    }
-    .glowing_stars .star:nth-child(2){
-        top: 20%;
-        left: 40%;
-        animation: glow-star 2s infinite ease-in-out alternate 3s;
-    }
-    .glowing_stars .star:nth-child(3){
-        top: 25%;
-        left: 25%;
-        animation: glow-star 2s infinite ease-in-out alternate 5s;
-    }
-    .glowing_stars .star:nth-child(4){
-        top: 75%;
-        left: 80%;
-        animation: glow-star 2s infinite ease-in-out alternate 7s;
-    }
-    .glowing_stars .star:nth-child(5){
-        top: 90%;
-        left: 50%;
-        animation: glow-star 2s infinite ease-in-out alternate 9s;
-    }
-
-    @media only screen and (max-width: 600px){
-        .navbar-links{
-            display: none;
+// Define the changes to be made at the start of the game
+function startGame() {
+  // Hide the intro graphic
+  planet1.style.opacity = 0;
+  // Setup the background
+  placeElements();
+  // Reset variables to zero
+  count = 0;
+  displayScore = 0;
+  flameTimeout = 0;
+  healthTimeout = 0;
+  scoreTimeout = 0;
+  // Empty the arrays of asteroids and shots
+  asteroids = [];
+  shots = [];
+  // Update the scoreboard
+  counterDisplay.innerHTML = displayScore;
+  counterDisplay.style.opacity = 1;
+  // Create the new game elements
+  rocket = new Rocket();
+  planet = new Planet();
+  // Display the planet on a secondary canvas so that it doesn't get rendered in every frame
+  planet.render();
+  // Hide the explosion
+  crash.style.opacity = 0;
+  explosion.classList.remove("explode");
+  // Close the popup UI
+  closePopup();
+  // Reset the result and message
+  result.innerHTML = "";
+  message.innerHTML = "";
+  // Set playing to true to start the game!
+  playing = true;
+  // Set the interval to make the game work
+  game_mode = setInterval(function() {
+    if (playing) {
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Add new asteroids based on a timeout
+      if (asteroidTimeout >= asteroidRate && asteroids.length <= asteroidMax) {
+        // Choose a side at random
+        let side = Math.floor(Math.random() * 2);
+        if (side == 0) {
+          // Place the asteroid at the left side
+          asteroids.push(
+            new Asteroid(
+              -gutter,
+              Math.random() * canvas.height,
+              Math.floor(Math.random() * asteroidSizeMax) + 10,
+              Math.random() * asteroidSpeed,
+              Math.random() * (asteroidSpeed * 2) - asteroidSpeed
+            )
+          );
+        } else if (side == 1) {
+          // Place the asteroid at the right side
+          asteroids.push(
+            new Asteroid(
+              canvas.width + gutter,
+              Math.random() * canvas.height,
+              Math.floor(Math.random() * asteroidSizeMax) + 10,
+              Math.random() * -asteroidSpeed,
+              Math.random() * (asteroidSpeed * 2) - asteroidSpeed
+            )
+          );
         }
+        // Reset the timeout
+        asteroidTimeout = 0;
+      } else {
+        // If a new asteroid isn't being made then increase the timeout
+        asteroidTimeout++;
+      }
+      // Calculate the rocket position
+      rocket.update();
+      // Loop over the asteroids array and update them all
+      for (let i = 0; i < asteroids.length; i++) {
+        // Calculate the asteroids' positions
+        asteroids[i].update(i);
+      }
+      // Loop through all the shots and update them all
+      for (let i = 0; i < shots.length; i++) {
+        shots[i].update(i);
+      }
+      // Render the rocket's position
+      rocket.render();
 
-        .custom-navbar{
-            text-align: center;
+      // Loop through and render the asteroids in order of colour to optimize canvas capabilities
+      for (let i = 0; i < asteroidColors.length; i++) {
+        asteroidColor = asteroidColors[i];
+        for (let j = 0; j < asteroids.length; j++) {
+          if (asteroids[j].color == i) {
+            // Render the asteroids if the colour matches
+            asteroids[j].render();
+          }
         }
-
-        .brand-logo img{
-            width: 120px;
-        }
-
-        .box_astronaut{
-            top: 70%;
-        }
-
-        .central-body{
-            padding-top: 25%;
-        }
+      }
+      reduceHealth();
+      // Loop through all the shots
+      for (let i = 0; i < shots.length; i++) {
+        // And display the shot on the screen
+        shots[i].render();
+      }
+      renderScore();
     }
-  </style>
+    // If the game ends during the updates then make sure that everything gets rendered first before clearing the interval
+    if (!playing) {
+      clearInterval(game_mode);
+    }
+  }, 1000/60);
+}
+
+// Define what happens at the end of the game
+function gameOver(target) {
+  // Stop the game from being played
+  playing = false;
+  // If the window was resized
+  if (target == "resized") {
+    result.innerHTML = "The game is using your screen size.";
+    message.innerHTML = "Don't resize the screen during the game.";
+  } else {
+    // Define the place for the end game graphic to be displayed using the target that caused the game to end
+    const x = target.x - explosionSize.width;
+    const y = target.y - explosionSize.height;
+    // For variation add some rotation to the graphic
+    degrees = Math.floor(Math.random() * 360);
+    // Compile the transform properties
+    const transform =
+      "translate(" + x + "px, " + y + "px) rotate(" + degrees + "deg)";
+    // Sednd the transform to the container for the graphic
+    crash.style.transform = transform;
+    // Make the graphic visible
+    crash.style.opacity = 1;
+    // Add the class that triggers the end game animation
+    explosion.classList.add("explode");
+    // Update the result with the score from the game
+    result.innerHTML = "You scored " + count + " points!";
+  }
+  // Make sure that the results popup screen is selected
+  popup = document.getElementById("results");
+  // Show the popup UI to the player
+  openPopup();
+}
+
+// Define what to do when the page loads
+document.addEventListener("DOMContentLoaded", function(event) {
+  // Define the sizes based on the user's window
+  calculateSizes();
+  // Place the background elements
+  placeElements();
+  // Open the popup UI for the player
+  openPopup();
+
+  // Define keyboard functions
+  window.addEventListener(
+    "keydown",
+    function(event) {
+      switch (event.code) {
+        case "KeyW":
+        case "ArrowUp":
+          // Apply Thruster
+          thruster = true;
+          break;
+        case "KeyA":
+        case "ArrowLeft":
+          // Rotate Left
+          rotateLeft = true;
+          break;
+        case "KeyD":
+        case "ArrowRight":
+          // Rotate Right
+          rotateRight = true;
+          break;
+        case "Space":
+          // Start firing
+          fire = true;
+          break;
+      }
+    },
+    true
+  );
+
+  window.addEventListener(
+    "keyup",
+    function(event) {
+      switch (event.code) {
+        case "KeyW":
+        case "ArrowUp":
+          // Stop Thruster
+          thruster = false;
+          break;
+        case "KeyA":
+        case "ArrowLeft":
+          // Stop rotating Left
+          rotateLeft = false;
+          break;
+        case "KeyD":
+        case "ArrowRight":
+          // Stop rotating Right
+          rotateRight = false;
+          break;
+        case "Space":
+          // Stop firing
+          fire = false;
+          break;
+      }
+    },
+    true
+  );
+
+  // If the window is resized
+  window.addEventListener("resize", function(event) {
+    // Calculate the new sizes
+    calculateSizes();
+    // If the game is being played then it should be reset
+    if (playing) {
+      gameOver("resized");
+    }
+  });
+});
+
+
+</script>

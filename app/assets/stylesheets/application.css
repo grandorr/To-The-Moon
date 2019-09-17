@@ -10442,7 +10442,7 @@
  }
 
 
- /*	###   matthieu Edit   ###################################################################################   */
+ /* ###   matthieu Edit   ###################################################################################   */
 
 
 .bar-news {
@@ -10531,12 +10531,7 @@
 #content-wrap {
  padding-bottom: 2.5rem;    /* Footer height */
 }
-#footer {
- position: relative;
- bottom: 0;
- width: 100%;
- height: 2.5rem;         /* Footer height */
-}
+
 .vw-footer
 {
  width: 100vw;
@@ -11061,6 +11056,7 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   height: 0;
   position: sticky;
   top: 0;
+  display: none;
 }
 
 .update-crypto-number-container{
@@ -11112,7 +11108,7 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 /*  List  */
 
 .cryptolist-table{
-  margin-bottom: : 40px;
+  margin-bottom: 40px;
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table thead tr.text-dark th.logo-name-container{

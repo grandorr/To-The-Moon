@@ -1,17 +1,20 @@
-<ul id="message-list">
-<% @messages.each do |message| %>
-	<li>
-		<% if message.sender.email == current_user.email %>
-			<%= "Me :" %><br>
-		<% else %> 
-			<%= message.sender.email + " :" %><br>
+<div style="margin: auto; height: 400px; width: 200px; border: solid; overflow-y: scroll;"> <div style="postion: fixed; bottom: inherit;">
+		<ul id="message-list">
+		<% @messages.each do |message| %>
+			<li>
+				<% if message.sender.email == current_user.email %>
+					<%= "Me :" %><br>
+				<% else %> 
+					<%= message.sender.email + " :" %><br>
+				<% end %>
+				<%= message.content %><br>
+				<%= message.created_at %>
+				<br/><br/>
+			</li>
 		<% end %>
-		<%= message.content %><br>
-		<%= message.created_at %>
-		<br/><br/>
-	</li>
-<% end %>
-</ul>
+		</ul>
+	</div>
+</div>
 <div class="form">
 	<%= form_tag(messages_path, method: :post, class: "form", remote: true) do %>
 		<label for="content">New Message<br>

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :favorites
+  resources :likes
   root to: 'home#index'
 
   devise_for :users
 
   resources :user_cryptos
-  resources :crypto
+  resources :crypto_currencies
   resources :cryptolist
 
   resources :friend_requests

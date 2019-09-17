@@ -1,38 +1,53 @@
 class UserCryptosController < ApplicationController
+
 	before_action :authenticate_user!
+
 	def index
-		@cryptos = current_user.crypto_currencies
-		@user_cryptos = current_user.user_cryptos
+			crypto_array = get_coin
+		  @coin = crypto_array[0]
+		  @cryto_currency = crypto_array[1]
 	end
-	
+
+
 	def create
-		unless CryptoCurrency.where(name: params[:name]).length == 0
-			UserCrypto.create(
-				user: current_user, 
-				crypto_currency: CryptoCurrency.find_by(name: params[:name]),
-				quantity: 0
-				)
-		else
-			@crypto =	CryptoCurrency.create(
-				name: params[:name],
-				crypto_id: params[:id]
-				)
-			UserCrypto.create(
-				user: current_user, 
-				crypto_currency: @crypto
-				)
-		end
-		
+		puts params
+		@n = params[:n].to_i
+
+		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
+		@crypto = UserCrypto.create(
+			user: current_user,
+			crypto_currency: crypto_currency,
+			quantity: 0
+		)
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
-	
+
 	def update
-		current_user.user_cryptos.find(params[:id]).update_attribute(:quantity, params[:quantity])
-		redirect_back(fallback_location: root_path)
+		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
+		quantity = UserCrypto.check_quantity(params[:quantity].to_i)	
+		@n = params[:n].to_i
+		@price = params[:price].to_f
+		@quantity = params[:quantity].to_f
+		@user_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto_currency)
+		@user_crypto.update_attribute(:quantity, quantity)
+		
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 	def destroy
+		@crypto = params[:crypto]
+		@n = params[:n].to_i
 		current_user.user_cryptos.find(params[:id]).destroy
-		redirect_back(fallback_location: root_path)
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 end

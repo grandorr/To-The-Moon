@@ -1,0 +1,17 @@
+var crypto = "<%= @crypto %>"
+var cryptos = document.getElementById("cryptos")
+console.log(cryptos)
+console.log("<%= @crypto %>");
+
+
+var aTags = cryptos.getElementsByTagName("a");
+var searchText = "SearchingText";
+
+for (var i = 0; i < aTags.length; i++) {
+  if (aTags[i].textContent == "<%= @crypto %>") {
+  	console.log(aTags[i].parentNode.parentNode)
+    aTags[i].parentNode.parentNode.remove();
+    break;
+  }
+}
+

@@ -10,13 +10,20 @@
 				<div class="d-flex tags-container">
 					<p class="tags"><%= @tag.name %></p>
 				</div>
-				<% if current_user == @user %>
-					<%= link_to "Edit article", edit_article_path(@article.id) %><br>
-					<%= link_to "Delete article", article_path, :method => :delete %> 
-				<% end %>
-				<br/><br/>
-
 				<% if current_user%>
+					<% if current_user == @user %>
+						<%= link_to "Edit article", edit_article_path(@article.id) %><br>
+						<%= link_to "Delete article", article_path, :method => :delete %>
+						<br/><br/>
+					<% else %>
+					<div id="favorite">
+						<% unless current_user.favorite_articles.include? @article %>
+								<a id="add"<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post, remote: true %><a><br>
+						<% else %>
+								<a id="withdraw"<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete, remote: true %><a><br>
+						<% end %>
+					</div>
+					<% end %>
 				<div class="post-comment-form-container">
 					<%= form_tag comments_path, method: "post", class: "d-flex align-items-end" do %>
 					  <%= text_area_tag 'content','',class: "post-comment-text-area" %>
@@ -24,31 +31,41 @@
 					  	<%= submit_tag "Comment", class: "btn sign-ttm-btn post-comment-btn" %>
 					<% end %>
 				</div>
-				<% end %>
 
-				<% unless @comments == nil %>
-					<% @comments.each do |comment| %>
-						<div class="comment-container">
-							<div class="d-flex">
-								<p class="comment-user"><%= comment.user.email %></p><p class="comment-date"><%= comment.created_at %>
-							</div>
-							<hr class="comment-hr" align="left">
-							<p class="comment-content"><%= comment.content %></p>
-							<% if current_user == comment.user %>
-								<div class="comment-btn-container">
-									<a class="btn ttm-btn comment-btn"
-										<%= link_to "Edit comment", edit_comment_path(comment.id) %>
-									</a>
-									<a class="btn ttm-btn comment-btn"
-										<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %> 
-									</a>
+				<% end %>
+				<% if current_user %>
+					<% unless @comments == nil %>
+						<% @comments.each do |comment| %>
+							<div class="comment-container">
+								<div class="d-flex">
+									<p class="comment-user"><%= comment.user.email %></p><p class="comment-date"><%= comment.created_at %>
 								</div>
-							<% end %>
-						</div>
+								<hr class="comment-hr" align="left">
+								<p class="comment-content"><%= comment.content %></p>
+								<% unless current_user.likes.find_by(comment: comment) %>
+									<% if comment.likes.length == 0 %>
+										<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+									<% else %>
+										<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+									<% end %>
+								<% else %>
+									<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+								<% end %>
+								<% if current_user == comment.user %>
+									<div class="comment-btn-container">
+										<a class="btn ttm-btn comment-btn"
+											<%= link_to "Edit comment", edit_comment_path(comment.id) %>
+										</a>
+										<a class="btn ttm-btn comment-btn"
+											<%= link_to "Delete comment", comment_path(comment.id), :method => :delete %>
+										</a>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
 					<% end %>
 				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
-

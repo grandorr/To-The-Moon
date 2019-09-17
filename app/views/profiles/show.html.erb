@@ -93,10 +93,14 @@
 							</div>
 
 						<% else %>
-							
-							<p><%= @user.email %></p>
 
-							<br/>
+							<div class="d-flex justify-content-center">
+								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+							</div>
+							
+							<h3 class="text-center profile-title">
+								<%= @user.email %></p>
+							</h3>
 
 							<% unless current_user.friends.include?(@user) %>
 								<% unless @user.pending_friends.include? current_user %>
@@ -109,13 +113,17 @@
 									<%= "Friend request already sent" %></p>
 								<% end %>
 							<% else %>
-								<%= link_to "Send Message", new_message_path(:id => @user.id) %><br>
-								<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
+							<div class="d-flex justify-content-between other-profile-btn-container">
+								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", new_message_path(:id => @user.id) %>
+								</a>
+								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Unfriend", friendship_path(@friendship.id), :method => :delete %>
+								</a>
+							</div>
 							<% end %>
 
 							<br/>
 
-							<%= "User's articles : "%></p>
+							<p><%= "User's articles"%></p>
 							<% unless @articles == nil %>
 								<% @articles.each do |article| %>
 									<%= link_to article.title, article_path(article.id) %><br>

@@ -1,7 +1,6 @@
 class UserCryptosController < ApplicationController
+
 	before_action :authenticate_user!
-
-
 
 	def index
 			crypto_array = get_coin
@@ -11,34 +10,44 @@ class UserCryptosController < ApplicationController
 
 
 	def create
-		unless CryptoCurrency.where(name: params[:name]).length == 0
-			UserCrypto.create(
-				user: current_user,
-				crypto_currency: CryptoCurrency.find_by(name: params[:name]),
-				quantity: 0
-				)
-		else
-			@crypto =	CryptoCurrency.create(
-				name: params[:name],
-				crypto_id: params[:id]
-				)
-			UserCrypto.create(
-				user: current_user,
-				crypto_currency: @crypto,
-				quantity: 0
-				)
-		end
+		puts params
+		@n = params[:n].to_i
+
+		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
+		@crypto = UserCrypto.create(
+			user: current_user,
+			crypto_currency: crypto_currency,
+			quantity: 0
+		)
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 	def update
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:id])
-		current_user.user_cryptos.find_by(crypto_currency: crypto_currency).update_attribute(:quantity, params[:quantity])
-		redirect_back(fallback_location: root_path)
+		quantity = UserCrypto.check_quantity(params[:quantity].to_i)	
+		@n = params[:n].to_i
+		@price = params[:price].to_f
+		@quantity = params[:quantity].to_f
+		@user_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto_currency)
+		@user_crypto.update_attribute(:quantity, quantity)
+		
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 	def destroy
+		@crypto = params[:crypto]
+		@n = params[:n].to_i
 		current_user.user_cryptos.find(params[:id]).destroy
-		redirect_back(fallback_location: root_path)
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
 	end
 
 end

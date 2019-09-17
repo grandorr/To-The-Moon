@@ -5,6 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  require 'net/http'
+def api_request(url)
+	uri = URI(url)
+	response = Net::HTTP.get(uri)
+	response = JSON.parse(response)
+	return response
+end
+
 
 Article.destroy_all
 UserCrypto.destroy_all
@@ -12,10 +20,22 @@ User.destroy_all
 CryptoCurrency.destroy_all
 Tag.destroy_all
 
+
 tags = ["#bitcoin", "#ethereum", "#litecoin", "#tether", "#monero"]
 cryptos = ["bitcoin", "ethereum", "litecoin", "tether", "monero"]
 emails = ["jon@mail.com", "jak@mail.com", "jim@mail.com", "jail@mail.com", "me@mail.com"]
+	@n = 0
+25.times do
 
+	url = 'https://api.coinlore.com/api/tickers/?start=' + @n.to_s + '&limit=100'
+	@coin_list = api_request(url)
+
+	@coin_list["data"].each do |coin|
+	CryptoCurrency.create(name: coin["name"].downcase, crypto_id: coin["id"], symbol: coin["symbol"].downcase)
+
+	end
+  	@n += 100
+end
 
 n = 0
 5.times do

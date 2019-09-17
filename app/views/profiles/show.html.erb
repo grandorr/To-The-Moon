@@ -3,11 +3,11 @@
 		<div class="news-container profile-container d-flex justify-content-center flex-column">
 			<% if @user == current_user %>
 				<h1 class="page-title text-center">
-					Votre Profil
+					Your Profile
 				</h1>
 			<% else %>
 				<h1 class="page-title text-center">
-					Profil de <% @user.email %>
+					<% @user.email %> Profile
 				</h1>
 			<% end %>
 
@@ -18,21 +18,30 @@
 						<%= @user.email %>
 					</p>
 
-					
+					<ul id="pending-friend-list">
 					<% if @user.pending_friends.length > 0 %>
 						<p><%= "Pending friend requests :" %></p>
+						<% n = 1 %>
 						<% @pending_friends.each do |pending_friend| %>
-							<%= link_to pending_friend.email, profile_path(pending_friend.id) %><br>
-							<%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id), method: :post %>
-							<br/>
+						<li>
+							<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -  
+							<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
+								<% n += 1 %>
+						</li>
 						<% end %>
 					<% end %>
+					</ul>
+					<br/><br/>
+					<ul id="friend-list">
 					<% if @user.friends.length > 0 %>
 						<p><%= "My friends :" %></p>
 						<% @friends.each do |friend| %>
+						<li>
 							<a <%= link_to friend.email, profile_path(friend.id) %></a>
+						</li>
 						<% end %>
 					<% end %>
+					</ul>
 
 					<% unless @unread_messages == 0 %>
 						<p><%= "Unread messages : " + @unread_messages.to_s %></p>
@@ -58,7 +67,7 @@
 					<% unless @articles == nil %>
 						<p><%= "My articles : "%></p>
 						<% @articles.each do |article| %>
-							<a <%= link_to article.title, article_path(article.id) %></a>a>
+							<a <%= link_to article.title, article_path(article.id) %></a>
 						<% end %>
 					<% end %>
 					
@@ -85,7 +94,7 @@
 							<% if current_user.pending_friends.include?(@user) %>
 								<a <%= link_to "Accept friend request", friendships_path(:friend_id => @user.id), method: :post %></a>
 							<% else %>
-								<a <%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %></a>
+								<a id="friend-request" <%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post, :remote => true %></a>
 							<% end %>
 						<% else %>
 							<%= "Friend request already sent" %></p>

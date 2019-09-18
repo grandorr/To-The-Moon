@@ -84,6 +84,7 @@
    color: #11002d;
    text-align: left;
    background-color: #fff;
+   min-height: 100vh;
  }
 
  [tabindex="-1"]:focus {
@@ -10726,10 +10727,20 @@ justify-content: left;
   margin-bottom: 40px;
 }
 
+/*  ###############  Header */
+
+nav.ttm-navbar{
+  position: sticky;
+  top: 0;
+}
+
 /*  ###############  Footer  */
 
 .ttm-footer-bg{
   background-color: #1a1a1a;
+}
+
+.ttm-footer{
 }
 
 /*  ###############  General Cells  */

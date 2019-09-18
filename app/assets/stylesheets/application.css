@@ -11636,3 +11636,12 @@ ul#message-list{
 li.conv-list{
   list-style-type: none;
 }
+
+.about-card{
+  width: 35%;
+  min-width: 300px;
+}
+
+.about-card-container{
+  padding: 4%;
+}

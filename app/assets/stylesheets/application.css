@@ -10726,6 +10726,12 @@ justify-content: left;
   margin-bottom: 40px;
 }
 
+/*  ###############  Footer  */
+
+.ttm-footer-bg{
+  background-color: #1a1a1a;
+}
+
 /*  ###############  General Cells  */
 
 .ttm-card-bg{

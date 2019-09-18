@@ -1,0 +1,32 @@
+var quantity = parseFloat("<%= @quantity %>");
+var n = ("<%= @n %>");
+var price = parseFloat("<%= @price %>");
+var newPrice = (quantity * price).toFixed(2);
+var total = 0;
+var arr = [];
+var reducer = (accumulator, currentValue) => accumulator + currentValue;
+var cryptos = document.getElementById("cryptos");
+var aTags = cryptos.getElementsByTagName("a");
+var crypto = ("<%= @crypto_name %>");
+
+for (var i = 0; i < aTags.length; i++) {
+  if (aTags[i].textContent == "<%= @crypto_name %>") {
+    aTags[i].parentNode.parentNode.children[4].childNodes[0].value = quantity;
+    aTags[i].parentNode.parentNode.children[5].childNodes[0].textContent = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'USD' }).format(newPrice).replace(/,/g, " ");
+    break;
+  }
+}
+
+var cryptoPrices = document.getElementsByClassName("crypto-price");
+var cleanPrice = '';
+
+for (var i = 0; i < cryptoPrices.length; i++) {
+	cleanPrice = cryptoPrices[i].childNodes[0].textContent;
+	if(cleanPrice[0] == "$"){
+		cleanPrice = cleanPrice.substr(1);
+	}
+	cleanPrice = cleanPrice.split(' ').join('');
+	arr.push(parseFloat(cleanPrice));
+  }
+total = arr.reduce(reducer).toFixed(2);
+document.getElementById("total").childNodes[0].textContent = "TOTAL : " + new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'USD' }).format(total).replace(/,/g, " ");

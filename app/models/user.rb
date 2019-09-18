@@ -19,10 +19,24 @@ class User < ApplicationRecord
   has_many :favorites, foreign_key: "interested_user"
   has_many :favorite_articles, through: :favorites, foreign_key: "interested_user"
 
-after_create :welcome_user_email
+  after_create :welcome_user_email
 
-def welcome_user_email
-    WelcomeuserMailer.welcome_user_emails(self).deliver_now
-end
+  def welcome_user_email
+      WelcomeuserMailer.welcome_user_emails(self).deliver_now
+  end
+
+  def self.has_unread_messages?(messages)
+    senders = []
+    unread_messages = 0
+    messages.each do |message|
+      if message.has_been_read == false
+        senders.append(message.sender.email)
+        unread_messages += 1
+      end
+    end
+    senders = senders.uniq
+    messages_infos = [senders, unread_messages]
+    return messages_infos
+  end
 
 end

@@ -15,6 +15,7 @@
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          <a <%= link_to "forgot your password ?",  new_user_password_path %></a>
         </div>
         <div class="actions d-flex justify-content-center">
           <%= f.submit "Log in", class: "btn sign-ttm-btn" %>

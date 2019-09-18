@@ -1,0 +1,15 @@
+var n = '<%= @n %>';
+var pendingFriends = document.getElementById("pending-friend-list");
+var friends = document.getElementById("friend-list");
+
+if (pendingFriends.children.length === 2){
+	pendingFriends.remove();
+} else {
+	pendingFriends.children[n].remove();
+}
+
+if (friends.children.length === 0){
+	friends.insertAdjacentHTML("beforeend", "<%= j render 'first_friendship', friend: @friendship.friend %>");
+} else {
+	friends.insertAdjacentHTML("beforeend", "<%= j render 'friendship', friend: @friendship.friend %>");
+}

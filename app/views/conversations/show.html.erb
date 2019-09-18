@@ -1,17 +1,51 @@
-<% @messages.each do |message| %>
-	<% if message.sender.email == current_user.email %>
-		<%= "Me :" %><br>
-	<% else %> 
-		<%= message.sender.email + " :" %><br>
-	<% end %>
-	<%= message.content %><br>
-	<%= message.created_at %>
-	<br/><br/>
-<% end %>
+<div class="pages-container">
+	<div class="space-bg">
+		<div class="news-container">
+			<div class="d-flex justify-content-center">
+				<div class="ttm-card-bg conv-card">
+					<ul id="message-list">
+						<div class="d-flex flex-column">
+							<% @messages.each do |message| %>
+									<% if message.sender.email == current_user.email %>
+										<div class="align-self-end conv-msg-container-you">
+											<li class="conv-msg-text conv-list">
+												<p class="conv-msg-text conv-sender">
+													You
+												</p>
+												<br>
+												<p class="conv-msg-text">
+													<%= message.content %>
+												</p>
+											</li>
+										</div>
+									<% else %>
+										<div class="conv-msg-container">
+											<li class="conv-msg-text conv-list">
+												<p class="conv-msg-text conv-sender">
+													<%= message.sender.email %>
+												</p>
+												<br>
+												<p class="conv-msg-text">
+													<%= message.content %>
+												</p>
+											</li>			
+										</div>
+									<% end %>
+								<br/><br/>
+							<% end %>
+						</div>
+					</ul>
 
-<%= form_tag messages_path, method: "post" do %>
-  <%= text_field_tag 'content' %><br>
-  <%= hidden_field_tag "recipient", @conversation.interlocutor.id %>
-  <%= submit_tag "Send Message" %>
-<% end %>
-
+					<div class="form">
+						<%= form_tag(messages_path, method: :post, class: "form", remote: true) do %>
+								<label for="content">New Message<br>
+							  <%= text_field_tag 'content' %><br>
+							  <%= hidden_field_tag "recipient", @conversation.interlocutor.id %>
+							  <%= submit_tag "Send Message", :name => 'commit' %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

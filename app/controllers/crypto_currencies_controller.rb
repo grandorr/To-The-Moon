@@ -1,18 +1,9 @@
-class CryptoController < ApplicationController
-
-  require 'net/http'
-  def api_request(url)
-    uri = URI(url)
-    response = Net::HTTP.get(uri)
-    response = JSON.parse(response)
-    return response
-  end
-
-  def index
-  end
+class CryptoCurrenciesController < ApplicationController
 
   def show
-
+    if current_user
+      @coin_tab = current_user.crypto_currencies.all
+    end
     @coin_id = params[:id]
     @coin_symbol = params[:symbol]
     @coin_name = params[:name]

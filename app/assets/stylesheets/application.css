@@ -1682,7 +1682,7 @@
  .table {
    width: 100%;
    margin-bottom: 1rem;
-   color: #919aa1;
+   color: #1c1c1c;
  }
 
  .table th,
@@ -11202,11 +11202,20 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 /*  ###############  Portfolio */
 
 .portfolio-card td{
-  padding: 16px 12px 0px 23px;
+  padding: 22px 12px 0 23px;
 }
 
-.logo-name-container{
+.portfolio-card thead tr th.portfolio-logo-name-container{
   background-color: #fff;
+}
+
+.portfolio-card tr td.portfolio-logo-name-container{
+  background-color: #fff;
+  padding-bottom: 0;
+}
+
+.portfolio-card tr td.crypto-name{
+  padding-top: 25px;
 }
 
 .portfolio-rank-container{
@@ -11220,6 +11229,19 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 .portfolio-total{
   font-size: 30px;
   color: #fff;
+}
+
+input.portfolio-input-textarea{
+  width: 100px;
+  height: 30px;
+  margin-right: -4px;
+}
+
+table#cryptos.table.ttm-card-bg.portfolio-card tbody.crypto-lign tr td.quantity-input form input.new-article-input-btn.portfolio-input-btn{
+  height: 30px;
+  font-size: 16px;
+  padding-top: 2px;
+  margin-bottom: 3px;
 }
 
 /*  ###############  News Index */

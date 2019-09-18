@@ -23,10 +23,14 @@ class UserCryptosController < ApplicationController
 		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:crypto].to_i)
 		@n = params[:n].to_i
+		quantity = params[:quantity]
+		if quantity.include?(",")
+			quantity = quantity.gsub(",", ".")
+		end
 		@crypto = UserCrypto.create(
 			user: current_user,
 			crypto_currency: crypto_currency,
-			quantity: params[:quantity].to_i
+			quantity: quantity.to_f
 		)
 		respond_to do |format|
     	format.html { redirect_back(fallback_location: root_path) }

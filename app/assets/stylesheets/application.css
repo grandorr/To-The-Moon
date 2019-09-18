@@ -10697,6 +10697,11 @@ flex-direction: row;
 justify-content: center;
 }
 
+.index-jumbotron-img-bis{
+  display: flex;
+justify-content: left;
+}
+
 /*  ###  RCC Edit   ###################################################################################  */
 
 /*  ###############  Layout  */
@@ -10737,7 +10742,7 @@ justify-content: center;
 
 .post-comment-text-area{
   width: 300px;
-  height: 54px;
+  height: 38px;
   border-radius: 7px 7px 0 7px;
   border: 1px solid #eee
 }
@@ -10818,12 +10823,6 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
   height: 90vh;
 }
 
-@media (max-width: 1050px) {
-  .sign-card{
-    transform: scale(0.8);
-  }
-}
-
 .sign-card{
   width: 420px;
   padding: 2%;
@@ -10832,6 +10831,12 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
   border-radius: 7px;
   flex-direction: column;
   border-radius: 170px 170px 50px 50px;
+}
+
+@media (max-width: 1050px) {
+  .sign-card{
+    transform: scale(0.8);
+  }
 }
 
 @media (max-width: 768px) {
@@ -11034,6 +11039,10 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   margin-bottom: 28px;
 }
 
+.index-last-cards{
+  margin-bottom: 60px;
+}
+
 .ttm-btn{
   margin: 0 30px 0 0;
   padding: 7px 35px;
@@ -11048,7 +11057,6 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 
 
 /*  ###############  Cryptolist  */
-
 
 /*  Update crypto quantity Form Popup  */
 
@@ -11357,6 +11365,17 @@ input.new-article-input-btn{
   margin: 0 0 10px 28px;
 }
 
+.article-show-card-container{
+  margin-bottom: 50px;
+}
+
+.articles-show-card-hr{
+  border: 2px solid #493b72;
+  width: 15%;
+  border-radius: 3px;
+  margin: 0 0 10px;
+}
+
 .article-card-text{
   margin-bottom: 10px;
 }
@@ -11368,7 +11387,7 @@ input.new-article-input-btn{
 /*  ###############  Articles Show  */
 
 .article-show-container{
-  padding: 0 28px 20px;
+  padding: 20px 20px 20px;
 }
 
 @media (max-width: 768px) {
@@ -11401,12 +11420,130 @@ input.new-article-input-btn{
   margin-bottom: 20px;
 }
 
+/*  New Article  */
+
+.image-upload-container{
+  margin: 20px 0;
+}
+
+html body div.pages-container div.space-bg div.news-container div.d-flex.justify-content-center div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form div.form-group label{
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
 /*  ###############  Profile Show  */
 
-.profile-container{
+.profile-card-container{
+  width: 35vw;
+  min-width: 300px;
+  padding: 3%;
+  border: 26px solid #848484;
+  background-color: #f2e9ff;
+  border-radius: 7px;
+  flex-direction: column;
+  border-radius: 300px 300px 50px 50px;
 }
+
+@media (max-width: 768px) {
+  .profile-card-container{
+    border: 18px solid #848484;
+  }
+}
+
+.profile-cards-img{
+  width: 70%;
+  margin: -10px 0 30px;
+  transform: scale(1.1);
+}
+
 .profile-card{
-  width: 50%;
-  padding: 40px;
-  margin: 0 auto;
+
+}
+
+.profile-title{
+  font-size: 1.8vw;
+}
+
+@media (max-width: 768px) {
+  .profile-title{
+    font-size: 18px;
+  }
+}
+
+.profile-friends-conv-container{
+  padding-left: 2.4vw;
+}
+
+@media (max-width: 1000px) {
+  .profile-friends-conv-container{
+    flex-direction: column;
+  }
+}
+
+ul#friend-list{
+  margin-left: -40px;
+}
+
+ul#friend-list li{
+  margin-left: 30px;
+}
+
+.profile-conversations, .profile-favorites{
+  width: 40%;
+  text-align: left;
+}
+
+.profile-btn{
+}
+
+.other-profile-btn-container{
+  margin-bottom: 20px;
+}
+
+/*  Conversations  */
+
+.conv-card{
+  width: 75%;
+  padding: 20px;
+}
+
+.conv-msg-container, .conv-msg-container-you{
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  width: 35%;
+}
+
+.conv-msg-container{
+  background-color: #e6d3f2;
+}
+
+.conv-msg-container-you{
+  background-color: #e8dff4;
+}
+
+@media (max-width: 768px) {
+  .conv-msg-container{
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #e8dff4;
+  border-radius: 6px;
+  width: 70%;
+  }
+}
+
+.conv-msg-text{
+  margin-bottom: 3px;
+}
+
+.conv-sender{
+  font-size: 14px;
+}
+
+ul#message-list{
+  padding:0;
+}
+
+li.conv-list{
+  list-style-type: none;
 }

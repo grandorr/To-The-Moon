@@ -1,20 +1,121 @@
-<% unless @cryptos == nil %>
-  <% n = 0 %>
-  <% @cryptos.each do |crypto| %>
+<div class="pages-container">
+    <div class="space-bg">
+      <div class="news-container">
 
-  	<%= link_to crypto.name, crypto_path(crypto.crypto_id) %><br>
-  	<%= "Quantity : " + @user_cryptos[n].quantity.to_s %><br>
-  	<%= form_tag user_crypto_path(@user_cryptos[n]),:method => :put do %>
-      <div class="form-group">
-        <%= label_tag 'Update crypto quantity' %><br>
-        <%= text_field_tag 'quantity'%>
+        <h1 class="page-title text-center">
+          Portfolio </h1>
+     <% if @cryptos.length == 0 %>
+        <div class="index-cards-container-row-alt text-dark">
+
+          <div class="d-flex index-cards-container-alt justify-content-center">
+            <%= image_tag("home/To-the-Moon-homepage-Portfolio.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+
+            <div class="ttm-card-bg index-card">
+              <h2 class="index-card-title">To the Moon Portfolio</h2>
+
+              <hr align="left" class="index-card-hr">
+
+              <p class="index-card-text-p">
+              Here you will be able to follow evolution of targeted cryptos, visualise your portfolio evolution in real time, find articles, make predictions, and much more !
+              In short, the main tools are:
+              </p>
+
+              <p class="index-card-text-bold-p index-card-text-bold-n">
+              - Real time price for more thant 1000 Cryptos.</br>
+              - Chart evolution</br>
+              - Currency converter</br>
+              - Market cap
+              </p>
+              <div> Your portfolio is empty, add cryptocurrency to your portfolio by cryptocurrency list page </div>
+              <div class="d-flex">
+              <% if current_user %>
+
+                  <a class="ttm-btn" <%= link_to "Cryptocurrency list", cryptolist_path(0) %> </a>
+
+              <% end %>
+            </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+        </h1>
+        <table class="table ttm-card-bg" id="cryptos">
+          <thead>
+            <tr class="text-dark">
+              <th scope="col">rank</th>
+              <th scope="col">Symbol</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col"> Total </th>
+              <th scope="col"> 1h Change </th>
+              <th scope="col"> 24h Change </th>
+              <th scope="col"> 7 day Change </th>
+              <th scope ="col"> 7 day chart </th>
+              <th scope ="col"></th>
+            </tr>
+          </thead>
+            <% n = 0 %>
+            <% @total = 0 %>
+            <% @total_coin = 0 %>
+            <% crypto_currency = @crypto_currency %>
+            <% @cryptos.each do |crypto| %>
+
+            <tbody class="crypto-lign">
+              <tr>
+                <td class="text-dark"><%= @coin[n][0]['rank']%></td>
+                <% symbol = coin_symbol_helper_check(@coin[n][0]['symbol']) %>
+                <td> <img  class ="cryptolist-logo " alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %>  </td>
+                <td class="crypto-name"><%= link_to crypto.name, crypto_currency_path(crypto.crypto_id) %><br> </td>
+                <% price = @coin[n][0]['price_usd'] %>
+                <% if price.to_f > 500 %>
+                <td>  <%= number_to_currency(price, precision: 0, delimiter: " ") %>  </td>
+                <% elsif price.to_f < 0.01 %>
+                <td>  <%= number_to_currency(price, precision: 4, delimiter: " ") %>  </td>
+                <% else %>
+                <td>  <%= number_to_currency(price, precision: 2, delimiter: " ") %>  </td>
+                <% end %>
+                <td class="quantity-input">
+                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price, :name => crypto.name),:method => :put, :remote => true do %>
+                <%= text_field_tag 'quantity', crypto_currency[n].quantity.to_s%>
+                                  <%= submit_tag "Update" %>
+                  <% end %>
+                </td>
+                <% if crypto_currency[n].quantity != nil %>
+                  <% @total_coin = (price.to_f * crypto_currency[n].quantity) %>
+                  <td class="crypto-price"><%= number_to_currency(@total_coin.round(2), precision: 0, delimiter: " ") %></td>
+                <% end %>
+
+                <% if @coin[n][0]["percent_change_1h"].to_f > 0 %>
+                   <td class="green" ><%= @coin[n][0]["percent_change_1h"]%>% <i class="fas fa-caret-up"></i></td>
+                <% else %>
+                 <td class="red" ><%= @coin[n][0]["percent_change_1h"]%>% <i class="fas fa-caret-down" ></i></td>
+                  <%end%>
+                <% if @coin[n][0]["percent_change_24h"].to_f > 0 %>
+                 <td class="green" ><%= @coin[n][0]["percent_change_24h"]%>% <i class="fas fa-caret-up"></i></td>
+                <% else %>
+                 <td class="red" ><%= @coin[n][0]["percent_change_24h"]%>% <i class="fas fa-caret-down"></i></td>
+                <%end%>
+                <% if @coin[n][0]["percent_change_7d"].to_f > 0 %>
+                 <td class="green" ><%= @coin[n][0]["percent_change_7d"]%>% <i class="fas fa-caret-up"></i></td>
+                <% else %>
+                 <td class="red" ><%= @coin[n][0]["percent_change_7d"]%>% <i class="fas fa-caret-down"></i></td>
+                <%end%>
+                <% coin_name = @coin[n][0]["symbol"].downcase +  "-" + @coin[n][0]["name"].downcase.gsub(/\s+/, "-") %>
+                <% coin_name = coin_name_chart_helper_check(coin_name) %>
+
+                <td class=> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg") %></td>
+                <td> <%= link_to "x", user_crypto_path(:id => crypto_currency[n].id, :n => n, :crypto => crypto.name), :method => :delete, :remote => true %></a></td>
+              </tr>
+            </tbody>
+          </div>
+            <div class="counter"><% n = n+1 %></div>
+            <% @total += @total_coin %>
+          <% end %>
+          </table>
+          <center>  <h1 id="total"> TOTAL:     <%= number_to_currency((@total) , precision: 0, delimiter: " ") %> </h1> </center>
+          <% end %>
+
       </div>
-      <div class="actions mt-5">
-        <%= submit_tag "Update" %>
-      </div>
-    <% end %>
-  	<%= link_to "Destroy", user_crypto_path(@user_cryptos[n].id), :method => :delete %>
-    <br/><br/>
-    <% n += 1 %>
-  <% end %>
-<% end %>
+    </div>
+  </div>

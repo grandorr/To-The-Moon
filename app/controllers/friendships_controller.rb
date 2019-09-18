@@ -1,20 +1,24 @@
 class FriendshipsController < ApplicationController
+	
+	before_action :authenticate_user!
+
 	def create
-		Friendship.create(
+		@n = params[:n].to_i
+		@friendship = Friendship.create(
 			user: current_user,
 			friend: User.find(params[:friend_id])
 			)
-		current_user.friend_requests.find_by(pending_friend: User.find(params[:friend_id])).destroy
-		redirect_back(fallback_location: root_path)
+		FriendRequest.destroy_friend_request(current_user, params[:friend_id])
+		
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
+
 	end
 
 	def destroy
-		@friendship = Friendship.find(params[:id].to_i)
-		@user = @friendship.user
-		@friend = @friendship.friend
-		@reciprocal_friendship = Friendship.find_by(user: @friend, friend: @user)
-		@friendship.destroy
-		@reciprocal_friendship.destroy
+		Friendship.reciprocal_destruction(params[:id].to_i)
 		redirect_back(fallback_location: root_path)
 	end
 

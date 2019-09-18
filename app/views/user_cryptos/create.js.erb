@@ -1,0 +1,16 @@
+var n = '<%= @n %>';
+console.log('<%= @n %>')
+n -= 1;
+if (n >= 100) {
+	n = n.toString();
+	n = n.substr(1);
+	n = parseInt(n, 10);
+} else if (n >= 1000) {
+	n = n.toString();
+	n = n.substr(2);
+	n = parseInt(n, 10);
+}
+console.log(n)
+document.getElementsByClassName("update-crypto-number-container-container")[0].children[0].children[0].children[0].childNodes[1][1].value = "";
+document.getElementsByClassName("update-crypto-number-container-container")[0].style.display='none';
+document.getElementsByClassName("cryptolist-td cryptolist-add-container d-flex align-items-center")[n].innerHTML = "Already in portfolio ";

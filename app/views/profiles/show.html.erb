@@ -1,64 +1,138 @@
-<% if @user == current_user %>
-	
-	<%= @user.email %><br>
-	<% if @user.pending_friends.length > 0 %>
-		<%= "Pending friend requests :" %><br>
-		<% @pending_friends.each do |pending_friend| %>
-			<%= link_to pending_friend.email, profile_path(pending_friend.id) %><br>
-			<%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id), method: :post %>
-			<br/>
-		<% end %>
-	<% end %>
-	<% if @user.friends.length > 0 %>
-		<%= "My friends :" %><br>
-		<% @friends.each do |friend| %>
-			<%= link_to friend.email, profile_path(friend.id) %><br>
-		<% end %>
-	<% end %>
-	<% unless @new_messages == nil %>
-		<%= "Unread messages : " + @new_messages.length.to_s %><br>
-		<% @new_messages.each do |message| %>
-			<%= link_to message.sender.email, conversation_path(@user.conversations.find_by(interlocutor: message.sender).id) %><br>
-		<% end %>
-	<% end %>
-	<% if @user.conversations.length > 0 %>
-		<%= "My messages with :" %><br>
-		<% @user.conversations.each do |convo| %>
-			<% unless convo.messages.length == 0 %>
-				<%= link_to convo.interlocutor.email, conversation_path(convo.id) %><br>
-				<br/><br/>
-			<% end %>
-		<% end %>
-	<% end %>
-	<%= "My articles : "%><br>
-	<% unless @articles == nil %>
-		<% @articles.each do |article| %>
-			<%= link_to article.title, article_path(article.id) %><br>
-		<% end %>
-	<% end %>
+<div class="pages-container">
+	<div class="space-bg">
+		<div class="news-container">
+			<div class="d-flex justify-content-center">
+	      		<div class="profile-card-container d-flex justify-content-center">
+					<div class="">
+						<% if @user == current_user %>
 
-<% else %>
-	
-	<%= @user.email %><br>
-	<% unless current_user.friends.include?(@user) %>
-		<% unless @user.pending_friends.include? current_user %>
-			<% if current_user.pending_friends.include?(@user) %>
-				<%= link_to "Accept friend request", friendships_path(:friend_id => @user.id), method: :post %><br>
-			<% else %>
-				<%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post %><br>
-			<% end %>
-		<% else %>
-			<%= "Friend request already sent" %><br>
-		<% end %>
-	<% else %>
-		<%= link_to "Send Message", new_message_path(:id => @user.id) %><br>
-		<%= link_to "Destroy", friendship_path(@friendship.id), :method => :delete %><br>
-	<% end %>
-	<%= "User's articles : "%><br>
-	<% unless @articles == nil %>
-		<% @articles.each do |article| %>
-			<%= link_to article.title, article_path(article.id) %><br>
-		<% end %>
-	<% end %>
+							<div class="d-flex justify-content-center">
+								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+							</div>
+							
+							<h3 class="text-center profile-title">
+								<%= @user.email %>
+							</h3>
 
-<% end %>
+							<ul id="pending-friend-list">
+							<% if @user.pending_friends.length > 0 %>
+								<p><%= "Pending friend requests :" %></p>
+								<% n = 1 %>
+								<% @pending_friends.each do |pending_friend| %>
+								<li>
+									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -  
+									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
+										<% n += 1 %>
+								</li>
+								<% end %>
+							<% end %>
+							</ul>
+							<br/>
+
+							<div class="d-flex justify-content-between profile-friends-conv-container">
+								<ul id="friend-list">
+								<% if @user.friends.length > 0 %>
+									<p><%= "My friends" %></p>
+									<% @friends.each do |friend| %>
+									<li>
+										<a <%= link_to friend.email, profile_path(friend.id) %></a>
+									</li>
+									<% end %>
+								<% end %>
+								</ul>
+
+								<% unless @unread_messages == 0 %>
+									<p><%= "Unread messages" + @unread_messages.to_s %></p>
+									<% @senders.each do |sender| %>
+										<a <%= link_to sender, conversation_path(@user.conversations.find_by(interlocutor: User.find_by(email: sender)).id) %></a>
+									<% end %>
+								<% end %>
+
+								<br/>
+
+								<% if @user.conversations.length > 0 %>
+									<div class="profile-conversations">
+										<p><%= "Conversations:" %></p>
+										<% @user.conversations.each do |convo| %>
+											<% unless convo.messages.length == 0 %>
+												<a <%= link_to convo.interlocutor.email, conversation_path(convo.id) %></a>
+												<br/><br/>
+											<% end %>
+										<% end %>
+									</div>
+								<% end %>
+							</div>
+
+							<br/>
+							
+							<div class="d-flex justify-content-between profile-friends-conv-container">
+								<div class="">
+									<% unless @articles == nil %>
+										<p><%= "My articles"%></p>
+										<% @articles.each do |article| %>
+											<a <%= link_to article.title, article_path(article.id) %></a>
+										<% end %>
+									<% end %>
+								</div>
+								
+								<br/>
+
+								<div class="profile-favorites">
+									<% unless @favorite_articles == nil %>
+										<p><%= "My favorites" %></p>
+										<% @favorite_articles.each do |fav_article| %>
+											<a <%= link_to fav_article.title, article_path(fav_article.id) %></a>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+
+							<div class="d-flex justify-content-center">
+								<a class="btn sign-ttm-btn" <%= link_to "Edit Profile", edit_user_registration_path %>
+								</a>
+							</div>
+
+						<% else %>
+
+							<div class="d-flex justify-content-center">
+								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+							</div>
+							
+							<h3 class="text-center profile-title">
+								<%= @user.email %></p>
+							</h3>
+
+							<% unless current_user.friends.include?(@user) %>
+								<% unless @user.pending_friends.include? current_user %>
+									<% if current_user.pending_friends.include?(@user) %>
+										<a <%= link_to "Accept friend request", friendships_path(:friend_id => @user.id), method: :post %></a>
+									<% else %>
+										<a id="friend-request" <%= link_to "Send friend request", friend_requests_path(:user => @user), :method => :post, :remote => true %></a>
+									<% end %>
+								<% else %>
+									<%= "Friend request already sent" %></p>
+								<% end %>
+							<% else %>
+							<div class="d-flex justify-content-between other-profile-btn-container">
+								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", new_message_path(:id => @user.id) %>
+								</a>
+								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Unfriend", friendship_path(@friendship.id), :method => :delete %>
+								</a>
+							</div>
+							<% end %>
+
+							<br/>
+
+							<p><%= "User's articles"%></p>
+							<% unless @articles == nil %>
+								<% @articles.each do |article| %>
+									<%= link_to article.title, article_path(article.id) %><br>
+								<% end %>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

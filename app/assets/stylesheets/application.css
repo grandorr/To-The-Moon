@@ -10742,7 +10742,7 @@ justify-content: center;
 
 .post-comment-text-area{
   width: 300px;
-  height: 54px;
+  height: 38px;
   border-radius: 7px 7px 0 7px;
   border: 1px solid #eee
 }
@@ -11358,6 +11358,10 @@ input.new-article-input-btn{
   width: 15%;
   border-radius: 3px;
   margin: 0 0 10px 28px;
+}
+
+.article-show-card-container{
+  margin-bottom: 50px;
 }
 
 .articles-show-card-hr{

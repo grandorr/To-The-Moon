@@ -13,12 +13,12 @@
         <% @total = 0 %>
         <% @total_coin = 0 %>
 
-        <table class="table ttm-card-bg">
+        <table class="table ttm-card-bg portfolio-card">
           <thead>
             <tr class="text-dark">
-              <th scope="col">rank</th>
-              <th scope="col">Symbol</th>
-              <th scope="col">Name</th>
+              <th scope="col" class="logo-name-container portfolio-rank-container">rank</th>
+              <th scope="col" class="logo-name-container">Symbol</th>
+              <th scope="col" class="logo-name-container">Name</th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
               <th scope="col"> Total </th>
@@ -36,14 +36,14 @@
 
               <tbody>
                 <tr>
-                  <td class="text-dark">
+                  <td class="text-dark logo-name-container">
                     <%= coin['rank'] %>
                   </td>
                   <% symbol = coin_symbol_helper_check(coin['symbol']) %>
-                  <td>
-                    <img  class ="cryptolist-logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %>  
+                  <td class="logo-name-container portfolio-logo-container">
+                    <img alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}", class: "cryptolist-logo")  %>  
                   </td>
-                  <td>
+                  <td class="logo-name-container">
                     <p>
                       <%= link_to crypto.name, crypto_path(crypto.crypto_id) %>
                     </p>
@@ -100,9 +100,9 @@
           <% end %>
         </table>
         <center>
-          <h1>
+          <h3 class="portfolio-total">
             TOTAL: $ <%= @total %>
-          </h1>
+          </h3>
         </center>
       <% end %>
     </div>

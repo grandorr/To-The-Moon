@@ -16,7 +16,6 @@
 	  </div>
 	</div>
 </div>
-<div class="pages-container">
 	<div class="space-bg">
 		<div class="news-container">
 			<h1 class="page-title text-center ">
@@ -42,7 +41,7 @@
 			<% if @coin_list.length != 1  %>
 			<center><%= render "naviguate_page" %></center>
 			<% else %>
-			<a class="btn btn-secondary" <%= link_to "all cryptocurrencies", cryptolist_path(0)  %>
+			<a class="btn btn-secondary" <%= link_to "all cryptocurrencies", cryptolist_path(0)  %></a>
 			<% end %>
 
 			<% end %>

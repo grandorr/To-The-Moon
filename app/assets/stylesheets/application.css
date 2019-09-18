@@ -11039,6 +11039,10 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   margin-bottom: 28px;
 }
 
+.index-last-cards{
+  margin-bottom: 60px;
+}
+
 .ttm-btn{
   margin: 0 30px 0 0;
   padding: 7px 35px;
@@ -11429,7 +11433,7 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
 /*  ###############  Profile Show  */
 
 .profile-card-container{
-  width: 25vw;
+  width: 35vw;
   min-width: 300px;
   padding: 3%;
   border: 26px solid #848484;
@@ -11446,8 +11450,8 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
 }
 
 .profile-cards-img{
-  width: 100%;
-  margin: 0 0 30px;
+  width: 70%;
+  margin: -10px 0 30px;
   transform: scale(1.1);
 }
 
@@ -11465,7 +11469,11 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
   }
 }
 
-@media (max-width: 768px) {
+.profile-friends-conv-container{
+  padding-left: 2.4vw;
+}
+
+@media (max-width: 1000px) {
   .profile-friends-conv-container{
     flex-direction: column;
   }
@@ -11479,6 +11487,62 @@ ul#friend-list li{
   margin-left: 30px;
 }
 
+.profile-conversations, .profile-favorites{
+  width: 40%;
+  text-align: left;
+}
 
+.profile-btn{
+}
 
+.other-profile-btn-container{
+  margin-bottom: 20px;
+}
 
+/*  Conversations  */
+
+.conv-card{
+  width: 75%;
+  padding: 20px;
+}
+
+.conv-msg-container, .conv-msg-container-you{
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  width: 35%;
+}
+
+.conv-msg-container{
+  background-color: #e6d3f2;
+}
+
+.conv-msg-container-you{
+  background-color: #e8dff4;
+}
+
+@media (max-width: 768px) {
+  .conv-msg-container{
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #e8dff4;
+  border-radius: 6px;
+  width: 70%;
+  }
+}
+
+.conv-msg-text{
+  margin-bottom: 3px;
+}
+
+.conv-sender{
+  font-size: 14px;
+}
+
+ul#message-list{
+  padding:0;
+}
+
+li.conv-list{
+  list-style-type: none;
+}

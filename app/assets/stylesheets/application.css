@@ -11645,11 +11645,13 @@ li.conv-list{
   list-style-type: none;
 }
 
-.about-card{
+/*  Conversations  */
+
+.contact-card{
   width: 35%;
   min-width: 300px;
 }
 
-.about-card-container{
+.contact-card-container{
   padding: 4%;
 }

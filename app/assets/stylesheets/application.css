@@ -11053,6 +11053,7 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 /*  Update crypto quantity Form Popup  */
 
 .update-crypto-number-container-container{
+  z-index: 9000;
   height: 0;
   position: sticky;
   top: 0;

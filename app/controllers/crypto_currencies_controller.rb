@@ -4,6 +4,10 @@ class CryptoCurrenciesController < ApplicationController
     if current_user
       @coin_tab = current_user.crypto_currencies.all
     end
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts (@n)
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"    
+    @n = params[:n]
     @coin_id = params[:id]
     @coin_symbol = params[:symbol]
     @coin_name = params[:name]

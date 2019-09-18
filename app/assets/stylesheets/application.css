@@ -11421,13 +11421,36 @@ input.new-article-input-btn{
 
 /*  New Article  */
 
+.sign-card-container{
+  margin-top: -120px;
+}
+
+.edit-article-title{
+  padding-top: 50px;
+  color: #fff;
+}
+
 .image-upload-container{
   margin: 20px 0;
 }
 
-html body div.pages-container div.space-bg div.news-container div.d-flex.justify-content-center div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form div.form-group label{
+.new-article-card label{
   font-size: 20px;
   margin-bottom: 2px;
+}
+
+.article-edit-form-inputs input, .article-edit-form-inputs textarea{
+  width: 100%;
+}
+
+div.new-article-card input.update-article-btn{
+  width: 60%;
+  margin: 20px auto 0;
+  padding: 10px 10px 10px;
+}
+
+.update-article-img-update{
+  margin: 20px 0;
 }
 
 /*  ###############  Profile Show  */

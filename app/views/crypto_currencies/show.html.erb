@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -6,7 +5,27 @@
     <title></title>
   </head>
   <body>
-
+    <div class="update-crypto-number-container-container">
+      <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
+        <div class="update-crypto-number-card ttm-card-bg">
+          <div class="update-crypto-number-form">
+            <%= form_tag user_cryptos_path, method: "post", remote: true do %>
+              <div class="form-group">
+                <%= label_tag 'Choose quantity' %><br/>
+                  <%= text_field_tag 'quantity'%>
+                  <%= hidden_field_tag 'user', current_user %>
+                  <%= hidden_field_tag 'crypto', "unknown" %>
+                  <%= hidden_field_tag 'n', "unknown" %>
+              </div>
+                  <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
+            <% end %>
+            <div id="close-pop-up">
+               <button onclick="closePopUp()">X</button> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">
         <% checker = [] %>
         <% if @coin_tab %>
@@ -17,47 +36,55 @@
               <% checker << true %>
             <% end %>
           <% end %>
+
           <% unless checker.include?(true) %>
-            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-
-            <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 2), :remote => true %></a>
-
+            <% if current_user %>
+              <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+              <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), :remote => true %></a>
+            <% else %>
+              <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+              <%= link_to "Add to portfolio", new_user_session_path %></a>
+            <% end %>
           <% else %>
             <%= "Already in portfolio" %>
           <% end %>
         <% else %>
           <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-
-            <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 2), remote: true %></a>
+            <% if current_user %>
+              <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), remote: true %></a>
+            <% else %>
+              <%= link_to "Add to portfolio", new_user_session_path %></a>
+            <% end %>
 
         <% end %>
 
         </a>
 </div>
-    <%= link_to 'Back', :back %>
-
-<center><% @coin_name = @coin_name.downcase.gsub(/\s+/, "-") %>
-<%    @coin_name = coin_name_helper_check(@coin_name) %>
-<br/>
-<br/>
-<h1>  Chart </h1>
-<br/>
-<br/>
-<script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
-<coingecko-coin-compare-chart-widget  coin-ids=<%= @coin_name.downcase %> currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
-<br/>
-<br/>
-<h1> Converter </h1>
-<br/>
-<br/>
-<script src="https://widgets.coingecko.com/coingecko-coin-converter-widget.js"></script>
-<coingecko-coin-converter-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" background-color="#ffffff" font-color="#4c4c4c" locale="en"></coingecko-coin-converter-widget>
-<br/>
-<br/>
-<h1> EXCHANGE </h1>
-<br/>
-<br/>
-<script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
-<coingecko-coin-market-ticker-list-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>
-
+    <%= link_to "Back to cryptos", :back %>
+<div>
+  <center><% @coin_name = @coin_name.downcase.gsub(/\s+/, "-") %>
+  <%    @coin_name = coin_name_helper_check(@coin_name) %>
+  <br/>
+  <br/>
+  <h1>  Chart </h1>
+  <br/>
+  <br/>
+  <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
+  <coingecko-coin-compare-chart-widget  coin-ids=<%= @coin_name.downcase %> currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
+  <br/>
+  <br/>
+  <h1> Converter </h1>
+  <br/>
+  <br/>
+  <script src="https://widgets.coingecko.com/coingecko-coin-converter-widget.js"></script>
+  <coingecko-coin-converter-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" background-color="#ffffff" font-color="#4c4c4c" locale="en"></coingecko-coin-converter-widget>
+  <br/>
+  <br/>
+  <h1> EXCHANGE </h1>
+  <br/>
+  <br/>
+  <script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
+  <coingecko-coin-market-ticker-list-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>
+  </center>
+</div>
 </body>

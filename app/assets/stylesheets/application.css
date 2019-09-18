@@ -11158,6 +11158,11 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
   color: red
 }
 
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-logo-container{
+  padding-top: 15px;
+}
+
+
 .cryptolist-logo {
   display: inline;
   height: 35px;
@@ -11168,7 +11173,7 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
   border-top-left-radius: 7px;
 }
 
-html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
   padding-top: 20px;
 }
 
@@ -11179,12 +11184,14 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
 }
 
 .cryptolist-add-ttm-btn{
-  font-size: 16px;
-  height: 50px;
-  width: 100px;
-  padding: 7px 10px;
-  margin-top: 0;
+  font-size: 50px;
+  font-weight: 600;
+  height: 40px;
+  width: 40px;
+  padding: 6px 0 7px 2px;
+  margin: -12px auto 0;
   line-height: 18px;
+  border-radius: 50px
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.cryptolist-td.cryptolist-add-container{

@@ -10857,7 +10857,7 @@ div.sign-card.d-flex.justify-content-center form#new_user.form-signin.mt-3 div.f
   margin-bottom: 2px;
 }
 
-div.form-group input{
+div.form-group input, div.form-group textarea{
   height: 35px;
   border: 1px solid #d8d8d8;
   border-radius: 5px;

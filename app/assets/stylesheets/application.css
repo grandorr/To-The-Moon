@@ -84,6 +84,7 @@
    color: #11002d;
    text-align: left;
    background-color: #fff;
+   min-height: 100vh;
  }
 
  [tabindex="-1"]:focus {
@@ -10724,6 +10725,13 @@ justify-content: left;
   color: #fff;
   font-size: 40px;
   margin-bottom: 40px;
+}
+
+/*  ###############  Header */
+
+nav.ttm-navbar{
+  position: sticky;
+  top: 0;
 }
 
 /*  ###############  Footer  */

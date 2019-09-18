@@ -1,17 +1,31 @@
 var crypto = "<%= @crypto %>"
 var cryptos = document.getElementById("cryptos")
-console.log(cryptos)
-console.log("<%= @crypto %>");
-
-
 var aTags = cryptos.getElementsByTagName("a");
 var searchText = "SearchingText";
-
+var arr = [];
+var cryptoPrices = document.getElementsByClassName("crypto-price");
+var reducer = (accumulator, currentValue) => accumulator + currentValue;
+var total = 0;
+var cleanPrice = '';
 for (var i = 0; i < aTags.length; i++) {
   if (aTags[i].textContent == "<%= @crypto %>") {
-  	console.log(aTags[i].parentNode.parentNode)
     aTags[i].parentNode.parentNode.remove();
     break;
   }
 }
 
+for (var i = 0; i < cryptoPrices.length; i++) {
+	console.log(cryptoPrices[i].childNodes[0].textContent);
+	cleanPrice = cryptoPrices[i].childNodes[0].textContent;
+	cleanPrice = cleanPrice.split(' ').join('').substr(1);
+	console.log(cleanPrice);
+	arr.push(parseFloat(cleanPrice));
+}
+
+if (arr.length < 1){
+	document.getElementById("total").childNodes[0].textContent = "TOTAL : $0";
+} else {
+	total = arr.reduce(reducer).toFixed(2);
+
+	document.getElementById("total").childNodes[0].textContent = "TOTAL : " + new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'USD' }).format(total);
+}

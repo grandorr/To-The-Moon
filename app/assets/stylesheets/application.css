@@ -1682,7 +1682,7 @@
  .table {
    width: 100%;
    margin-bottom: 1rem;
-   color: #919aa1;
+   color: #1c1c1c;
  }
 
  .table th,
@@ -10442,7 +10442,7 @@
  }
 
 
- /*	###   matthieu Edit   ###################################################################################   */
+ /* ###   matthieu Edit   ###################################################################################   */
 
 
 .bar-news {
@@ -10531,12 +10531,7 @@
 #content-wrap {
  padding-bottom: 2.5rem;    /* Footer height */
 }
-#footer {
- position: relative;
- bottom: 0;
- width: 100%;
- height: 2.5rem;         /* Footer height */
-}
+
 .vw-footer
 {
  width: 100vw;
@@ -10700,6 +10695,11 @@ flex-direction: row;
 .pond2 {
   display: flex;
 justify-content: center;
+}
+
+.index-jumbotron-img-bis{
+  display: flex;
+justify-content: left;
 }
 
 /*  ###  RCC Edit   ###################################################################################  */
@@ -11061,9 +11061,11 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 /*  Update crypto quantity Form Popup  */
 
 .update-crypto-number-container-container{
+  z-index: 9000;
   height: 0;
   position: sticky;
   top: 0;
+  display: none;
 }
 
 .update-crypto-number-container{
@@ -11115,7 +11117,7 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 /*  List  */
 
 .cryptolist-table{
-  margin-bottom: : 40px;
+  margin-bottom: 40px;
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table thead tr.text-dark th.logo-name-container{
@@ -11201,6 +11203,53 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   font-size: 23px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+/*  ###############  Portfolio */
+
+.portfolio-card td{
+  padding: 22px 12px 0 23px;
+}
+
+.portfolio-card thead tr th.portfolio-logo-name-container{
+  background-color: #fff;
+}
+
+.portfolio-card tr td.portfolio-logo-name-container{
+  background-color: #fff;
+  padding-bottom: 0;
+}
+
+.portfolio-card tr td.crypto-name{
+  padding-top: 25px;
+}
+
+.portfolio-rank-container{
+  border-top-left-radius: 7px;
+}
+
+.portfolio-card td.portfolio-logo-container{
+  padding-top: 12px;
+}
+
+.portfolio-total{
+  font-size: 30px;
+  color: #fff;
+}
+
+input.portfolio-input-textarea{
+  width: 100px;
+  height: 30px;
+  margin-right: -4px;
+}
+
+table#cryptos.table.ttm-card-bg.portfolio-card tbody.crypto-lign tr td.quantity-input form input.new-article-input-btn.portfolio-input-btn{
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+  padding-top: 3px;
+  padding-left: 28px;
+  margin-bottom: 3px;
 }
 
 /*  ###############  News Index */

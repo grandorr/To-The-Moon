@@ -8,9 +8,7 @@ ruby '2.5.1'
 gem 'coinmarketcap_api'
 gem 'table_print'
 
-
 gem "devise", ">= 4.7.1"
-
 gem 'faker'
 # GEM TEST #
 gem "google-cloud-storage", "~> 1.8", require: false

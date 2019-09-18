@@ -1,4 +1,24 @@
-<div class="pages-container">
+<div class="update-crypto-number-container-container">
+  <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
+    <div class="update-crypto-number-card ttm-card-bg">
+      <div class="update-crypto-number-form">
+        <%= form_tag user_cryptos_path, method: "post", remote: true do %>
+          <div class="form-group">
+            <%= label_tag 'Choose quantity' %><br/>
+              <%= text_field_tag 'quantity'%>
+              <%= hidden_field_tag 'user', current_user %>
+              <%= hidden_field_tag 'crypto', "unknown" %>
+              <%= hidden_field_tag 'n', "unknown" %>
+          </div>
+              <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
+        <% end %>
+	    </div>
+      <div id="close-pop-up">
+         <button onclick="closePopUp()">X</button> 
+      </div>
+	  </div>
+	</div>
+</div>
 	<div class="space-bg">
 		<div class="news-container">
 			<h1 class="page-title text-center ">
@@ -6,7 +26,7 @@
     		</h1>
 	    	<div class="cryptolist-search-container d-flex justify-content-end">
 
-				<%= form_tag cryptolist_path,class: "search-articles-form", :method => :get do %>
+				<%= form_tag cryptolist_path(:n => @n),class: "search-articles-form", :method => :get do %>
 				
 					<%= text_field_tag 'content', "",class: "search-cryptolist-input-textarea" %>
 					<%= submit_tag "Search crypto", class: "btn search-cryptolist-input-btn" %>
@@ -23,8 +43,12 @@
 			<% if @coin_list != nil %>
 			<% if @coin_list.length != 1  %>
 			<center><%= render "naviguate_page" %></center>
+			<% else %>
+			<a class="btn btn-secondary" <%= link_to "all cryptocurrencies", cryptolist_path(0)  %></a>
 			<% end %>
+
 			<% end %>
+
 		</div>
 	</div>
 </div>

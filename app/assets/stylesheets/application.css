@@ -10630,7 +10630,7 @@
   font-size:20px;
   padding:4px 10px;
   text-decoration:none;
-  margin: 0px 5px;
+  margin: 5px 5px;
 }
 .myButtonheader:hover {
   background-color:transparent;
@@ -10920,7 +10920,22 @@ div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form#edit_user.form
 /*  Jumbotron  */
 
 .index-jumbotron{
+}
 
+.index-jumbotron-mobile{
+  display: none;
+}
+
+@media (max-width: 530px) {
+  .index-jumbotron{
+    display: none;
+  }
+}
+
+@media (max-width: 530px) {
+  .index-jumbotron-mobile{
+    display: block;
+  }
 }
 
 .index-jumbotron-img{
@@ -10946,6 +10961,27 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   font-weight: 500;
   text-align: center;
   color: #fff;
+}
+
+.index-jumbotron-title-mobile{
+  height: 0;
+  position: relative;
+  top: 12vw;
+}
+
+div.index-jumbotron-title-mobile h1.index-jumbotron-title-small-mobile{
+  font-size: 5vw;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+
+div.index-jumbotron-title-mobile h1.index-jumbotron-title-big-mobile{
+  font-size: 10vw;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  margin: 15px 0;
 }
 
 /*  Cards  */

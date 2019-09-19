@@ -40,12 +40,14 @@
 									</li>
 									<% end %>
 								<% end %>
+							<div class="cryptolist-search-container d-flex justify-content-end">
 								<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
-									<div class=" align-content-center articles-search-form-elements">
-										<%= email_field_tag :email, "",class: "new-article-input-textarea" %>
+
+										<%= text_field_tag :email,'',class: "search-cryptolist-input-textarea" %>
 										<%= submit_tag "Search user", class: "btn new-article-input-btn" %>
-									</div>
+
 								<% end %>
+							</div>
 
 								</ul>
 

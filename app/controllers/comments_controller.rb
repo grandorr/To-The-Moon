@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
 		Comment.create(
 			content: params[:content],
 			user: current_user,
-			article: Article.find(params[:article])
+			article: Article.find(params[:article]),
+			has_been_read: false
 			)
 		redirect_back(fallback_location: root_path)
 	end
@@ -13,7 +14,7 @@ class CommentsController < ApplicationController
 	def edit
 		@comment = Comment.find(params[:id])
 	end
-	
+
 	def update
 		@comment = Comment.find(params[:id])
 		@comment.update_attribute(:content, params[:content])

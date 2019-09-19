@@ -15,6 +15,16 @@ class ArticlesController < ApplicationController
 		@tag = @article.tag
 		@user = @article.user
 		@comments = @article.comments
+		if current_user
+			current_user.articles.each do |article|
+			if article != @article
+
+			else
+					Comment.has_been_read?(@comments)
+			end
+		end
+	end
+
 	end
 
 	def create

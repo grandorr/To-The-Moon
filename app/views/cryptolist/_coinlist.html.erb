@@ -37,7 +37,7 @@
 
       <td class="logo-name-container cryptolist-logo-container"><img class ="cryptolist-logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %> </td>
 
-      <td class="logo-name-container cryptolist-td cryptolist-name-container"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_currency_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %>(<%= coin["symbol"]%>)</h1></td>
+      <td class="logo-name-container cryptolist-td cryptolist-name-container"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_currency_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"], n: @n) %>(<%= coin["symbol"]%>)</h1></td>
 
       <td class="text-dark cryptolist-td cryptolist-values"><strong> $ <%= coin['price_usd'] %></strong></td>
 
@@ -74,24 +74,33 @@
               <% checker << true %>
             <% end %>
           <% end %>
-          <% unless checker.include?(true) %>
-            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+          <% if current_user %>
+            <% unless checker.include?(true) %>
+              <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
 
-            <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), :remote => true %></a>
+              <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), :remote => true %></a>
 
+            <% else %>
+              <%= "Already in portfolio" %>
+            <% end %>
           <% else %>
-            <%= "Already in portfolio" %>
+            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+            <%= link_to "Add to portfolio", new_user_session_path %></a>
           <% end %>
         <% else %>
-          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-
+          <% if current_user %>
+            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
             <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), remote: true %></a>
+          <% else %>
+            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+            <%= link_to "Add to portfolio", new_user_session_path %></a>
+          <% end %>
 
         <% end %>
 
         </a>
       </td>
-      <td class="cryptolist-td"> <%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg")  %></td>
+      <td class="cryptolist-td"><%= image_tag("https://graphs2.coinpaprika.com/currency/chart/#{coin_name}/7d/chart.svg", alt: 'no data')%></td>
       <div id="pop-up"></div>
   </tbody>
 <% end %>
@@ -114,7 +123,7 @@
 
 <% @coin_list.each do |coin| %>
 <% @crypto_name = coin["name"] %>
-  <% symbol = coin["symbol"] %>
+<% symbol = coin["symbol"] %>
 
 
 <tbody>
@@ -124,7 +133,7 @@
 
     <td class="logo-name-container cryptolist-logo-container"><img class ="cryptolist-logo" alt ="x" <%= image_tag("https://chasing-coins.com/coin/logo/#{symbol}")  %> </td>
 
-    <td class="logo-name-container cryptolist-td cryptolist-name-container"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_currency_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"]) %></h1></td>
+    <td class="logo-name-container cryptolist-td cryptolist-name-container"><h1 class="cryptolist-name"><%= link_to coin["name"], crypto_currency_path(symbol: coin["symbol"],id: coin["id"],name: coin["name"], n: @n) %></h1></td>
 
     <td class="text-dark cryptolist-td cryptolist-values"><strong> $ <%= coin['price_usd'] %></strong></td>
 
@@ -161,19 +170,24 @@
             <% checker << true %>
           <% end %>
         <% end %>
-        <% unless checker.include?(true) %>
-          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-
-          <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), :remote => true %></a>
-
+        <% if current_user %>
+          <% unless checker.include?(true) %>
+            <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+            <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => 1), :remote => true %></a>
+          <% else %>
+            <%= "Already in portfolio" %>
+          <% end %>
         <% else %>
-          <%= "Already in portfolio" %>
+          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"<%= link_to "Add to portfolio", new_user_session_path %></a>
         <% end %>
       <% else %>
-        <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+        <% if current_user %>
+          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
 
-          <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), remote: true %></a>
-
+            <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => 1), remote: true %></a>
+        <% else %>
+          <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"<%= link_to "Add to portfolio", new_user_session_path %></a>
+        <% end %>
       <% end %>
 
       </a>

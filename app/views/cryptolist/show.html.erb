@@ -13,6 +13,9 @@
               <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
         <% end %>
 	    </div>
+      <div id="close-pop-up">
+         <button onclick="closePopUp()">X</button> 
+      </div>
 	  </div>
 	</div>
 </div>
@@ -24,7 +27,7 @@
     		</h1>
 	    	<div class="cryptolist-search-container d-flex justify-content-end">
 
-				<%= form_tag cryptolist_path,class: "search-articles-form", :method => :get do %>
+				<%= form_tag cryptolist_path(:n => @n),class: "search-articles-form", :method => :get do %>
 				
 					<%= text_field_tag 'content', "",class: "search-cryptolist-input-textarea" %>
 					<%= submit_tag "Search crypto", class: "btn search-cryptolist-input-btn" %>

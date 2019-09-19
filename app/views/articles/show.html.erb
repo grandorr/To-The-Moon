@@ -1,37 +1,45 @@
 <div class="pages-container">
 	<div class="space-bg">
-			<div class="news-container">
-				<div class="ttm-card-bg article-cards d-flex justify-content-between article-show-container">
-					<div>
+		<div class="news-container">
+			<div class="ttm-card-bg article-cards d-flex justify-content-between article-show-container">
+				<div class="article-show-comment-container">
+					<div class="article-show-card-container">
 						<h3><%= @article.title %></h3>
-						<hr class="articles-card-hr" align="left">
+						<hr class="articles-show-card-hr" align="left">
 						<p class="article-user"><%= link_to @article.user.email, profile_path(@article.user) %></p>
 						<p class=""><%= @article.content %></p>
 						<div class="d-flex tags-container">
 							<p class="tags"><%= @tag.name %></p>
 						</div>
 						<% if current_user%>
+
 							<% if current_user == @user %>
-								<%= link_to "Edit article", edit_article_path(@article.id) %><br>
+								<%= link_to "Edit article", edit_article_path(@article.id) %>
+								<br>
 								<%= link_to "Delete article", article_path, :method => :delete %>
 								<br/><br/>
 							<% else %>
 							<div id="favorite">
+
 								<% unless current_user.favorite_articles.include? @article %>
 										<a id="add"<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post, remote: true %><a><br>
 								<% else %>
-										<a id="withdraw"<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete, remote: true %><a><br>
+										<a id="withdraw"<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete, remote: true %><a>
+										<br>
 								<% end %>
 							</div>
-							<% end %>
+
+						<% end %>
+					</div>
+
 						<div class="post-comment-form-container">
+
 							<%= form_tag comments_path, method: "post", class: "d-flex align-items-end" do %>
-							  <%= text_area_tag 'content','',class: "post-comment-text-area" %>
-							  <%= hidden_field_tag "article", @article.id %>
+								<%= text_area_tag 'content','',class: "post-comment-text-area" %>
+								<%= hidden_field_tag "article", @article.id %>
 							  	<%= submit_tag "Comment", class: "btn sign-ttm-btn post-comment-btn" %>
 							<% end %>
 						</div>
-					</div>
 
 					<% end %>
 					<% if current_user %>
@@ -66,7 +74,8 @@
 							<% end %>
 						<% end %>
 					<% end %>
-					<div class="article-show-img-container">
+				</div>
+				<div class="article-show-img-container">
 					<%= image_tag(@article.picture, class: "article-show-img") if @article.picture.attached? %>
 				</div>
 			</div>

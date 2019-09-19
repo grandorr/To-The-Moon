@@ -9,7 +9,7 @@
 							<div class="d-flex justify-content-center">
 								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
 							</div>
-							
+
 							<h3 class="text-center profile-title">
 								<%= @user.email %>
 							</h3>
@@ -20,7 +20,7 @@
 								<% n = 1 %>
 								<% @pending_friends.each do |pending_friend| %>
 								<li>
-									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -  
+									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -
 									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
 										<% n += 1 %>
 								</li>
@@ -38,6 +38,12 @@
 										<a <%= link_to friend.email, profile_path(friend.id) %></a>
 									</li>
 									<% end %>
+								<% end %>
+								<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
+									<div class=" align-content-center articles-search-form-elements">
+										<%= email_field_tag :email, "",class: "new-article-input-textarea" %>
+										<%= submit_tag "Search user", class: "btn new-article-input-btn" %>
+									</div>
 								<% end %>
 								</ul>
 
@@ -64,7 +70,7 @@
 							</div>
 
 							<br/>
-							
+
 							<div class="d-flex justify-content-between profile-friends-conv-container">
 								<div class="">
 									<% unless @articles == nil %>
@@ -74,7 +80,7 @@
 										<% end %>
 									<% end %>
 								</div>
-								
+
 								<br/>
 
 								<div class="profile-favorites">
@@ -97,7 +103,10 @@
 							<div class="d-flex justify-content-center">
 								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
 							</div>
-							
+							<% if @user == nil %>
+							<p> No user find with this email </p>
+							<%= link_to "back", :back %>
+							<% else %>
 							<h3 class="text-center profile-title">
 								<%= @user.email %></p>
 							</h3>
@@ -114,7 +123,12 @@
 								<% end %>
 							<% else %>
 							<div class="d-flex justify-content-between other-profile-btn-container">
-								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", new_message_path(:id => @user.id) %>
+								<% @conversations.each do |conversation| %>
+								<% if conversation.interlocutor == current_user %>
+								<% @conversation_id = conversation.id %>
+								<% end %>
+								<% end %>
+								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", conversation_path(:id => @conversation_id) %>
 								</a>
 								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Unfriend", friendship_path(@friendship.id), :method => :delete %>
 								</a>
@@ -130,6 +144,7 @@
 								<% end %>
 							<% end %>
 						<% end %>
+<% end %>
 					</div>
 				</div>
 			</div>

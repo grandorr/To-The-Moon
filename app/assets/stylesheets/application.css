@@ -11140,6 +11140,54 @@ div.index-jumbotron-title-mobile h1.index-jumbotron-title-big-mobile{
  }
 
 
+/*  ###############  Portfolio */
+
+.portfolio-card td{
+  padding: 22px 12px 0 23px;
+}
+
+.portfolio-card thead tr th.portfolio-logo-name-container{
+  background-color: #fff;
+}
+
+.portfolio-card tr td.portfolio-logo-name-container{
+  background-color: #fff;
+  padding-bottom: 0;
+}
+
+.portfolio-card tr td.crypto-name{
+  padding-top: 25px;
+}
+
+.portfolio-rank-container{
+  border-top-left-radius: 7px;
+}
+
+.portfolio-card td.portfolio-logo-container{
+  padding-top: 12px;
+}
+
+.portfolio-total{
+  font-size: 30px;
+  color: #fff;
+}
+
+input.portfolio-input-textarea{
+  width: 100px;
+  height: 30px;
+  margin-right: -4px;
+}
+
+table#cryptos.table.ttm-card-bg.portfolio-card tbody.crypto-lign tr td.quantity-input form input.new-article-input-btn.portfolio-input-btn{
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+  padding-top: 3px;
+  padding-left: 28px;
+  margin-bottom: 3px;
+}
+
+
 /*  ###############  Cryptolist  */
 
 /*  Update crypto quantity Form Popup  */
@@ -11305,51 +11353,23 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   margin: 10px;
 }
 
-/*  ###############  Portfolio */
 
-.portfolio-card td{
-  padding: 22px 12px 0 23px;
+/*  ###############  Crypto Show  */
+
+.crypto-show-widget{
+
 }
 
-.portfolio-card thead tr th.portfolio-logo-name-container{
-  background-color: #fff;
+.crypto-show-widget-chart{
+  margin-top: -50px;
 }
 
-.portfolio-card tr td.portfolio-logo-name-container{
-  background-color: #fff;
-  padding-bottom: 0;
+.crypto-show-widget-cenverter{
+  
 }
 
-.portfolio-card tr td.crypto-name{
-  padding-top: 25px;
-}
-
-.portfolio-rank-container{
-  border-top-left-radius: 7px;
-}
-
-.portfolio-card td.portfolio-logo-container{
-  padding-top: 12px;
-}
-
-.portfolio-total{
-  font-size: 30px;
-  color: #fff;
-}
-
-input.portfolio-input-textarea{
-  width: 100px;
-  height: 30px;
-  margin-right: -4px;
-}
-
-table#cryptos.table.ttm-card-bg.portfolio-card tbody.crypto-lign tr td.quantity-input form input.new-article-input-btn.portfolio-input-btn{
-  height: 30px;
-  width: 100px;
-  font-size: 16px;
-  padding-top: 3px;
-  padding-left: 28px;
-  margin-bottom: 3px;
+.crypto-show-widget-exchange{
+  
 }
 
 /*  ###############  News Index */

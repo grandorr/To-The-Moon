@@ -1,32 +1,35 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="update-crypto-number-container-container">
-      <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
-        <div class="update-crypto-number-card ttm-card-bg">
-          <div class="update-crypto-number-form">
-            <%= form_tag user_cryptos_path, method: "post", remote: true do %>
-              <div class="form-group">
-                <%= label_tag 'Choose quantity' %><br/>
-                  <%= text_field_tag 'quantity'%>
-                  <%= hidden_field_tag 'user', current_user %>
-                  <%= hidden_field_tag 'crypto', "unknown" %>
-                  <%= hidden_field_tag 'n', "unknown" %>
+<div class="pages-container">
+  <div class="space-bg">
+    <div class="news-container">
+
+      <h1 class="page-title text-center">
+        <%= @coin_name %>
+      </h1>
+
+      <div class="update-crypto-number-container-container">
+
+        <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
+          <div class="update-crypto-number-card ttm-card-bg">
+            <div class="update-crypto-number-form">
+              <%= form_tag user_cryptos_path, method: "post", remote: true do %>
+                <div class="form-group">
+                  <%= label_tag 'Choose quantity' %><br/>
+                    <%= text_field_tag 'quantity'%>
+                    <%= hidden_field_tag 'user', current_user %>
+                    <%= hidden_field_tag 'crypto', "unknown" %>
+                    <%= hidden_field_tag 'n', "unknown" %>
+                </div>
+                    <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
+              <% end %>
+              <div id="close-pop-up">
+                 <button onclick="closePopUp()">X</button> 
               </div>
-                  <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
-            <% end %>
-            <div id="close-pop-up">
-               <button onclick="closePopUp()">X</button> 
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">
+
+      <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">  
         <% checker = [] %>
         <% if @coin_tab %>
           <% @coin_tab.each do |crypto| %>
@@ -55,36 +58,49 @@
             <% else %>
               <%= link_to "Add to portfolio", new_user_session_path %></a>
             <% end %>
-
+          </a>
         <% end %>
+      </div>
 
-        </a>
+      <%= link_to "Back to cryptos", :back %>
+
+      <div>
+        <center>
+          <% @coin_name = @coin_name.downcase.gsub(/\s+/, "-") %>
+          <% @coin_name = coin_name_helper_check(@coin_name) %>
+
+          <div class="crypto-show-widget crypto-show-widget-chart ttm-card-bg">
+            <br/>
+            <h1>  Chart </h1>
+            <br/>
+            <br/>
+            <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
+            <coingecko-coin-compare-chart-widget  coin-ids=<%= @coin_name.downcase %> currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
+            <br/>
+          </div>
+          <br/>
+
+          <div class="crypto-show-widget crypto-show-widget-converter ttm-card-bg">
+            <br/>
+            <h1> Converter </h1>
+            <br/>
+            <script src="https://widgets.coingecko.com/coingecko-coin-converter-widget.js"></script>
+            <coingecko-coin-converter-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" background-color="#ffffff" font-color="#4c4c4c" locale="en"></coingecko-coin-converter-widget>
+            <br/>
+          </div>
+          <br/>
+
+          <div class="crypto-show-widget crypto-show-widget-exchange ttm-card-bg">
+            <br/>
+            <h1> EXCHANGE </h1>
+
+            <br/>
+            <script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
+            <coingecko-coin-market-ticker-list-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>
+            <br/>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
-    <%= link_to "Back to cryptos", :back %>
-<div>
-  <center><% @coin_name = @coin_name.downcase.gsub(/\s+/, "-") %>
-  <%    @coin_name = coin_name_helper_check(@coin_name) %>
-  <br/>
-  <br/>
-  <h1>  Chart </h1>
-  <br/>
-  <br/>
-  <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
-  <coingecko-coin-compare-chart-widget  coin-ids=<%= @coin_name.downcase %> currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
-  <br/>
-  <br/>
-  <h1> Converter </h1>
-  <br/>
-  <br/>
-  <script src="https://widgets.coingecko.com/coingecko-coin-converter-widget.js"></script>
-  <coingecko-coin-converter-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" background-color="#ffffff" font-color="#4c4c4c" locale="en"></coingecko-coin-converter-widget>
-  <br/>
-  <br/>
-  <h1> EXCHANGE </h1>
-  <br/>
-  <br/>
-  <script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
-  <coingecko-coin-market-ticker-list-widget  coin-id="<%= @coin_name.downcase %>" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>
-  </center>
-</div>
-</body>

@@ -10702,6 +10702,33 @@ justify-content: center;
 justify-content: left;
 }
 
+.index-card2{
+  margin: 0 20px;
+  padding: 30px 40px;
+  width: 70%;
+  min-width: 400px;
+  text-align: left;
+}
+
+.index-card-title2{
+  font-size: 40px;
+  text-align: center;
+}
+
+.index-cards-img2{
+  margin: auto auto;
+  height: 350px;
+  width: 350px;
+}
+
+.index-card-text-bold2{
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+
 /*  ###  RCC Edit   ###################################################################################  */
 
 /*  ###############  Layout  */
@@ -11419,7 +11446,7 @@ input.new-article-input-btn{
 
 .articles-show-card-hr{
   border: 2px solid #493b72;
-  width: 15%;
+  width: 20%;
   border-radius: 3px;
   margin: 0 0 10px;
 }

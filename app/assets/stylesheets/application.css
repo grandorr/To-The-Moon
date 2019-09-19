@@ -10721,6 +10721,12 @@ justify-content: left;
   height: 100%;
 }
 
+td.cryptolist-td a.grey-bg{
+  background: none;
+  background-color: #e3e3e3;
+  color: #fff;
+}
+
 .page-title{
   color: #fff;
   font-size: 40px;
@@ -11099,11 +11105,16 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
  padding: 50px;
  width: 50vw;
  min-width: 300px;
+ position: relative;
 }
 
 .update-crypto-number-form{
+}
 
-
+div#close-pop-up{
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 
 /*  Search form  */

@@ -81,7 +81,9 @@
               <%= link_to "+", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), :remote => true %></a>
 
             <% else %>
-              <%= "Already in portfolio" %>
+              <a class="btn sign-ttm-btn grey-bg cryptolist-add-ttm-btn">
+              +
+              </a>
             <% end %>
           <% else %>
             <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"

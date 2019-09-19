@@ -10716,7 +10716,7 @@ justify-content: left;
   height: 100%;
 }
 
-td.cryptolist-td a.grey-bg{
+td.cryptolist-td a.grey-bg, div.cryptolist-td a.grey-bg{
   background: none;
   background-color: #e3e3e3;
   color: #fff;

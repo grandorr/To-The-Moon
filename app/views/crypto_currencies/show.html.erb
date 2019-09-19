@@ -22,14 +22,14 @@
                     <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
               <% end %>
               <div id="close-pop-up">
-                 <button onclick="closePopUp()">X</button> 
+                 <button onclick="closePopUp()">X</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">  
+      <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">
         <% checker = [] %>
         <% if @coin_tab %>
           <% @coin_tab.each do |crypto| %>
@@ -43,20 +43,22 @@
           <% unless checker.include?(true) %>
             <% if current_user %>
               <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-              <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), :remote => true %></a>
+              <%= link_to "+", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), :remote => true %></a>
             <% else %>
               <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-              <%= link_to "Add to portfolio", new_user_session_path %></a>
+              <%= link_to "+", new_user_session_path %></a>
             <% end %>
           <% else %>
-            <%= "Already in portfolio" %>
+          <a class="btn sign-ttm-btn grey-bg cryptolist-add-ttm-btn">
+          +
+          </a>
           <% end %>
         <% else %>
           <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
             <% if current_user %>
-              <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), remote: true %></a>
+              <%= link_to "+", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), remote: true %></a>
             <% else %>
-              <%= link_to "Add to portfolio", new_user_session_path %></a>
+              <%= link_to "+", new_user_session_path %></a>
             <% end %>
           </a>
         <% end %>

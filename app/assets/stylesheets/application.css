@@ -10695,6 +10695,7 @@ flex-direction: row;
 .pond2 {
   display: flex;
 justify-content: center;
+justify-content: space-between;
 }
 
 .index-jumbotron-img-bis{
@@ -10717,8 +10718,8 @@ justify-content: left;
 
 .index-cards-img2{
   margin: auto auto;
-  height: 350px;
-  width: 350px;
+  height: 200px;
+  width: auto;
 }
 
 .index-card-text-bold2{
@@ -10726,6 +10727,12 @@ justify-content: left;
   font-weight: 600;
   margin-bottom: 12px;
   text-align: center;
+}
+
+.d-flex2 {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 

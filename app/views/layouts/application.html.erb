@@ -55,12 +55,31 @@
         <ul class="navbar-nav mr-auto pond">
 
           <% if user_signed_in? %>
-            <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
 
-            <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+            <div class="d-flex left-nav-container">
+              <div>
+              <input id="check01" type="checkbox" name="menu"/>
+              <div class="notifications-icon-container">
+                <label for="check01"><%= image_tag "notifications-bell-icon.png", class: "notifications-icon"%></label>
+              </div>
+              <ul class="submenu">
+                <li><a href="#">Sotto</a></li>
+                <li><a href="#">Sotto</a></li>
+                <li><a href="#">Sotto</a></li>
+              </ul>
+            </div>
 
-            <% if current_user.is_admin? %>
-              <a type="button" class="myButtonheader" <%= link_to "Dashboard", admin_index_path %></a>
+              <div>
+               <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
+              </div>
+              <div>
+                <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+              </div>
+              <div>
+              <% if current_user.is_admin? %>
+                <a type="button" class="myButtonheader" <%= link_to "Dashboard", admin_index_path %></a>
+              </div>
+            </div>
             <% end %>
 
           <% else %>
@@ -79,6 +98,7 @@
 
 
   <%= yield %>
+
 
     <footer  class="footer-shadow ttm-footer ttm-footer-bg">
 

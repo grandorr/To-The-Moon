@@ -78,22 +78,24 @@
             <% unless checker.include?(true) %>
               <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
 
-              <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), :remote => true %></a>
+              <%= link_to "+", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), :remote => true %></a>
 
             <% else %>
-              <%= "Already in portfolio" %>
+              <a class="btn sign-ttm-btn grey-bg cryptolist-add-ttm-btn">
+              +
+              </a>
             <% end %>
           <% else %>
             <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-            <%= link_to "Add to portfolio", new_user_session_path %></a>
+            <%= link_to "+", new_user_session_path %></a>
           <% end %>
         <% else %>
           <% if current_user %>
             <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-            <%= link_to "Add to portfolio", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), remote: true %></a>
+            <%= link_to "+", new_user_crypto_path(:name => @crypto_name, :id => coin["id"], :n => @n), remote: true %></a>
           <% else %>
             <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
-            <%= link_to "Add to portfolio", new_user_session_path %></a>
+            <%= link_to "+", new_user_session_path %></a>
           <% end %>
 
         <% end %>

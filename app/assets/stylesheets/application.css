@@ -84,6 +84,7 @@
    color: #11002d;
    text-align: left;
    background-color: #fff;
+   min-height: 100vh;
  }
 
  [tabindex="-1"]:focus {
@@ -2593,9 +2594,11 @@
  }
 
  .btn:hover {
-   color: #919aa1;
-   text-decoration: none;
+  text-decoration: none;
+  border: 0px transparent none;
+  box-shadow: 0 0 20px 2px #fff inset;
  }
+
 
  .btn:focus, .btn.focus {
    outline: 0;
@@ -10682,7 +10685,7 @@ box-shadow: 0px 10px 15px rgba(249, 249, 249, 0.2);
 }
 
 .footer-shadow {
-box-shadow: 0px -15px 15px rgba(145, 154, 161, 0.4);
+box-shadow: 0px -15px 15px rgba(145, 154, 161, 0.1);
 }
 
 
@@ -10754,10 +10757,34 @@ justify-content: left;
   height: 100%;
 }
 
+td.cryptolist-td a.grey-bg{
+  background: none;
+  background-color: #e3e3e3;
+  color: #fff;
+}
+
 .page-title{
   color: #fff;
   font-size: 40px;
   margin-bottom: 40px;
+}
+
+/*  ###############  Header */
+
+nav.ttm-navbar{
+  position: sticky;
+  top: 0;
+  z-index:9001;
+}
+
+/*  ###############  Footer  */
+
+.ttm-footer-bg{
+  background-color: #1a1a1a;
+}
+
+.ttm-footer{
+  padding: 40px 0;
 }
 
 /*  ###############  General Cells  */
@@ -10891,10 +10918,11 @@ div.sign-card.d-flex.justify-content-center form#new_user.form-signin.mt-3 div.f
   margin-bottom: 2px;
 }
 
-div.form-group input{
+div.form-group input, div.form-group textarea{
   height: 35px;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
+  padding: 5px 10px 0;
 }
 
 div.form-group input:focus{
@@ -11089,6 +11117,18 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   text-transform: uppercase;
 }
 
+.btn, .ttm-btn, .sign-ttm-btn{
+  box-shadow: none;
+  transition: box-shadow 0.2s;
+ }
+
+.btn:hover, .ttm-btn:hover, .sign-ttm-btn:hover {
+  text-decoration: none;
+  border: 0px transparent none;
+  box-shadow: 0 0 20px 80px rgba(255,255,255,0.4) inset;
+  transition: all 0.2s;
+ }
+
 
 /*  ###############  Cryptolist  */
 
@@ -11114,11 +11154,16 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
  padding: 50px;
  width: 50vw;
  min-width: 300px;
+ position: relative;
 }
 
 .update-crypto-number-form{
+}
 
-
+div#close-pop-up{
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 
 /*  Search form  */
@@ -11192,6 +11237,11 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
   color: red
 }
 
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-logo-container{
+  padding-top: 15px;
+}
+
+
 .cryptolist-logo {
   display: inline;
   height: 35px;
@@ -11202,7 +11252,7 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
   border-top-left-radius: 7px;
 }
 
-html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
   padding-top: 20px;
 }
 
@@ -11213,12 +11263,14 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
 }
 
 .cryptolist-add-ttm-btn{
-  font-size: 16px;
-  height: 50px;
-  width: 100px;
-  padding: 7px 10px;
-  margin-top: 0;
+  font-size: 50px;
+  font-weight: 600;
+  height: 40px;
+  width: 40px;
+  padding: 6px 0 7px 2px;
+  margin: -12px auto 0;
   line-height: 18px;
+  border-radius: 50px
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.cryptolist-td.cryptolist-add-container{
@@ -11237,6 +11289,10 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   font-size: 23px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.cryptolist-all-crypto-btn{
+  margin: 10px;
 }
 
 /*  ###############  Portfolio */
@@ -11504,13 +11560,36 @@ input.new-article-input-btn{
 
 /*  New Article  */
 
+.sign-card-container{
+  margin-top: -120px;
+}
+
+.edit-article-title{
+  padding-top: 50px;
+  color: #fff;
+}
+
 .image-upload-container{
   margin: 20px 0;
 }
 
-html body div.pages-container div.space-bg div.news-container div.d-flex.justify-content-center div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form div.form-group label{
+.new-article-card label{
   font-size: 20px;
   margin-bottom: 2px;
+}
+
+.article-edit-form-inputs input, .article-edit-form-inputs textarea{
+  width: 100%;
+}
+
+div.new-article-card input.update-article-btn{
+  width: 60%;
+  margin: 20px auto 0;
+  padding: 10px 10px 10px;
+}
+
+.update-article-img-update{
+  margin: 20px 0;
 }
 
 /*  ###############  Profile Show  */
@@ -11628,4 +11707,15 @@ ul#message-list{
 
 li.conv-list{
   list-style-type: none;
+}
+
+/*  Conversations  */
+
+.contact-card{
+  width: 35%;
+  min-width: 300px;
+}
+
+.contact-card-container{
+  padding: 4%;
 }

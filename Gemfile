@@ -13,6 +13,8 @@ gem 'faker'
 # GEM TEST #
 gem "google-cloud-storage", "~> 1.8", require: false
 
+gem "letter_opener", :group => :development
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

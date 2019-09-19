@@ -84,7 +84,8 @@
    color: #11002d;
    text-align: left;
    background-color: #fff;
-   min-height: 100vh;
+   min-height: 100%;
+   position: relative;
  }
 
  [tabindex="-1"]:focus {
@@ -10856,10 +10857,13 @@ ul.submenu li a:hover{
 
 .ttm-footer-bg{
   background-color: #1a1a1a;
+
 }
 
 .ttm-footer{
   padding: 40px 0;
+  position: ansolute;
+  bottom: 0;
 }
 
 /*  ###############  General Cells  */
@@ -10970,11 +10974,11 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
 }
 
 .sign-card{
-  width: 420px;
-  padding: 2%;
+  width: 30vw;
+  min-width: 400px;
+  padding: 3%;
   border: 26px solid #848484;
   background-color: #f2e9ff;
-  border-radius: 7px;
   flex-direction: column;
   border-radius: 170px 170px 50px 50px;
 }
@@ -11714,9 +11718,6 @@ input.new-article-input-btn{
 
 /*  New Article  */
 
-.sign-card-container{
-  margin-top: -120px;
-}
 
 .edit-article-title{
   padding-top: 50px;
@@ -11772,7 +11773,6 @@ div.new-article-card input.update-article-btn{
 }
 
 .profile-card{
-
 }
 
 .profile-title{

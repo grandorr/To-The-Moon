@@ -4,7 +4,7 @@
   <table class="table">
     <thead>
       <tr class="text-dark">
-        <h1><th scope="col">Global marketcap : <%= number_to_currency(global['total_mcap'], precision: 0, delimiter: " ") %> </th>
+        <th scope="col">Global marketcap : <%= number_to_currency(global['total_mcap'], precision: 0, delimiter: " ") %> </th>
         <th scope="col">Btc dominance : <%= global['btc_d'] %>%</th>
 
         <% if global['mcap_change'].to_f > 0 %>

@@ -10776,11 +10776,11 @@ ul#menu > li{
   position:relative;
 }
 
-label{
+label.notification-lbl{
   position:relative;
   display:block;
   padding:0 18px 0 12px;
-  line-height:3em;
+
   transition:background 0.3s;
   cursor:pointer;
 }

@@ -53,12 +53,19 @@
 									<p class="comment-content"><%= comment.content %></p>
 									<% unless current_user.likes.find_by(comment: comment) %>
 										<% if comment.likes.length == 0 %>
-											<%= link_to "Like : 0", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+											<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
+											a
+											<% end %>
+											<br>
 										<% else %>
-											<%= link_to "Likes : #{comment.likes.length}", likes_path(:comment => comment.id, :article => @article.id), :method => :post %><br>
+											<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
+											<% end %>
+											<br>
 										<% end %>
 									<% else %>
-										<%= link_to "Unlike : #{comment.likes.length}", like_path(:comment => comment.id, :article => @article.id), :method => :delete %><br>
+										<%= link_to like_path(:comment => comment.id, :article => @article.id) ,:method => :delete do   %>
+										<% end %>
+										<br>
 									<% end %>
 									<% if current_user == comment.user %>
 										<div class="comment-btn-container">

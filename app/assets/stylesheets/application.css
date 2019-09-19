@@ -10581,8 +10581,9 @@
 
 .myButtonsimple {
   font-family:"Saira Condensed";
+  font-weight: 300;
   color: #000;
-  font-size:20px;
+  font-size: 24px;
   margin: 0px 20px;
   text-align: left;
 }
@@ -10618,18 +10619,20 @@
 }
 
 .myButtonheader {
-  background-color:transparent;
-  border-radius:10px;
-  border:2px solid #4e6096;
   font-family:"Saira Condensed";
+  font-weight: 300;
+  font-size: 24px;
+  background-color: #f2e9ff;
+  border-radius:10px;
   color: #000;
-  font-size:20px;
   padding:4px 10px;
   text-decoration:none;
   margin: 0px 5px;
 }
 .myButtonheader:hover {
-  background-color:transparent;
+  background-color:#fff;
+  color: #493b72;
+  transition : all 0.3s;
 }
 .myButtonheader:active {
   position:relative;
@@ -10646,13 +10649,6 @@
   padding:4px 10px;
   text-decoration:none;
   margin: 0px 10px;
-}
-.myButtonheader:hover {
-  background-color:transparent;
-}
-.myButtonheader:active {
-  position:relative;
-  top:1px;
 }
 
 .navbar-nav2 {
@@ -10732,6 +10728,19 @@ justify-content: left;
 nav.ttm-navbar{
   position: sticky;
   top: 0;
+}
+
+.header-portfolio-link{
+  color: #e5a505;
+}
+
+.myButtonsimple{
+  transition: color 0.2s;
+}
+
+.myButtonsimple:hover{
+  color: #493b72;
+  transition: all 0.2s;
 }
 
 /*  ###############  Footer  */

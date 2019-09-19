@@ -1,7 +1,6 @@
 <div class="pages-container">
     <div class="space-bg">
       <div class="news-container">
-
         <h1 class="page-title text-center">
           Portfolio </h1>
      <% if @cryptos.length == 0 %>
@@ -76,7 +75,7 @@
                 <td>  <%= number_to_currency(price, precision: 2, delimiter: " ") %>  </td>
                 <% end %>
                 <td class="quantity-input">
-                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price, :name => crypto.name),:method => :put, :remote => true do %>
+                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price, :name => crypto.name),:method => :put do %>
                 <%= text_field_tag 'quantity', crypto_currency[n].quantity.to_s%>
                                   <%= submit_tag "Update" %>
                   <% end %>

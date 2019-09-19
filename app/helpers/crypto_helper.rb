@@ -1,6 +1,5 @@
 module CryptoHelper
 
-
 def coin_symbol_helper_check(coin_symbol)
   if coin_symbol == "IOTA"
     coin_symbol = "MIOTA"

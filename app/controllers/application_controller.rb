@@ -10,9 +10,10 @@ class ApplicationController < ActionController::Base
   def get_coin
   	@coin = []
   	@crypto_currency = []
-  	@cryptos = current_user.crypto_currencies
+  	@cryptos = current_user.crypto_currencies.sort
   	@cryptos.each do |crypto|
-  	@crypto_currency << current_user.user_cryptos.find_by(crypto_currency: crypto)
+    current_crypto = current_user.user_cryptos.find_by(crypto_currency: crypto)
+  	@crypto_currency << current_crypto
   	url = 'https://api.coinlore.com/api/ticker/?id=' + crypto.crypto_id.to_s
   	@coin << api_request(url)
 
@@ -21,5 +22,5 @@ class ApplicationController < ActionController::Base
   	return @crypto_array
   end
 
-  
+
 end

@@ -10740,6 +10740,7 @@ td.cryptolist-td a.grey-bg{
 nav.ttm-navbar{
   position: sticky;
   top: 0;
+  z-index:9001;
 }
 
 /*  ###############  Footer  */

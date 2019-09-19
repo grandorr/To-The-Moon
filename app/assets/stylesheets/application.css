@@ -188,12 +188,10 @@
  }
 
  a:not([href]):not([tabindex]) {
-   color: inherit;
    text-decoration: none;
  }
 
  a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
-   color: inherit;
    text-decoration: none;
  }
 
@@ -10769,8 +10767,19 @@ nav.ttm-navbar{
 }
 
 .ttm-card-light-bg{
+  background: none;
   background-color: #fbf8ff;
   border-radius: 7px;
+}
+
+a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cryptolist-active-nav-btn:active{
+  height: 45px;
+  width: 44px;
+  font-size: 23px;
+  font-weight: 300;
+  padding: 10px 17px;
+  margin: 4px 5px;
+  color: #bdbdbd;
 }
 
 /*  Comments  */
@@ -11254,7 +11263,7 @@ div#close-pop-up{
 /*  List  */
 
 .cryptolist-table{
-  margin-bottom: 40px;
+  margin-bottom: 14px;
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table thead tr.text-dark th.logo-name-container{
@@ -11351,6 +11360,18 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 
 .cryptolist-all-crypto-btn{
   margin: 10px;
+.btn-ttm-navigate:active{
+
+}
+
+/*  ###############  Portfolio */
+
+.portfolio-card td{
+  padding: 22px 12px 0 23px;
+}
+
+.portfolio-card thead tr th.portfolio-logo-name-container{
+  background-color: #fff;
 }
 
 

@@ -5,7 +5,7 @@
 
       <h1 class="page-title text-center">News</h1>
       <div class="card-columns">
-        <% @news_list = api_request('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')%>
+        <% @news_list = api_request('https://min-api.cryptocompare.com/data/v2/news/?lang=EN&api_key=62947243f755c28ffe4fbafb00ba081978d7773e9187f19d26a4bd76dff60439')%>
 
         <% @news_list["Data"].each do |new| %>
           <div class="card ttm-card-bg news-card">

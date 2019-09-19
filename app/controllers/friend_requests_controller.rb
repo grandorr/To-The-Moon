@@ -6,7 +6,11 @@ class FriendRequestsController < ApplicationController
 			user: @user,
 			pending_friend: current_user
 			)
-		redirect_to profile_path(@user.id)
+		respond_to do |format|
+    	format.html { redirect_back(fallback_location: root_path) }
+    	format.js { }
+  	end
+
 	end
 
 end

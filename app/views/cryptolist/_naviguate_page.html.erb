@@ -11,7 +11,7 @@
 <% p += 1 %>
 <% x += 100 %>
 <% if x == x1 %>
-<a class="btn btn-primary"<%= link_to p, cryptolist_path(x) %> </a>
+<a class="btn "<%= link_to p, cryptolist_path(x) %> </a>
 <% else %>
 
 <a class="btn btn-secondary"<%= link_to p, cryptolist_path(x) %> </a>
@@ -22,7 +22,7 @@
 
 
 
-<% while x != (x1 + 500) && x != 2500 %>
+<% while x != (x1 + 500) && x != 900 %>
 <% x += 100 %>
 <% p += 1 %>
 <a class="btn btn-secondary"<%= link_to p, cryptolist_path(x) %> </a>

@@ -1,7 +1,23 @@
+
+
 <div class="pages-container">
   <div class="space-bg">
+    <% if flash[:alert] %>
+    <div class="pages-container">
+      <div class="space-bg">
+          <div class="news-container">
+            <div class="ttm-card-bg article-cards   article-show-container">
+              <%= flash[:alert]%>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
     <div class="d-flex justify-content-center align-items-center sign-card-container">
       <div class="sign-card d-flex justify-content-center">
+
+
+
         <%= image_tag("sign-up-in-password/Sign Window.png", class: "sign-in-card-img sign-card-img", alt: "to-the-moon-homepage-presentation-telescope") %>
       <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
         <%= devise_error_messages! %>
@@ -15,11 +31,13 @@
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          <a <%= link_to "forgot your password ?",  new_user_password_path %></a>
         </div>
         <div class="actions d-flex justify-content-center">
           <%= f.submit "Log in", class: "btn sign-ttm-btn" %>
         </div>
         <% end %>
+
       </div>
     </div>
   </div>

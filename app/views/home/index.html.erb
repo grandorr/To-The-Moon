@@ -8,6 +8,7 @@
   <title>To the Moon</title>
 </head>
 <body>
+
   <div class="pages-container">
     <div class="space-bg">
 
@@ -24,7 +25,7 @@
         <div class="index-cards-container-row">
 
           <div class="d-flex index-cards-container justify-content-center">
-            <%= image_tag("home/telescope.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+            <%= image_tag("home/To-the-Moon-homepage-Presentation.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
 
             <div class="ttm-card-bg index-card">
               <h2 class="index-card-title">Prepare your ride !</h2>
@@ -40,7 +41,7 @@
               <p class="index-card-text">
               Our platform is designed as a tool-kit for cryptocurrencies investors who wants to get more knowledgeable on the crypto-market.
               </br>
-              To the moon show you real-time prices from the 300 most promising cryptos projects, allows you to make previsions, gives you latest news, set up alerts on targeted cryptos prices and provides basic tools like exchanges prices and conversion.
+              To the moon show you real-time prices from 1000+ cryptos projects, allows you to make previsions, gives you latest news, set up alerts on targeted cryptos prices and provides basic tools like exchanges prices and conversion.
               </p>
 
               <div class="d-flex">
@@ -60,7 +61,7 @@
         <div class="index-cards-container-row-alt">
 
           <div class="d-flex index-cards-container-alt justify-content-center">
-            <%= image_tag("home/telescope.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+            <%= image_tag("home/To-the-Moon-homepage-Portfolio.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
 
             <div class="ttm-card-bg index-card">
               <h2 class="index-card-title">To the Moon Portfolio</h2>
@@ -73,18 +74,14 @@
               </p>
 
               <p class="index-card-text-bold-p index-card-text-bold-n">
-              - Real time price for more thant 2 500 Cryptos.</br>
+              - Real time price for more thant 1000 Cryptos.</br>
               - Chart evolution</br>
               - Currency converter</br>
               - Market cap
               </p>
 
               <div class="d-flex">
-              <% if current_user %>
-                <%= link_to '/user_cryptos' do %>
-                  <div class="ttm-btn">Portfolio</div>
-                <% end %>
-              <% end %>
+                  <a class="ttm-btn"<%= link_to 'Portfolio', user_cryptos_path %></a>
             </div>
             </div>
           </div>
@@ -94,7 +91,7 @@
         <div class="index-cards-container-row">
 
           <div class="d-flex index-cards-container justify-content-center">
-            <%= image_tag("home/telescope.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+            <%= image_tag("home/To-the-Moon-homepage-News.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
 
             <div class="ttm-card-bg index-card">
               <h2 class="index-card-title">Our news feed</h2>
@@ -107,9 +104,7 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to '/news' do %>
-                  <div class="ttm-btn">News</div>
-                <% end %>
+                <a class="ttm-btn"<%= link_to 'News', news_index_path %></a>
               </div>
             </div>
           </div>
@@ -118,7 +113,7 @@
         <div class="index-cards-container-row-alt">
 
           <div class="d-flex index-cards-container-alt justify-content-center">
-            <%= image_tag("home/telescope.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+            <%= image_tag("home/To-the-Moon-homepage-Articles.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
 
             <div class="ttm-card-bg index-card">
               <h2 class="index-card-title">The community articles</h2>
@@ -134,9 +129,7 @@
               </p>
 
               <div class="d-flex">
-                <%= link_to '/articles' do %>
-                  <div class="ttm-btn">Articles</div>
-                <% end %>
+                <a class="ttm-btn"<%= link_to 'Articles', articles_path %></a>
               </div>
             </div>
 
@@ -144,11 +137,11 @@
           </div>
         </div>
 
-      <div class="index-two-cards d-flex justify-content-center">
+      <div class="index-two-cards d-flex justify-content-center index-last-cards">
         <div class="index-cards-container-row">
 
           <div class="d-flex index-cards-container justify-content-center">
-            <%= image_tag("home/telescope.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+            <%= image_tag("home/To-the-Moon-homepage-Comunity.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
 
             <div class="ttm-card-bg index-card">
               <h2 class="index-card-title">Social interractions in space</h2>

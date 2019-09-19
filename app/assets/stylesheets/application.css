@@ -4415,6 +4415,7 @@
    line-height: 1;
    background-color: transparent;
    border: 1px solid transparent;
+   margin-bottom: 9px;
  }
 
  .navbar-toggler:hover, .navbar-toggler:focus {
@@ -10760,6 +10761,12 @@ nav.ttm-navbar{
   min-width: 253px;
 }
 
+@media (max-width: 435px){
+  .left-nav-container{
+  margin-bottom: 20px;
+  }
+}
+
 /*  Notifications  */
 
 ul#menu > li{
@@ -10803,6 +10810,21 @@ ul.submenu{
   width: 300px;
   top: 80px;
   transform: translate(-120px, 0);
+}
+
+@media (max-width: 487px){
+  ul.submenu{
+    top: 125px;
+  }
+}
+
+@media (max-width: 435px){
+  ul.submenu{
+    left: 0;
+    top: 130px;
+    transform: translate(0);
+
+  }
 }
 
 ul.submenu li a{

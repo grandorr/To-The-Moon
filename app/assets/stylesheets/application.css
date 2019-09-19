@@ -1682,7 +1682,6 @@
 
  .table {
    width: 100%;
-   margin-bottom: 1rem;
    color: #1c1c1c;
  }
 
@@ -11180,7 +11179,7 @@ div#close-pop-up{
 /*  Search form  */
 
 .cryptolist-search-container{
-
+  margin-bottom: 10px;
 }
 
 .search-cryptolist-input-textarea{

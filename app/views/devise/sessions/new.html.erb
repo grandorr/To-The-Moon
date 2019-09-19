@@ -2,24 +2,22 @@
 
 <div class="pages-container">
   <div class="space-bg">
+    <div class="news-container">
     <% if flash[:alert] %>
-    <div class="pages-container">
-      <div class="space-bg">
-          <div class="news-container">
-            <div class="ttm-card-bg article-cards   article-show-container">
-              <%= flash[:alert]%>
-          </div>
+        <div class="news-container">
+          <div class="ttm-card-bg article-cards   article-show-container">
+            <%= flash[:alert]%>
         </div>
       </div>
-    </div>
-<% end %>
+    <% end %>
+
     <div class="d-flex justify-content-center align-items-center sign-card-container">
       <div class="sign-card d-flex justify-content-center">
 
 
 
         <%= image_tag("sign-up-in-password/Sign Window.png", class: "sign-in-card-img sign-card-img", alt: "to-the-moon-homepage-presentation-telescope") %>
-      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+        <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
         <%= devise_error_messages! %>
         <div class="form-group">
           <%= f.label :email, "Email" %><br />

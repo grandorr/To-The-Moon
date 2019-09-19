@@ -23,92 +23,73 @@
 
   <body>
 
-    <nav class=" navbar-shadow navbar navbar-expand-lg navbar-dark bg-dark head-color">
+    <nav class="ttm-navbar navbar-shadow navbar navbar-expand-lg navbar-dark bg-dark head-color">
 
 
-       <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
+      <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
 
+        <div class=" navbar-expand-lg collapse navbar-collapse pond2 " id="navbarColor02">
 
-<div class=" navbar-expand-lg collapse navbar-collapse pond2 " id="navbarColor02">
+          <ul class="navbar-nav mr-auto">
 
-        <ul class="navbar-nav mr-auto">
+            <li class="nav-perso">
+                  <a  role="button" class="myButtonsimple header-portfolio-link"<%= link_to "Portfolio", user_cryptos_path%> </a>
+            </li>
+            <li class="nav-perso">
+                  <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
+            </li>
+            <li class="nav-perso">
+                  <a  role="button" class="myButtonsimple"<%= link_to "News", news_index_path %> </a>
+            </li>
+            <li class="nav-perso">
+                  <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
+            </li>
+            <li class="nav-perso">
+                  <a  role="button" class="myButtonsimple"<%= link_to "About", '/static_pages/about'%> </a>
+            </li>
+            <li class="nav-perso">
+                  <a  role="button" class="myButtonsimple"<%= link_to "Contact", '/static_pages/contact'%> </a>
+            </li>
 
-          <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "Cryptocurrencies", cryptolist_path(0)%></a>
-          </li>
-          <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "Portfolio", user_cryptos_path%> </a>
-          </li>
-          <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "News", news_index_path %> </a>
-          </li>
-          <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "Articles", articles_path%> </a>
-          </li>
-          <li class="nav-perso">
-                <a  role="button" class="myButtonsimple"<%= link_to "About", root_path%> </a>
-          </li>
-
-</ul>
-</div>
+          </ul>
+        </div>
         <ul class="navbar-nav mr-auto pond">
 
-        <% if user_signed_in? %>
+          <% if user_signed_in? %>
+            <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
 
-       <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
+            <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
 
-       <a role="button" class="myButtonheader"<%= link_to "Sign out ", '/users/sign_out', method: :delete %></a>
+            <% if current_user.is_admin? %>
+              <a type="button" class="myButtonheader" <%= link_to "Dashboard", admin_index_path %></a>
+            <% end %>
 
+          <% else %>
 
-        <% if current_user.is_admin? %>
-          <a type="button" class="myButtonheader" <%= link_to "Dashboard", admin_index_path %></a>
-        <% end %>
+            <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
+            <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
 
+          <% end %>
 
-     <% else %>
+        </ul>
 
-
-       <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
-       <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
-
-     <% end %>
-
-     </ul>
-
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </nav>
 
-    <%= yield %>
 
+  <%= yield %>
 
+    <footer  class="footer-shadow ttm-footer ttm-footer-bg">
 
-    <footer id="footer" class="footer-shadow fixed-bottom bg-dark">
-
-      <div class=" card bg-dark  cart_card footer">
+      <div class="cart_card ">
         <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left" style="color:#FFF;">
           <!-- Grid row -->
           <div class="row footer-content-container">
             <div class="col-md-3 mt-md-0 mt-3 footer-column-container text-center">
-                <%= image_tag("home/logo_to_the_moon.png") %>
-            </div>
-            <!-- Grid column -->
-            <div class="col-md-6 mt-md-0 mt-3 footer-column-container-2">
-              <!-- Content -->
-            </br>
-              <h4 class="text-uppercase bold"  style="color:#FFF;" >Purpose</h4>
-              <p> Our platform is designed for new comers who want to become more knowledgeable on crypto-currencies.</p>
-              <p> To the moon aim to inform its users on distributed ledger technology (technology behind crypto-currencies).</p>
-            </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none pb-3">
-            <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3 footer-column-container-3">
-              <!-- Links -->
-              </br>
-              <h4 class="text-uppercase bold" style=color:#FFF;"">Sections</h4>
+              <%= image_tag("home/logo_to_the_moon.png") %>
 
               <ul class="list-unstyled">
                 <li>
@@ -117,13 +98,37 @@
                 <li>
                   <a style="color:#FFF;" <%= link_to "Privacy Policy",'/static_pages/privacy_policy' %></a>
                 </li>
-                <li>
-                  <a style="color:#FFF;" <%= link_to "Contact",'/static_pages/contact' %></a>
-                </li>
+
                 <li>
                   <a style="color:#FFF;" <%= link_to "About",'/static_pages/about' %></a>
                 </li>
               </ul>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3 footer-column-container-2">
+              <!-- Content -->
+              <br/>
+              <br/>
+                <h4 class="text-uppercase bold"  style="color:#FFF;" >Purpose</h4>
+                <p> Our platform is designed for new comers who want to become more knowledgeable on crypto-currencies.</p>
+                <p> To the moon aim to inform its users on distributed ledger technology (technology behind crypto-currencies).</p>
+
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3 footer-column-container-3">
+              <!-- Links -->
+              <br/>
+              <br/>
+              <p>Support our team with donation : </p>
+              <p>
+                BTC adress : <small>19cAcF3FCmiRjsZ94pT9ac9WmWP2UqtNTH</small>
+              </p>
+              <p>
+                ETH adress : <small>0xfc7ab61aecea4c9975eff3169450b6b5a3699212</small>
+              </p>
+              </br>
             </div>
             <!-- Grid column -->
           </div>
@@ -133,5 +138,5 @@
       </div>
       <!-- Card Links -->
     </footer>
-
-    </html>
+  </body>
+</html>

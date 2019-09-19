@@ -38,11 +38,10 @@
 
 					<div class="form">
 						<%= form_tag(messages_path, method: :post, class: "form", remote: true) do %>
-							<label for="content">
-								New Message<br>
-				 				<%= text_field_tag 'content' %><br>
-				  				<%= hidden_field_tag "recipient", @conversation.interlocutor.id %>
-				  				<%= submit_tag "Send Message", :name => 'commit' %>
+								<label for="content">New Message<br>
+							  <%= text_field_tag 'content' %><br>
+							  <%= hidden_field_tag "recipient", @conversation.interlocutor.id %>
+							  <%= submit_tag "Send Message", :name => 'commit' %>
 						<% end %>
 					</div>
 				</div>
@@ -50,4 +49,3 @@
 		</div>
 	</div>
 </div>
-

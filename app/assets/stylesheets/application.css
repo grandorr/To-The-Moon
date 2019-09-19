@@ -2594,9 +2594,11 @@
  }
 
  .btn:hover {
-   color: #919aa1;
-   text-decoration: none;
+  text-decoration: none;
+  border: 0px transparent none;
+  box-shadow: 0 0 20px 2px #fff inset;
  }
+
 
  .btn:focus, .btn.focus {
    outline: 0;
@@ -11080,6 +11082,18 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   text-transform: uppercase;
 }
 
+.btn, .ttm-btn, .sign-ttm-btn{
+  box-shadow: none;
+  transition: box-shadow 0.2s;
+ }
+
+.btn:hover, .ttm-btn:hover, .sign-ttm-btn:hover {
+  text-decoration: none;
+  border: 0px transparent none;
+  box-shadow: 0 0 20px 80px rgba(255,255,255,0.4) inset;
+  transition: all 0.2s;
+ }
+
 
 /*  ###############  Cryptolist  */
 
@@ -11240,6 +11254,10 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   font-size: 23px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.cryptolist-all-crypto-btn{
+  margin: 10px;
 }
 
 /*  ###############  Portfolio */

@@ -44,7 +44,7 @@
 			<% if @coin_list.length != 1  %>
 			<center><%= render "naviguate_page" %></center>
 			<% else %>
-			<a class="btn btn-secondary" <%= link_to "all cryptocurrencies", cryptolist_path(0)  %></a>
+			<a class="btn sign-ttm-btn cryptolist-all-crypto-btn" <%= link_to "Back to list", cryptolist_path(0)  %></a>
 			<% end %>
 
 			<% end %>

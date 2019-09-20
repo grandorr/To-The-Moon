@@ -10943,7 +10943,10 @@ a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cr
 
 
 .comment-btn-container{
-  margin-top: 30px;
+}
+
+.article-btn-container{
+  margin: 10px 0 0 -67px;
 }
 
 div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
@@ -10952,7 +10955,15 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
   padding: 5px 20px 4px 20px;
 }
 
+.comment-likes-container{
+  height: 48px;
+}
+
 /*  ################  Likes  */
+
+.likes-container-container{
+  height: 40px;
+}
 
 .likes-container{
   height: 37px;
@@ -10970,6 +10981,27 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
 
 .like-icon{
   margin-top: 8px;
+}
+
+/*  ################  Favorites  */
+
+div#favorite{
+  margin: -10px 0 0 -40px ;
+  height: ;
+}
+
+.favorite-icon{
+  margin: -30px 15px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#favorite #add, #favorite #withdraw{
+  font-size: 30px;
+  color: transparent;
+  margin: 0 -53px 0 53px;
+  padding-top: 10px;
+  z-index: 9009;
 }
 
 /*  ################  Tags  */
@@ -11736,6 +11768,13 @@ input.new-article-input-btn{
   width: 100%;
   height: auto;
   margin-bottom: 20px;
+}
+
+.your-article-btn{
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px 20px 5px 20px;
+  margin: 0 10px 0 0;
 }
 
 /*  New Article  */

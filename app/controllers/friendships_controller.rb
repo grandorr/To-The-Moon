@@ -8,13 +8,8 @@ class FriendshipsController < ApplicationController
 			user: current_user,
 			friend: User.find(params[:friend_id])
 			)
-		FriendRequest.destroy_friend_request(current_user, params[:friend_id])
-		
-		respond_to do |format|
-    	format.html { redirect_back(fallback_location: root_path) }
-    	format.js { }
-  	end
-
+		FriendRequest.destroy_friend_request(current_user, params[:friend_id])		
+		redirect_back(fallback_location: root_path) 
 	end
 
 	def destroy

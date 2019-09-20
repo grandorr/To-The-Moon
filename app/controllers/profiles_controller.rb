@@ -25,6 +25,7 @@ class ProfilesController < ApplicationController
 			@favorite_articles = current_user.favorite_articles
 		end
 	end
+	
 	def update
 		current_user.picture.attach(params[:picture])
 

@@ -6,25 +6,31 @@
 	      		<div class="profile-card-container d-flex justify-content-center">
 					<div class="">
 						<% if @user == current_user %>
-				    	<%	if current_user.picture.attached? %>
+				    		<%	if current_user.picture.attached? %>
 
-							<center><div class="d-flex justify-content-center profile-cards-img attached_image">
-								<%= image_tag(current_user.picture, class: "")  %>
-							</div></center>
+								<center>
+									<div class="d-flex justify-content-center profile-cards-img attached_image">
+										<%= image_tag(current_user.picture, class: "")  %>
+									</div>
+								</center>
 							<% else %>
-							<div class="d-flex justify-content-center">
-								<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
-							</div>
+								<div class="d-flex justify-content-center">
+									<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+								</div>
 
 							<% end %>
 
-							<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
+							<center>
+								<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
 									<%= file_field_tag :picture, class: "image-upload-container" %>
-
+							</center>
 								<div class="actions d-flex justify-content-center">
 									<%= submit_tag "add picture", class: "btn add-friend-btn" %>
 								</div>
 							<% end %>
+
+
+							<br/><br/>
 
 							<h3 class="text-center profile-title">
 								<%= @user.email %>
@@ -45,90 +51,115 @@
 							</ul>
 							<br/>
 
-							<div class="d-flex justify-content-between profile-friends-conv-container">
-								<% if @user.friends.length > 0 %>
-									<ul id="friend-list">
-										<p><%= "My friends" %></p>
-										<div class="friends-profile-container d-flex justify-content-end">
 
-										<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
-											<%= text_field_tag :email,'',class: "add-friend-textarea" %>
-											<%= submit_tag "Add user", class: "btn add-friend-btn" %>
-										<% end %>
+							<div class="profile-lists-container">
+								<div class="d-flex justify-content-between">
+									<div class="profile-favorites-container">
+										<p><%= "My friends"%></p>
+										<div class="profile-favorites">
+											<% if @user.friends.length > 0 %>
+												<% @user.friends.each do |friend| %>
+													<a <%= link_to friend.email, profile_path(friend.id) %></a>
+												<br/>
+												<% end %>
 
-										<% @friends.each do |friend| %>
-											<li>
-												<a <%= link_to friend.email, profile_path(friend.id) %></a>
-										d	</li>
-										<% end %>
-									<% end %>
-								</div>
-
-								</ul>
+											<% end %>
+										</div>
+									</div>
 
 
+									<br/>
 
-								<br/>
-
-								<% if @user.conversations.length > 0 %>
-									<div class="profile-conversations">
-										<p><%= "Conversations:" %></p>
-										<% @user.conversations.each do |convo| %>
-										<% convo_id = convo.id %>
-											<% unless convo.messages.length == 0 %>
-												<a <%= link_to convo.interlocutor.email, conversation_path(convo_id) %> </a>
-												<% if convo.messages.last.has_been_read == false %>
-													<% @n = 0 %>
-													<% convo.messages.each do |message| %>
-														<% if message.has_been_read == false %>
-															<% @n = @n + 1 %>
+									<div class="profile-favorites-container">
+										<p><%= "My Conversations"%></p>
+										<div class="profile-favorites">
+											<% if @user.conversations.length > 0 %>
+												<% @user.conversations.each do |convo| %>
+													<% convo_id = convo.id %>
+												<% unless convo.messages.length == 0 %>
+													<a <%= link_to convo.interlocutor.email, conversation_path(convo_id) %> </a>
+													<% if convo.messages.last.has_been_read == false %>
+														<% @n = 0 %>
+														<% convo.messages.each do |message| %>
+															<% if message.has_been_read == false %>
+																<% @n = @n + 1 %>
+															<% end %>
+												<% end %>
 														<% end %>
 													<% end %>
+													<%= @n %>
+													<br/>
 												<% end %>
-												<%= @n %>
-												<br/><br/>
+
 											<% end %>
-										<% end %>
+										</div>
 									</div>
-								<% end %>
-
-							</div>
-
-
-							<br/>
-
-							<div class="d-flex justify-content-between profile-friends-conv-container">
-								<div class="profile-user-articles">
-									<% unless @articles == nil %>
-										<p><%= "My articles"%></p>
-										<% @articles.each do |article| %>
-											<a <%= link_to article.title, article_path(article.id) %></a>
-										<% end %>
-									<% end %>
 								</div>
 
 								<br/>
+								<div class="d-flex justify-content-between">
+									<div class="profile-favorites-container">
+										<p><%= "My articles"%></p>
+										<div class="profile-favorites">
+											<% unless @articles == nil %>
+												<% @articles.each do |article| %>
+													<a <%= link_to article.title, article_path(article.id) %></a>
+												<br/>
+												<% end %>
 
-								<div class="profile-favorites">
-									<% unless @favorite_articles == nil %>
-										<p><%= "My favorites" %></p>
-										<% @favorite_articles.each do |fav_article| %>
-											<a <%= link_to fav_article.title, article_path(fav_article.id) %></a>
-										<% end %>
+											<% end %>
+										</div>
+									</div>
+
+
+									<br/>
+
+									<div class="profile-favorites-container">
+										<p><%= "My favorites"%></p>
+										<div class="profile-favorites">
+											<% unless @favorite_articles == nil %>
+												<% @favorite_articles.each do |fav_article| %>
+													<a <%= link_to fav_article.title, article_path(fav_article.id) %></a>
+												<br/>
+												<% end %>
+
+											<% end %>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<br/><br/>
+
+							<div class="d-flex justify-content-between">
+								<a class="btn sign-ttm-btn edit-profile-btn" <%= link_to "Edit Profile", edit_user_registration_path %>
+								</a>
+
+								<div class="d-flex flex-column add-user-form-container">
+									<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
+										<%= text_field_tag :email,'',class: "add-friend-textarea" %>
+										<%= submit_tag "Add a friend", class: "btn add-friend-btn" %>
 									<% end %>
 								</div>
 							</div>
 
-							<div class="d-flex justify-content-center">
-								<a class="btn sign-ttm-btn" <%= link_to "Edit Profile", edit_user_registration_path %>
-								</a>
-							</div>
 
 						<% else %>
 
-							<div class="d-flex justify-content-center">
-								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
-							</div>
+							<%	if @user.picture.attached? %>
+
+								<center>
+									<div class="d-flex justify-content-center profile-cards-img attached_image">
+										<%= image_tag(@user.picture, class: "")  %>
+									</div>
+								</center>
+							<% else %>
+								<div class="d-flex justify-content-center">
+									<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+								</div>
+
+							<% end %>
+
 							<% if @user == nil %>
 							<p> No user find with this email </p>
 							<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>

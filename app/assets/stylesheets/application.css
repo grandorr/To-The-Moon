@@ -10929,6 +10929,7 @@ a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cr
   border-radius: 7px;
   padding: 8px 22px 15px;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .comment-user{
@@ -10958,23 +10959,48 @@ a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cr
   border-radius: 0 7px 7px 0;
 }
 
-
-
 .comment-btn-container{
+  transform: scale(0.7);
+  position: absolute;
+  bottom: 10px;
+  margin-left: 40px;
+
 }
 
 .article-btn-container{
   margin: 10px 0 0 -67px;
 }
 
-div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
-  font-size: 15px;
+div.comment-container div.comment-btn-container a.btn.sign-ttm-btn.comment-btn{
+  font-size: 16px;
   margin: 0 20px 10px 0;
-  padding: 5px 20px 4px 20px;
+  padding: 5px 8px 4px 8px;
+}
+
+div.comment-btn-container.d-flex a.btn.ttm-btn.comment-btn{
+  padding: 5px 10px 4px 10px;
+  width: 130px;
+  margin: 0 3vw 0 0;
 }
 
 .comment-likes-container{
   height: 48px;
+}
+
+.edit-comment-card{
+  padding: 20px 50px 35px;
+  margin-bottom: 30px;
+  width: 40%;
+}
+
+div.ttm-card-bg.edit-comment-card.d-flex.new-article-card form input.btn.ttm-btn.comment-btn{
+  font-size: 16px;
+  padding: 5px 20px 4px 20px;
+  margin-top: 20px ;
+}
+
+.html body div.pages-container div.space-bg div.news-container div.ttm-card-bg.article-cards.d-flex.justify-content-between.article-show-container div.article-show-comment-container div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
+  font-size: 16px;
 }
 
 /*  ################  Likes  */
@@ -11316,6 +11342,10 @@ div.index-jumbotron-title-mobile h1.index-jumbotron-title-big-mobile{
   font-size: 25px;
   font-weight: 600;
   margin-bottom: 28px;
+}
+
+.index-card2{
+  padding: 60px 90px;
 }
 
 .index-last-cards{
@@ -11862,6 +11892,7 @@ div.new-article-card input.update-article-btn{
 @media (max-width: 768px) {
   .profile-card-container{
     border: 18px solid #848484;
+    width: 85vw;
   }
 }
 
@@ -11914,9 +11945,22 @@ ul#friend-list li{
   margin-bottom: 20px;
 }
 
-div.friends-profile-container, div.profile-conversation, div.profile-user-articles, div.profile-favorite{
-  min-height: 100px;
+div.friends-profile-container, div.profile-conversation, div.profile-user-articles, div.profile-favorites{
+  height: 100px;
+  min-width: 150px;
   overflow: scroll;
+}
+
+.add-user-form-container{
+  max-width: 200px;
+}
+
+.profile-lists-container{
+  margin-left: 3vw;
+}
+
+.edit-profile-btn{
+  transform: scale(0.7);
 }
 
 .attached_image {
@@ -11925,7 +11969,6 @@ div.friends-profile-container, div.profile-conversation, div.profile-user-articl
   width: 200px;
   height: 200px;
 }
-
 /*  Conversations  */
 
 .conv-card{

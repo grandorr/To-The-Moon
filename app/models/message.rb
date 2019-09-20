@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-	
+
 	belongs_to :sender, class_name: "User"
 	belongs_to :recipient, class_name: "User"
 	belongs_to :conversation
@@ -45,7 +45,7 @@ class Message < ApplicationRecord
 	def self.path_to_redirect?(checker, message)
 		if checker == "true"
 			return true
-		else	
+		else
 			return false
 		end
 	end

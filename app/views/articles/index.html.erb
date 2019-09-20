@@ -40,19 +40,7 @@
 								<p class="article-card-text"><%= link_to article.user.email, profile_path(article.user.id) %></p>
 								<p class="article-card-text"><%= article.tag.name %></p>
 							  <% if current_user %>
-								 <%  @test = current_user.likes.find_by(article: article) %>
-									<% unless current_user.likes.find_by(article: article) %>
-										<% if article.likes.length == 0 %>
-											<%= link_to "Like : 0", likes_path(:article => article.id), :method => :post %><br>
-										<% else %>
-											<%= link_to "Likes : #{article.likes.length}", likes_path( :article => article.id), :method => :post %><br>
-										<% end %>
-									<% else %>
-										<%= link_to "Unlike : #{article.likes.length}", like_path(:id => @test.id, :comment => article), :method => :delete %><br>
-									<% end %>
-
-
-									<div class="d-flex">
+										<div class="d-flex">
 										<div class="likes-container-container">
 											<% @test = current_user.likes.find_by(article: article) %>
 											<% unless @test %>

@@ -1,10 +1,25 @@
-<li>
-	<% if message.sender.email == current_user.email %>
-		<%= "You " %><br>
-	<% else %> 
-		<%= message.sender.email + " :" %><br>
-	<% end %>
-	<%= message.content %><br>
-	<%= message.created_at %>
-	<br/><br/>
-</li>
+<% if message.sender.email == current_user.email %>
+	<div class="conv-msg-container-you">
+		<li class="conv-msg-text conv-list">
+			<p class="conv-msg-text conv-sender">
+				You
+			</p>
+			<br>
+			<p class="conv-msg-text">
+				<%= message.content %>
+			</p>
+		</li>
+	</div>
+<% else %>
+	<div class="align-self-end conv-msg-container">
+		<li class="conv-msg-text conv-list">
+			<p class="conv-msg-text conv-sender">
+				<%= message.sender.email %>
+			</p>
+			<br>
+			<p class="conv-msg-text">
+				<%= message.content %>
+			</p>
+		</li>
+	</div>
+<% end %>

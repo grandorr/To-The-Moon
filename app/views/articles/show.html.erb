@@ -55,7 +55,7 @@
 
 													<a><br>
 											<% else %>
-													<a id="withdraw"<%= link_to "OO", favorite_path(:article => @article.id, :id => @test.id), :method => :delete, remote: true %>
+													<a id="withdraw"<%= link_to "OO", favorite_path(:article => @article.id), :method => :delete, remote: true %>
 
 														<%= image_tag "favorite.png", class: "like-icon favorite-icon" %>
 

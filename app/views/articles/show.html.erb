@@ -11,36 +11,74 @@
 						<div class="d-flex tags-container">
 							<p class="tags"><%= @tag.name %></p>
 						</div>
-
 						<% if current_user%>
-						<% @test = current_user.likes.find_by(article: @article) %>
-						<% unless @test %>
-							<% if @article.likes.length == 0 %>
-								<%= link_to "Like : 0", likes_path(:article => @article.id), :method => :post %><br>
-							<% else %>
-								<%= link_to "Likes : #{@article.likes.length}", likes_path( :article => @article.id), :method => :post %><br>
-							<% end %>
-						<% else %>
-							<%= link_to "Unlike : #{@article.likes.length}", like_path( :id => @test.id, :comment => @article), :method => :delete %><br>
-						<% end %>
-							<% if current_user == @user %>
-								<%= link_to "Edit article", edit_article_path(@article.id) %>
-								<br>
-								<%= link_to "Delete article", article_path, :method => :delete %>
-								<br/><br/>
-							<% else %>
-							<div id="favorite">
 
-								<% unless current_user.favorite_articles.include? @article %>
-										<a id="add"<%= link_to "Add to favorites", favorites_path(:article => @article.id), :method => :post, remote: true %><a><br>
-								<% else %>
-										<a id="withdraw"<%= link_to "Withdraw from favorites", favorite_path(:article => @article.id), :method => :delete, remote: true %><a>
+						<div class="d-flex">
+							<div class="likes-container-container">
+								<% @test = current_user.likes.find_by(article: @article) %>
+								<% unless @test %>
+									<% if @article.likes.length == 0 %>
+										<%= link_to likes_path(:article => @article.id), :method => :post do %>
+											<div class="d-flex likes-container">
+											<%= image_tag "Like.png", class: "like-icon" %>
+												<p class="likes-number"> 0 </p>
+											</div>
+										<% end %>
 										<br>
+									<% else %>
+										<%= link_to likes_path(:article => @article.id), :method => :post do %>
+											<div class="d-flex likes-container">
+											<%= image_tag "Like.png", class: "like-icon" %>
+												<p class="likes-number"> <%= @article.likes.length%> </p>
+											</div>
+										<% end %>
+										<br>
+									<% end %>
+								<% else %>
+									<%= link_to like_path(:comment => @article, :id => @test.id) ,:method => :delete do   %>
+										<div class="d-flex likes-container">
+										<%= image_tag "Liked.png", class: "like-icon" %>
+											<p class="likes-number"> <%= @article.likes.length%> </p>
+										</div>
+									<% end %>
+									<br>
 								<% end %>
 							</div>
 
-						<% end %>
-					</div>
+							<div>
+								<div id="favorite">
+											<% unless current_user.favorite_articles.include? @article %>
+													<a id="add"
+														<%= link_to "OO", favorites_path(:article => @article.id), :method => :post, remote: true %>
+
+														<%= image_tag "not-favorite.png", class: "like-icon favorite-icon" %>
+
+													<a><br>
+											<% else %>
+													<a id="withdraw"<%= link_to "OO", favorite_path(:article => @article.id), :method => :delete, remote: true %>
+
+														<%= image_tag "favorite.png", class: "like-icon favorite-icon" %>
+
+													<a>
+													<br>
+											<% end %>
+										</div>
+
+
+									<% if current_user == @user %>
+										<div class="article-btn-container">
+											<a class="btn ttm-btn comment-btn your-article-btn"
+												<%= link_to "Edit article", edit_article_path(@article.id) %>
+											</a>
+											<a class="btn ttm-btn comment-btn your-article-btn"
+												<%= link_to "Delete article", article_path, :method => :delete %>
+											</a>
+										</div>
+									<% end %>
+
+								</div>
+							</div>
+						</div>
 
 						<div class="post-comment-form-container">
 
@@ -61,22 +99,36 @@
 									</div>
 									<hr class="comment-hr" align="left">
 									<p class="comment-content"><%= comment.content %></p>
-									<% unless current_user.likes.find_by(comment: comment) %>
-										<% if comment.likes.length == 0 %>
-											<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
-											a
+
+									<div class="comment-likes-container">
+										<% unless current_user.likes.find_by(comment: comment) %>
+											<% if comment.likes.length == 0 %>
+												<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
+												<div class="d-flex likes-container">
+													<%= image_tag "Like.png", class: "like-icon" %>
+													<p class="likes-number"> 0 </p>
+												</div>
+												<% end %>
+												<br>
+											<% else %>
+												<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
+												<div class="d-flex likes-container">
+													<%= image_tag "Like.png", class: "like-icon" %>
+													<p class="likes-number"> <%= comment.likes.length%> </p>
+												</div>
+												<% end %>
+												<br>
 											<% end %>
-											<br>
 										<% else %>
-											<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
+											<%= link_to like_path(:comment => comment.id, :article => @article.id) ,:method => :delete do   %>
+											<div class="d-flex likes-container">
+												<%= image_tag "Liked.png", class: "like-icon" %>
+												<p class="likes-number"> <%= comment.likes.length%> </p>
+											</div>
 											<% end %>
 											<br>
 										<% end %>
-									<% else %>
-										<%= link_to like_path(:comment => comment.id, :article => @article.id) ,:method => :delete do   %>
-										<% end %>
-										<br>
-									<% end %>
+									</div>
 									<% if current_user == comment.user %>
 										<div class="comment-btn-container">
 											<a class="btn ttm-btn comment-btn"

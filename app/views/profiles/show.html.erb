@@ -7,20 +7,22 @@
 					<div class="">
 						<% if @user == current_user %>
 				    	<%	if current_user.picture.attached? %>
-								<div class="d-flex justify-content-center">
-									<%= image_tag(current_user.picture, class: "profile-cards-img")  %>
-								</div>
+
+							<center><div class="d-flex justify-content-center profile-cards-img attached_image">
+								<%= image_tag(current_user.picture, class: "")  %>
+							</div></center>
 							<% else %>
-								<div class="d-flex justify-content-center">
-									<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
-								</div>
+							<div class="d-flex justify-content-center">
+								<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+							</div>
+
 							<% end %>
 
 							<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
 									<%= file_field_tag :picture, class: "image-upload-container" %>
 
 								<div class="actions d-flex justify-content-center">
-									<%= submit_tag "add picture", class: "btn sign-ttm-btn" %>
+									<%= submit_tag "add picture", class: "btn add-friend-btn" %>
 								</div>
 							<% end %>
 
@@ -28,39 +30,39 @@
 								<%= @user.email %>
 							</h3>
 
-							<ul id="pending-friend-list">
-							<% if @user.pending_friends.length > 0 %>
-								<p><%= "Pending friend requests :" %></p>
-								<% n = 1 %>
-								<% @pending_friends.each do |pending_friend| %>
-								<li>
-									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -
-									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
-										<% n += 1 %>
-								</li>
+							<ul id="pending-friend-list" class="d-flex flex-column">
+								<% if @user.pending_friends.length > 0 %>
+									<p><%= "Pending friend requests :" %></p>
+									<% n = 1 %>
+									<% @pending_friends.each do |pending_friend| %>
+									<li>
+										<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -
+										<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
+											<% n += 1 %>
+									</li>
 								<% end %>
 							<% end %>
 							</ul>
 							<br/>
 
 							<div class="d-flex justify-content-between profile-friends-conv-container">
-								<ul id="friend-list">
 								<% if @user.friends.length > 0 %>
-									<p><%= "My friends" %></p>
-									<% @friends.each do |friend| %>
-									<li>
-										<a <%= link_to friend.email, profile_path(friend.id) %></a>
-									</li>
+									<ul id="friend-list">
+										<p><%= "My friends" %></p>
+										<div class="friends-profile-container d-flex justify-content-end">
+
+										<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
+											<%= text_field_tag :email,'',class: "add-friend-textarea" %>
+											<%= submit_tag "Add user", class: "btn add-friend-btn" %>
+										<% end %>
+
+										<% @friends.each do |friend| %>
+											<li>
+												<a <%= link_to friend.email, profile_path(friend.id) %></a>
+										d	</li>
+										<% end %>
 									<% end %>
-								<% end %>
-							<div class="cryptolist-search-container d-flex justify-content-end">
-								<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
-
-										<%= text_field_tag :email,'',class: "search-cryptolist-input-textarea" %>
-										<%= submit_tag "Search user", class: "btn new-article-input-btn" %>
-
-								<% end %>
-							</div>
+								</div>
 
 								</ul>
 
@@ -95,7 +97,7 @@
 							<br/>
 
 							<div class="d-flex justify-content-between profile-friends-conv-container">
-								<div class="">
+								<div class="profile-user-articles">
 									<% unless @articles == nil %>
 										<p><%= "My articles"%></p>
 										<% @articles.each do |article| %>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :friend_requests, only: [:create]
   resources :friendships, only: [:create, :destroy]
-  resources :profiles, only: [:index, :show]
+  resources :profiles, only: [:index, :show, :update]
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:show]
   resources :home, only: [:index]

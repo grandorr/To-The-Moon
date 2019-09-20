@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :user_cryptos
-  has_many :crypto_currencies, through: :user_cryptos 
+  has_many :crypto_currencies, through: :user_cryptos
   has_many :articles
   has_many :comments
   has_many :conversations
@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :favorites, foreign_key: "interested_user"
   has_many :favorite_articles, through: :favorites, foreign_key: "interested_user"
+  has_one_attached :picture
 
   after_create :welcome_user_email
 

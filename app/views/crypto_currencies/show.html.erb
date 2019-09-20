@@ -1,36 +1,12 @@
 <div class="pages-container">
   <div class="space-bg">
     <div class="news-container">
-
       <h1 class="page-title text-center">
         <%= @coin_name %>
       </h1>
-
-      <div class="update-crypto-number-container-container">
-
-        <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
-          <div class="update-crypto-number-card ttm-card-bg">
-            <div class="update-crypto-number-form">
-              <%= form_tag user_cryptos_path, method: "post", remote: true do %>
-                <div class="form-group">
-                  <%= label_tag 'Choose quantity' %><br/>
-                    <%= text_field_tag 'quantity'%>
-                    <%= hidden_field_tag 'user', current_user %>
-                    <%= hidden_field_tag 'crypto', "unknown" %>
-                    <%= hidden_field_tag 'n', "unknown" %>
-                </div>
-                    <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
-              <% end %>
-              <div id="close-pop-up">
-                 <button onclick="closePopUp()">X</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cryptolist-td cryptolist-add-container d-flex align-items-center">
-        <% checker = [] %>
+      <div class="d-flex justify-content-between  articles-page-tools">
+          <div>	<a class="btn sign-ttm-btn"  <%= link_to "Back to cryptos", :back %> </a> </div>
+      <div>  <% checker = [] %>
         <% if @coin_tab %>
           <% @coin_tab.each do |crypto| %>
             <% if crypto.crypto_id != @coin_id %>
@@ -62,9 +38,37 @@
             <% end %>
           </a>
         <% end %>
+        </div>
       </div>
 
-      <%= link_to "Back to cryptos", :back %>
+
+
+      <div class="update-crypto-number-container-container">
+
+        <div class="update-crypto-number-container d-flex align-items-center justify-content-center">
+          <div class="update-crypto-number-card ttm-card-bg">
+            <div class="update-crypto-number-form">
+              <%= form_tag user_cryptos_path, method: "post", remote: true do %>
+                <div class="form-group">
+                  <%= label_tag 'Choose quantity' %><br/>
+                    <%= text_field_tag 'quantity'%>
+                    <%= hidden_field_tag 'user', current_user %>
+                    <%= hidden_field_tag 'crypto', "unknown" %>
+                    <%= hidden_field_tag 'n', "unknown" %>
+                </div>
+                    <%= submit_tag "Update quantity", class: "btn btn-lg btn-secondary btn-block" %>
+              <% end %>
+              <div id="close-pop-up">
+                 <button onclick="closePopUp()">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
 
       <div>
         <center>

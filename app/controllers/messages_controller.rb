@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-	
+
 	def new
 		@user = User.find(params[:id].to_i)
 	end
@@ -10,11 +10,11 @@ class MessagesController < ApplicationController
 			recipient: User.find(params[:recipient].to_i),
 			sender: current_user,
 			has_been_read: true,
-			conversation: current_user.conversations.find_by(interlocutor: User.find(params[:recipient].to_i))
+			conversation: Conversation.find(params[:id])
 			)
 		if Message.path_to_redirect?(params[:checker], @message)
 			redirect_to profile_path(@message.recipient.id)
-		else	
+		else
 			respond_to do |format|
       	format.html { redirect_back(fallback_location: root_path) }
       	format.js { }

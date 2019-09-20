@@ -2,18 +2,19 @@ class CommentsController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
-		Comment.create(
+		comment = Comment.create(
 			content: params[:content],
 			user: current_user,
 			article: Article.find(params[:article])
 			)
+		comment.update_attribute(:has_been_read, false)
 		redirect_back(fallback_location: root_path)
 	end
 
 	def edit
 		@comment = Comment.find(params[:id])
 	end
-	
+
 	def update
 		@comment = Comment.find(params[:id])
 		@comment.update_attribute(:content, params[:content])

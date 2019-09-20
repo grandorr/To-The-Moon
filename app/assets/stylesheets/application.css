@@ -84,6 +84,8 @@
    color: #11002d;
    text-align: left;
    background-color: #fff;
+   min-height: 100%;
+   position: relative;
  }
 
  [tabindex="-1"]:focus {
@@ -187,12 +189,10 @@
  }
 
  a:not([href]):not([tabindex]) {
-   color: inherit;
    text-decoration: none;
  }
 
  a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
-   color: inherit;
    text-decoration: none;
  }
 
@@ -1681,8 +1681,7 @@
 
  .table {
    width: 100%;
-   margin-bottom: 1rem;
-   color: #919aa1;
+   color: #1c1c1c;
  }
 
  .table th,
@@ -2593,9 +2592,11 @@
  }
 
  .btn:hover {
-   color: #919aa1;
-   text-decoration: none;
+  text-decoration: none;
+  border: 0px transparent none;
+  box-shadow: 0 0 20px 2px #fff inset;
  }
+
 
  .btn:focus, .btn.focus {
    outline: 0;
@@ -4415,6 +4416,7 @@
    line-height: 1;
    background-color: transparent;
    border: 1px solid transparent;
+   margin-bottom: 9px;
  }
 
  .navbar-toggler:hover, .navbar-toggler:focus {
@@ -10580,10 +10582,17 @@
 
 .myButtonsimple {
   font-family:"Saira Condensed";
+  font-weight: 300;
   color: #000;
-  font-size:20px;
-  margin: 0px 20px;
+  font-size: 22px;
+  margin: 0px 1vw;
   text-align: left;
+}
+
+@media (max-width: 1100px){
+  .myButtonsimple {
+    font-size: 18px;
+  }
 }
 
 .myButtonsimple2 {
@@ -10617,18 +10626,20 @@
 }
 
 .myButtonheader {
-  background-color:transparent;
-  border-radius:10px;
-  border:2px solid #4e6096;
   font-family:"Saira Condensed";
+  font-weight: 300;
+  font-size: 20px;
+  background-color: #f2e9ff;
+  border-radius:10px;
   color: #000;
-  font-size:20px;
   padding:4px 10px;
   text-decoration:none;
-  margin: 0px 5px;
+  margin: 5px 5px;
 }
 .myButtonheader:hover {
-  background-color:transparent;
+  background-color:#fff;
+  color: #493b72;
+  transition : all 0.3s;
 }
 .myButtonheader:active {
   position:relative;
@@ -10645,13 +10656,6 @@
   padding:4px 10px;
   text-decoration:none;
   margin: 0px 10px;
-}
-.myButtonheader:hover {
-  background-color:transparent;
-}
-.myButtonheader:active {
-  position:relative;
-  top:1px;
 }
 
 .navbar-nav2 {
@@ -10682,7 +10686,7 @@ box-shadow: 0px 10px 15px rgba(249, 249, 249, 0.2);
 }
 
 .footer-shadow {
-box-shadow: 0px -15px 15px rgba(145, 154, 161, 0.4);
+box-shadow: 0px -15px 15px rgba(145, 154, 161, 0.1);
 }
 
 
@@ -10718,12 +10722,148 @@ justify-content: left;
   background-repeat: repeat;
   width: 100vw;
   height: 100%;
+  border: 0px solid transparent;
+}
+
+td.cryptolist-td a.grey-bg, div.cryptolist-td a.grey-bg{
+  background: none;
+  background-color: #e3e3e3;
+  color: #fff;
 }
 
 .page-title{
   color: #fff;
   font-size: 40px;
   margin-bottom: 40px;
+}
+
+/*  ###############  Header */
+
+nav.ttm-navbar{
+  position: sticky;
+  top: 0;
+  z-index:9001;
+}
+
+.header-portfolio-link{
+  color: #e5a505;
+}
+
+.myButtonsimple{
+  transition: color 0.2s;
+}
+
+.myButtonsimple:hover{
+  color: #493b72;
+  transition: all 0.2s;
+}
+
+.left-nav-container{
+  min-width: 253px;
+}
+
+@media (max-width: 435px){
+  .left-nav-container{
+  margin-bottom: 20px;
+  }
+}
+
+/*  Notifications  */
+
+ul#menu > li{
+  float:left;
+  list-style-type:none;
+  position:relative;
+}
+
+label.notification-lbl{
+  position:relative;
+  display:block;
+  padding:0 18px 0 12px;
+
+  transition:background 0.3s;
+  cursor:pointer;
+}
+
+input:checked{
+  transition:border-top .1s, border-bottom .1s .1s;
+}
+
+
+input#check01{display:none}
+
+
+input:checked ~ ul.submenu{
+  max-height:300px;
+  transition:max-height 0.5s ease-in;
+}
+
+
+ul.submenu{
+  max-height:0;
+  padding:0;
+  overflow:hidden;
+  list-style-type:none;
+  background-color:#f9f9f9;
+  box-shadow:0 0 1px rgba(0,0,0,.3);
+  transition:max-height 0.5s ease-out;
+  position:absolute;
+  width: 300px;
+  top: 80px;
+  transform: translate(-120px, 0);
+}
+
+@media (max-width: 487px){
+  ul.submenu{
+    top: 125px;
+  }
+}
+
+@media (max-width: 435px){
+  ul.submenu{
+    left: 0;
+    top: 130px;
+    transform: translate(0);
+
+  }
+}
+
+ul.submenu li a{
+  display:block;
+  padding:12px;
+  color: #595959;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration:none;
+  box-shadow:0 -1px rgba(0,0,0,.5) inset;
+  transition:background .3s;
+  white-space:nowrap;
+  text-transform: none;
+}
+
+ul.submenu li a:hover{
+  background:rgba(0,0,0,.3);
+}
+
+.notifications-icon-container{
+  height: 0;
+}
+
+.notifications-icon{
+ margin-top: -6px;
+}
+
+/*  ###############  Footer  */
+
+.ttm-footer-bg{
+  background-color: #1a1a1a;
+
+}
+
+.ttm-footer{
+  padding: 40px 0;
+  position: ansolute;
+  bottom: 0;
 }
 
 /*  ###############  General Cells  */
@@ -10734,8 +10874,19 @@ justify-content: left;
 }
 
 .ttm-card-light-bg{
+  background: none;
   background-color: #fbf8ff;
   border-radius: 7px;
+}
+
+a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cryptolist-active-nav-btn:active{
+  height: 45px;
+  width: 44px;
+  font-size: 23px;
+  font-weight: 300;
+  padding: 10px 17px;
+  margin: 4px 5px;
+  color: #bdbdbd;
 }
 
 /*  Comments  */
@@ -10820,15 +10971,14 @@ div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
 
 .sign-card-container{
   padding: 10px;
-  height: 90vh;
 }
 
 .sign-card{
-  width: 420px;
-  padding: 2%;
+  width: 30vw;
+  min-width: 400px;
+  padding: 3%;
   border: 26px solid #848484;
   background-color: #f2e9ff;
-  border-radius: 7px;
   flex-direction: column;
   border-radius: 170px 170px 50px 50px;
 }
@@ -10857,10 +11007,11 @@ div.sign-card.d-flex.justify-content-center form#new_user.form-signin.mt-3 div.f
   margin-bottom: 2px;
 }
 
-div.form-group input{
+div.form-group input, div.form-group textarea{
   height: 35px;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
+  padding: 5px 10px 0;
 }
 
 div.form-group input:focus{
@@ -10920,7 +11071,22 @@ div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form#edit_user.form
 /*  Jumbotron  */
 
 .index-jumbotron{
+}
 
+.index-jumbotron-mobile{
+  display: none;
+}
+
+@media (max-width: 530px) {
+  .index-jumbotron{
+    display: none;
+  }
+}
+
+@media (max-width: 530px) {
+  .index-jumbotron-mobile{
+    display: block;
+  }
 }
 
 .index-jumbotron-img{
@@ -10946,6 +11112,27 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   font-weight: 500;
   text-align: center;
   color: #fff;
+}
+
+.index-jumbotron-title-mobile{
+  height: 0;
+  position: relative;
+  top: 12vw;
+}
+
+div.index-jumbotron-title-mobile h1.index-jumbotron-title-small-mobile{
+  font-size: 5vw;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+
+div.index-jumbotron-title-mobile h1.index-jumbotron-title-big-mobile{
+  font-size: 10vw;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  margin: 15px 0;
 }
 
 /*  Cards  */
@@ -11055,6 +11242,66 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
   text-transform: uppercase;
 }
 
+.btn, .ttm-btn, .sign-ttm-btn{
+  box-shadow: none;
+  transition: box-shadow 0.2s;
+ }
+
+.btn:hover, .ttm-btn:hover, .sign-ttm-btn:hover {
+  text-decoration: none;
+  border: 0px transparent none;
+  box-shadow: 0 0 20px 80px rgba(255,255,255,0.4) inset;
+  transition: all 0.2s;
+ }
+
+
+/*  ###############  Portfolio */
+
+.portfolio-card td{
+  padding: 22px 12px 0 23px;
+}
+
+.portfolio-card thead tr th.portfolio-logo-name-container{
+  background-color: #fff;
+}
+
+.portfolio-card tr td.portfolio-logo-name-container{
+  background-color: #fff;
+  padding-bottom: 0;
+}
+
+.portfolio-card tr td.crypto-name{
+  padding-top: 25px;
+}
+
+.portfolio-rank-container{
+  border-top-left-radius: 7px;
+}
+
+.portfolio-card td.portfolio-logo-container{
+  padding-top: 12px;
+}
+
+.portfolio-total{
+  font-size: 30px;
+  color: #fff;
+}
+
+input.portfolio-input-textarea{
+  width: 100px;
+  height: 30px;
+  margin-right: -4px;
+}
+
+table#cryptos.table.ttm-card-bg.portfolio-card tbody.crypto-lign tr td.quantity-input form input.new-article-input-btn.portfolio-input-btn{
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+  padding-top: 3px;
+  padding-left: 28px;
+  margin-bottom: 3px;
+}
+
 
 /*  ###############  Cryptolist  */
 
@@ -11080,17 +11327,22 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
  padding: 50px;
  width: 50vw;
  min-width: 300px;
+ position: relative;
 }
 
 .update-crypto-number-form{
+}
 
-
+div#close-pop-up{
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 
 /*  Search form  */
 
 .cryptolist-search-container{
-
+  margin-bottom: 10px;
 }
 
 .search-cryptolist-input-textarea{
@@ -11117,7 +11369,7 @@ div.index-jumbotron-title h1.index-jumbotron-title-big{
 /*  List  */
 
 .cryptolist-table{
-  margin-bottom: 40px;
+  margin-bottom: 14px;
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table thead tr.text-dark th.logo-name-container{
@@ -11158,6 +11410,11 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
   color: red
 }
 
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-logo-container{
+  padding-top: 15px;
+}
+
+
 .cryptolist-logo {
   display: inline;
   height: 35px;
@@ -11168,7 +11425,7 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
   border-top-left-radius: 7px;
 }
 
-html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
+table.table.ttm-card-light-bg.cryptolist-table tbody tr td.logo-name-container.cryptolist-td.cryptolist-name-container{
   padding-top: 20px;
 }
 
@@ -11179,12 +11436,14 @@ html body div.pages-container div.space-bg div.news-container table.table.ttm-ca
 }
 
 .cryptolist-add-ttm-btn{
-  font-size: 16px;
-  height: 50px;
-  width: 100px;
-  padding: 7px 10px;
-  margin-top: 0;
+  font-size: 50px;
+  font-weight: 600;
+  height: 40px;
+  width: 40px;
+  padding: 6px 0 7px 2px;
+  margin: -12px auto 0;
   line-height: 18px;
+  border-radius: 50px
 }
 
 html body div.pages-container div.space-bg div.news-container table.table.ttm-card-light-bg.cryptolist-table tbody tr td.cryptolist-td.cryptolist-add-container{
@@ -11203,6 +11462,42 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
   font-size: 23px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.cryptolist-all-crypto-btn{
+  margin: 10px;
+}
+.btn-ttm-navigate:active{
+
+}
+
+/*  ###############  Portfolio */
+
+.portfolio-card td{
+  padding: 22px 12px 0 23px;
+}
+
+.portfolio-card thead tr th.portfolio-logo-name-container{
+  background-color: #fff;
+}
+
+
+/*  ###############  Crypto Show  */
+
+.crypto-show-widget{
+
+}
+
+.crypto-show-widget-chart{
+  margin-top: -50px;
+}
+
+.crypto-show-widget-cenverter{
+
+}
+
+.crypto-show-widget-exchange{
+
 }
 
 /*  ###############  News Index */
@@ -11423,13 +11718,33 @@ input.new-article-input-btn{
 
 /*  New Article  */
 
+
+.edit-article-title{
+  padding-top: 50px;
+  color: #fff;
+}
+
 .image-upload-container{
   margin: 20px 0;
 }
 
-html body div.pages-container div.space-bg div.news-container div.d-flex.justify-content-center div.ttm-card-bg.edit-user-card.d-flex.justify-content-center form div.form-group label{
+.new-article-card label{
   font-size: 20px;
   margin-bottom: 2px;
+}
+
+.article-edit-form-inputs input, .article-edit-form-inputs textarea{
+  width: 100%;
+}
+
+div.new-article-card input.update-article-btn{
+  width: 60%;
+  margin: 20px auto 0;
+  padding: 10px 10px 10px;
+}
+
+.update-article-img-update{
+  margin: 20px 0;
 }
 
 /*  ###############  Profile Show  */
@@ -11458,7 +11773,6 @@ html body div.pages-container div.space-bg div.news-container div.d-flex.justify
 }
 
 .profile-card{
-
 }
 
 .profile-title{
@@ -11547,4 +11861,15 @@ ul#message-list{
 
 li.conv-list{
   list-style-type: none;
+}
+
+/*  Conversations  */
+
+.contact-card{
+  width: 35%;
+  min-width: 300px;
+}
+
+.contact-card-container{
+  padding: 4%;
 }

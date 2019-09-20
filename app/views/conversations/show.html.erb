@@ -28,7 +28,7 @@
 												<p class="conv-msg-text">
 													<%= message.content %>
 												</p>
-											</li>			
+											</li>
 										</div>
 									<% end %>
 								<br/><br/>
@@ -41,6 +41,7 @@
 								<label for="content">New Message<br>
 							  <%= text_field_tag 'content' %><br>
 							  <%= hidden_field_tag "recipient", @conversation.interlocutor.id %>
+								<%= hidden_field_tag "id", @conversation.id %>
 							  <%= submit_tag "Send Message", :name => 'commit' %>
 						<% end %>
 					</div>

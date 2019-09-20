@@ -1,9 +1,37 @@
 <div class="pages-container">
     <div class="space-bg">
       <div class="news-container">
-
         <h1 class="page-title text-center">
           Portfolio </h1>
+          <% unless current_user %>
+          <div class="index-cards-container-row-alt text-dark">
+
+            <div class="d-flex index-cards-container-alt justify-content-center">
+              <%= image_tag("home/To-the-Moon-homepage-Portfolio.png", class: "index-cards-img", alt: "to-the-moon-homepage-presentation-telescope") %>
+
+              <div class="ttm-card-bg index-card">
+                <h2 class="index-card-title">To the Moon Portfolio</h2>
+
+                <hr align="left" class="index-card-hr">
+
+                <p class="index-card-text-p">
+                Here you can view your favorite cryptocurrencies !
+                </p>
+
+                <p class="index-card-text-bold-p index-card-text-bold-n">
+                - Create account or login  </br>
+                - Add your favorite cryptocurrencies  </br>
+                - Chose quantity and track price of all your favorite cryptocurrencies </br>
+                </p>
+                <div class="d-flex">
+                  <a role="button" class="myButtonheader" <%= link_to "Sign up", '/users/sign_up' %></a>
+                  <a role="button" class="myButtonheader" <%= link_to "Sign in",'/users/sign_in' %></a>
+              </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+    <% if current_user %>
      <% if @cryptos.length == 0 %>
         <div class="index-cards-container-row-alt text-dark">
 
@@ -16,21 +44,20 @@
               <hr align="left" class="index-card-hr">
 
               <p class="index-card-text-p">
-              Here you will be able to follow evolution of targeted cryptos, visualise your portfolio evolution in real time, find articles, make predictions, and much more !
-              In short, the main tools are:
+              Here you'll see your favorite cryptocurrencies, check cryptocurrencies list for add crypto to your portfolio
               </p>
 
               <p class="index-card-text-bold-p index-card-text-bold-n">
-              - Real time price for more thant 1000 Cryptos.</br>
-              - Chart evolution</br>
-              - Currency converter</br>
-              - Market cap
+              - See cryptocurrency list </br>
+              - Add cryptocurrency to your portfolio </br>
+              - Choose quantity </br>
+              - See your favorite cryptocurrencies </br>
               </p>
-              <div> Your portfolio is empty, add cryptocurrency to your portfolio by cryptocurrency list page </div>
+            
               <div class="d-flex">
               <% if current_user %>
 
-                  <a class="ttm-btn" <%= link_to "Cryptocurrency list", cryptolist_path(0) %> </a>
+                  <a class="ttm-btn" <%= link_to "Cryptocurrencies list", cryptolist_path(0) %> </a>
 
               <% end %>
             </div>
@@ -76,7 +103,7 @@
                 <td>  <%= number_to_currency(price, precision: 2, delimiter: " ") %>  </td>
                 <% end %>
                 <td class="quantity-input">
-                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price, :name => crypto.name),:method => :put, :remote => true do %>
+                <%= form_tag user_crypto_path(:id => crypto.crypto_id, :n =>n, :price => price, :name => crypto.name),:method => :put do %>
                 <%= text_field_tag 'quantity', crypto_currency[n].quantity.to_s%>
                                   <%= submit_tag "Update" %>
                   <% end %>
@@ -119,3 +146,4 @@
       </div>
     </div>
   </div>
+<% end %>

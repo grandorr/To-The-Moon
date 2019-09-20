@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: to--the--moon.herokuapp.com
-Token: 6fff341c8200bc873dcee27c109db39e2d5fdd0d8cd979ea6a2798df9356183a

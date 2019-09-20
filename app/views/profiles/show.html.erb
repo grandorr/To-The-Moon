@@ -1,3 +1,4 @@
+
 <div class="pages-container">
 	<div class="space-bg">
 		<div class="news-container">
@@ -5,11 +6,24 @@
 	      		<div class="profile-card-container d-flex justify-content-center">
 					<div class="">
 						<% if @user == current_user %>
+				    	<%	if current_user.picture.attached? %>
+								<div class="d-flex justify-content-center">
+									<%= image_tag(current_user.picture, class: "profile-cards-img")  %>
+								</div>
+							<% else %>
+								<div class="d-flex justify-content-center">
+									<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+								</div>
+							<% end %>
 
-							<div class="d-flex justify-content-center">
-								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
-							</div>
-							
+							<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
+									<%= file_field_tag :picture, class: "image-upload-container" %>
+
+								<div class="actions d-flex justify-content-center">
+									<%= submit_tag "add picture", class: "btn sign-ttm-btn" %>
+								</div>
+							<% end %>
+
 							<h3 class="text-center profile-title">
 								<%= @user.email %>
 							</h3>
@@ -20,7 +34,7 @@
 								<% n = 1 %>
 								<% @pending_friends.each do |pending_friend| %>
 								<li>
-									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -  
+									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>  -
 									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
 										<% n += 1 %>
 								</li>
@@ -39,14 +53,18 @@
 									</li>
 									<% end %>
 								<% end %>
+							<div class="cryptolist-search-container d-flex justify-content-end">
+								<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
+
+										<%= text_field_tag :email,'',class: "search-cryptolist-input-textarea" %>
+										<%= submit_tag "Search user", class: "btn new-article-input-btn" %>
+
+								<% end %>
+							</div>
+
 								</ul>
 
-								<% unless @unread_messages == 0 %>
-									<p><%= "Unread messages" + @unread_messages.to_s %></p>
-									<% @senders.each do |sender| %>
-										<a <%= link_to sender, conversation_path(@user.conversations.find_by(interlocutor: User.find_by(email: sender)).id) %></a>
-									<% end %>
-								<% end %>
+
 
 								<br/>
 
@@ -55,16 +73,27 @@
 										<p><%= "Conversations:" %></p>
 										<% @user.conversations.each do |convo| %>
 											<% unless convo.messages.length == 0 %>
-												<a <%= link_to convo.interlocutor.email, conversation_path(convo.id) %></a>
+												<a <%= link_to convo.interlocutor.email, conversation_path(convo.id) %> </a>
+												<% if convo.messages.last.has_been_read == false %>
+													<% @n = 0 %>
+													<% convo.messages.each do |message| %>
+														<% if message.has_been_read == false %>
+															<% @n = @n + 1 %>
+														<% end %>
+													<% end %>
+												<% end %>
+												<%= @n %>
 												<br/><br/>
 											<% end %>
 										<% end %>
 									</div>
 								<% end %>
+
 							</div>
 
+
 							<br/>
-							
+
 							<div class="d-flex justify-content-between profile-friends-conv-container">
 								<div class="">
 									<% unless @articles == nil %>
@@ -74,7 +103,7 @@
 										<% end %>
 									<% end %>
 								</div>
-								
+
 								<br/>
 
 								<div class="profile-favorites">
@@ -97,7 +126,16 @@
 							<div class="d-flex justify-content-center">
 								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
 							</div>
-							
+							<% if @user == nil %>
+							<p> No user find with this email </p>
+							<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>
+								<div class=" align-content-center articles-search-form-elements">
+									<%= email_field_tag :email, "",class: "new-article-input-textarea" %>
+									<%= submit_tag "Search user", class: "btn new-article-input-btn" %>
+								</div>
+							<% end %>
+							<a class ="btn sign-ttm-btn" <%= link_to "back", :back %></a>
+							<% else %>
 							<h3 class="text-center profile-title">
 								<%= @user.email %></p>
 							</h3>
@@ -114,7 +152,12 @@
 								<% end %>
 							<% else %>
 							<div class="d-flex justify-content-between other-profile-btn-container">
-								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", new_message_path(:id => @user.id) %>
+								<% @conversations.each do |conversation| %>
+								<% if conversation.interlocutor == current_user %>
+								<% @conversation_id = conversation.id %>
+								<% end %>
+								<% end %>
+								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", conversation_path(:id => @conversation_id) %>
 								</a>
 								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Unfriend", friendship_path(@friendship.id), :method => :delete %>
 								</a>
@@ -130,6 +173,7 @@
 								<% end %>
 							<% end %>
 						<% end %>
+					<% end %>
 					</div>
 				</div>
 			</div>

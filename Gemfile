@@ -7,13 +7,13 @@ ruby '2.5.1'
 # Personnal gem #
 gem 'coinmarketcap_api'
 gem 'table_print'
-gem 'letter_opener'
 
 gem "devise", ">= 4.7.1"
-
 gem 'faker'
 # GEM TEST #
 gem "google-cloud-storage", "~> 1.8", require: false
+
+gem "letter_opener", :group => :development
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

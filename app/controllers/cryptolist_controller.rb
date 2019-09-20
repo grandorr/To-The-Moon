@@ -1,7 +1,5 @@
 class CryptolistController < ApplicationController
 
-
-
   def check_if_research(research)
     if research == nil || research == ""
       return false
@@ -9,7 +7,6 @@ class CryptolistController < ApplicationController
       return true
     end
   end
-
 
   def show
     @research = params[:content]
@@ -32,9 +29,6 @@ class CryptolistController < ApplicationController
       end
     else
       @n = params[:id]
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-      puts(@n)
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
       url = 'https://api.coinlore.com/api/tickers/?start=' + @n.to_s + '&limit=100'
       @coin_list = api_request(url)
       @n = @n.to_i

@@ -23,7 +23,7 @@ Tag.destroy_all
 
 tags = ["#bitcoin", "#ethereum", "#litecoin", "#tether", "#monero"]
 cryptos = ["bitcoin", "ethereum", "litecoin", "tether", "monero"]
-emails = ["jon@mail.com", "jak@mail.com", "jim@mail.com", "jail@mail.com", "me@mail.com"]
+emails = ["jon@mail.com", "jak@mail.com", "jim@mail.com", "jill@mail.com", "jah@mail.com"]
 	@n = 0
 25.times do
 
@@ -40,8 +40,8 @@ end
 n = 0
 5.times do
 	User.create(email: emails[n],
-		password: "monmdp",
-		password_confirmation: "monmdp"
+		password: "mypswd",
+		password_confirmation: "mypswd"
 		)
 	n += 1
 end

@@ -59,21 +59,21 @@
 
 
             <% current_user.conversations.each do |convo| %>
-                <% unless convo.messages.length == 0 %>
-
-                  <% if convo.messages.last.has_been_read == false %>
+              <% unless convo.messages.length == 0 %>
+                <% if convo.messages.last.has_been_read == false %>
                   <% @n += 1 %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
+
           <% current_user.articles.each do |article| %>
             <% article.comments.each do |comment| %>
-            <% if comment.has_been_read == false %>
-            <% @n += 1 %>
+              <% if comment.has_been_read == false %>
+                <% @n += 1 %>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
 
   <% if current_user.pending_friends.length > 0 || @n > 0 %>
             <div class="d-flex left-nav-container">
@@ -90,23 +90,23 @@
       								<p><%= "Friend requests :" %></p>
       								<% n = 1 %>
       								<% current_user.pending_friends.each do |pending_friend| %>
-                      <% @n += 1 %>
-      								<li>
-      									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>
-      									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
-      										<% n += 1 %>
-      								</li>
+                        <% @n += 1 %>
+        								<li>
+        									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>
+        									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
+        										<% n += 1 %>
+        								</li>
       								<% end %>
       							<% end %>
                 <% current_user.articles.each do |article| %>
                   <% article.comments.each do |comment| %>
-                  <% if comment.has_been_read == false %>
-                  <p><%= "New comments :" %></p>
-                  <li> New comment on <%= link_to comment.article.title, article_path(comment.article.id) %>   </li>
-                  <% @n += 1 %>
+                    <% if comment.has_been_read == false %>
+                      <p><%= "New comments :" %></p>
+                      <li> New comment on <%= link_to comment.article.title, article_path(comment.article.id) %>   </li>
+                      <% @n += 1 %>
+                    <% end %>
                   <% end %>
-                  <% end %>
-                  <% end %>
+                <% end %>
                 <% if current_user.conversations.length > 0 %>
 
 

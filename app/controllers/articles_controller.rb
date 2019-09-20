@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-		before_action :authenticate_user!, except: [:show,:index]
+	before_action :authenticate_user!, except: [:show,:index]
 
 	def index
 		@research = params
@@ -17,14 +17,11 @@ class ArticlesController < ApplicationController
 		@comments = @article.comments
 		if current_user
 			current_user.articles.each do |article|
-			if article != @article
-
-			else
-					Comment.has_been_read?(@comments)
+				if article == @article
+						Comment.has_been_read?(@comments)
+				end
 			end
 		end
-	end
-
 	end
 
 	def create
@@ -42,7 +39,6 @@ class ArticlesController < ApplicationController
 	def edit
 		@article = Article.find(params[:id])
 		@tag = @article.tag.name
-
 	end
 
 	def update

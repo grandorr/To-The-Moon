@@ -1,4 +1,5 @@
 var add = document.getElementById("favorite")
+console.log(add);
 add.children[0].remove();
 add.children[0].remove();
-add.insertAdjacentHTML("afterbegin", "<%= j render 'withdraw', article: @article %>");
+add.innerHTML = "<%= j render 'withdraw', article: @article %>";

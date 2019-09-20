@@ -74,8 +74,9 @@
 									<div class="profile-conversations">
 										<p><%= "Conversations:" %></p>
 										<% @user.conversations.each do |convo| %>
+										<% convo_id = convo.id %>
 											<% unless convo.messages.length == 0 %>
-												<a <%= link_to convo.interlocutor.email, conversation_path(convo.id) %> </a>
+												<a <%= link_to convo.interlocutor.email, conversation_path(convo_id) %> </a>
 												<% if convo.messages.last.has_been_read == false %>
 													<% @n = 0 %>
 													<% convo.messages.each do |message| %>
@@ -157,6 +158,7 @@
 								<% @conversations.each do |conversation| %>
 								<% if conversation.interlocutor == current_user %>
 								<% @conversation_id = conversation.id %>
+								<% @conversation_id += 1 %>
 								<% end %>
 								<% end %>
 								<a class="btn sign-ttm-btn profile-btn" <%= link_to "Send Message", conversation_path(:id => @conversation_id) %>

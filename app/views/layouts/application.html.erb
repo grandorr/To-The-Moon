@@ -80,7 +80,9 @@
               <div>
               <input id="check01" type="checkbox" name="menu"/>
               <div class="notifications-icon-container">
-                <label class="notification-lbl" for="check01"><%= image_tag "notifications-bell-icon.png", class: "notifications-icon"%></label>
+                <label class="notification-lbl" for="check01">
+                  <%= image_tag "notifications-bell-icon.png", class: "notifications-icon"%>
+                </label>
               </div>
               <ul class="submenu">
                     <% @n = 0 %>
@@ -127,7 +129,7 @@
               </ul>
             </div>
       <% else %>
-      <p> et non </p>
+      <%= image_tag "no-notifications-bell-icon.png", class: "no-notification-icon" %>
       <% end %>
 
               <div>

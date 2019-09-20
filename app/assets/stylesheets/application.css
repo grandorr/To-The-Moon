@@ -10863,6 +10863,14 @@ ul.submenu li a:hover{
   margin-top: -6px;
 }
 
+.notifications-icon{
+ margin-top: -6px;
+}
+
+.no-notification-icon{
+  margin-right: 20px;
+}
+
 /*  ###############  Footer  */
 
 .ttm-footer-bg{
@@ -10899,7 +10907,7 @@ a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cr
   color: #bdbdbd;
 }
 
-/*  Comments  */
+/*  #################  Comments  */
 
 .post-comment-text-area{
   width: 300px;
@@ -10950,17 +10958,71 @@ a.cryptolist-active-nav-btn, a.cryptolist-active-nav-btn:hover, .ttm-card-bg .cr
   border-radius: 0 7px 7px 0;
 }
 
+
+
 .comment-btn-container{
-  margin-top: 24px;
+}
+
+.article-btn-container{
+  margin: 10px 0 0 -67px;
 }
 
 div.comment-container div.comment-btn-container a.btn.ttm-btn.comment-btn{
   font-size: 15px;
-  margin: 0 20px 0 0;
+  margin: 0 20px 10px 0;
   padding: 5px 20px 4px 20px;
 }
 
-/*  Tags  */
+.comment-likes-container{
+  height: 48px;
+}
+
+/*  ################  Likes  */
+
+.likes-container-container{
+  height: 40px;
+}
+
+.likes-container{
+  height: 37px;
+  padding: 0 15px 10px;
+  border-radius: 50px;
+  background-color: #d6cef2;
+  clear:both;
+  float:left;
+}
+
+.likes-number{
+  margin: 4px 0 0 10px;
+  font-size: 18px;
+}
+
+.like-icon{
+  margin-top: 8px;
+}
+
+/*  ################  Favorites  */
+
+div#favorite{
+  margin: -10px 0 0 -40px ;
+  height: ;
+}
+
+.favorite-icon{
+  margin: -30px 15px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#favorite #add, #favorite #withdraw{
+  font-size: 30px;
+  color: transparent;
+  margin: 0 -53px 0 53px;
+  padding-top: 10px;
+  z-index: 9009;
+}
+
+/*  ################  Tags  */
 
 .tags-container{
   margin-top: 26px;
@@ -11060,6 +11122,26 @@ div.form-group input:focus{
 }
 
 /*  ###############  Profil User / Edit User  */
+
+input.add-friend-btn{
+  padding: 4px 12px;
+  width: 100px;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+textarea.add-friend-textarea{
+  height: 38px;
+  margin-right: -5px;
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px;
+  width: 100px;
+}
 
 /*  Edit User  */
 
@@ -11726,6 +11808,13 @@ input.new-article-input-btn{
   margin-bottom: 20px;
 }
 
+.your-article-btn{
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px 20px 5px 20px;
+  margin: 0 10px 0 0;
+}
+
 /*  New Article  */
 
 
@@ -11760,7 +11849,7 @@ div.new-article-card input.update-article-btn{
 /*  ###############  Profile Show  */
 
 .profile-card-container{
-  width: 35vw;
+  width: 45vw;
   min-width: 300px;
   padding: 3%;
   border: 26px solid #848484;
@@ -11777,7 +11866,7 @@ div.new-article-card input.update-article-btn{
 }
 
 .profile-cards-img{
-  width: 70%;
+  width: 40%;
   margin: -10px 0 30px;
   transform: scale(1.1);
 }
@@ -11823,6 +11912,11 @@ ul#friend-list li{
 
 .other-profile-btn-container{
   margin-bottom: 20px;
+}
+
+div.friends-profile-container, div.profile-conversation, div.profile-user-articles, div.profile-favorite{
+  min-height: 100px;
+  overflow: scroll;
 }
 
 /*  Conversations  */
@@ -11871,6 +11965,10 @@ ul#message-list{
 
 li.conv-list{
   list-style-type: none;
+}
+
+.send-msg-btn{
+  margin-top: 10px;
 }
 
 /*  Conversations  */

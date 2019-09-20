@@ -8,24 +8,17 @@
 <% x = -100 %>
 
 <% while x != (x1) %>
-<% p += 1 %>
-<% x += 100 %>
-<% if x == x1 %>
-<a class="btn ttm-card-light-bg cryptolist-active-nav-btn"><%= p %> </a>
-<% else %>
-
-<a class="btn btn-secondary"<%= link_to p, cryptolist_path(x) %> </a>
+	<% p += 1 %>
+	<% x += 100 %>
+	<% if x == x1 %>
+		<a class="btn ttm-card-light-bg cryptolist-active-nav-btn"><%= p %> </a>
+	<% else %>
+		<a class="btn btn-secondary"<%= link_to p, cryptolist_path(x) %> </a>
+	<% end %>
 <% end %>
-
-
-<% end %>
-
-
 
 <% while x != (x1 + 500) && x != 900 %>
-<% x += 100 %>
-<% p += 1 %>
-<a class="btn btn-secondary"<%= link_to p, cryptolist_path(x) %> </a>
-
-
+	<% x += 100 %>
+	<% p += 1 %>
+	<a class="btn btn-secondary"<%= link_to p, cryptolist_path(x) %> </a>
 <% end %>

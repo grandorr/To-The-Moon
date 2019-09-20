@@ -10,7 +10,6 @@ class FriendRequestsController < ApplicationController
     	format.html { redirect_back(fallback_location: root_path) }
     	format.js { }
   	end
-
 	end
 
 end

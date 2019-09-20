@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   require 'net/http'
+
   def api_request(url)
     uri = URI(url)
     response = Net::HTTP.get(uri)
@@ -21,6 +22,5 @@ class ApplicationController < ActionController::Base
   	@crypto_array = [@coin,@crypto_currency]
   	return @crypto_array
   end
-
 
 end

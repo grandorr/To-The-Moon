@@ -129,8 +129,13 @@
               </ul>
             </div>
       <% else %>
+    <div class="notifications-icon-container">
+
       <%= image_tag "no-notifications-bell-icon.png", class: "no-notification-icon" %>
+
+    </div>
       <% end %>
+
 
               <div>
                <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>

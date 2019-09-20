@@ -134,19 +134,12 @@
 
 						<% else %>
 
-							<%	if @user.picture.attached? %>
 
-								<center>
-									<div class="d-flex justify-content-center profile-cards-img attached_image">
-										<%= image_tag(@user.picture, class: "")  %>
-									</div>
-								</center>
-							<% else %>
 								<div class="d-flex justify-content-center">
-									<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+									<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
 								</div>
 
-							<% end %>
+
 
 							<% if @user == nil %>
 							<p> No user find with this email </p>

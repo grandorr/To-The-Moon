@@ -95,7 +95,8 @@
 							<% @comments.each do |comment| %>
 								<div class="comment-container">
 									<div class="d-flex">
-										<p class="comment-user"><%= comment.user.email %></p><p class="comment-date"><%= comment.created_at %>
+										<p class="comment-user"><%= comment.user.email %></p>
+										<p class="comment-date"><%= comment.created_at %>
 									</div>
 									<hr class="comment-hr" align="left">
 									<p class="comment-content"><%= comment.content %></p>
@@ -130,7 +131,7 @@
 										<% end %>
 									</div>
 									<% if current_user == comment.user %>
-										<div class="comment-btn-container">
+										<div class="comment-btn-container d-flex">
 											<a class="btn ttm-btn comment-btn"
 												<%= link_to "Edit comment", edit_comment_path(comment.id) %>
 											</a>

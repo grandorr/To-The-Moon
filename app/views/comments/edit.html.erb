@@ -1,5 +1,24 @@
-<%= form_tag url_for(action: "update"), method: "put" do %>
-  <%= label_tag 'Content' %>  <br>
-  <%= text_field_tag 'content', @comment.content %><br>
-  <%= submit_tag "Update comment" %>
-<% end %>
+<div class="pages-container">
+  <div class="space-bg">
+  	<div class="space-bg">
+	    <h1 class="text-center edit-article-title">
+	      Edit Comment
+	    </h1>
+	    <div class="d-flex justify-content-center sign-card-container">
+			<div class="ttm-card-bg edit-comment-card d-flex flex-column justify-content-center new-article-card">
+
+				<%= form_tag url_for(action: "update"), method: "put" do %>
+				<center>
+					<div class="">
+					  <%= label_tag 'Content',nil %>  <br>
+					  <%= text_area_tag 'content', @comment.content, class: "post-comment-text-area" %><br>
+				  	</div>
+				  <%= submit_tag "Update comment", class: "btn sign-ttm-btn comment-btn" %>
+				</center>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -20,9 +20,6 @@ class UserCryptosController < ApplicationController
 	end
 
 	def create
-		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-		puts params
-		puts"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		crypto_currency = CryptoCurrency.find_by(crypto_id: params[:crypto].to_i)
 		@n = params[:n].to_i
 		quantity = params[:quantity]
@@ -56,7 +53,6 @@ class UserCryptosController < ApplicationController
     	format.html { redirect_back(fallback_location: root_path) }
     	format.js { }
   	end
-
 	end
 
 	def destroy

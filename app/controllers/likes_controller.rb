@@ -20,9 +20,6 @@ class LikesController < ApplicationController
 	end
 
 	def destroy
-		puts "$$$$$$$$$$$$$$$$$$$$$$$$$"
-		puts params
-		puts "$$$$$$$$$$$$$$$$$$$$$$$$$"
 		if Like.for_comment_or_article?(params[:article])
 			if params[:id] == nil
 				current_user.likes.find_by(article: params[:article]).destroy

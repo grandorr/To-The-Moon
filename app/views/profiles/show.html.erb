@@ -7,6 +7,7 @@
 					<div class="">
 						<% if @user == current_user %>
 				    	<%	if current_user.picture.attached? %>
+
 							<center><div class="d-flex justify-content-center profile-cards-img attached_image">
 								<%= image_tag(current_user.picture, class: "")  %>
 							</div></center>
@@ -14,6 +15,7 @@
 							<div class="d-flex justify-content-center">
 								<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
 							</div>
+
 							<% end %>
 
 							<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
@@ -75,12 +77,12 @@
 											<% unless convo.messages.length == 0 %>
 												<a <%= link_to convo.interlocutor.email, conversation_path(convo.id) %> </a>
 												<% if convo.messages.last.has_been_read == false %>
-												<% @n = 0 %>
-												<% convo.messages.each do |message| %>
-												<% if message.has_been_read == false %>
-												<% @n = @n + 1 %>
-												<% end %>
-												<% end %>
+													<% @n = 0 %>
+													<% convo.messages.each do |message| %>
+														<% if message.has_been_read == false %>
+															<% @n = @n + 1 %>
+														<% end %>
+													<% end %>
 												<% end %>
 												<%= @n %>
 												<br/><br/>

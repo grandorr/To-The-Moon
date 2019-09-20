@@ -24,7 +24,7 @@
 
           <%= form_tag article_pictures_path(@article.id), multipart: true do %>
             <%= file_field_tag :picture %>
-            <%= submit_tag "mettre à jour", class: "update-article-img-update" %>
+            <%= submit_tag "Update article", class: "update-article-img-update" %>
           <% end %>
           <%= submit_tag "Update article", class: "btn sign-ttm-btn update-article-btn" %>
         <% end %>

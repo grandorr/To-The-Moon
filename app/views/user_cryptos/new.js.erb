@@ -1,11 +1,13 @@
-var n = ("<%= @n %>");
-var close = document.getElementById("close-pop-up").children[0];
-console.log(close);
+var n = ("<%= @n %>")
+var close = document.getElementsByClassName("update-crypto-number-container-container")[0];
+var id = ("<%= @id %>");
+
 function closePopUp()
 {
-	document.getElementsByClassName("update-crypto-number-container-container")[0].style.display='none';
+	close.style.display='none';
 };
-document.getElementsByClassName("update-crypto-number-container-container")[0].children[0].children[0].children[0].childNodes[1][3].value = ("<%= @id %>");
-document.getElementsByClassName("update-crypto-number-container-container")[0].children[0].children[0].children[0].childNodes[1][4].value = ("<%= @n %>");
+
+document.querySelectorAll("#crypto")[0].value = id;
+document.querySelectorAll("#n")[0].value = n;
 document.getElementsByClassName("update-crypto-number-container-container")[0].style.display='block';
 

@@ -6,21 +6,24 @@
 	      		<div class="profile-card-container d-flex justify-content-center">
 					<div class="">
 						<% if @user == current_user %>
-				    	<%	if current_user.picture.attached? %>
+				    		<%	if current_user.picture.attached? %>
 
-							<center><div class="d-flex justify-content-center profile-cards-img attached_image">
-								<%= image_tag(current_user.picture, class: "")  %>
-							</div></center>
+								<center>
+									<div class="d-flex justify-content-center profile-cards-img attached_image">
+										<%= image_tag(current_user.picture, class: "")  %>
+									</div>
+								</center>
 							<% else %>
-							<div class="d-flex justify-content-center">
-								<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
-							</div>
+								<div class="d-flex justify-content-center">
+									<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+								</div>
 
 							<% end %>
 							
-							<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
+							<center>
+								<%= form_tag url_for(action: "update"), method: "put", multipart: true do %>
 									<%= file_field_tag :picture, class: "image-upload-container" %>
-
+							</center>
 								<div class="actions d-flex justify-content-center">
 									<%= submit_tag "add picture", class: "btn add-friend-btn" %>
 								</div>
@@ -56,7 +59,7 @@
 										<div class="profile-favorites">
 											<% if @user.friends.length > 0 %>
 												<% @user.friends.each do |friend| %>
-													<a <%= link_to friend.email, article_path(friend.id) %></a>
+													<a <%= link_to friend.email, profile_path(friend.id) %></a>
 												<br/>
 												<% end %>
 
@@ -140,9 +143,20 @@
 
 						<% else %>
 
-							<div class="d-flex justify-content-center">
-								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
-							</div>
+							<%	if @user.picture.attached? %>
+
+								<center>
+									<div class="d-flex justify-content-center profile-cards-img attached_image">
+										<%= image_tag(@user.picture, class: "")  %>
+									</div>
+								</center>
+							<% else %>
+								<div class="d-flex justify-content-center">
+									<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+								</div>
+
+							<% end %>
+
 							<% if @user == nil %>
 							<p> No user find with this email </p>
 							<%= form_tag profile_path(params[:id]),class: "search-articles-form", :method => :get do %>

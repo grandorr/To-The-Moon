@@ -10725,7 +10725,7 @@ justify-content: left;
   border: 0px solid transparent;
 }
 
-td.cryptolist-td a.grey-bg{
+td.cryptolist-td a.grey-bg, div.cryptolist-td a.grey-bg{
   background: none;
   background-color: #e3e3e3;
   color: #fff;
@@ -10790,7 +10790,7 @@ input:checked{
 }
 
 
-input{display:none}
+input#check01{display:none}
 
 
 input:checked ~ ul.submenu{
@@ -10850,7 +10850,7 @@ ul.submenu li a:hover{
 }
 
 .notifications-icon{
- margin-top: -6px; 
+ margin-top: -6px;
 }
 
 /*  ###############  Footer  */

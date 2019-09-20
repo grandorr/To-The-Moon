@@ -11932,6 +11932,10 @@ li.conv-list{
   list-style-type: none;
 }
 
+.send-msg-btn{
+  margin-top: 10px;
+}
+
 /*  Conversations  */
 
 .contact-card{

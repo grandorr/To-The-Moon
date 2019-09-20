@@ -1,11 +1,13 @@
 class UserCryptosController < ApplicationController
 
-	before_action :authenticate_user!
+	before_action :authenticate_user!, :except => [:index]
 
 	def index
+		if current_user
 		@crypto_array = get_coin
  		@coin = @crypto_array[0]
  		@cryto_currency = @crypto_array[1]
+  	end
 	end
 
 	def new

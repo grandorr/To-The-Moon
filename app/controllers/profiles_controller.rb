@@ -22,7 +22,10 @@ class ProfilesController < ApplicationController
 			@senders = message_infos[0]
 			@unread_messages = message_infos[1]
 			@favorite_articles = current_user.favorite_articles
-		end 
+		end
 	end
+	def update
+		current_user.picture.attach(params[:picture])
 
+	end
 end

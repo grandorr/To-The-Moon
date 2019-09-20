@@ -29,7 +29,7 @@
 										<%= link_to likes_path(:article => @article.id), :method => :post do %>
 											<div class="d-flex likes-container">
 											<%= image_tag "Liked.png", class: "like-icon" %>
-												<p class="likes-number"> <%= @test%> </p>
+												<p class="likes-number"> <%= @article.likes.length%> </p>
 											</div>
 										<% end %>
 										<br>
@@ -38,7 +38,7 @@
 									<%= link_to like_path(:article => @article.id) ,:method => :delete do   %>
 										<div class="d-flex likes-container">
 										<%= image_tag "Liked.png", class: "like-icon" %>
-											<p class="likes-number"> <%= @test%> </p>
+											<p class="likes-number"> <%= @article.likes.length%> </p>
 										</div>
 									<% end %>
 									<br>

@@ -11113,6 +11113,26 @@ div.form-group input:focus{
 
 /*  ###############  Profil User / Edit User  */
 
+input.add-friend-btn{
+  padding: 4px 12px;
+  width: 100px;
+  background: linear-gradient(-135deg, #f2c300, #e5a505);
+  border-radius: 7px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+textarea.add-friend-textarea{
+  height: 38px;
+  margin-right: -5px;
+  padding: 0 15px;
+  border: 1px solid #e5a505;
+  border-radius: 7px;
+  width: 100px;
+}
+
 /*  Edit User  */
 
 .edit-user-card{
@@ -11819,7 +11839,7 @@ div.new-article-card input.update-article-btn{
 /*  ###############  Profile Show  */
 
 .profile-card-container{
-  width: 35vw;
+  width: 45vw;
   min-width: 300px;
   padding: 3%;
   border: 26px solid #848484;
@@ -11836,7 +11856,7 @@ div.new-article-card input.update-article-btn{
 }
 
 .profile-cards-img{
-  width: 70%;
+  width: 40%;
   margin: -10px 0 30px;
   transform: scale(1.1);
 }
@@ -11882,6 +11902,11 @@ ul#friend-list li{
 
 .other-profile-btn-container{
   margin-bottom: 20px;
+}
+
+div.friends-profile-container, div.profile-conversation, div.profile-user-articles, div.profile-favorite{
+  min-height: 100px;
+  overflow: scroll;
 }
 
 /*  Conversations  */

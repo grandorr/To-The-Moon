@@ -7,12 +7,12 @@
 					<div class="">
 						<% if @user == current_user %>
 				    	<%	if current_user.picture.attached? %>
-							<div class="d-flex justify-content-center">
-								<%= image_tag(current_user.picture, class: "profile-cards-img")  %>
-							</div>
+							<center><div class="d-flex justify-content-center profile-cards-img attached_image">
+								<%= image_tag(current_user.picture, class: "")  %>
+							</div></center>
 							<% else %>
 							<div class="d-flex justify-content-center">
-								<%= image_tag("profile/to-the-moon-profile-cosmonaut.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
+								<%= image_tag("profile/to-the-moon-profile-cosmonaut1.png", class: "profile-cards-img", alt: "to-the-moon-profile-cosmonaut") %>
 							</div>
 							<% end %>
 
@@ -20,7 +20,7 @@
 									<%= file_field_tag :picture, class: "image-upload-container" %>
 
 								<div class="actions d-flex justify-content-center">
-									<%= submit_tag "add picture", class: "btn sign-ttm-btn" %>
+									<%= submit_tag "add picture", class: "btn add-friend-btn" %>
 								</div>
 							<% end %>
 

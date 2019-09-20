@@ -28,14 +28,14 @@
 									<% else %>
 										<%= link_to likes_path(:article => @article.id), :method => :post do %>
 											<div class="d-flex likes-container">
-											<%= image_tag "Liked.png", class: "like-icon" %>
+											<%= image_tag "Like.png", class: "like-icon" %>
 												<p class="likes-number"> <%= @article.likes.length%> </p>
 											</div>
 										<% end %>
 										<br>
 									<% end %>
 								<% else %>
-									<%= link_to like_path(:article => @article.id) ,:method => :delete do   %>
+									<%= link_to like_path(:comment => @article, :id => @test.id) ,:method => :delete do   %>
 										<div class="d-flex likes-container">
 										<%= image_tag "Liked.png", class: "like-icon" %>
 											<p class="likes-number"> <%= @article.likes.length%> </p>
@@ -52,13 +52,13 @@
 														<%= link_to "OO", favorites_path(:article => @article.id), :method => :post, remote: true %>
 
 														<%= image_tag "not-favorite.png", class: "like-icon favorite-icon" %>
-														
+
 													<a><br>
 											<% else %>
-													<a id="withdraw"<%= link_to "OO", favorite_path(:article => @article.id), :method => :delete, remote: true %>
-														
+													<a id="withdraw"<%= link_to "OO", favorite_path(:article => @article.id, :id => @test.id), :method => :delete, remote: true %>
+
 														<%= image_tag "favorite.png", class: "like-icon favorite-icon" %>
-														
+
 													<a>
 													<br>
 											<% end %>
@@ -113,7 +113,7 @@
 											<% else %>
 												<%= link_to likes_path(:comment => comment.id, :article => @article.id), :method => :post do %>
 												<div class="d-flex likes-container">
-													<%= image_tag "Liked.png", class: "like-icon" %>
+													<%= image_tag "Like.png", class: "like-icon" %>
 													<p class="likes-number"> <%= comment.likes.length%> </p>
 												</div>
 												<% end %>

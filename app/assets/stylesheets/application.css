@@ -11909,6 +11909,13 @@ div.friends-profile-container, div.profile-conversation, div.profile-user-articl
   overflow: scroll;
 }
 
+.attached_image {
+  overflow :hidden;
+  border-radius: 5000px;
+  width: 200px;
+  height: 200px;
+}
+
 /*  Conversations  */
 
 .conv-card{

@@ -22,15 +22,21 @@
 
   <body>
 
-    <nav class="ttm-navbar navbar-shadow navbar navbar-expand-lg navbar-dark bg-dark head-color">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="nav-logo-container d-flex justify-content-center align-items-center">
+        <%= link_to(image_tag("to-the-moon-header.png", :size => '145x80', class: "nav-logo"), root_path)%>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <div class="d-flex justify-content-between navbar-links-btn">
 
-      <%= link_to(image_tag("home/to-the-moon-header.png", :size => '145x80',), root_path)%>
-
-        <div class=" navbar-expand-lg collapse navbar-collapse pond2 " id="navbarColor02">
+          <div class="nav-null">
+          </div>
 
           <ul class="navbar-nav mr-auto">
-
             <li class="nav-perso">
                   <a  role="button" class="myButtonsimple header-portfolio-link"<%= link_to "Portfolio", user_cryptos_path%> </a>
             </li>
@@ -49,10 +55,10 @@
             <li class="nav-perso">
                   <a  role="button" class="myButtonsimple"<%= link_to "Contact", '/static_pages/contact'%> </a>
             </li>
-
           </ul>
-        </div>
-        <ul class="navbar-nav mr-auto pond">
+
+          <div class="collapse navbar-collapse d-flex justify-content-end navbar-left" id="navbarColor03">
+            <ul class="navbar-nav mr-auto pond d-flex user-alert-container">
           <% @n = 0 %>
           <% if user_signed_in? %>
           <% if current_user.conversations.length > 0 %>
@@ -75,7 +81,7 @@
             <% end %>
           <% end %>
 
-  <% if current_user.pending_friends.length > 0 || @n > 0 %>
+          <% if current_user.pending_friends.length > 0 || @n > 0 %>
             <div class="d-flex left-nav-container">
               <div>
               <input id="check01" type="checkbox" name="menu"/>
@@ -87,17 +93,17 @@
               <ul class="submenu">
                     <% @n = 0 %>
                     <% if current_user.pending_friends.length > 0 %>
-      								<p><%= "Friend requests :" %></p>
-      								<% n = 1 %>
-      								<% current_user.pending_friends.each do |pending_friend| %>
+                      <p><%= "Friend requests :" %></p>
+                      <% n = 1 %>
+                      <% current_user.pending_friends.each do |pending_friend| %>
                         <% @n += 1 %>
-        								<li>
-        									<%= link_to pending_friend.email, profile_path(pending_friend.id) %>
-        									<a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
-        										<% n += 1 %>
-        								</li>
-      								<% end %>
-      							<% end %>
+                        <li>
+                          <%= link_to pending_friend.email, profile_path(pending_friend.id) %>
+                          <a id="friend-request" <%= link_to "Accept friend request", friendships_path(:friend_id => pending_friend.id, :n => n), method: :post, :remote => true %></a>
+                            <% n += 1 %>
+                        </li>
+                      <% end %>
+                    <% end %>
                 <% current_user.articles.each do |article| %>
                   <% article.comments.each do |comment| %>
                     <% if comment.has_been_read == false %>
@@ -128,9 +134,9 @@
 
               </ul>
             </div>
-      <% else %>
-      <%= image_tag "no-notifications-bell-icon.png", class: "no-notification-icon" %>
-      <% end %>
+          <% else %>
+          <%= image_tag "no-notifications-bell-icon.png", class: "no-notification-icon" %>
+          <% end %>
 
               <div>
                <a role="button" class="myButtonheader"<%= link_to "Profile", profile_path(current_user.id)%></a>
@@ -153,10 +159,10 @@
           <% end %>
 
         </ul>
+          </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        </div>
+      </div>
     </nav>
 
 
@@ -171,8 +177,7 @@
           <!-- Grid row -->
           <div class="row footer-content-container">
             <div class="col-md-3 mt-md-0 mt-3 footer-column-container text-center">
-              <%= image_tag("home/logo_to_the_moon.png") %>
-
+              <%= image_tag("logo-to-the-moon.png") %>
               <ul class="list-unstyled">
                 <li>
                   <a style="color:#FFF;" <%= link_to "Terms And Conditions",'/static_pages/terms_and_conditions' %></a>
@@ -205,10 +210,10 @@
               <br/>
               <p>Support our team with donation : </p>
               <p>
-                BTC adress : <small>19cAcF3FCmiRjsZ94pT9ac9WmWP2UqtNTH</small>
+                BTC adress : <small>19cAcF3FCmiRjsZ94<br/>pT9ac9WmWP2UqtNTH</small>
               </p>
               <p>
-                ETH adress : <small>0xfc7ab61aecea4c9975eff3169450b6b5a3699212</small>
+                ETH adress : <small>0xfc7ab61aecea4c9975eff<br/>3169450b6b5a3699212</small>
               </p>
               </br>
             </div>

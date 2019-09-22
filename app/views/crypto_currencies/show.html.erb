@@ -4,21 +4,22 @@
       <h1 class="page-title text-center">
         <%= @coin_name %>
       </h1>
-      <div class="d-flex justify-content-between  articles-page-tools">
-          <div>	<a class="btn sign-ttm-btn"  <%= link_to "Back to cryptos", :back %> </a> </div>
-      <div>  <% checker = [] %>
-        <% if @coin_tab %>
-          <% @coin_tab.each do |crypto| %>
-            <% if crypto.crypto_id != @coin_id %>
-              <% checker << false %>
-            <% else %>
-              <% checker << true %>
-            <% end %>
-          <% end %>
+      <div class="d-flex justify-content-between crypto-show-tools">
+          <div class="">	<a class="btn sign-ttm-btn"  <%= link_to "Back to cryptos", :back %> </a> </div>
+          <div class="">
+            <% checker = [] %>
+            <% if @coin_tab %>
+              <% @coin_tab.each do |crypto| %>
+                <% if crypto.crypto_id != @coin_id %>
+                  <% checker << false %>
+                <% else %>
+                  <% checker << true %>
+                <% end %>
+              <% end %>
 
           <% unless checker.include?(true) %>
             <% if current_user %>
-              <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"
+              <a class="btn sign-ttm-btn cryptolist-add-ttm-btn crypto-show-add-ttm-btn"
               <%= link_to "+", new_user_crypto_path(:name => @crypto_name, :id => @coin_id, :n => 1), :remote => true %></a>
             <% else %>
               <a class="btn sign-ttm-btn cryptolist-add-ttm-btn"

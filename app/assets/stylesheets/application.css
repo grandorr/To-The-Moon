@@ -4338,7 +4338,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 0rem 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 .navbar > .container,
@@ -10558,11 +10558,11 @@ th {
 
 .footer-column-container-2{
   border-right: 2px solid #fff;
-  padding: 0 60px;
+  padding: 0 3vw;
 }
 
 .footer-column-container-3{
-  padding: 0 60px;
+  padding: 0 3vw;
 }
 
 @media only screen and (max-width: 767px) {
@@ -10636,6 +10636,12 @@ th {
   padding:4px 10px;
   text-decoration:none;
   margin: 5px 5px;
+}
+
+@media (max-width: 767px) {
+  .myButtonheader {
+    font-size: 16px;
+  }
 }
 
 .myButtonheader:hover {
@@ -10778,6 +10784,35 @@ nav.ttm-navbar{
   }
 }
 
+nav div.navbar-left{
+  flex-grow: unset;
+}
+
+.navbar-links-btn{
+  width: 100%;
+}
+
+.nav-null{
+height:100%;
+width: 0;
+background-color: transparent;
+border: 0px solid transparent;
+}
+
+  .nav-logo-container{
+    height: 50px;
+    width: 130px;
+    overflow: hidden;
+  }
+
+@media (max-width: 435px){
+  .user-alert-container{
+    flex-direction: column;
+    height: 500px;
+  }
+}
+
+
 /*  Notifications  */
 
 ul#menu > li{
@@ -10879,8 +10914,7 @@ ul.submenu li a:hover{
 }
 
 .ttm-footer{
-  padding: 40px 0;
-  position: ansolute;
+  padding: 30px 0;
   bottom: 0;
 }
 
@@ -11593,17 +11627,6 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 
 }
 
-/*  ###############  Portfolio */
-
-.portfolio-card td{
-  padding: 22px 12px 0 23px;
-}
-
-.portfolio-card thead tr th.portfolio-logo-name-container{
-  background-color: #fff;
-}
-
-
 /*  ###############  Crypto Show  */
 
 .crypto-show-widget{
@@ -11620,6 +11643,24 @@ html body center a.btn.btn-primary, html body center a.btn.btn-secondary{
 
 .crypto-show-widget-exchange{
 
+}
+
+div.crypto-show-tools{
+  margin: 0 0 60px;
+}
+
+.crypto-show-add-ttm-btn{
+  margin-top: 20px;
+}
+
+/*  ###############  Portfolio */
+
+.portfolio-card td{
+  padding: 22px 12px 0 23px;
+}
+
+.portfolio-card thead tr th.portfolio-logo-name-container{
+  background-color: #fff;
 }
 
 /*  ###############  News Index */
@@ -11897,7 +11938,7 @@ div.new-article-card input.update-article-btn{
 }
 
 .profile-cards-img{
-  width: 40%;
+  width: 200px;
   margin: -10px 0 30px;
   transform: scale(1.1);
 }
@@ -11969,6 +12010,25 @@ div.friends-profile-container, div.profile-conversation, div.profile-user-articl
   width: 200px;
   height: 200px;
 }
+
+.profile-window{
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  z-index: 1000;
+  transform: scale(1.3);
+}
+
+@media (max-width: 768px){
+  .profile-window{
+    left: 160px;
+  }
+}
+
+.profile-card-container-sub{
+  position: relative;
+}
+
 /*  Conversations  */
 
 .conv-card{
